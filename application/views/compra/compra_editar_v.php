@@ -1,6 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
@@ -15,9 +16,10 @@
           </div>
 
 
+           
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text"/>
+                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_compra[0]->Fecha) ?>"/>
 
                   <script>
                     $(document).ready(function(){
@@ -32,7 +34,8 @@
                         date_input.datepicker(options);
                       })
                   </script>
-              </div>
+
+            </div>
           
 
           <div class="form-group col-md-6">
@@ -45,24 +48,20 @@
           </div>
 
           
-          <div class="form-group col-md-6">
-
-            <label>Proveedor</label>
-            <input class="form-control" list="proveedores" name="IdProveedor">
-            <datalist id="proveedores">
-              <?php
-                
-                foreach($proveedores as $proveedor){
-
-                  echo "<option value=".$proveedor->IdProveedor .">". $proveedor->Nombre ."</option>";
-                }
-                
-              ?>
-            </datalist>
-          </div>
+         
+         <div class="form-group col-md-6">
+ 
+              <label>Proveedor</label>
+              <input class="form-control" list="proveedores" id="listProveedor">
+              <datalist id="proveedores"><?php foreach($proveedores as $proveedor){
+                    echo "<option data=".$proveedor->IdProveedor ." value=". $proveedor->Nombre ."></option>";
+                  }?></datalist>
+            </div>
 
 
           <div class="col-md-12">
+                <input type="hidden" name="IdTrabajador" value="2">
+                <input type="hidden" name="IdProveedor" id="IdProveedor" value="<?php echo $dato_compra[0]->IdProveedor?>">
             <button type="submit" class="btn btn-primary ">Actualizar</button>
           
           </div>
@@ -72,6 +71,28 @@
 	</div>
 </div>
    
+ <script>
+    var listProveedor = document.getElementById("listProveedor");
+    var optionsProveedor = document.getElementById("proveedores");
+    var insertIdProveedor = document.getElementById("IdProveedor");
+
+    var identificadorPro = "<?php echo $dato_compra[0]->IdProveedor?>";
+    optionsProveedor.childNodes.forEach(function(e){
+        if(e.getAttribute("data") == identificadorPro){
+          listProveedor.value = e.value; 
+        }
+      });
+
+
+
+  listProveedor.onchange = function(e){
+    optionsProveedor.childNodes.forEach(function(e){
+        if(e.value == listProveedor.value){
+          insertIdProveedor.value = e.getAttribute("data"); 
+        }
+      });
+  }
+</script>
 
 <?php  $this->load->view('layouts/footer.php');?>       
      

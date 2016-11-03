@@ -66,10 +66,25 @@ class Compra_model extends CI_Model {
 
         public function update_compra($IdCompra)
         {
-                $this->CodiC  = $_POST['CodC'];
-                $this->Fecha    = $_POST['Fecha'];
+                $fecha = $_POST['Fecha'];
+                $pos = strpos($fecha, '/');
+                if($pos === true){
+                        $array = explode('/', $fecha);
+                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+                // die($fecha_php);
+                // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
+
+                
+                $this->CodC    = $_POST['CodC'];
+                $this->Fecha    =  strval(trim($fecha_php));
                 $this->TipoC    = $_POST['TipoC'];
                 $this->Descripcion    = $_POST['Descripcion'];
+                $this->IdProveedor    = $_POST['IdProveedor'];
+                $this->IdTrabajador    = $_POST['IdTrabajador'];
 
 
                 $this->db->update('compra', $this, array('IdCompra' => $IdCompra));

@@ -18,8 +18,8 @@ class Trabajador extends CI_Controller {
 
         public function create(){
           
-            $this->load->model('tipotrab_model');
-             $data['tipos'] = $this->tipotrab_model->get_tipotrabs();
+            $this->load->model('TipoTrab_model');
+             $data['tipos'] = $this->TipoTrab_model->get_tipotrabs();
 
             $this->load->view('trabajador/trabajador_crear_v', $data);
               
@@ -28,10 +28,10 @@ class Trabajador extends CI_Controller {
         }
 
         public function edit($id){
-            $this->load->model('tipotrab_model');
-            $data['tipos']= $this->tipotrab_model->get_tipotrabs();
-            $this->load->model('trabajador_model');
-            $data['dato_trabajador'] =  $this->trabajador_model->get_trabajador($id);
+            $this->load->model('TipoTrab_model');
+            $data['tipos']= $this->TipoTrab_model->get_tipotrabs();
+            $this->load->model('Trabajador_model');
+            $data['dato_trabajador'] =  $this->Trabajador_model->get_trabajador($id);
 
             $this->load->view('trabajador/trabajador_editar_v', $data);
 

@@ -35,7 +35,7 @@ class Trabajador_model extends CI_Model {
                 $this->Telefono    = $_POST['Telefono'];
                 $this->Email    = $_POST['Email'];
                 $this->Password    = $_POST['Password'];
-                $this->IdTipoTrab    = $_POST['NombreTipo'];
+                $this->IdTipoTrab    = $_POST['SelectTipo'];
                 
                  
 

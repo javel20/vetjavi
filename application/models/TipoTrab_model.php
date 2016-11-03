@@ -20,7 +20,7 @@ class TipoTrab_model extends CI_Model {
          public function post_tipotrabs()
         {
               
-                $this->Nombre    = $_POST['Nombre'];
+                $this->Nombre   = $_POST['Nombre'];
 
                 $this->db->insert('tipotrab', $this);
         }

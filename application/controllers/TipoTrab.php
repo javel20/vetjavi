@@ -4,15 +4,15 @@ class TipoTrab extends CI_Controller {
         public function index()
         {
 
-          $this->load->model('tipotrab_model');
-          $data['datos_tipotrab'] =  $this->tipotrab_model->get_tipotrabs();
+          $this->load->model('TipoTrab_model');
+          $data['datos_tipotrab'] =  $this->TipoTrab_model->get_tipotrabs();
           $this->load->view('tipotrab/tipotrab_v', $data);
         }
 
         public function store(){
-             $this->load->model('tipotrab_model');
-             $result = $this->tipotrab_model->post_tipotrabs();
-             redirect(base_url().'index.php/tipotrab', 'refresh');
+             $this->load->model('TipoTrab_model');
+             $result = $this->TipoTrab_model->post_tipotrabs();
+             redirect(base_url().'index.php/TipoTrab', 'refresh');
 
         }
 

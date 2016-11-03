@@ -42,11 +42,9 @@
             <div class="form-group col-md-6">
               <label>Tipo Compra</label>
             <select class="form-control" name="TipoC">
-              
-               
                 <option>Factura</option>
                 <option>Boleta</option>
-                </select>
+             </select>
             </div>
 
 
@@ -59,24 +57,15 @@
  
               <label>Proveedor</label>
               <input class="form-control" list="proveedores" id="listProveedor">
-              <datalist id="proveedores">
-                <?php
-                  
-                  foreach($proveedores as $proveedor){
-
+              <datalist id="proveedores"><?php foreach($proveedores as $proveedor){
                     echo "<option data=".$proveedor->IdProveedor ." value=". $proveedor->Nombre ."></option>";
-                  }
-                  
-                ?>
-              </datalist>
+                  }?></datalist>
             </div>
 
             <div class="col-md-12">
-
                 <input type="hidden" name="IdTrabajador" value="2">
-                <input type="hidden" name="IdProveedor" value="2">
+                <input type="hidden" name="IdProveedor" id="IdProveedor">
               <button type="submit" class="btn btn-primary ">Agregar</button>
-            
             </div>
           </form>
 
@@ -89,8 +78,14 @@
 
 <script>
   var listProveedor = document.getElementById("listProveedor");
+  var optionsProveedor = document.getElementById("proveedores");
+  var insertIdProveedor = document.getElementById("IdProveedor");
   listProveedor.onchange = function(e){
-    console.log(e.target);
+    optionsProveedor.childNodes.forEach(function(e){
+        if(e.value == listProveedor.value){
+          insertIdProveedor.value = e.getAttribute("data"); 
+        }
+      });
   }
 </script>
 <?php  $this->load->view('layouts/footer.php');?>       
