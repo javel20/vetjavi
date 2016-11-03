@@ -1,0 +1,26 @@
+// Coloque su configuración en este archivo para sobrescribir la configuración predeterminada y de usuario.
+{
+     "files.exclude": {
+        "**/**/index.html": true,
+        "**/index.html": true,
+        "**/*.map": true,
+        "system/":true,
+        "user_guide/":true,
+        "application/cache":true,
+        "application/core":true,
+        "application/helpers":true,
+        "application/hooks":true,
+        "application/language":true,
+        "application/libraries":true,
+        "application/logs":true,
+        "application/third_party":true,
+        "application/config":false,
+
+        ".gitignore":true,
+        "composer.json":true,
+        "contributing.md":true,
+        "index.php":true,
+        "license.txt":true,
+        "readme.rst":true
+    }
+}
