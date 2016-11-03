@@ -16,7 +16,7 @@
         "application/third_party":true,
         "application/config":false,
 
-        ".gitignore":true,
+        ".gitignore":false,
         "composer.json":true,
         "contributing.md":true,
         "index.php":true,
