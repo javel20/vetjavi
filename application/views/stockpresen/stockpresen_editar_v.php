@@ -7,7 +7,7 @@
       <div class="page-header">
 
         <form class="row mrb-30 well" 
-              action="<?php echo base_url('index.php/stockpresen/update/'.$dato_stockpresen[0]->IdStockPresen); ?>" 
+              action="<?php echo base_url('index.php/StockPresen/update/'.$dato_stockpresen[0]->IdStockPresen); ?>" 
               method="POST">
           <div class="form-group col-md-6 ">
             <label>Stock Minimo</label>
@@ -25,12 +25,12 @@
 
            <div class="form-group col-md-6">
               <label>Producto</label>
-            <select class="form-control" name="SelectTipo" >
+            <select class="form-control" name="SelectTipo" value="<?php echo $dato_stockpresen[0]->IdProducto?>" >
               
                 <option>--seleccionar--</option>
               <?php
-                $IdTipo=$dato_producto[0]->IdProducto;
-                foreach($tipos as $tipo){
+                $IdTipo=$dato_stockpresen[0]->IdProducto;
+                foreach($productos as $tipo){
                   $select = ($tipo->IdProducto == $IdTipo )? 'selected':'';
                   echo "<option  ". $select  ." value=".$tipo->IdProducto .">". $tipo->Nombre ."</option>";
                 }

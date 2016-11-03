@@ -57,7 +57,7 @@
         <tbody id="eventos_table">
         
         <?php
-          //  die(var_dump($datos_trabajador));
+          // die(var_dump($datos_stockpresen));
             foreach ($datos_stockpresen as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->Nombre."</td>".
@@ -74,8 +74,8 @@
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
                                 nombre_data='". $dato->Nombre ."'
-                                url_data=". base_url("index.php/stockpresen/delete/$dato->IdStockPresen") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/stockpresen/edit/$dato->IdStockPresen") .">Editar</a></li>
+                                url_data=". base_url("index.php/StockPresen/delete/$dato->IdStockPresen") .">Eliminar</a></li>
+                        <li><a href=". base_url("index.php/StockPresen/edit/$dato->IdStockPresen") .">Editar</a></li>
 
                     </ul>
                     </div></td>".

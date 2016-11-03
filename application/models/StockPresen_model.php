@@ -1,7 +1,7 @@
 <?php
 class StockPresen_model extends CI_Model {
 
-        public $IdStockPresen;
+        // public $IdStockPresen;
         public $StockMin;
         public $StockReal;
         public $Presentacion;
