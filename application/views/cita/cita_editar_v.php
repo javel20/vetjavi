@@ -16,16 +16,14 @@
 
 
         <div class="form-group col-md-6">
-                <label>Paciente</label><br>
-          <select class="js-example-basic-single form-control" name="listPaciente">
-            <?php
-                        
-                      foreach($pacientes as $Paciente){
-
-                        $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
+          <label>Paciente</label><br>
+            <select class="js-example-basic-single form-control" name="listPaciente">
+              <?php
+                  foreach($pacientes as $Paciente){
+                    $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
                     echo "<option value=". $Paciente->IdPaciente ." ". $faiId .">". $Paciente->Nombre ."</option>";
                   }?>
-          </select>
+            </select>
 
           </div>
 
