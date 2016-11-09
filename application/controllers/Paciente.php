@@ -29,11 +29,11 @@ class Paciente extends CI_Controller {
         }
 
         public function edit($id){
-            $this->load->model('paciente_model');
-            $data['tipos']= $this->paciente_model->get_pacientes();
+            $this->load->model('cliente_model');
+            $data['clientes']= $this->cliente_model->get_clientes();
             $this->load->model('paciente_model');
             $data['dato_paciente'] =  $this->paciente_model->get_paciente($id);
-
+            // die(var_dump($data['dato_paciente']));
             $this->load->view('paciente/paciente_editar_v', $data);
 
         }

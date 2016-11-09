@@ -1,7 +1,7 @@
 <?php
 class Paciente_model extends CI_Model {
 
-        public $IdPaciente;
+        // public $IdPaciente;
         public $Nombre;
         public $Raza;
         public $Edad;

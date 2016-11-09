@@ -77,18 +77,6 @@
                     </button>
                     <ul class='dropdown-menu' aria-labelledby='dLabel'>
 
-                        <li><a  dato_modal='dato_eliminar'
-                                id='desactivar_enlace'
-                                aviso='Desea desactivar a:'
-                                nombre_data='". $dato->CodC ."'
-                                url_data=". base_url("index.php/compra/deactivate/$dato->IdCompra") .">Desactivar</a></li>
-                        
-                         <li><a dato_modal='dato_eliminar'
-                                id='activar_enlace'
-                                aviso='Desea activar a:'
-                                nombre_data='". $dato->CodC  ."'
-                                url_data=". base_url("index.php/compra/activate/$dato->IdCompra") .">Activar</a></li>
-
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'

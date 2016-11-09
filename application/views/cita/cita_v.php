@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/venta/search'); ?>"  
+                        action="<?php echo base_url('index.php/cita/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -25,9 +25,9 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="CodV">Codigo </a></li>
-                    <li><a href="#" dato="Fecha">Fecha </a></li>
-                    <li><a href="#" dato="TipoV">Tipo </a></li>
+                    <li><a href="#" dato="CodC">Fecha </a></li>
+                    <li><a href="#" dato="Fecha">Talla </a></li>
+                    <li><a href="#" dato="Tipo">Peso </a></li>
                     <li><a href="#" dato="Descripcion">Descripcion</a></li>
             
             
@@ -35,7 +35,7 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
                     <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
@@ -50,10 +50,15 @@
     
     <table class="table">
         <thead>
-            <th>Codigo</th>
-            <th>Fecha</th>
-            <th>Tipo</th>
+            <th>Fecha Reserva</th>
+            <th>Fecha Registro</th>
+            <th>Talla</th>
+            <th>Peso</th>
+            <th>Frecuencia Cardiaca</th>
+            <th>Frecuencia Respiratoria</th>
             <th>Descripicion</th>
+            <th>Paciente</th>
+            <th>TipoCita</th>
          
          
         </thead>
@@ -61,13 +66,18 @@
         
         <?php
         
-            foreach ($datos_venta as &$dato) {
+            foreach ($datos_cita as &$dato) {
           echo "<tr >".
-
-                "<td>". $dato->CodV ."</td>".
-                "<td>". $dato->Fecha ."</td>".
-                "<td>". $dato->TipoV ."</td>".
-                "<td>". $dato->Descripcion."</td>".
+            
+                "<td>". $dato->FechaReserva ."</td>".
+                "<td>". $dato->FechaRegistro ."</td>".
+                "<td>". $dato->Talla ."</td>".
+                "<td>". $dato->Peso ."</td>".
+                "<td>". $dato->FrecuenciaCardiaca ."</td>".
+                "<td>". $dato->FrecuenciaRespiratoria ."</td>".
+                "<td>". $dato->Descripcion ."</td>".
+                "<td>". $dato->NombrePaciente ."</td>".
+                "<td>". $dato->NombreTipoCita ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones
@@ -78,9 +88,9 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->CodV  ."'
-                                url_data=". base_url("index.php/venta/delete/$dato->IdVenta") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/venta/edit/$dato->IdVenta") .">Editar</a></li>
+                                nombre_data='". $dato->IdCita ."'
+                                url_data=". base_url("index.php/cita/delete/$dato->IdCita") .">Eliminar</a></li>
+                        <li><a href=". base_url("index.php/cita/edit/$dato->IdCita") .">Editar</a></li>
 
                     </ul>
                     </div></td>".

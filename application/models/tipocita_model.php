@@ -1,7 +1,7 @@
 <?php
 class TipoCita_model extends CI_Model {
 
-        public $IdTipoCita;
+        // public $IdTipoCita;
         public $Nombre;
 
 

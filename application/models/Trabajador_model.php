@@ -1,7 +1,7 @@
 <?php
 class Trabajador_model extends CI_Model {
 
-        public $IdTrabajador;
+        // public $IdTrabajador;
         public $Nombre;
         public $ApePat;
         public $ApeMat;

@@ -2,7 +2,7 @@
 class Venta_model extends CI_Model {
 
 
-        public $IdVenta;
+        // public $IdVenta;
         public $CodV;
         public $Fecha;
         public $TipoV;
@@ -20,8 +20,15 @@ class Venta_model extends CI_Model {
 
         public function get_ventas()
         {
-                $query = $this->db->get('venta');
+
+
+                $this->db->select('*, cliente.Nombre  as NombreCliente');
+                $this->db->from('venta');
+                $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
+                $query = $this->db->get();
+                // die(var_dump($query->result()));
                 return $query->result();
+
         }
          public function post_ventas()
         {
@@ -56,10 +63,22 @@ class Venta_model extends CI_Model {
 
         public function update_venta($IdVenta)
         {
-                $this->CodiC  = $_POST['CodC'];
-                $this->Fecha    = $_POST['Fecha'];
-                $this->TipoC    = $_POST['TipoC'];
+                 $fecha = $_POST['Fecha'];
+                $pos = strpos($fecha, '/');
+                if($pos === true){
+                        $array = explode('/', $fecha);
+                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+              
+                $this->CodV    = $_POST['CodV'];
+                $this->Fecha    =  $fecha_php;
+                $this->TipoV    = $_POST['TipoV'];
                 $this->Descripcion    = $_POST['Descripcion'];
+                $this->IdCliente    = $_POST['IdCliente'];
+                $this->IdTrabajador    = $_POST['IdTrabajador'];
 
 
                 $this->db->update('venta', $this, array('IdVenta' => $IdVenta));

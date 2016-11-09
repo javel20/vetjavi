@@ -7,7 +7,7 @@
 		<div class="container">
       <div class="page-header">
 
-        <form class="row mrb-30 well" 
+        <form class="row mrb-30 well"
               action="<?php echo base_url('index.php/compra/update/'.$dato_compra[0]->IdCompra); ?>" 
               method="POST">
           <div class="form-group col-md-6 ">
