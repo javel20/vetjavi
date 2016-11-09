@@ -24,7 +24,6 @@ class Trabajador extends CI_Controller {
             $this->load->view('trabajador/trabajador_crear_v', $data);
               
 
-
         }
 
         public function edit($id){
@@ -56,6 +55,14 @@ class Trabajador extends CI_Controller {
            $this->Trabajador_model->get_eliminar_trabajador($id);
             redirect(base_url().'index.php/trabajador', 'refresh');
 
+        }
+
+        public function login()
+        {
+
+          $this->load->model('Trabajador_model');
+          $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajadores();
+          $this->load->view('trabajador/login', $data);
         }
 
 
