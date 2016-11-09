@@ -3,49 +3,49 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
-      <div class="page-header">
+      
         <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Registrar Cita</h3>
-          </div>
-
+               <div class="panel-heading">
+                  <h3 class="panel-title">Registrar Cita</h3>
+                </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
-
-
-              <div class="form-group col-md-6">
-                <label>Tipo Cita</label>
-                    <select class="form-control" name="listTipo">
-                    
-                        <option>--seleccionar--</option>
-                            <?php
-                        
-                                foreach($citas as $cita){
-
-                                echo "<option value=".$cita->IdTipoCita .">". $cita->Nombre ."</option>";
-                                }
-                        
-                            ?>
-                </select>
-            </div>
-
+          <form class="row" action="store" method="POST">
+            
 
 
             <div class="form-group col-md-6">
- 
-              <label>Paciente</label>
-              <input class="form-control" list="Pacientes" id="listPaciente" >
-              <datalist id="Pacientes"><?php foreach($pacientes as $Paciente){
-                    echo "<option data=".$Paciente->IdPaciente ." value=". $Paciente->Nombre ."></option>";
-                  }?></datalist>
+            <label>Tipo Cita</label><br>
+              <select class="form-control" id="js-example-basic-single2" name="listTipo">
+                <?php
+                    foreach($citas as $cita){
+
+                      echo "<option value=" .$cita->IdTipoCita .">". $cita->Nombre ."</option>";
+                    }?>
+              </select>
+
             </div>
 
+            <div class="form-group col-md-6 ">
+              <label>Paciente</label><br>
+                <select class="form-control" id="js-example-basic-single" name="listPaciente">
+                  <?php
+                      foreach($pacientes as $paciente){
+                        echo "<option value=" .$paciente->IdPaciente .">". $paciente->Nombre ."</option>";
 
+                      }?>
+                </select>
 
+              </div>
+
+           
+
+            
                 <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
                 <input class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text"/>
@@ -95,7 +95,7 @@
           
                 <br><br>
             <div class="col-md-12">
-            <input type="hidden" name="listPaciente" id="IdPaciente">
+      
               <button type="submit" class="btn btn-primary ">Guardar</button>
             
             </div>
@@ -106,22 +106,19 @@
 
 </div>
 </div>
-</div>
+
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+             $("#js-example-basic-single").select2();
+             $("#js-example-basic-single2").select2();
+
+            });
+
+            </script>
 
 
 
-<script>
-  var listPaciente = document.getElementById("listPaciente");
-  var optionsPaciente = document.getElementById("Pacientes");
-  var insertIdPaciente = document.getElementById("IdPaciente");
-  listPaciente.onchange = function(e){
-    optionsPaciente.childNodes.forEach(function(e){
-        if(e.value == listPaciente.value){
-          insertIdPaciente.value = e.getAttribute("data"); 
-        }
-      });
-  }
-</script>
 
 
 <?php  $this->load->view('layouts/footer.php');?>       

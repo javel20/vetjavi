@@ -2,6 +2,8 @@
 <?php  $this->load->view('layouts/tablero');?>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
@@ -47,21 +49,36 @@
             <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_compra[0]->Descripcion?>">
           </div>
 
-          
-         
-         <div class="form-group col-md-6">
- 
-              <label>Proveedor</label>
-              <input class="form-control" list="proveedores" id="listProveedor">
-              <datalist id="proveedores"><?php foreach($proveedores as $proveedor){
-                    echo "<option data=".$proveedor->IdProveedor ." value=". $proveedor->Nombre ."></option>";
-                  }?></datalist>
+
+            <div class="form-group col-md-6">
+            <label>Proveedor</label><br>
+              <select class="form-control" id="js-example-basic-single" name="IdProveedor">
+                <?php
+                    
+                    foreach($proveedores as $proveedor){
+                      $faiId=($proveedor->IdProveedor==$dato_compra[0]->IdProveedor)? "selected":"";
+                      echo "<option value=". $proveedor->IdProveedor ." ". $faiId .">". $proveedor->Nombre ."</option>";
+                    }?>
+
+                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
+                   
+              </select>
+
             </div>
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
 
           <div class="col-md-12">
                 <input type="hidden" name="IdTrabajador" value="2">
-                <input type="hidden" name="IdProveedor" id="IdProveedor" value="<?php echo $dato_compra[0]->IdProveedor?>">
+                <!--<input type="hidden" name="IdProveedor" id="IdProveedor" value="<?php echo $dato_compra[0]->IdProveedor?>">-->
             <button type="submit" class="btn btn-primary ">Actualizar</button>
           
           </div>
@@ -71,28 +88,7 @@
 	</div>
 </div>
    
- <script>
-    var listProveedor = document.getElementById("listProveedor");
-    var optionsProveedor = document.getElementById("proveedores");
-    var insertIdProveedor = document.getElementById("IdProveedor");
-
-    var identificadorPro = "<?php echo $dato_compra[0]->IdProveedor?>";
-    optionsProveedor.childNodes.forEach(function(e){
-        if(e.getAttribute("data") == identificadorPro){
-          listProveedor.value = e.value; 
-        }
-      });
-
-
-
-  listProveedor.onchange = function(e){
-    optionsProveedor.childNodes.forEach(function(e){
-        if(e.value == listProveedor.value){
-          insertIdProveedor.value = e.getAttribute("data"); 
-        }
-      });
-  }
-</script>
+ 
 
 <?php  $this->load->view('layouts/footer.php');?>       
      

@@ -2,6 +2,9 @@
 <?php  $this->load->view('layouts/tablero');?>
 
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
       <div class="page-header">
@@ -13,21 +16,20 @@
             <form class="row" action="store" method="POST">
 
 
-              <div class="form-group col-md-6">
-                <label>Cliente</label>
-                    <select class="form-control" name="SelectTipo">
+            <div class="form-group col-md-6">
+            <label>Cliente</label><br>
+              <select class="form-control" id="js-example-basic-single2" name="SelectTipo">
+                  <option>--seleccionar--</option>
+                <?php
                     
-                        <option>--seleccionar--</option>
-                            <?php
-                        
-                                foreach($clientes as $cliente){
+                    foreach($clientes as $cliente){
+                      
+                      echo "<option value=" .$cliente->IdCliente .">". $cliente->Nombre ."</option>";
+                    }?>
+              </select>
 
-                                echo "<option value=".$cliente->IdCliente .">". $cliente->Nombre ."</option>";
-                                }
-                        
-                            ?>
-                </select>
             </div>
+
 
             <div class="form-group col-md-6">
               <label>Nombre</label>

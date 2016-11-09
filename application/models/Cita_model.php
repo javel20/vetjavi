@@ -55,7 +55,7 @@ class Cita_model extends CI_Model {
 
               
 
-                // die(var_dump($this));
+                //  die(var_dump($this));
                  $this->db->insert('cita', $this);
         }
 
@@ -96,7 +96,7 @@ class Cita_model extends CI_Model {
                 $this->IdTipoCita    = $_POST['listTipo'];
                  $this->Estado    = true;
 
-               // die(var_dump($this));
+                // die(var_dump($this));
                 $this->db->update('cita', $this, array('IdCita' => $IdCita));
         }
 

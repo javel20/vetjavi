@@ -15,46 +15,48 @@
 
 
 
-        <div class="form-group col-md-6">
-          <label>Paciente</label><br>
-            <select class="js-example-basic-single form-control" name="listPaciente">
-              <?php
-                  foreach($pacientes as $Paciente){
-                    $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
-                    echo "<option value=". $Paciente->IdPaciente ." ". $faiId .">". $Paciente->Nombre ."</option>";
-                  }?>
-            </select>
-
-          </div>
-
-           <script type="text/javascript">
-          $(document).ready(function() {
-           var fn = $(".js-example-basic-single").select2();
-            // $(".js-example-basic-single").select
-           // fn.defaults.set("qwe","sdsd")
-          });
-
-          </script>
-
           <div class="form-group col-md-6">
-                <label>Tipo Cita</label>
-                    <select class="form-control" name="listTipo">
-                    
-                        <option>--seleccionar--</option>
-                            <?php
-                        
-                                foreach($tipocitas as $cita){
-                                   $dataID=($cita->IdTipoCita==$dato_cita[0]->IdTipoCita)? "selected":"";
+            <label>Paciente</label><br>
+              <select class="js-example-basic-single form-control" name="listPaciente">
+                <?php
+                    foreach($pacientes as $Paciente){
+                      $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
+                      echo "<option value=". $Paciente->IdPaciente ." ". $faiId .">". $Paciente->Nombre ."</option>";
+                    }?>
+              </select>
 
-                                  echo "<option value=".$cita->IdTipoCita ." ". $dataID ." >". $cita->Nombre ."</option>";
-                                }
-                        
-                            ?>
-                </select>
             </div>
 
- 
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
 
+            </script>
+
+
+            <div class="form-group col-md-6">
+            <label>Tipo Cita</label><br>
+              <select class="js-example-basic-single2 form-control" name="listTipo">
+                <?php
+                    foreach($tipocitas as $Cita){
+                      $faiId=($Cita->IdTipoCita==$dato_cita[0]->IdTipoCita)? "selected":"";
+                      echo "<option value=". $Cita->IdTipoCita ." ". $faiId .">". $Cita->Nombre ."</option>";
+                    }?>
+              </select>
+
+            </div>
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single2").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
 
     <div class="form-group col-md-6">

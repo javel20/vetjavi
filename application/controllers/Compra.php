@@ -39,7 +39,9 @@ class Compra extends CI_Controller {
         public function update($id){
              $this->load->model('Compra_model');
              $result = $this->Compra_model->update_compra($id);
+            //  die(var_dump($result));
              redirect(base_url().'index.php/compra', 'refresh');
+             
 
         }
 
