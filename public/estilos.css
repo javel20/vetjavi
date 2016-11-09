@@ -15,8 +15,29 @@
 .flex_container> section{
     width: 70%;
 }
-.menu_vet li{
- /*   list-style: none;*/
+
+.table_arreglar {
+    display: flex;
+    flex-direction: column;
+} 
+.table_arreglar tr{
+  display: flex;
+}
+.table_arreglar tr th:nth-child(1){ width: 30%}
+.table_arreglar tr th:nth-child(2){ width: 20%}
+.table_arreglar tr th:nth-child(3){ width: 20%}
+.table_arreglar tr th:nth-child(4){ width: 10%}
+.table_arreglar tr th:nth-child(5){ width: 10%}
+.table_arreglar tr th:nth-child(6){ width: 10%}
+
+.table_arreglar tr td:nth-child(1){ width: 30%}
+.table_arreglar tr td:nth-child(2){ width: 20%}
+.table_arreglar tr td:nth-child(3){ width: 20%}
+.table_arreglar tr td:nth-child(4){ width: 10%}
+.table_arreglar tr td:nth-child(5){ width: 10%}
+.table_arreglar tr td:nth-child(6){ width: 10%}
+.table_arreglar  input{
+  border: 0;  
 }
 .mrb-30{
     margin-bottom: 50px;
