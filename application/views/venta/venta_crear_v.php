@@ -3,6 +3,8 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 
 	<div class="col-sm-9 col-md-10 affix-content">
@@ -55,20 +57,19 @@
               <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
             </div>
 
-            <div class="form-group col-md-6">
- 
-              <label>Cliente</label>
-              <input class="form-control" list="clientes" name="IdCliente">
-              <datalist id="clientes">
-                <?php
-                  
-                  foreach($clientes as $cliente){
 
-                    echo "<option value=".$cliente->IdCliente .">". $cliente->Nombre ."</option>";
-                  }
-                  
-                ?>
-              </datalist>
+            <div class="form-group col-md-6">
+            <label>Cliente</label><br>
+              <select class="form-control" id="js-example-basic-single2" name="IdCliente">
+                  <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($clientes as $cliente){
+                      
+                      echo "<option value=" .$cliente->IdCliente .">". $cliente->Nombre ."</option>";
+                    }?>
+              </select>
+
             </div>
             
 
@@ -78,15 +79,38 @@
               <div>
                 <div id="form_detalle" >
                 
-                  <div class="form-group  col-md-6">
-                    <label>Nombre Producto</label>
-                    <input type="text" class="form-control" name="nombre_add_detalle"  placeholder="Nombre Producto">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>Presentación</label>
-                    <input type="text" class="form-control" name="presentacion_add_detalle" placeholder="Presentación">
-                  
-                  </div>
+     
+
+            <div class="form-group col-md-6">
+            <label>Producto</label><br>
+              <select class="form-control" id="js-example-basic-single" name="">
+                  <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($productos as $producto){
+                      
+                      echo "<option value=" .$producto->IdProducto .">". $producto->Nombre ."</option>";
+                    }?>
+              </select>
+
+            </div>
+
+
+            <div class="form-group col-md-6">
+            <label>Presentacion</label><br>
+              <select class="form-control" id="js-example-basic-single3" name="">
+                  <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($presentacion as $presen){
+                      
+                      echo "<option value=" .$presen->IdStockPresen .">". $presen->Presentacion ."</option>";
+                    }?>
+              </select>
+
+            </div>
+                 
+                 
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
@@ -137,32 +161,36 @@
 </div>
 </div>
 </div>
-<script>
-  var $form_detalle = document.getElementById("form_detalle");
-  var $tbody_detalle = document.getElementById("tbody_detalle");
-  console.log($form_detalle);
-  $form_detalle.onclick = function(e){
-      e.preventDefault();
-      
-      if(e.target.id == "agregar_detalle"){
-        let add_detalle = {
-            nombre : $form_detalle.getElementsByTagName("input")[0].value,
-            presentacion : $form_detalle.getElementsByTagName("input")[1].value,
-            cantidad : $form_detalle.getElementsByTagName("input")[2].value,
-            precio : $form_detalle.getElementsByTagName("input")[3].value
-          };
-         $tbody_detalle.innerHTML += `<tr>
-          <td> <input value=${add_detalle.nombre} name="detalle_nombre[]" >  </input> </td>
-          <td>  <input value=${add_detalle.presentacion} name="detalle_presentacion[]" >   </input> </td>
-          <td>  <input value=${add_detalle.cantidad}  name="detalle_cantidad[] " ></input> </td>
-          <td> <input value=${add_detalle.precio} name="detalle_precio[] ">   </input> </td>
-          <td> total </td>
-          <td> acciones </td>
-         </tr>`;
-       
-        
-      }
-  }
-</script>
+
+            <script type="text/javascript">
+
+              $(document).ready(function() {
+              
+              $("#js-example-basic-single2").select2();
+
+              });
+
+            </script>
+
+            <script type="text/javascript">
+
+              $(document).ready(function() {
+              
+              $("#js-example-basic-single").select2();
+
+              });
+
+            </script>
+
+            <script type="text/javascript">
+
+              $(document).ready(function() {
+              
+              $("#js-example-basic-single3").select2();
+
+              });
+
+            </script>
+
 <?php  $this->load->view('layouts/footer.php');?>       
      

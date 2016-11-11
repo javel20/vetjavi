@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left" 
-                        action="<?php echo base_url('index.php/trabajador/search'); ?>"  
+                        action="<?php echo base_url('index.php/local/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -26,9 +26,9 @@
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Nombre">Nombre </a></li>
-                    <li><a href="#" dato="ApePat">Apellido </a></li>
-                    <li><a href="#" dato="Email">Direccion </a></li>
-                    <li><a href="#" dato="Empresa">Telefono </a></li>
+                    <li><a href="#" dato="ApePat">Direccion </a></li>
+                    <li><a href="#" dato="Email">Telefono </a></li>
+                    <li><a href="#" dato="Empresa">Estado </a></li>
             
             
                     </ul>
@@ -50,26 +50,22 @@
     
     <table class="table">
         <thead>
-            <th>Nombres</th>
+            <th>Nombre</th>
             <th>Dirección</th>
             <th>Telefono</th>
-            <th>Email</th>
-            <th>Tipo Trabajador</th>
-            <th>Local</th>
+            <th>Estado</th>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
         
         <?php
-          //  die(var_dump($datos_trabajador));
-            foreach ($datos_trabajador as &$dato) {
+        
+            foreach ($datos_local as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->Nombre ." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
+                "<td>". $dato->Nombre ."</td>".
                 "<td>". $dato->Direccion ."</td>".
                 "<td>". $dato->Telefono ."</td>".
-                "<td>". $dato->Email ."</td>".
-                "<td>". $dato->NombreTipo ."</td>".
-                "<td>". $dato->NombreLocal ."</td>".
+                "<td>". $dato->Estado ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones
@@ -77,11 +73,13 @@
                     </button>
                     <ul class='dropdown-menu' aria-labelledby='dLabel'>
 
+      
+
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre .' '. $dato->ApePat .' '. $dato->ApeMat  ."'
-                                url_data=". base_url("index.php/trabajador/delete/$dato->IdTrabajador") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/trabajador/edit/$dato->IdTrabajador") .">Editar</a></li>
+                                nombre_data='". $dato->Nombre ."'
+                                url_data=". base_url("index.php/local/delete/$dato->IdLocal") .">Eliminar</a></li>
+                        <li><a href=". base_url("index.php/local/edit/$dato->IdLocal") .">Editar</a></li>
 
                     </ul>
                     </div></td>".

@@ -37,21 +37,33 @@
             <input type="text" class="form-control" name="Sexo" placeholder="Sexo" value="<?php echo $dato_paciente[0]->Sexo?>">
           </div>
 
-             <div class="form-group col-md-6">
-                <label>Cliente</label>
-                    <select class="form-control" name="SelectTipo">
+     
+
+            <div class="form-group col-md-6">
+            <label>Cliente</label><br>
+              <select  class="js-example-basic-single form-control" name="SelectTipo">
+                <?php
                     
-                        <option>--seleccionar--</option>
-                            <?php
-                        
-                                foreach($clientes as $cliente){
-                                    $data= ($dato_paciente[0]->IdCliente==$cliente->IdCliente)? 'selected':"";
-                                echo "<option ".$data." value=".$cliente->IdCliente .">". $cliente->Nombre ."</option>";
-                                }
-                        
-                            ?>
-                </select>
+                    foreach($clientes as $cliente){
+                      $faiId=($cliente->IdCliente==$dato_paciente[0]->IdCliente)? "selected":"";
+                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre ."</option>";
+                    }?>
+
+                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
+                   
+              </select>
+
             </div>
+            
+            
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
 
           <div class="col-md-12">
@@ -64,6 +76,9 @@
 		</div>
 	</div>
 </div>
+
+
+
    
 
 <?php  $this->load->view('layouts/footer.php');?>       

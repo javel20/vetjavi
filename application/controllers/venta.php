@@ -17,8 +17,12 @@ class Venta extends CI_Controller {
         }
 
         public function create(){
-           $this->load->model('Cliente_model');
+            $this->load->model('Cliente_model');
             $data['clientes'] = $this->Cliente_model->get_clientes();
+            $this->load->model('Producto_model');
+            $data['productos'] = $this->Producto_model->get_productos();
+            $this->load->model('StockPresen_model');
+            $data['presentacion'] = $this->StockPresen_model->get_presen();
             $this->load->view('venta/venta_crear_v', $data);
 
         }

@@ -88,11 +88,11 @@
 </div>
 
             <script type="text/javascript">
-            $(document).ready(function() {
-             
-             $("#js-example-basic-single2").select2();
+              $(document).ready(function() {
+              
+              $("#js-example-basic-single2").select2();
 
-            });
+              });
 
             </script>
 <?php  $this->load->view('layouts/footer.php');?>       

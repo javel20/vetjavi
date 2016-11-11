@@ -22,7 +22,9 @@
             <div class="form-group col-md-6">
             <label>Tipo Cita</label><br>
               <select class="form-control" id="js-example-basic-single2" name="listTipo">
+              <option>--seleccionar--</option>
                 <?php
+                    
                     foreach($citas as $cita){
 
                       echo "<option value=" .$cita->IdTipoCita .">". $cita->Nombre ."</option>";
@@ -34,6 +36,7 @@
             <div class="form-group col-md-6 ">
               <label>Paciente</label><br>
                 <select class="form-control" id="js-example-basic-single" name="listPaciente">
+                <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){
                         echo "<option value=" .$paciente->IdPaciente .">". $paciente->Nombre ."</option>";

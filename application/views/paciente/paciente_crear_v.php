@@ -5,6 +5,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
+
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
       <div class="page-header">
@@ -71,6 +72,15 @@
 </div>
 </div>
 </div>
+
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+             $("#js-example-basic-single2").select2();
+
+            });
+
+            </script>
 
 <?php  $this->load->view('layouts/footer.php');?>       
      

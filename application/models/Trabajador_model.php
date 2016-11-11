@@ -10,6 +10,7 @@ class Trabajador_model extends CI_Model {
         public $Email;
         public $Password;
         public $IdTipoTrab;
+        public $IdLocal;
 
 
         public function __construct()
@@ -20,9 +21,10 @@ class Trabajador_model extends CI_Model {
 
         public function get_trabajadores()
         {
-                $this->db->select('*,trabajador.Nombre, tipotrab.Nombre  as NombreTipo');
+                $this->db->select('*,trabajador.Nombre, tipotrab.Nombre  as NombreTipo, local.Nombre as NombreLocal');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
+                $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
                 $query = $this->db->get();
                 return $query->result();
         }
@@ -36,6 +38,7 @@ class Trabajador_model extends CI_Model {
                 $this->Email    = $_POST['Email'];
                 $this->Password    = $_POST['Password'];
                 $this->IdTipoTrab    = $_POST['SelectTipo'];
+                $this->IdLocal    = $_POST['SelectLocal'];
                 
                  
 
@@ -65,6 +68,7 @@ class Trabajador_model extends CI_Model {
                 $this->ApePat  = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];
                 $this->IdTipoTrab = $_POST['SelectTipo'];
+                $this->IdLocal = $_POST['SelectLocal'];
 
                 $this->db->update('trabajador', $this, array('IdTrabajador' => $IdTrabajador));
         }

@@ -52,7 +52,7 @@
 
             <div class="form-group col-md-6">
             <label>Proveedor</label><br>
-              <select class="form-control" id="js-example-basic-single" name="IdProveedor">
+              <select class="js-example-basic-single form-control" name="IdProveedor">
                 <?php
                     
                     foreach($proveedores as $proveedor){

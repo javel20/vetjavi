@@ -1,6 +1,9 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
@@ -23,21 +26,30 @@
           </div>
 
 
-           <div class="form-group col-md-6">
-              <label>Producto</label>
-            <select class="form-control" name="SelectTipo" value="<?php echo $dato_stockpresen[0]->IdProducto?>" >
-              
-                <option>--seleccionar--</option>
-              <?php
-                $IdTipo=$dato_stockpresen[0]->IdProducto;
-                foreach($productos as $tipo){
-                  $select = ($tipo->IdProducto == $IdTipo )? 'selected':'';
-                  echo "<option  ". $select  ." value=".$tipo->IdProducto .">". $tipo->Nombre ."</option>";
-                }
+            <div class="form-group col-md-6">
+            <label>Producto</label><br>
+              <select class="js-example-basic-single form-control" name="SelectTipo">
+                <?php
+                    
+                    foreach($productos as $producto){
+                      $faiId=($producto->IdProducto==$dato_stockpresen[0]->IdProducto)? "selected":"";
+                      echo "<option value=". $producto->IdProducto ." ". $faiId .">". $producto->Nombre ."</option>";
+                    }?>
 
-              ?>
-            </select>
+                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
+                   
+              </select>
+
             </div>
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
 
           <div class="col-md-12">

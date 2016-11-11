@@ -20,8 +20,16 @@ class StockPresen_model extends CI_Model {
                 $this->db->select('*');
                 $this->db->from('stockpresentacion');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+
                 $query = $this->db->get();
                 return $query->result();
+         }
+
+         public function get_presen(){
+
+                $query = $this->db->get('stockpresentacion');
+                return $query->result();
+
          }
          public function post_stockpresens()
         {

@@ -1,6 +1,9 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
@@ -13,21 +16,21 @@
             <form class="row" action="store" method="POST">
 
 
-              <div class="form-group col-md-6">
-                <label>Producto</label>
-                    <select class="form-control" name="SelectTipo">
-                    
-                        <option>--seleccionar--</option>
-                            <?php
-                        
-                                foreach($productos as $producto){
 
-                                echo "<option value=".$producto->IdProducto .">". $producto->Nombre ."</option>";
-                                }
-                        
-                            ?>
-                </select>
+            <div class="form-group col-md-6">
+            <label>Producto</label><br>
+              <select class="form-control" id="js-example-basic-single2" name="SelectTipo">
+                  <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($productos as $producto){
+                      
+                      echo "<option value=" .$producto->IdProducto .">". $producto->Nombre ."</option>";
+                    }?>
+              </select>
+
             </div>
+
 
             <div class="form-group col-md-6">
               <label>StockMin</label>
@@ -57,6 +60,15 @@
 </div>
 </div>
 </div>
+
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+             $("#js-example-basic-single2").select2();
+
+            });
+
+            </script>
 
 <?php  $this->load->view('layouts/footer.php');?>       
      
