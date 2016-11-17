@@ -72,10 +72,10 @@
 
             </div>
             
-
-            <div class="col-md-12">
-              <h4>Detalle de venta</h4>
-              <hr>
+            <div class="col-md-12"></div>
+          
+              <h4 class="col-md-12 mi_header">Detalle de venta</h4>
+              <hr />
               <div>
                 <div id="form_detalle" >
                 
@@ -144,7 +144,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
+              
             
             </div>
             <div class="col-md-12">
@@ -164,35 +164,46 @@
 </div>
 
 
-            <script type="text/javascript">
+<script type="text/javascript">
 
-              $(document).ready(function() {
-              
-              $("#js-example-basic-single2").select2();
+  $("#js-example-basic-single2").select2();
+  $("#js-example-basic-single").select2();
+  $("#js-example-basic-single3").select2();
 
-              });
+  $agregar_detalle = document.getElementById("agregar_detalle");
+  $form_detalle = document.getElementById("form_detalle");
+  $tbody_detalle = document.getElementById("tbody_detalle");
 
-            </script>
 
-            <script type="text/javascript">
+  var nodo_push = "";
+  var acumulado = [];
+  $agregar_detalle.onclick = (event)=>{
+   event.preventDefault();
+   acumulado = [];
+    $form_detalle.childNodes.forEach( e=> {
+        e.childNodes.forEach( k=> {
+            if(k.tagName == "SELECT" || k.tagName == "INPUT") 
+                acumulado.push(k.value);
+        })
+    })
+    $tbody_detalle.innerHTML += `<tr>
+      <td> <input name="nombre_detalle[]" value="${acumulado[0]}" /> </td>
+      <td> <input name="presentacion_detalle[]" value="${acumulado[1]}" /> </td>
+      <td> <input name="precio_unitario_detalle[]" value="${acumulado[2]}" /> </td>
+      <td> <input name="cantidad_detalle[]" value="${acumulado[3]}"/> </td>
+      <td></td>
+      <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
+    </tr>`;
 
-              $(document).ready(function() {
-              
-              $("#js-example-basic-single").select2();
+  };
 
-              });
-
-            </script>
-
-            <script type="text/javascript">
-
-              $(document).ready(function() {
-              
-              $("#js-example-basic-single3").select2();
-
-              });
-
-            </script>
+  $tbody_detalle.onclick = (e)=>{
+    if(e.target.id == "delete_row"){
+        e.target.closest("tr").remove();
+    }
+  }
+ 
+</script>
 
 <?php  $this->load->view('layouts/footer.php');?>       
      
