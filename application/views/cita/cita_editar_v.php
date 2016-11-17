@@ -81,10 +81,7 @@
             </div>
 
 
-            <div class="form-group col-md-6">
-              <label>Talla</label>
-              <input type="text" class="form-control" name="Talla" placeholder="Talla" value= "<?php echo $dato_cita[0]->Talla?>">
-            </div>
+
             <div class="form-group col-md-6">
               <label>Peso</label>
               <input type="text" class="form-control" name="Peso" placeholder="Raza" value= "<?php echo $dato_cita[0]->Peso?>">

@@ -35,7 +35,7 @@
 
             <div class="form-group col-md-6 ">
               <label>Paciente</label><br>
-                <select class="form-control" id="js-example-basic-single" name="listPaciente">
+                <select class="form-control" id="js-example-basic-single" name="SelecPaciente">
                 <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){
@@ -72,10 +72,6 @@
 
 
 
-            <div class="form-group col-md-6">
-              <label>Talla</label>
-              <input type="text" class="form-control" name="Talla" placeholder="Talla">
-            </div>
             <div class="form-group col-md-6">
               <label>Peso</label>
               <input type="text" class="form-control" name="Peso" placeholder="Peso">

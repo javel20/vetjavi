@@ -5,7 +5,6 @@ class Cita_model extends CI_Model {
         // public $IdCita;
         public $FechaReserva;
         // public $FechaRegistro;
-        public $Talla;
         public $Peso;
         public $FrecuenciaCardiaca;
         public $FrecuenciaRespiratoria;
@@ -44,7 +43,6 @@ class Cita_model extends CI_Model {
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 
                 $this->FechaReserva    =  strval(trim($fecha_php));
-                $this->Talla    = $_POST['Talla'];
                 $this->Peso    = $_POST['Peso'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
                 $this->FrecuenciaRespiratoria    = $_POST['FrecuenciaRespiratoria'];
@@ -86,7 +84,6 @@ class Cita_model extends CI_Model {
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 
                 
-                $this->Talla    = $_POST['Talla'];
                 $this->FechaReserva    =  strval(trim($fecha_php));
                 $this->Peso    = $_POST['Peso'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
