@@ -42,7 +42,12 @@
 
           <div class="form-group col-md-6">
             <label>Tipo Compra</label>
-            <input type="text" class="form-control" name="TipoC" placeholder="Tipo Compra" value="<?php echo $dato_compra[0]->TipoC?>">
+            <!--<input type="text" class="form-control" name="TipoC" placeholder="TipoC" value="<?php echo $dato_compra[0]->TipoC?>">-->
+            <select type="text" class="form-control" name="TipoC" placeholder="TipoC" value="<?php echo $dato_compra[0]->TipoC?>">
+                <option value="Factura">--seleccionar</option>
+              <option value="Factura">Factura</option>    
+              <option value="Boleta">Boleta</option>
+            </select>
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>

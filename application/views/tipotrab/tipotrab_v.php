@@ -1,7 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
-	<div class="col-xs-12 col-sm-9 col-md-10 affix-content">
+	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
             <div class="page-header">
             <nav class="navbar navbar-default navbar-text navbar-right" >
@@ -11,8 +11,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
-                <form class="navbar-form navbar-left" 
-                        action="<?php echo base_url('index.php/tipotrab/search'); ?>"  
+                <form class="navbar-form navbar-left"
+                        action="<?php echo base_url('index.php/cita/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -88,7 +88,7 @@
 
 </div>
 </div>
-
+</div>
 </div>
 <div class="modal_fondo" id="modal_completo">
     <div class="modal_aviso">

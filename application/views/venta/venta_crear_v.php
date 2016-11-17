@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 
-	<div class="col-sm-9 col-md-10 affix-content">
+	<div class="col-xs-12 col-sm-9 col-md-10 affix-content">
 		<div class="container">
       <div class="page-header">
         <div class="panel panel-default">
@@ -127,7 +127,7 @@
                     <a href="" id="agregar_detalle" class="btn btn-primary">Agregar Detalle </a>
                   </div>
                  </div>
-                <div class="" id="table_detalle">
+                <div class="table" id="table_detalle">
                   <table class="table table_arreglar">
                     <thead>
                       <tr class="arreglar">
@@ -161,6 +161,8 @@
 </div>
 </div>
 </div>
+</div>
+
 
             <script type="text/javascript">
 

@@ -27,7 +27,7 @@ class Cliente extends CI_Controller {
             $this->load->model('cliente_model');
    
             $data['dato_cliente'] =  $this->cliente_model->get_cliente($id);
-
+            // die(var_dump($data['dato_cliente']));  
             $this->load->view('cliente/cliente_editar_v', $data);
 
         }

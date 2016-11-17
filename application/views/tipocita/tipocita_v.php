@@ -88,6 +88,7 @@
 
 </div>
 </div>
+</div>
 
 </div>
 <div class="modal_fondo" id="modal_completo">

@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/venta/search'); ?>"  
+                        action="<?php echo base_url('index.php/cita/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -54,6 +54,7 @@
             <th>Fecha</th>
             <th>Tipo</th>
             <th>Descripicion</th>
+            <th>Option</th>
          
          
         </thead>
@@ -89,8 +90,9 @@
         ?>  </tbody>
     </table>
 </div>
-   
+   </div>
 
+</div>
 </div>
 </div>
 

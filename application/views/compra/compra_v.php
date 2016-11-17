@@ -1,7 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
-	<div class="col-xs-12 col-sm-9 col-md-10 affix-content">
+	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
             <div class="page-header">
             <nav class="navbar navbar-default navbar-text navbar-right" >
@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/compra/search'); ?>"  
+                        action="<?php echo base_url('index.php/cita/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -52,9 +52,10 @@
         <thead>
             <th>Codigo</th>
             <th>Fecha</th>
-            <th>Tipo</th>
+            <th>Tipo de compra</th>
             <th>Descripicion</th>
             <th>Proveedor</th>
+            <th>Option</th>
          
          
         </thead>
@@ -93,6 +94,7 @@
 </div>
    
 
+</div>
 </div>
 </div>
 

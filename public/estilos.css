@@ -1,4 +1,15 @@
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+
 .header_top{
+    margin-top:20px;
     margin-bottom: 30px;
     border-bottom: 1px solid #ddd
 }
@@ -124,7 +135,7 @@
   }
 
   .affix-content{
-    overflow: auto;
+    /*overflow: auto;*/
   }
 
   .affix-content .container {

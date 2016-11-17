@@ -78,15 +78,15 @@
             </div>
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input type="text" class="form-control" name="Peso" placeholder="Raza">
+              <input type="text" class="form-control" name="Peso" placeholder="Peso">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Edad">
+              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Color">
+              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
@@ -107,6 +107,8 @@
           </div>
         </div>
 
+</div>
+</div>
 </div>
 </div>
 

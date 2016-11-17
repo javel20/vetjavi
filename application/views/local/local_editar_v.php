@@ -27,6 +27,11 @@
             <label>estado</label>
             <input type="text" class="form-control" name="Estado" placeholder="Estado" value="<?php echo $dato_local[0]->Estado?>">
           </div>
+
+
+         
+
+
           <div class="col-md-12">
 
           <!--<input type="hidden" name="Estado" value="<?php echo $dato_local[0]->Estado?>">-->

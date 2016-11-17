@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-sm-3 col-md-2">
+<div class="row affix-row">
+    <div class="col-sm-3 col-md-2 affix-sidebar">
 		<div class="sidebar-nav">
   <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -9,10 +9,10 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <span class="visible-xs navbar-brand">Control Panel</span>
+      <span class="navbar-brand">Control Panel</span>
     </div>
     <div class="navbar-collapse collapse sidebar-navbar-collapse">
-      <ul class="nav navbar-nav" id="sidenav01">
+      <ul class="nav nav-pills nav-stacked" id="sidenav01">
         <li class="active">
           <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
             <h4> Control Panel</h4>

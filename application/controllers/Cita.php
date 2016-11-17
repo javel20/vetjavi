@@ -53,8 +53,12 @@ class Cita extends CI_Controller {
         }
 
         public function search(){
+           $this->load->model('Paciente_model');
+            $data['pacientes']= $this->Paciente_model->get_pacientes();
+            $this->load->model('tipocita_model');
+            $data['tipocitas']= $this->tipocita_model->get_tipocitas();
           $this->load->model('Cita_model');
-          $data['datos_cita'] =  $this->Cita_model->get_buscar_paciente();
+          $data['datos_cita'] =  $this->Cita_model->get_buscar_cita();
           $this->load->view('cita/cita_v', $data);
         }
 
