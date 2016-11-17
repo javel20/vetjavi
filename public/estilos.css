@@ -30,6 +30,7 @@
 .table_arreglar {
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
 } 
 .table_arreglar tr{
   display: flex;
@@ -205,4 +206,17 @@
 
   display:none;
 
+}
+
+td .glyphicon{
+  cursor: pointer;
+}
+
+.mi_header{
+      border-bottom: 1px solid;
+    border-top: 1px solid;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-color: #ddd;
+    background: whitesmoke;
 }
