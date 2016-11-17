@@ -87,8 +87,9 @@ class Venta_model extends CI_Model {
         public function get_buscar_venta(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*');
+                $this->db->select('*, cliente.Nombre  as NombreCliente');
                 $this->db->from('venta');
+                $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
                 $this->db->like(  $tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     

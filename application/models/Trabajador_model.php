@@ -21,11 +21,12 @@ class Trabajador_model extends CI_Model {
 
         public function get_trabajadores()
         {
-                $this->db->select('*,trabajador.Nombre, tipotrab.Nombre  as NombreTipo, local.Nombre as NombreLocal');
+                $this->db->select('*,trabajador.Nombre as NombreTrab ,tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
                 $query = $this->db->get();
+                // die(json_encode($query->result()));
                 return $query->result();
         }
          public function post_trabajadores()
@@ -75,10 +76,12 @@ class Trabajador_model extends CI_Model {
 
         public function get_buscar_trabajador(){
                 $dato_buscar = $_GET['nombre_buscar'];
-                 $tipo_dato = $_GET['tipo_dato'];
-                 $this->db->select('*');
+                $tipo_dato = $_GET['tipo_dato'];
+                $this->db->select('*,trabajador.Nombre as NombreTrab, tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal');
                 $this->db->from('trabajador');
-                $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
+                $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
+                $this->db->like('trabajador.'.  $tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     
         }

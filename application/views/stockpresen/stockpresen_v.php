@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/cita/search'); ?>"  
+                        action="<?php echo base_url('index.php/stockpresen/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 

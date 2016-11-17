@@ -93,8 +93,9 @@ class Compra_model extends CI_Model {
         public function get_buscar_compra(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*');
+                $this->db->select('*, proveedor.Nombre  as NombreProv');
                 $this->db->from('compra');
+                $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
                 $this->db->like($tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     

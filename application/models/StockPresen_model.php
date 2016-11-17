@@ -73,6 +73,7 @@ class StockPresen_model extends CI_Model {
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('stockpresentacion');
+                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
                 $this->db->like(  $tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     

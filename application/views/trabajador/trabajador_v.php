@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/cita/search'); ?>"  
+                        action="<?php echo base_url('index.php/trabajador/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -25,7 +25,7 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="Nombre">Nombre </a></li>
+                    <li><a href="#" dato="NombreTrab">Nombre </a></li>
                     <li><a href="#" dato="ApePat">Apellido </a></li>
                     <li><a href="#" dato="Email">Direccion </a></li>
                     <li><a href="#" dato="Empresa">Telefono </a></li>
@@ -64,7 +64,7 @@
           //  die(var_dump($datos_trabajador));
             foreach ($datos_trabajador as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->Nombre ." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
+                "<td>". $dato->NombreTrab." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
                 "<td>". $dato->Direccion ."</td>".
                 "<td>". $dato->Telefono ."</td>".
                 "<td>". $dato->Email ."</td>".
@@ -79,7 +79,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre .' '. $dato->ApePat .' '. $dato->ApeMat  ."'
+                                nombre_data='". $dato->NombreTrab .' '. $dato->ApePat .' '. $dato->ApeMat  ."'
                                 url_data=". base_url("index.php/trabajador/delete/$dato->IdTrabajador") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/trabajador/edit/$dato->IdTrabajador") .">Editar</a></li>
 

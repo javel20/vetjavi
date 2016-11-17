@@ -103,8 +103,10 @@ class Cita_model extends CI_Model {
         public function get_buscar_cita(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*');
+                $this->db->select('*, tipocita.Nombre  as NombreTipoCita, paciente.Nombre as NombrePaciente');
                 $this->db->from('cita');
+                $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita');
+                $this->db->join('paciente', 'paciente.IdPaciente = cita.IdPaciente');
                 $this->db->like($tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     
