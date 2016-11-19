@@ -45,18 +45,19 @@
            <!--as<?php //die($dato_compra[0]->TipoC);?>-->
             <select type="text" class="form-control" name="TipoC" placeholder="TipoC">
                 <option>--seleccionar</option>
-                <?php if ($dato_compra[0]->TipoC=="Factura"){
-                          
-                
-                
+                <?php if ($dato_compra[0]->TipoC=="Factura"){ 
                 ?>
+
               <option value="Factura" selected>Factura</option>    
               <option value="Boleta">Boleta</option>
-                <?php }else{ ?>
+
+                <?php }else{ 
+                ?>
                    <option value="Factura" >Factura</option>    
               <option value="Boleta" selected >Boleta</option>
 
-                <?php } ?>
+                <?php } 
+                ?>
 
                 
             </select>

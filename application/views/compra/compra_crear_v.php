@@ -44,8 +44,8 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label>Tipo Compra</label>
-            <select class="form-control" name="TipoC">
+                <label>Tipo Compra</label>
+                <select class="form-control" name="TipoC">
                 <option>Factura</option>
                 <option>Boleta</option>
              </select>

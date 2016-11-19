@@ -37,9 +37,18 @@
               <input type="text" class="form-control" name="Codigo" placeholder="Codigo">
             </div>
             <div class="form-group col-md-6">
+
               <label>Tipo</label>
-              <input type="text" class="form-control" name="Tipo" placeholder="Tipo">
+              <select class="form-control" name="Tipo">
+                <option>--Seleccionar-- </option>
+                <option>Hemograma </option>
+                <option>Urianálisis</option>
+                <option>Perfil Hepático</option>
+                <option>Perfil Renal</option>
+                <option>Perfil Completo</option>
+             </select>
             </div>
+
             <div class="form-group col-md-6">
               <label>Descripcion</label>
               <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">

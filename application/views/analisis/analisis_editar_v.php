@@ -12,21 +12,8 @@
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/analisis/update/'.$dato_analisis[0]->IdAnalisis); ?>" 
               method="POST">
-          <div class="form-group col-md-6 ">
-            <label>Codigo</label>
-            <input type="text" class="form-control" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>">
-          </div>
-          <div class="form-group col-md-6">
-            <label>Tipo</label>
-            <input type="text" class="form-control" name="Tipo" placeholder="Tipo" value="<?php echo $dato_analisis[0]->Tipo?>">
-          </div>
-          <div class="form-group col-md-6">
-            <label>Descripcion</label>
-            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_analisis[0]->Descripcion?>">
-          </div>
 
-
-            <div class="form-group col-md-6">
+           <div class="form-group col-md-6">
             <label>Paciente</label><br>
               <select class="js-example-basic-single form-control" name="SelecPaciente">
                 <?php
@@ -41,6 +28,74 @@
               </select>
 
             </div>
+
+          <div class="form-group col-md-6 ">
+            <label>Codigo</label>
+            <input type="text" class="form-control" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Tipo</label>
+            <select type="text" class="form-control" name="Tipo" placeholder="Tipo">
+                <option>--seleccionar</option>
+
+                <?php if ($dato_analisis[0]->Tipo=="Hemograma "){
+                ?>
+
+                  <option value="Hemograma " selected>Hemograma</option>    
+                  <option value="Urianálisis">Urianálisis</option>
+                  <option value="Perfil Hepático">Perfil Hepático</option>
+                  <option value="Perfil Renal">Perfil Renal</option>
+                  <option value="Perfil Hepático">Perfil Completo</option>
+
+                <?php }elseif($dato_analisis[0]->Tipo=="Urianálisis"){
+                ?>
+
+                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Urianálisis"selected>Urianálisis</option>
+                  <option value="Perfil Hepático">Perfil Hepático</option>
+                  <option value="Perfil Renal">Perfil Renal</option>
+                  <option value="Perfil Hepático">Perfil Completo</option>
+
+                <?php }elseif($dato_analisis[0]->Tipo=="Perfil Hepático"){
+                ?>
+
+                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Urianálisis">Urianálisis</option>
+                  <option value="Perfil Hepático"selected>Perfil Hepático</option>
+                  <option value="Perfil Renal">Perfil Renal</option>
+                  <option value="Perfil Hepático">Perfil Completo</option>
+
+                <?php }elseif($dato_analisis[0]->Tipo=="Perfil Renal"){
+                ?>
+
+                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Urianálisis">Urianálisis</option>
+                  <option value="Perfil Hepático">Perfil Hepático</option>
+                  <option value="Perfil Renal"selected>Perfil Renal</option>
+                  <option value="Perfil Hepático">Perfil Completo</option>
+
+                  <?php }elseif($dato_analisis[0]->Tipo=="Perfil Completo"){
+                ?>
+
+                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Urianálisis">Urianálisis</option>
+                  <option value="Perfil Hepático">Perfil Hepático</option>
+                  <option value="Perfil Renal">Perfil Renal</option>
+                  <option value="Perfil Hepático"selected>Perfil Completo</option>
+
+                <?php }
+                ?>
+
+                
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Descripcion</label>
+            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_analisis[0]->Descripcion?>">
+          </div>
+
+
+           
 
             <script type="text/javascript">
             $(document).ready(function() {

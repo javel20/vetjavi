@@ -30,7 +30,7 @@ class Analisis_model extends CI_Model {
                 $this->Codigo    = $_POST['Codigo'];
                 $this->Tipo    = $_POST['Tipo'];
                 $this->Descripcion    = $_POST['Descripcion'];
-                $this->IdPaciente    = $_POST['SelecPaciente'];
+                $this->IdPaciente    = $_POST['SelectPaciente'];
                 
                  
 
