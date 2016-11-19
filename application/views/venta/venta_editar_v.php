@@ -39,8 +39,25 @@
           
 
           <div class="form-group col-md-6">
-            <label>Tipo Compra</label>
-            <input type="text" class="form-control" name="TipoV" placeholder="Tipo Venta" value="<?php echo $dato_venta[0]->TipoV?>">
+            <label>Tipo Venta</label>
+            <!--as<?php //die($dato_compra[0]->TipoC);?>-->
+            <select type="text" class="form-control" name="TipoV" placeholder="TipoV">
+                <option>--seleccionar</option>
+                <?php if ($dato_venta[0]->TipoV=="Factura"){
+                          
+                
+                
+                ?>
+              <option value="Factura" selected>Factura</option>    
+              <option value="Boleta">Boleta</option>
+                <?php }else{ ?>
+                   <option value="Factura" >Factura</option>    
+              <option value="Boleta" selected >Boleta</option>
+
+                <?php } ?>
+
+                
+            </select>
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>
