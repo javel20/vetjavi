@@ -33,7 +33,7 @@ class Trabajador extends CI_Controller {
             $this->load->model('Local_model');
             $data['local']= $this->Local_model->get_locales();
             $this->load->model('Local_model');
-            $data['dato_trabajador'] =  $this->Trabajador_model->get_trabajador($id);
+            $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajador($id);
 
             $this->load->view('trabajador/trabajador_editar_v', $data);
 

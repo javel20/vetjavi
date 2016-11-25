@@ -84,15 +84,15 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input type="text" class="form-control" name="Peso" placeholder="Raza" value= "<?php echo $dato_cita[0]->Peso?>">
+              <input type="text" class="form-control" name="Peso" placeholder="Peso" value= "<?php echo $dato_cita[0]->Peso?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Edad" value= "<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
+              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" value= "<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Color" value= "<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
+              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" value= "<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>

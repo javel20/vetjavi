@@ -10,7 +10,7 @@
             <h3 class="panel-title">Registrar Local</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" method="POST" onsubmit="return validar();">
             <div class="form-group col-md-6">
               <label>Nombre</label>
               <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
@@ -42,6 +42,6 @@
 </div>
 </div>
 
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

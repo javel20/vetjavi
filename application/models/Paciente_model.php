@@ -73,12 +73,13 @@ class Paciente_model extends CI_Model {
         public function get_buscar_paciente(){
                 $dato_buscar = $_GET['nombre_buscar'];
                  $tipo_dato = $_GET['tipo_dato'];
-                 $this->db->select('*, cliente.Nombre as NombreCliente');
+                 $this->db->select('*, paciente.Nombre, cliente.Nombre as NombreCliente');
                 $this->db->from('paciente');
                 $this->db->join('cliente', 'cliente.IdCliente = paciente.IdCliente');
-                $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->like(  "paciente." . $tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
-                return $query->result();     
+                return $query->result(); 
+ 
         }
 
         public function get_eliminar_paciente($id){

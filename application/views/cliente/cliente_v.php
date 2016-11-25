@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/cita/search'); ?>"  
+                        action="<?php echo base_url('index.php/cliente/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -26,7 +26,8 @@
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Nombre">Nombre </a></li>
-                    <li><a href="#" dato="TipoProd">Tipo </a></li>
+                    <li><a href="#" dato="DNI"|| dato="RUC">DNI/RUC </a></li>
+                    <li><a href="#" dato="Ciudad">Ciudad </a></li>
             
             
                     </ul>

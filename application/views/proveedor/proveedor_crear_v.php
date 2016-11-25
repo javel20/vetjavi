@@ -10,7 +10,7 @@
             <h3 class="panel-title">Registrar Proveedor</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" onsubmit="return validar()" method="POST" >
             <div class="form-group col-md-6">
               <label>Nombres</label>
               <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
@@ -33,14 +33,15 @@
             </div>
             <div class="form-group col-md-6">
               <label>Email</label>
-              <input type="email" class="form-control" name="Email" placeholder="Email">
+              <input type="email" id="email" class="form-control" name="Email" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
               <label>Empresa</label>
               <input type="text" class="form-control" name="Empresa" placeholder="Empresa">
             </div>
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary ">Guardar</button>
+              <!--<button type="submit" class="btn btn-primary">Guardar</button>-->
+              <input type="submit" class="btn btn-primary" value="Guardar">
             
             </div>
           </form>
@@ -53,5 +54,6 @@
 </div>
 </div>
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

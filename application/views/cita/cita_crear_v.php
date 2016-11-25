@@ -15,7 +15,7 @@
                   <h3 class="panel-title">Registrar Cita</h3>
                 </div>
           <div class="panel-body">
-          <form class="row" action="store" method="POST">
+          <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             
 
 
@@ -35,7 +35,7 @@
 
             <div class="form-group col-md-6 ">
               <label>Paciente</label><br>
-                <select class="form-control" id="js-example-basic-single" name="SelecPaciente">
+                <select class="form-control" id="js-example-basic-single" name="listPaciente">
                 <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){
@@ -51,7 +51,7 @@
             
                 <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
-                <input class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text"/>
 
 
                   <script>
@@ -74,15 +74,15 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input type="text" class="form-control" name="Peso" placeholder="Peso">
+              <input type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso" required>
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca">
+              <input type="text"id="FrecCard" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" required>
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria">
+              <input type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" required>
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
@@ -121,6 +121,6 @@
 
 
 
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

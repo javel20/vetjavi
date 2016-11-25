@@ -22,12 +22,11 @@
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown" 
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Fecha Reserva';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="FechaReserva">Fecha </a></li>
-                    <li><a href="#" dato="Peso">Peso </a></li>
-                    <li><a href="#" dato="Descripcion">Descripcion</a></li>
+                    <li><a href="#" dato="FechaReserva">Fecha Reserva</a></li>
+                    <li><a href="#" dato="Peso">Peso</a></li>
             
             
                     </ul>

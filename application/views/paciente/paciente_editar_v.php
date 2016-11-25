@@ -11,37 +11,56 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/paciente/update/'.$dato_paciente[0]->IdPaciente); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombre</label>
-            <input type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_paciente[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_paciente[0]->Nombre?>">
           </div>
           <div class="form-group col-md-6">
             <label>Raza</label>
-            <input type="text" class="form-control" name="Raza" placeholder="Raza" value="<?php echo $dato_paciente[0]->Raza?>">
+            <input validate="texto" type="text" class="form-control" name="Raza" placeholder="Raza" value="<?php echo $dato_paciente[0]->Raza?>">
           </div>
           <div class="form-group col-md-6">
             <label>Edad</label>
-            <input type="text" class="form-control" name="Edad" placeholder="Edad" value="<?php echo $dato_paciente[0]->Edad?>">
+            <input validate="number" type="text" class="form-control" name="Edad" placeholder="Edad" value="<?php echo $dato_paciente[0]->Edad?>">
           </div>
           <div class="form-group col-md-6">
             <label>Color</label>
-            <input type="text" class="form-control" name="Color" placeholder="Color" value="<?php echo $dato_paciente[0]->Color?>">
+            <input validate="texto" type="text" class="form-control" name="Color" placeholder="Color" value="<?php echo $dato_paciente[0]->Color?>">
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>
             <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_paciente[0]->Descripcion?>">
           </div>
+
           <div class="form-group col-md-6">
             <label>Sexo</label>
-            <input type="text" class="form-control" name="Sexo" placeholder="Sexo" value="<?php echo $dato_paciente[0]->Sexo?>">
+
+            <select validate="seleccionar" type="text" class="form-control" name="Sexo" placeholder="Sexo">
+                <option>--seleccionar</option>
+
+                <?php if ($dato_paciente[0]->Sexo=="Macho"){
+                ?>
+
+                  <option value="Macho" selected>Macho</option>    
+                  <option value="Hembra">Hembra</option>
+
+
+                <?php }elseif($dato_paciente[0]->Sexo=="Hembra"){
+                ?>
+
+                  <option value="Macho">Macho</option>    
+                  <option value="Hembra" selected>Hembra</option>
+                  <?php }
+            ?>
+            </select>
           </div>
 
-     
+            
 
             <div class="form-group col-md-6">
             <label>Cliente</label><br>
-              <select  class="js-example-basic-single form-control" name="SelectTipo">
+              <select  validate="seleccionar" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
                     foreach($clientes as $cliente){
@@ -80,6 +99,6 @@
 
 
    
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

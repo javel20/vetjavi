@@ -220,3 +220,14 @@ td .glyphicon{
     border-color: #ddd;
     background: whitesmoke;
 }
+
+/******************/
+
+.error{
+
+  color:Red;
+  font-style: italic;
+  font-size:11px;
+  
+
+}

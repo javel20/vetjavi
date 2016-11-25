@@ -11,7 +11,7 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/analisis/update/'.$dato_analisis[0]->IdAnalisis); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar();">
 
            <div class="form-group col-md-6">
             <label>Paciente</label><br>
@@ -31,17 +31,17 @@
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>">
+            <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>" required>
           </div>
           <div class="form-group col-md-6">
             <label>Tipo</label>
             <select type="text" class="form-control" name="Tipo" placeholder="Tipo">
                 <option>--seleccionar</option>
 
-                <?php if ($dato_analisis[0]->Tipo=="Hemograma "){
+                <?php if ($dato_analisis[0]->Tipo=="Hemograma Completo"){
                 ?>
 
-                  <option value="Hemograma " selected>Hemograma</option>    
+                  <option value="Hemograma Completo" selected>Hemograma Completo</option>    
                   <option value="Urianálisis">Urianálisis</option>
                   <option value="Perfil Hepático">Perfil Hepático</option>
                   <option value="Perfil Renal">Perfil Renal</option>
@@ -50,7 +50,7 @@
                 <?php }elseif($dato_analisis[0]->Tipo=="Urianálisis"){
                 ?>
 
-                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Hemograma Completo">Hemograma Completo</option>    
                   <option value="Urianálisis"selected>Urianálisis</option>
                   <option value="Perfil Hepático">Perfil Hepático</option>
                   <option value="Perfil Renal">Perfil Renal</option>
@@ -59,7 +59,7 @@
                 <?php }elseif($dato_analisis[0]->Tipo=="Perfil Hepático"){
                 ?>
 
-                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Hemograma Completo">Hemograma Completo</option>    
                   <option value="Urianálisis">Urianálisis</option>
                   <option value="Perfil Hepático"selected>Perfil Hepático</option>
                   <option value="Perfil Renal">Perfil Renal</option>
@@ -68,7 +68,7 @@
                 <?php }elseif($dato_analisis[0]->Tipo=="Perfil Renal"){
                 ?>
 
-                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Hemograma Completo">Hemograma Completo</option>    
                   <option value="Urianálisis">Urianálisis</option>
                   <option value="Perfil Hepático">Perfil Hepático</option>
                   <option value="Perfil Renal"selected>Perfil Renal</option>
@@ -77,7 +77,7 @@
                   <?php }elseif($dato_analisis[0]->Tipo=="Perfil Completo"){
                 ?>
 
-                  <option value="Hemogramma ">Hemograma</option>    
+                  <option value="Hemograma Completo">Hemograma Completo</option>    
                   <option value="Urianálisis">Urianálisis</option>
                   <option value="Perfil Hepático">Perfil Hepático</option>
                   <option value="Perfil Renal">Perfil Renal</option>
@@ -117,6 +117,6 @@
 	</div>
 </div>
    
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

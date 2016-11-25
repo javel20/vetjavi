@@ -1,7 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 
 
-<form class="form-horizontal col-md-12">
+<form class="form-horizontal col-md-12" onsubmit="return validar();">
 <div class="col-md-4 col-md-offset-4 well">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
@@ -25,4 +25,5 @@
 </form>
 
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>      

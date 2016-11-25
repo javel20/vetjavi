@@ -13,7 +13,7 @@
             <h3 class="panel-title">Registrar Trabajador</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" method="POST" onsubmit="return validar();">
 
 
             <div class="form-group col-md-6">
@@ -56,7 +56,7 @@
 
             <div class="form-group col-md-6">
               <label>Email</label>
-              <input type="text" class="form-control" name="Email" placeholder="Email">
+              <input type="text" id="email" class="form-control" name="Email" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
               <label>Password</label>
@@ -116,5 +116,6 @@
 
             </script>
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

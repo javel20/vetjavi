@@ -14,12 +14,12 @@
             <h3 class="panel-title">Registrar Paciente</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
 
             <div class="form-group col-md-6">
-            <label>Cliente</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="SelectTipo">
+            <label>Cliente</label>
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectTipo">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -34,27 +34,32 @@
 
             <div class="form-group col-md-6">
               <label>Nombre</label>
-              <input type="text" class="form-control" name="Nombre" placeholder="Nombre">
+              <input validate="texto" type="text" id="nombre" class="form-control" name="Nombre" placeholder="Nombre">
             </div>
             <div class="form-group col-md-6">
               <label>Raza</label>
-              <input type="text" class="form-control" name="Raza" placeholder="Raza">
+              <input validate="texto" type="text" id="raza" class="form-control" name="Raza" placeholder="Raza">
             </div>
             <div class="form-group col-md-6">
               <label>Edad</label>
-              <input type="text" class="form-control" name="Edad" placeholder="Edad">
+              <input validate="number" type="text" id="edad" class="form-control" name="Edad" placeholder="Edad">
             </div>
             <div class="form-group col-md-6">
               <label>Color</label>
-              <input type="text" class="form-control" name="Color" placeholder="Color">
+              <input validate="texto" type="text" id="color" class="form-control" name="Color" placeholder="Color">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
               <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
             </div>
+
             <div class="form-group col-md-6">
               <label>Sexo</label>
-              <input type="text" class="form-control" name="Sexo" placeholder="Sexo">
+              <select validate="seleccionar" class="form-control" id="Sexo" name="Sexo">
+                <option>--seleccionar-- </option>
+                <option >Macho</option>
+                <option>Hembra</option>
+             </select>
             </div>
 
 
@@ -77,11 +82,24 @@
 
             <script type="text/javascript">
             $(document).ready(function() {
-             $("#js-example-basic-single2").select2();
+                 $("#js-example-basic-single2").select2();
+
+                  var data=document.getElementById("js-example-basic-single2")
+             
+             
+
+              data.onchange = function(){
+                 data.nextElementSibling.style.border = "none"
+              }
 
             });
 
+ 
+          
+              // /^[0-9]+$/g.test("23".trim())
+
             </script>
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

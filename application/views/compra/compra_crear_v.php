@@ -14,7 +14,7 @@
             <h3 class="panel-title">Registrar Compra</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" method="POST" onsubmit="return validar();">
 
            
 
@@ -96,5 +96,7 @@
               });
 
             </script>
+
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      
