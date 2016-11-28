@@ -11,18 +11,57 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/producto/update/'.$dato_producto[0]->IdProducto); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_producto[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_producto[0]->Nombre?>">
           </div>
+
+
           <div class="form-group col-md-6">
             <label>Tipo de Producto</label>
-            <input type="text" class="form-control" name="TipoProd" placeholder="Apellido Paterno" value="<?php echo $dato_producto[0]->TipoProd?>">
+            <select validate="seleccionar" type="text" class="form-control" name="Sexo" placeholder="Sexo">
+                <option>--seleccionar--</option>
+
+                <?php if ($dato_producto[0]->TipoProd=="Medicamento"){
+                ?>
+
+                  <option value="Medicamento" selected>Medicamento</option>    
+                  <option value="Comida">Comida</option>
+                  <option value="Accesorio">Accesorio</option>
+                  <option value="Ropa">Ropa</option>
+
+
+                <?php }elseif ($dato_producto[0]->TipoProd=="Comida"){
+                ?>
+
+                  <option value="Medicamento">Medicamento</option>    
+                  <option value="Comida" selected>Comida</option>
+                  <option value="Accesorio">Accesorio</option>
+                  <option value="Ropa">Ropa</option>
+
+                <?php }elseif ($dato_producto[0]->TipoProd=="Accesorio"){
+                ?>
+
+                  <option value="Medicamento">Medicamento</option>    
+                  <option value="Comida">Comida</option>
+                  <option value="Accesorio" selected>Accesorio</option>
+                  <option value="Ropa">Ropa</option>
+
+                <?php }elseif ($dato_producto[0]->TipoProd=="Ropa"){
+                ?>
+
+                  <option value="Medicamento">Medicamento</option>    
+                  <option value="Comida">Comida</option>
+                  <option value="Accesorio">Accesorio</option>
+                  <option value="Ropa" selected>Ropa</option>
+                  <?php }
+            ?>
+            </select>
           </div>
           <div class="form-group col-md-6">
             <label>Precio</label>
-            <input type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_producto[0]->Precio?>">
+            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_producto[0]->Precio?>">
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>
@@ -40,6 +79,5 @@
 	</div>
 </div>
    
-
-<?php  $this->load->view('layouts/footer.php');?>       
-     
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
+<?php  $this->load->view('layouts/footer.php');?>

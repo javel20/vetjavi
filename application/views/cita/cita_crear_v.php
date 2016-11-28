@@ -21,7 +21,7 @@
 
             <div class="form-group col-md-6">
             <label>Tipo Cita</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="listTipo">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="listTipo">
               <option>--seleccionar--</option>
                 <?php
                     
@@ -35,7 +35,7 @@
 
             <div class="form-group col-md-6 ">
               <label>Paciente</label>
-                <select validate="seleccionar" class="form-control" id="js-example-basic-single" name="listPaciente">
+                <select validate="selecbus" class="form-control" id="js-example-basic-single" name="listPaciente">
                 <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){

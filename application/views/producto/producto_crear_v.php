@@ -17,7 +17,13 @@
             </div>
             <div class="form-group col-md-6">
               <label>Tipo de Producto</label>
-              <input type="text" class="form-control" name="TipoProd" placeholder="Tipo de producto">
+              <select validate="seleccionar" class="form-control" id="Sexo" name="TipoProd">
+                <option>--seleccionar--</option>
+                <option >Medicamento</option>
+                <option>Comida</option>
+                <option>Accesorio</option>
+                <option>Ropa</option>
+             </select>
             </div>
             <div class="form-group col-md-6">
               <label>Precio</label>

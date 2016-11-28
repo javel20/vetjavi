@@ -13,13 +13,13 @@
             <h3 class="panel-title">Registrar Stock Presentacion</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" C>
+            <form class="row" action="store" method="POST" onsubmit="return validar(this)">
 
 
 
             <div class="form-group col-md-6">
             <label>Producto</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectTipo">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectTipo">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -42,7 +42,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Presentación</label>
-              <input type="text" class="form-control" name="Presentacion" placeholder="Presentacion">
+              <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion">
             </div>
 
 

@@ -17,7 +17,7 @@
 
           <div class="form-group col-md-6">
            <label>Tipo Trabajador</label>
-              <select validate="seleccionar" class="js-example-basic-single form-control" name="SelectTipo">
+              <select validate="selecbus" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
                     foreach($tipos as $tipo){
@@ -57,7 +57,7 @@
 
             <div class="form-group col-md-6">
             <label>Local</label>
-              <select validate="seleccionar" class="js-example-basic-single2 form-control" name="SelectLocal">
+              <select validate="selecbus" class="js-example-basic-single2 form-control" name="SelectLocal">
                 <?php
                     
                     foreach($local as $tipo){

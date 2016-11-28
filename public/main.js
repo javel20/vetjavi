@@ -106,10 +106,24 @@ function validar(e){
             }
         }
 
-         if(el[d].getAttribute("validate") == "seleccionar"){
+         if(el[d].getAttribute("validate") == "selecbus"){
               if(el[d].value=="--seleccionar--"){
                     // el[d].style.border ="1px solid red";
                     el[d].nextSibling.style.border = "1px solid red"
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
+                    cont++;
+                }else{
+                el[d].style.border = "1px solid #ccc";
+                if(el[d].previousElementSibling.childElementCount == 1)
+                el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                }
+
+            }
+
+            if(el[d].getAttribute("validate") == "seleccionar"){
+              if(el[d].value=="--seleccionar--"){
+                    el[d].style.border ="1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
                         el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
                     cont++;

@@ -24,8 +24,8 @@ class Producto extends CI_Controller {
 
         public function edit($id){
 
-            $this->load->model('producto_model');
-            $data['dato_producto'] =  $this->producto_model->get_producto($id);
+            $this->load->model('Producto_model');
+            $data['dato_producto'] =  $this->Producto_model->get_producto($id);
 
             $this->load->view('producto/producto_editar_v', $data);
 

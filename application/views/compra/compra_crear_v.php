@@ -61,7 +61,7 @@
 
              <div class="form-group col-md-6">
             <label>Proveedor</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="IdProveedor">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="IdProveedor">
                   <option>--seleccionar--</option>
                 <?php
                     

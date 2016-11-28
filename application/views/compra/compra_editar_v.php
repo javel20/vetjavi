@@ -70,7 +70,7 @@
 
             <div class="form-group col-md-6">
             <label>Proveedor</label><br>
-              <select validate="seleccionar" class="js-example-basic-single form-control" name="IdProveedor">
+              <select validate="selecbus" class="js-example-basic-single form-control" name="IdProveedor">
                 <?php
                     
                     foreach($proveedores as $proveedor){

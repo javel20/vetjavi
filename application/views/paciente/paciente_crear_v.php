@@ -19,7 +19,7 @@
 
             <div class="form-group col-md-6">
             <label>Cliente</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectTipo">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectTipo">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -56,7 +56,7 @@
             <div class="form-group col-md-6">
               <label>Sexo</label>
               <select validate="seleccionar" class="form-control" id="Sexo" name="Sexo">
-                <option>--seleccionar-- </option>
+                <option>--seleccionar--</option>
                 <option >Macho</option>
                 <option>Hembra</option>
              </select>

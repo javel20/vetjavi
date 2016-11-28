@@ -20,7 +20,7 @@
 
             <div class="form-group col-md-6">
             <label>Paciente</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectPaciente">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectPaciente">
                   <option>--seleccionar--</option>
                 <?php
                      

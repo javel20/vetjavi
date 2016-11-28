@@ -15,7 +15,7 @@
 
            <div class="form-group col-md-6">
             <label>Paciente</label><br>
-              <select validate="seleccionar" class="js-example-basic-single form-control" name="SelecPaciente">
+              <select validate="selecbus" class="js-example-basic-single form-control" name="SelecPaciente">
                 <?php
                     
                     foreach($pacientes as $paciente){

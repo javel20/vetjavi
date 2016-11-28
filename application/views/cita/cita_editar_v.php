@@ -17,7 +17,7 @@
 
           <div class="form-group col-md-6">
             <label>Paciente</label><br>
-              <select validate="seleccionar" class="js-example-basic-single form-control" name="listPaciente">
+              <select validate="selecbus" class="js-example-basic-single form-control" name="listPaciente">
                 <?php
                     foreach($pacientes as $Paciente){
                       $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
@@ -39,7 +39,7 @@
 
             <div class="form-group col-md-6">
             <label>Tipo Cita</label><br>
-              <select validate="seleccionar" class="js-example-basic-single2 form-control" name="listTipo">
+              <select validate="selecbus" class="js-example-basic-single2 form-control" name="listTipo">
                 <?php
                     foreach($tipocitas as $Cita){
                       $faiId=($Cita->IdTipoCita==$dato_cita[0]->IdTipoCita)? "selected":"";

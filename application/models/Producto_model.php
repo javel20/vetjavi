@@ -64,7 +64,7 @@ class Producto_model extends CI_Model {
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('producto');
-                $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->like(  $tipo_dato,$dato_buscar);
                 $query = $this->db->get();
                 return $query->result();     
         }

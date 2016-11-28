@@ -23,7 +23,7 @@
           </div>
           <div class="form-group col-md-6">
             <label>Dirección</label>
-            <input type="text" class="form-control" name="Direccion" placeholder="Dirección" value="<?php echo $dato_proveedor[0]->Direccion?>">
+            <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección" value="<?php echo $dato_proveedor[0]->Direccion?>">
           </div>
           <div class="form-group col-md-6">
             <label>Celular</label>

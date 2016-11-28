@@ -18,7 +18,7 @@
 
             <div class="form-group col-md-6">
             <label>Tipo Trabajador</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectTipo">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectTipo">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Dirección</label>
-              <input type="text" class="form-control" name="Direccion" placeholder="Dirección">
+              <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección">
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
@@ -69,7 +69,7 @@
 
             <div class="form-group col-md-6">
             <label>Local</label>
-              <select validate="seleccionar" class="form-control" id="js-example-basic-single" name="SelectLocal">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single" name="SelectLocal">
                   <option>--seleccionar--</option>
                 <?php
                     

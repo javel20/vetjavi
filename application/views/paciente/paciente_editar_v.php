@@ -37,7 +37,7 @@
             <label>Sexo</label>
 
             <select validate="seleccionar" type="text" class="form-control" name="Sexo" placeholder="Sexo">
-                <option>--seleccionar</option>
+                <option>--seleccionar--</option>
 
                 <?php if ($dato_paciente[0]->Sexo=="Macho"){
                 ?>
@@ -60,7 +60,7 @@
 
             <div class="form-group col-md-6">
             <label>Cliente</label><br>
-              <select  validate="seleccionar" class="js-example-basic-single form-control" name="SelectTipo">
+              <select  validate="selecbus" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
                     foreach($clientes as $cliente){

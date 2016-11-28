@@ -22,13 +22,13 @@
           </div>
           <div class="form-group col-md-6">
             <label>Presentacion</label>
-            <input type="text" class="form-control" name="Presentacion" placeholder="Presentacion" value="<?php echo $dato_stockpresen[0]->Presentacion?>">
+            <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" value="<?php echo $dato_stockpresen[0]->Presentacion?>">
           </div>
 
 
             <div class="form-group col-md-6">
             <label>Producto</label><br>
-              <select validate="seleccionar" class="js-example-basic-single form-control" name="SelectTipo">
+              <select validate="selecbus" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
                     foreach($productos as $producto){
