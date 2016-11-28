@@ -11,13 +11,13 @@
 
         <form class="row mrb-30 well"
               action="<?php echo base_url('index.php/cita/update/'.$dato_cita[0]->IdCita); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
 
 
 
           <div class="form-group col-md-6">
             <label>Paciente</label><br>
-              <select class="js-example-basic-single form-control" name="listPaciente">
+              <select validate="seleccionar" class="js-example-basic-single form-control" name="listPaciente">
                 <?php
                     foreach($pacientes as $Paciente){
                       $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
@@ -39,7 +39,7 @@
 
             <div class="form-group col-md-6">
             <label>Tipo Cita</label><br>
-              <select class="js-example-basic-single2 form-control" name="listTipo">
+              <select validate="seleccionar" class="js-example-basic-single2 form-control" name="listTipo">
                 <?php
                     foreach($tipocitas as $Cita){
                       $faiId=($Cita->IdTipoCita==$dato_cita[0]->IdTipoCita)? "selected":"";
@@ -61,7 +61,7 @@
 
     <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
-                <input class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_cita[0]->FechaReserva?>" />
+                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_cita[0]->FechaReserva?>" />
 
 
                   <script>
@@ -84,15 +84,15 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input type="text" class="form-control" name="Peso" placeholder="Peso" value= "<?php echo $dato_cita[0]->Peso?>">
+              <input validate="number" type="text" class="form-control" name="Peso" placeholder="Peso" value= "<?php echo $dato_cita[0]->Peso?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" value= "<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
+              <input validate="number" type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" value= "<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" value= "<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
+              <input validate="number" type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" value= "<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
@@ -115,6 +115,6 @@
 
 
 
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

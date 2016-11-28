@@ -1,18 +1,20 @@
 <?php  $this->load->view('layouts/header');?>
 
 
-<form class="form-horizontal col-md-12" onsubmit="return validar();">
+<form action="<?php echo base_url(); ?>signin" method="POST" class="form-horizontal col-md-12" onsubmit="return validar(this);">
 <div class="col-md-4 col-md-offset-4 well">
+
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+    <label validate="email" for="email" class="col-sm-3 control-label">Email</label>
     <div class="col-sm-8">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="email" name="correo" class="form-control" id="email" placeholder="Email">
     </div>
+
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+    <label validate="" for="inputPassword3" class="col-sm-3 control-label">Password</label>
     <div class="col-sm-8">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input type="password" name="pass" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
 

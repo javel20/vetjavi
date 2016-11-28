@@ -10,10 +10,10 @@
             <h3 class="panel-title">Registrar Local</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             <div class="form-group col-md-6">
               <label>Nombre</label>
-              <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
             </div>
 
             <div class="form-group col-md-6">
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
-              <input type="text" class="form-control" name="Telefono" placeholder="Telefono">
+              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono">
             </div>
             <!--<div class="form-group col-md-6">
               <label>Estado</label>

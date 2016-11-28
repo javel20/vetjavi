@@ -8,10 +8,10 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/local/update/'.$dato_local[0]->IdLocal); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_local[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_local[0]->Nombre?>">
           </div>
  
           <div class="form-group col-md-6">
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group col-md-6">
             <label>Telefono</label>
-            <input type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_local[0]->Telefono?>">
+            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_local[0]->Telefono?>">
           </div>
 
           <div class="form-group col-md-6">

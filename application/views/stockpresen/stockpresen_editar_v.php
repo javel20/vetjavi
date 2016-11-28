@@ -11,14 +11,14 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/StockPresen/update/'.$dato_stockpresen[0]->IdStockPresen); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Stock Minimo</label>
-            <input type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" value="<?php echo $dato_stockpresen[0]->StockMin?>">
+            <input validate="number"  type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" value="<?php echo $dato_stockpresen[0]->StockMin?>">
           </div>
           <div class="form-group col-md-6">
             <label>Stock Real</label>
-            <input type="text" class="form-control" name="StockReal" placeholder="Stock Real" value="<?php echo $dato_stockpresen[0]->StockReal?>">
+            <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" value="<?php echo $dato_stockpresen[0]->StockReal?>">
           </div>
           <div class="form-group col-md-6">
             <label>Presentacion</label>
@@ -28,7 +28,7 @@
 
             <div class="form-group col-md-6">
             <label>Producto</label><br>
-              <select class="js-example-basic-single form-control" name="SelectTipo">
+              <select validate="seleccionar" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
                     foreach($productos as $producto){
@@ -62,6 +62,6 @@
 	</div>
 </div>
    
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

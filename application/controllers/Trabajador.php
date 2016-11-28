@@ -32,8 +32,8 @@ class Trabajador extends CI_Controller {
             $data['tipos']= $this->TipoTrab_model->get_tipotrabs();
             $this->load->model('Local_model');
             $data['local']= $this->Local_model->get_locales();
-            $this->load->model('Local_model');
-            $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajador($id);
+            $this->load->model('Trabajador_model');
+            $data['dato_trabajador'] =  $this->Trabajador_model->get_trabajador($id);
 
             $this->load->view('trabajador/trabajador_editar_v', $data);
 
@@ -62,9 +62,11 @@ class Trabajador extends CI_Controller {
 
         public function login()
         {
+          $data=new stdclass();
 
           $this->load->model('Trabajador_model');
-          $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajadores();
+          $data->active = 'login';
+          // $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajadores();
           $this->load->view('trabajador/login', $data);
         }
 

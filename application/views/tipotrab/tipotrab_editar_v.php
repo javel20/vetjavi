@@ -8,10 +8,10 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/tipotrab/update/'.$dato_tipotrab[0]->IdTipoTrab); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_tipotrab[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_tipotrab[0]->Nombre?>">
           </div>
   
           <div class="col-md-12">

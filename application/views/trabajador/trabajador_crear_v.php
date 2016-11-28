@@ -13,12 +13,12 @@
             <h3 class="panel-title">Registrar Trabajador</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
 
             <div class="form-group col-md-6">
-            <label>Tipo Trabajador</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="SelectTipo">
+            <label>Tipo Trabajador</label>
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectTipo">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -33,15 +33,15 @@
 
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Paterno</label>
-              <input type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
+              <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Materno</label>
-              <input type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
+              <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
             </div>
             <div class="form-group col-md-6">
               <label>Dirección</label>
@@ -49,18 +49,18 @@
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
-              <input type="text" class="form-control" name="Telefono" placeholder="Telefono">
+              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono">
             </div>
 
 
 
             <div class="form-group col-md-6">
               <label>Email</label>
-              <input type="text" id="email" class="form-control" name="Email" placeholder="Email">
+              <input validate="email" type="text" id="email" class="form-control" name="Email" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
               <label>Password</label>
-              <input type="PASSWORD" class="form-control" name="Password" placeholder="****">
+              <input validate="pass" type="PASSWORD" class="form-control" name="Password" placeholder="****">
             </div>
 
 
@@ -69,7 +69,7 @@
 
             <div class="form-group col-md-6">
             <label>Local</label>
-              <select class="form-control" id="js-example-basic-single" name="SelectLocal">
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single" name="SelectLocal">
                   <option>--seleccionar--</option>
                 <?php
                     

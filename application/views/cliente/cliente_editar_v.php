@@ -8,18 +8,18 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/cliente/update/'.$dato_cliente[0]->IdCliente); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_cliente[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_cliente[0]->Nombre?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Paterno</label>
-            <input type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" value="<?php echo $dato_cliente[0]->ApePat?>">
+            <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" value="<?php echo $dato_cliente[0]->ApePat?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Materno</label>
-            <input type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" value="<?php echo $dato_cliente[0]->ApeMat?>">
+            <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" value="<?php echo $dato_cliente[0]->ApeMat?>">
           </div>
 
 
@@ -31,7 +31,7 @@
                   ?>
                    <div class="form-group">
                       <label>DNI</label>
-                      <input type="text" class="form-control" name="DNI" placeholder="DNI" value="<?php echo $dato_cliente[0]->DNI?>">
+                      <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI" value="<?php echo $dato_cliente[0]->DNI?>">
 
                     </div>
 
@@ -42,7 +42,7 @@
                       ?>
                         <div class="form-group">
                         <label>RUC</label>
-                        <input type="text" class="form-control" name="RUC" placeholder="RUC" value="<?php echo $dato_cliente[0]->RUC?>">
+                        <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC" value="<?php echo $dato_cliente[0]->RUC?>">
                     </div>
 
                       <?php
@@ -60,7 +60,7 @@
 
          <div class="form-group col-md-6">
             <label>Ciudad</label>
-            <input type="text" class="form-control" name="Ciudad" placeholder="Ciudad" value="<?php echo $dato_cliente[0]->Ciudad?>">
+            <input validate="texto"  type="text" class="form-control" name="Ciudad" placeholder="Ciudad" value="<?php echo $dato_cliente[0]->Ciudad?>">
           </div>
           <div class="form-group col-md-6">
             <label>Direccion</label>
@@ -68,11 +68,11 @@
           </div>
          <div class="form-group col-md-6">
             <label>Telefono</label>
-            <input type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_cliente[0]->Telefono?>">
+            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_cliente[0]->Telefono?>">
           </div>
           <div class="form-group col-md-6">
             <label>Celular</label>
-            <input type="text" class="form-control" name="Celular" placeholder="Celular" value="<?php echo $dato_cliente[0]->Celular?>">
+            <input validate="number" type="text" class="form-control" name="Celular" placeholder="Celular" value="<?php echo $dato_cliente[0]->Celular?>">
           </div>
           <div class="col-md-12">
             <button type="submit" class="btn btn-primary">Actualizar</button>
@@ -84,6 +84,6 @@
 	</div>
 </div>
    
-
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

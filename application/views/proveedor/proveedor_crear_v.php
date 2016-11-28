@@ -10,18 +10,18 @@
             <h3 class="panel-title">Registrar Proveedor</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" onsubmit="return validar()" method="POST" >
+            <form class="row" action="store" onsubmit="return validar(this)" method="POST" >
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Paterno</label>
-              <input type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
+              <input  validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Materno</label>
-              <input type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
+              <input  validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
             </div>
             <div class="form-group col-md-6">
               <label>Dirección</label>
@@ -29,15 +29,15 @@
             </div>
             <div class="form-group col-md-6">
               <label>Numero</label>
-              <input type="text" class="form-control" name="Numero" placeholder="Numero">
+              <input  validate="number" type="text" class="form-control" name="Numero" placeholder="Numero">
             </div>
             <div class="form-group col-md-6">
               <label>Email</label>
-              <input type="email" id="email" class="form-control" name="Email" placeholder="Email">
+              <input  validate="email" type="email" class="form-control" name="Email" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
               <label>Empresa</label>
-              <input type="text" class="form-control" name="Empresa" placeholder="Empresa">
+              <input  validate="texto" type="text" class="form-control" name="Empresa" placeholder="Empresa">
             </div>
             <div class="col-md-12">
               <!--<button type="submit" class="btn btn-primary">Guardar</button>-->

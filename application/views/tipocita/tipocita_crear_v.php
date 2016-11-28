@@ -11,11 +11,11 @@
           </div>
           <div class="panel-body">
 
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
                 <div class="form-group col-md-6">
                 <label>Nombre</label>
-                <input type="text" class="form-control" name="Nombre" placeholder="Nombre">
+                <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombre">
                 </div>
 
             <div class="col-md-12">

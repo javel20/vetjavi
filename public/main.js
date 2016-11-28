@@ -61,6 +61,23 @@ function validar(e){
     var el =e.elements;
     var cont = 0;
     for(let d=0; d < el.length - 1; d++){
+
+
+         if(el[d].getAttribute("validate") == "email"){
+            if(!(/^\w+@\w+\.\w+$/.test(el[d].value))){
+                 el[d].style.border ="1px solid red";
+                 if(el[d].previousElementSibling.childElementCount == 0)
+                el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese email correcto</span>`
+                cont++;
+            }else{
+                el[d].style.border = "1px solid #ccc";
+                  if(el[d].previousElementSibling.childElementCount == 1)
+                el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+            }
+     
+    }
+
+
         if(el[d].getAttribute("validate") == "texto"){
              if(!(/^[A-Za-z]+$/g.test(el[d].value))){
                 el[d].style.border ="1px solid red";
@@ -91,8 +108,8 @@ function validar(e){
 
          if(el[d].getAttribute("validate") == "seleccionar"){
               if(el[d].value=="--seleccionar--"){
-                    el[d].style.border ="1px solid red";
-                    // console.log(seleccionar.previousElementSibling);
+                    // el[d].style.border ="1px solid red";
+                    el[d].nextSibling.style.border = "1px solid red"
                     if(el[d].previousElementSibling.childElementCount == 0)
                         el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
                     cont++;
@@ -116,6 +133,34 @@ function validar(e){
                 if(el[d].previousElementSibling.childElementCount == 1)
                 el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
             }
+        }
+
+        if(el[d].getAttribute("validate") == "direccion"){
+            if(el[d].value == ""){
+                 el[d].style.border ="1px solid red";
+                 if(el[d].previousElementSibling.childElementCount == 0)
+                el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese algún dato</span>`
+                cont++;
+            }else{
+                el[d].style.border = "1px solid #ccc";
+                  if(el[d].previousElementSibling.childElementCount == 1)
+                el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+            }
+     
+    }
+
+        if(el[d].getAttribute("validate") == "pass"){
+                if(!(/^[A-Z]{1}([a-z]||[0-9]){7,12}/.test(el[d].value))){
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                    el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese algún dato</span>`
+                    cont++;
+                }else{
+                    el[d].style.border = "1px solid #ccc";
+                    if(el[d].previousElementSibling.childElementCount == 1)
+                    el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                }
+        
         }
 
     }

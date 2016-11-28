@@ -14,18 +14,18 @@
             <h3 class="panel-title">Registrar Compra</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
            
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input type="text" class="form-control" name="CodC" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo">
             </div>
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text"/>
 
                   <script>
                     $(document).ready(function(){
@@ -45,7 +45,7 @@
 
             <div class="form-group col-md-6">
                 <label>Tipo Compra</label>
-                <select class="form-control" name="TipoC">
+                <select validate="seleccionar" class="form-control" name="TipoC">
                 <option>Factura</option>
                 <option>Boleta</option>
              </select>
@@ -60,8 +60,8 @@
 
 
              <div class="form-group col-md-6">
-            <label>Proveedor</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="IdProveedor">
+            <label>Proveedor</label>
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="IdProveedor">
                   <option>--seleccionar--</option>
                 <?php
                     

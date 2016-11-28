@@ -1,4 +1,4 @@
-<div class="row">
+<div class="">
     <div class="col-sm-3 col-md-2">
 		<div class="sidebar-nav">
   <div class="navbar navbar-default" role="navigation">

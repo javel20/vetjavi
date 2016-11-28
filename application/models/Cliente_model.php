@@ -57,9 +57,19 @@ class Cliente_model extends CI_Model {
 
         public function update_cliente($IdCliente)
         {
+
+                $var1="";
+                $var2="";
+                if(isset($_POST['DNI'])){ //isset si existe o esta definido
+                        $var1 = $_POST['DNI'];
+                }
+                if(isset($_POST['RUC'])){
+                        $var2 = $_POST['RUC'];
+                }
+
                 $this->IdCliente = $IdCliente;
-                $this->DNI =  $_POST['DNI'];
-                $this->RUC =  $_POST['RUC'];
+                $this->DNI =  $var1;
+                $this->RUC =  $var2;
                 $this->Nombre    = $_POST['Nombre'];
                 $this->ApePat    = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];

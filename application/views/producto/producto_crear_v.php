@@ -10,10 +10,10 @@
             <h3 class="panel-title">Registrar Producto</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
             </div>
             <div class="form-group col-md-6">
               <label>Tipo de Producto</label>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group col-md-6">
               <label>Precio</label>
-              <input type="text" class="form-control" name="Precio" placeholder="Precio">
+              <input validate="number" type="text" class="form-control" name="Precio" placeholder="Precio">
             </div>
             <div class="form-group col-md-6">
               <label>Descripción</label>

@@ -11,17 +11,17 @@
 
         <form class="row mrb-30 well"
               action="<?php echo base_url('index.php/compra/update/'.$dato_compra[0]->IdCompra); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" name="CodC" placeholder="Codigo" value="<?php echo $dato_compra[0]->CodC?>">
+            <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" value="<?php echo $dato_compra[0]->CodC?>">
           </div>
 
 
            
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_compra[0]->Fecha) ?>"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_compra[0]->Fecha) ?>"/>
 
                   <script>
                     $(document).ready(function(){
@@ -43,7 +43,7 @@
           <div class="form-group col-md-6">
             <label>Tipo Compra</label>
            <!--as<?php //die($dato_compra[0]->TipoC);?>-->
-            <select type="text" class="form-control" name="TipoC" placeholder="TipoC">
+            <select validate="seleccionar" type="text" class="form-control" name="TipoC" placeholder="TipoC">
                 <option>--seleccionar</option>
                 <?php if ($dato_compra[0]->TipoC=="Factura"){ 
                 ?>
@@ -70,7 +70,7 @@
 
             <div class="form-group col-md-6">
             <label>Proveedor</label><br>
-              <select class="js-example-basic-single form-control" name="IdProveedor">
+              <select validate="seleccionar" class="js-example-basic-single form-control" name="IdProveedor">
                 <?php
                     
                     foreach($proveedores as $proveedor){

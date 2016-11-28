@@ -11,11 +11,11 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/analisis/update/'.$dato_analisis[0]->IdAnalisis); ?>" 
-              method="POST" onsubmit="return validar();">
+              method="POST" onsubmit="return validar(this);">
 
            <div class="form-group col-md-6">
             <label>Paciente</label><br>
-              <select class="js-example-basic-single form-control" name="SelecPaciente">
+              <select validate="seleccionar" class="js-example-basic-single form-control" name="SelecPaciente">
                 <?php
                     
                     foreach($pacientes as $paciente){
@@ -31,11 +31,11 @@
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>" required>
+            <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>" required>
           </div>
           <div class="form-group col-md-6">
             <label>Tipo</label>
-            <select type="text" class="form-control" name="Tipo" placeholder="Tipo">
+            <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Tipo">
                 <option>--seleccionar</option>
 
                 <?php if ($dato_analisis[0]->Tipo=="Hemograma Completo"){

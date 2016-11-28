@@ -20,8 +20,8 @@
 
 
             <div class="form-group col-md-6">
-            <label>Tipo Cita</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="listTipo">
+            <label>Tipo Cita</label>
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="listTipo">
               <option>--seleccionar--</option>
                 <?php
                     
@@ -34,8 +34,8 @@
             </div>
 
             <div class="form-group col-md-6 ">
-              <label>Paciente</label><br>
-                <select class="form-control" id="js-example-basic-single" name="listPaciente">
+              <label>Paciente</label>
+                <select validate="seleccionar" class="form-control" id="js-example-basic-single" name="listPaciente">
                 <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){
@@ -74,15 +74,15 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso" required>
+              <input validate="number" type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input type="text"id="FrecCard" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" required>
+              <input validate="number" type="text"id="FrecCard" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" required>
+              <input validate="number" type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>

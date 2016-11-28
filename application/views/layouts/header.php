@@ -27,11 +27,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-  
-              <li><a href="#">Iniciar Secion</a></li>
+        <?php if (isset($_SESSION)): ?>
+              <li><a href="#">Usuario</a></li>
                 
-                <li><a href="#">Usuario</a></li>
+              <li><a href="#">Cambiar Usuario</a></li>
 
+          <?php else: ?>
+
+              <li><a href="#">Registrarse</a></li>
+              <li <?php if(isset($active ) && $active == 'login'){ echo 'class="active"'; }?> ><a href=" <?php echo base_url(); ?>index.php/trabajador/login ">Login</a></li>
+          <?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -35,8 +35,10 @@ class Cliente extends CI_Controller {
 
         public function update($id){
 
-             $this->load->model('cliente_model');
-             $result = $this->cliente_model->update_cliente($id);
+             $this->load->model('Cliente_model');
+
+             $result = $this->Cliente_model->update_cliente($id);
+            //  die(json_encode($result));  
              redirect(base_url().'index.php/cliente', 'refresh');
 
         }

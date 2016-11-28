@@ -14,13 +14,13 @@
             <h3 class="panel-title">Registrar Analisis</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar();">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
 
 
             <div class="form-group col-md-6">
-            <label>Paciente</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="SelectPaciente">
+            <label>Paciente</label>
+              <select validate="seleccionar" class="form-control" id="js-example-basic-single2" name="SelectPaciente">
                   <option>--seleccionar--</option>
                 <?php
                      
@@ -36,12 +36,12 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo">
             </div>
             <div class="form-group col-md-6">
 
               <label>Tipo</label>
-              <select class="form-control" id="Tipo"name="Tipo">
+              <select validate="seleccionar" class="form-control" id="Tipo"name="Tipo">
                 <option>--seleccionar-- </option>
                 <option>Hemograma Completo</option>
                 <option>Urianálisis</option>
