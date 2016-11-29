@@ -24,8 +24,38 @@
           </div>
 
           <div class="form-group col-md-6">
-            <label>estado</label>
-            <input type="text" class="form-control" name="Estado" placeholder="Estado" value="<?php echo $dato_local[0]->Estado?>">
+            <label>Estado</label>
+             <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Estado">
+                <option>--seleccionar</option>
+
+                <?php if ($dato_local[0]->Tipo=="Habilitado"){
+                ?>
+
+                  <option value="Habilitado" selected>Habilitado</option>    
+                  <option value="Cerrado">Cerrado</option>
+                  <option value="Clausurado">Clausurado</option>
+
+
+                <?php }elseif($dato_local[0]->Tipo=="Cerrado"){
+                ?>
+
+                  <option value="Habilitado">Habilitado</option>    
+                  <option value="Cerrado" selected>Cerrado</option>
+                  <option value="Clausurado">Clausurado</option>
+
+                <?php }elseif($dato_local[0]->Tipo=="Clausurado"){
+                ?>
+
+                  <option value="Habilitado">Habilitado</option>    
+                  <option value="Cerrado" selected>Cerrado</option>
+                  <option value="Clausurado">Clausurado</option>
+
+
+                <?php }
+                ?>
+
+                
+            </select>
           </div>
 
 

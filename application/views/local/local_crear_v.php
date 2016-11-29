@@ -18,7 +18,7 @@
 
             <div class="form-group col-md-6">
               <label>Dirección</label>
-              <input type="text" class="form-control" name="Direccion" placeholder="Dirección">
+              <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección">
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
