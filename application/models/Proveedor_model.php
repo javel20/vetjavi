@@ -1,7 +1,7 @@
 <?php
 class Proveedor_model extends CI_Model {
 
-        public $IdProveedor;
+        // public $IdProveedor;
         public $Nombre;
         public $Direccion;
         public $Numero;

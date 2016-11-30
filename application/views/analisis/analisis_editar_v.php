@@ -36,56 +36,12 @@
           <div class="form-group col-md-6">
             <label>Tipo</label>
             <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Tipo">
-                <option>--seleccionar</option>
 
-                <?php if ($dato_analisis[0]->Tipo=="Hemograma Completo"){
-                ?>
-
-                  <option value="Hemograma Completo" selected>Hemograma Completo</option>    
-                  <option value="Urianálisis">Urianálisis</option>
-                  <option value="Perfil Hepático">Perfil Hepático</option>
-                  <option value="Perfil Renal">Perfil Renal</option>
-                  <option value="Perfil Hepático">Perfil Completo</option>
-
-                <?php }elseif($dato_analisis[0]->Tipo=="Urianálisis"){
-                ?>
-
-                  <option value="Hemograma Completo">Hemograma Completo</option>    
-                  <option value="Urianálisis"selected>Urianálisis</option>
-                  <option value="Perfil Hepático">Perfil Hepático</option>
-                  <option value="Perfil Renal">Perfil Renal</option>
-                  <option value="Perfil Hepático">Perfil Completo</option>
-
-                <?php }elseif($dato_analisis[0]->Tipo=="Perfil Hepático"){
-                ?>
-
-                  <option value="Hemograma Completo">Hemograma Completo</option>    
-                  <option value="Urianálisis">Urianálisis</option>
-                  <option value="Perfil Hepático"selected>Perfil Hepático</option>
-                  <option value="Perfil Renal">Perfil Renal</option>
-                  <option value="Perfil Hepático">Perfil Completo</option>
-
-                <?php }elseif($dato_analisis[0]->Tipo=="Perfil Renal"){
-                ?>
-
-                  <option value="Hemograma Completo">Hemograma Completo</option>    
-                  <option value="Urianálisis">Urianálisis</option>
-                  <option value="Perfil Hepático">Perfil Hepático</option>
-                  <option value="Perfil Renal"selected>Perfil Renal</option>
-                  <option value="Perfil Hepático">Perfil Completo</option>
-
-                  <?php }elseif($dato_analisis[0]->Tipo=="Perfil Completo"){
-                ?>
-
-                  <option value="Hemograma Completo">Hemograma Completo</option>    
-                  <option value="Urianálisis">Urianálisis</option>
-                  <option value="Perfil Hepático">Perfil Hepático</option>
-                  <option value="Perfil Renal">Perfil Renal</option>
-                  <option value="Perfil Hepático"selected>Perfil Completo</option>
-
-                <?php }
-                ?>
-
+                 <option value="Hemograma Completo" <?php echo ($dato_local[0]->Tipo=="Hemograma Completo" ? 'selected="selected"' : '');?>>Hemograma Completo</option>
+                 <option value="Urianálisis" <?php echo ($dato_local[0]->Tipo=="Urianálisis" ? 'selected="selected"' : '');?>>Urianálisis Completo</option>
+                 <option value="Perfil Hepático" <?php echo ($dato_local[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
+                 <option value="Perfil Renal" <?php echo ($dato_local[0]->Tipo=="Perfil Renal" ? 'selected="selected"' : '');?>>Perfil Renal</option>
+                 <option value="Perfil Hepático" <?php echo ($dato_local[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
                 
             </select>
           </div>

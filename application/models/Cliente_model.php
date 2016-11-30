@@ -28,9 +28,20 @@ class Cliente_model extends CI_Model {
         }
          public function post_clientes()
         {
-                $this->DNI    = $_POST['DNI'];
-                $this->RUC    = $_POST['RUC'];
-                $this->Nombre    = $_POST['Nombre'];
+                $this->Nombre    = $_POST['Nombre'];     
+
+
+                // $var1="";
+                // $var2="";
+                // if(isset($_POST['DNI'])){ //isset si existe o esta definido
+                //         $var1 = $_POST['DNI'];
+                // }
+                // if(isset($_POST['RUC'])){
+                //         $var2 = $_POST['RUC'];
+                // }
+
+                $this->DNI =  isset($_POST['DNI'])? $_POST['DNI']:"";
+                $this->RUC =  isset($_POST['RUC'])? $_POST['RUC']:"";
                 $this->ApePat    = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];
                 $this->Ciudad    = $_POST['Ciudad'];

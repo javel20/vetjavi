@@ -17,11 +17,11 @@
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Paterno</label>
-              <input validate="number" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
+              <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Materno</label>
-              <input validate="number" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
+              <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
             </div>
 
 
@@ -30,22 +30,22 @@
 
                 <div class="col-md-4 form-group">
                 <label>Tipo Doc</label>
-                  <select validate="seleccionar" class="form-control" id="select_doc">
+                  <select  class="form-control" id="select_doc">
                       <option>DNI</option>
                       <option>RUC</option>
                   </select></div>
                   
 
                     <div class="col-md-8 form-group" id="dni_espacio">
-                      <label>DNI</label>
-                      <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI">
+                      <!--<label>DNI</label>
+                      <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI">-->
 
                     </div>
-                    <div class="col-md-8 form-group" id="ruc_espacio">
-                      <label>RUC</label>
-                      <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC">
+                    <!--<div class="col-md-8 form-group" id="ruc_espacio">-->
+                      <!--<label>RUC</label>
+                      <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC">-->
 
-                    </div>
+                    <!--</div>-->
             </div>
             </div>
 
@@ -83,16 +83,17 @@
 <script>
 
   var select_doc = document.getElementById("select_doc");
-  var ruc_espacio = document.getElementById("ruc_espacio");
+  // var ruc_espacio = document.getElementById("ruc_espacio");
   var dni_espacio = document.getElementById("dni_espacio");
-
+  dni_espacio.innerHTML=`<label>DNI</label>
+                              <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI">`
   select_doc.onchange=function(e){
-      if(e.target.value == "RUC"){
-        ruc_espacio.style.display = "block";
-        dni_espacio.style.display = "none";
-      }else{
-      ruc_espacio.style.display = "none";   
-        dni_espacio.style.display = "block";
+      if(e.target.value == "DNI"){
+        dni_espacio.innerHTML=`<label>DNI</label>
+                              <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI">`
+      }else if(e.target.value == "RUC"){
+        dni_espacio.innerHTML=`<label>RUC</label>
+                              <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC">`
       }
    };
 

@@ -19,7 +19,7 @@
               <label>Tipo de Producto</label>
               <select validate="seleccionar" class="form-control" id="Sexo" name="TipoProd">
                 <option>--seleccionar--</option>
-                <option >Medicamento</option>
+                <option>Medicamento</option>
                 <option>Comida</option>
                 <option>Accesorio</option>
                 <option>Ropa</option>

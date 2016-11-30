@@ -68,6 +68,7 @@ function validar(e){
                  el[d].style.border ="1px solid red";
                  if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese email correcto</span>`
+                // alert("email");
                 cont++;
             }else{
                 el[d].style.border = "1px solid #ccc";
@@ -79,11 +80,11 @@ function validar(e){
 
 
         if(el[d].getAttribute("validate") == "texto"){
-             if(!(/^[A-Za-z]+$/g.test(el[d].value))){
+             if(!(/^([a-z]|\s)+$/i.test(el[d].value))){
                 el[d].style.border ="1px solid red";
                 if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo letras</span>`
-
+                //  alert("texto");
                 cont++;
             }else{
                 el[d].style.border = "1px solid #ccc";
@@ -97,7 +98,7 @@ function validar(e){
                 el[d].style.border ="1px solid red";
                 if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros</span>`
-
+                //  alert("number");
                 cont++;
             }else{
                 el[d].style.border = "1px solid #ccc";
@@ -112,6 +113,7 @@ function validar(e){
                     el[d].nextSibling.style.border = "1px solid red"
                     if(el[d].previousElementSibling.childElementCount == 0)
                         el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
+                        //  alert("selecbus");
                     cont++;
                 }else{
                 el[d].style.border = "1px solid #ccc";
@@ -126,6 +128,7 @@ function validar(e){
                     el[d].style.border ="1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
                         el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
+                        //  alert("seleccionar");
                     cont++;
                 }else{
                 el[d].style.border = "1px solid #ccc";
@@ -140,7 +143,7 @@ function validar(e){
                 el[d].style.border ="1px solid red";
                 if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese bien la fecha</span>`
-
+                //  alert("date");
                 cont++;
             }else{
                 el[d].style.border = "1px solid #ccc";
@@ -154,6 +157,7 @@ function validar(e){
                  el[d].style.border ="1px solid red";
                  if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese algún dato</span>`
+                //  alert("direccion");
                 cont++;
             }else{
                 el[d].style.border = "1px solid #ccc";
@@ -168,6 +172,7 @@ function validar(e){
                     el[d].style.border ="1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
                     el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese algún dato</span>`
+                    //  alert("pass");
                     cont++;
                 }else{
                     el[d].style.border = "1px solid #ccc";
@@ -178,72 +183,9 @@ function validar(e){
         }
 
     }
-    // return false;
 
 
-//   console.log(e);
-// var cont=0;
-
-//    if(document.getElementById("email") != null) {
-//         var email=document.getElementById("email");
-//             if(!(/^\w+@\w+\.\w+$/.test(email.value))){
-//             // email.style.border="1px solid red";
-//                 email.style.border = "1px solid red";
-//                 cont++;
-//             }else{
-//                 email.style.border = "1px solid #ccc";
-//             }
-     
-//     }
-
-//     if(document.getElementById("js-example-basic-single2")!=null){
-//         var seleccionar=document.getElementById("js-example-basic-single2")
-//         // console.log(seleccionar.value)
-//         if(seleccionar.value=="--seleccionar--"){
-//             seleccionar.nextSibling.style.border = "1px solid red"
-//             console.log(seleccionar.previousElementSibling);
-//              if(seleccionar.previousElementSibling.childElementCount == 0)
-//                 seleccionar.previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
-//             cont++;
-//         }
-
-//     }
-
-//     if(document.getElementById("edad") != null){
-//         var edad= document.getElementById("edad");
-        
-//             if(!(/^[0-9]+$/g.test(edad.value.trim()))){
-//                 edad.style.border ="1px solid red";
-//                 // console.log(edad.previousElementSibling.childElementCount)
-//                 if(edad.previousElementSibling.childElementCount == 0)
-//                 edad.previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros</span>`
-
-//                 cont++;
-//             }else{
-//                 edad.style.border = "1px solid #ccc";
-//                 edad.previousElementSibling.getElementsByTagName("span")[0].remove();
-//             }
-
-        
-//     }
-
-//     if(document.getElementById("nombre") != null){
-//         var nombre= document.getElementById("nombre");
-        
-//             if(!(/^[A-Za-z]+$/g.test(nombre.value))){
-//                 nombre.style.border ="1px solid red";
-
-//                 nombre.previousElementSibling.innerHTML += `<span class="error"> Ingrese solo letras</span>`
-
-//                 cont++;
-//             }else{
-//                 nombre.style.border = "1px solid #ccc";
-//                 nombre.previousElementSibling.getElementsByTagName("span")[0].remove();
-//             }
-
-        
-//     }
-
+console.log("holi "+ cont)
 
 if(cont>0)
 return false;

@@ -20,45 +20,17 @@
 
           <div class="form-group col-md-6">
             <label>Tipo de Producto</label>
-            <select validate="seleccionar" type="text" class="form-control" name="Sexo" placeholder="Sexo">
-                <option>--seleccionar--</option>
-
-                <?php if ($dato_producto[0]->TipoProd=="Medicamento"){
-                ?>
-
-                  <option value="Medicamento" selected>Medicamento</option>    
-                  <option value="Comida">Comida</option>
-                  <option value="Accesorio">Accesorio</option>
-                  <option value="Ropa">Ropa</option>
+            <select validate="seleccionar" type="text" class="form-control" name="TipoProd" placeholder="TipoProd">
 
 
-                <?php }elseif ($dato_producto[0]->TipoProd=="Comida"){
-                ?>
+              <option value="Medicamento" <?php echo ($dato_producto[0]->TipoProd=="Medicamento" ? 'selected="selected"' : '');?>>Medicamento</option>    
+              <option value="Comida" <?php echo ($dato_producto[0]->TipoProd=="Comida" ? 'selected="selected"' : '');?>>Comida</option>
+              <option value="Accesorio" <?php echo ($dato_producto[0]->TipoProd=="Accesorio" ? 'selected="selected"' : '');?>>Accesorio</option>
+              <option value="Ropa" <?php echo ($dato_producto[0]->TipoProd=="Ropa" ? 'selected="selected"' : '');?>>Ropa</option>
 
-                  <option value="Medicamento">Medicamento</option>    
-                  <option value="Comida" selected>Comida</option>
-                  <option value="Accesorio">Accesorio</option>
-                  <option value="Ropa">Ropa</option>
-
-                <?php }elseif ($dato_producto[0]->TipoProd=="Accesorio"){
-                ?>
-
-                  <option value="Medicamento">Medicamento</option>    
-                  <option value="Comida">Comida</option>
-                  <option value="Accesorio" selected>Accesorio</option>
-                  <option value="Ropa">Ropa</option>
-
-                <?php }elseif ($dato_producto[0]->TipoProd=="Ropa"){
-                ?>
-
-                  <option value="Medicamento">Medicamento</option>    
-                  <option value="Comida">Comida</option>
-                  <option value="Accesorio">Accesorio</option>
-                  <option value="Ropa" selected>Ropa</option>
-                  <?php }
-            ?>
             </select>
           </div>
+
           <div class="form-group col-md-6">
             <label>Precio</label>
             <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_producto[0]->Precio?>">

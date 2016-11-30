@@ -64,7 +64,7 @@
             foreach ($datos_trabajador as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->NombreTrab." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
-                "<td>". $dato->Direccion ."</td>".
+                "<td>". $dato->DirTrab ."</td>".
                 "<td>". $dato->Telefono ."</td>".
                 "<td>". $dato->Email ."</td>".
                 "<td>". $dato->NombreTipo ."</td>".

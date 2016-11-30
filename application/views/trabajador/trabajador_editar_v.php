@@ -92,6 +92,8 @@
 
 
           <div class="col-md-12">
+          <input type="hidden" name="Email" value="<?php echo $dato_trabajador[0]->Email?>">
+          <input type="hidden" name="Password" value="<?php echo $dato_trabajador[0]->Password?>">
             <button type="submit" class="btn btn-primary ">Actualizar</button>
           
           </div>

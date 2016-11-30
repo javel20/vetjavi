@@ -67,14 +67,15 @@ class Compra_model extends CI_Model {
         public function update_compra($IdCompra)
         {
                 $fecha = $_POST['Fecha'];
-                $pos = strpos($fecha, '/');
-                if($pos === true){
+                $pos = preg_match('/[\/]+/',$fecha);
+                if($pos == true){
                         $array = explode('/', $fecha);
                         $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
 
                 } else{
                        $fecha_php = $fecha; 
                 }
+
                 // die($fecha_php);
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 

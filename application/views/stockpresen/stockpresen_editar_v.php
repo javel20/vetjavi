@@ -12,22 +12,11 @@
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/StockPresen/update/'.$dato_stockpresen[0]->IdStockPresen); ?>" 
               method="POST" onsubmit="return validar(this);">
-          <div class="form-group col-md-6 ">
-            <label>Stock Minimo</label>
-            <input validate="number"  type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" value="<?php echo $dato_stockpresen[0]->StockMin?>">
-          </div>
-          <div class="form-group col-md-6">
-            <label>Stock Real</label>
-            <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" value="<?php echo $dato_stockpresen[0]->StockReal?>">
-          </div>
-          <div class="form-group col-md-6">
-            <label>Presentacion</label>
-            <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" value="<?php echo $dato_stockpresen[0]->Presentacion?>">
-          </div>
+         
 
+           <div class="form-group col-md-6">
+            <label>Producto</label>
 
-            <div class="form-group col-md-6">
-            <label>Producto</label><br>
               <select validate="selecbus" class="js-example-basic-single form-control" name="SelectTipo">
                 <?php
                     
@@ -41,6 +30,22 @@
               </select>
 
             </div>
+
+             <div class="form-group col-md-6 ">
+            <label>Stock Minimo</label>
+            <input validate="number"  type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" value="<?php echo $dato_stockpresen[0]->StockMin?>">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Stock Real</label>
+            <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" value="<?php echo $dato_stockpresen[0]->StockReal?>">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Presentacion</label>
+            <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" value="<?php echo $dato_stockpresen[0]->Presentacion?>">
+          </div>
+
+
+           
 
             <script type="text/javascript">
             $(document).ready(function() {

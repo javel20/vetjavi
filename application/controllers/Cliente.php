@@ -12,6 +12,7 @@ class Cliente extends CI_Controller {
 
              $this->load->model('cliente_model');
              $result = $this->cliente_model->post_clientes();
+            //  die(var_dump($result));  
              redirect(base_url().'index.php/cliente', 'refresh');
 
         }
