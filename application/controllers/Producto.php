@@ -1,6 +1,23 @@
 <?php
 class Producto extends CI_Controller {
 
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
         public function index()
         {
 
@@ -18,15 +35,19 @@ class Producto extends CI_Controller {
 
         public function create(){
           
-            $this->load->view('producto/producto_crear_v');
+            $this->load->model('TipoProducto_model');
+            $data['tp'] = $this->TipoProducto_model->get_tipoproductos();
+            $this->load->view('producto/producto_crear_v', $data);
 
         }
 
         public function edit($id){
 
+            $this->load->model('TipoProducto_model');
+            $data['tp'] =  $this->TipoProducto_model->get_tipoproductos();
+
             $this->load->model('Producto_model');
             $data['dato_producto'] =  $this->Producto_model->get_producto($id);
-
             $this->load->view('producto/producto_editar_v', $data);
 
         }

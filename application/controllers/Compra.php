@@ -1,6 +1,24 @@
 <?php
 class Compra extends CI_Controller {
 
+
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
         public function index()
         {
 
@@ -18,8 +36,10 @@ class Compra extends CI_Controller {
 
         public function create(){
 
-           $this->load->model('proveedor_model');
+            $this->load->model('proveedor_model');
             $data['proveedores'] = $this->proveedor_model->get_proveedores();
+            $this->load->model('Producto_model');
+            $data['productos'] = $this->Producto_model->get_productos();
             $this->load->view('compra/compra_crear_v', $data);
 
         }
@@ -69,5 +89,15 @@ class Compra extends CI_Controller {
             $this->Compra_model->get_activar_compra($id);
             redirect(base_url().'index.php/compra', 'refresh');
         }
+
+        public function detalle($id)
+        {
+
+            $this->load->model('Compra_model');
+            $data['datos_detalle'] = $this->Compra_model->get_detalle($id);
+            $this->load->view('compra/detalle_compra_v', $data);
+
+        }
+
 
 }

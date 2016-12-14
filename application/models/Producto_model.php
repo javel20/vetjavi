@@ -3,10 +3,10 @@ class Producto_model extends CI_Model {
 
         public $IdProducto;
         public $Nombre;
-        public $TipoProd;
         public $Precio;
         public $Descripcion;
         public $Estado;
+        public $IdTipoProducto;
 
 
 
@@ -18,17 +18,20 @@ class Producto_model extends CI_Model {
 
         public function get_productos()
         {
-                $query = $this->db->get('producto');
+                $this->db->select('*,producto.Descripcion as descprod');
+                $this->db->from('producto');
+                $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
+                $query = $this->db->get('');
                 return $query->result();
         }
          public function post_productos()
         {
                 $this->Nombre    = $_POST['Nombre'];
-                $this->TipoProd    = $_POST['TipoProd'];
                 $this->Precio    = $_POST['Precio'];
                 $this->Descripcion    = $_POST['Descripcion'];
       
                 $this->Estado = True;
+                $this->IdTipoProducto    = $_POST['TipoProduc'];
                  
 
                 $this->db->insert('producto', $this);
@@ -40,7 +43,7 @@ class Producto_model extends CI_Model {
                 $this->db->from('producto');
                 $this->db->where('IdProducto',$IdProducto);   
                 $query = $this->db->get();
-                return $query->result();     
+                return $query->result();    
 
         }
 
@@ -50,10 +53,10 @@ class Producto_model extends CI_Model {
         {
                 $this->IdProducto = $IdProducto;
                 $this->Nombre    = $_POST['Nombre'];
-                $this->TipoProd    = $_POST['TipoProd'];
                 $this->Precio    = $_POST['Precio'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->Estado    = $_POST['Estado'];
+                $this->IdTipoProducto    = $_POST['TipoProduc'];
  
 
                 $this->db->update('producto', $this, array('IdProducto' => $IdProducto));
@@ -61,9 +64,10 @@ class Producto_model extends CI_Model {
 
         public function get_buscar_producto(){
                 $dato_buscar = $_GET['nombre_buscar'];
-                 $tipo_dato = $_GET['tipo_dato'];
-                 $this->db->select('*');
+                $tipo_dato = $_GET['tipo_dato'];
+                $this->db->select('*');
                 $this->db->from('producto');
+                $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
                 $this->db->like(  $tipo_dato,$dato_buscar);
                 $query = $this->db->get();
                 return $query->result();     

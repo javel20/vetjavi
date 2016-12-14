@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/paciente/search'); ?>"  
+                        action="<?php echo base_url('index.php/tipoproducto/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -25,9 +25,8 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="Nombre">Nombre</a></li>
-                    <li><a href="#" dato="Raza">Raza</a></li>
-                    <li><a href="#" dato="Sexo">Sexo</a></li>
+                    <li><a href="#" dato="Nombre">Nombre </a></li>
+                    <li><a href="#" dato="Estado">Estado </a></li>
             
             
                     </ul>
@@ -49,28 +48,20 @@
     
     <table class="table">
         <thead>
-            <th>Cliente</th>
             <th>Nombre</th>
-            <th>Raza</th>
-            <th>Fecha Nacimiento</th>
-            <th>Color</th>
+            <th>Porcentaje</th>
             <th>Descripcion</th>
-            <th>Sexo</th>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
         
         <?php
-          //  die(var_dump($datos_trabajador));
-            foreach ($datos_paciente as &$dato) {
+        
+            foreach ($datos_tipoprod as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->NombreCliente."</td>".
-                "<td>". $dato->Nombre."</td>".
-                "<td>". $dato->Raza ."</td>".
-                "<td>". $dato->FechaNac ."</td>".
-                "<td>". $dato->Color ."</td>".
+                "<td>". $dato->NombreTipoP ."</td>".
+                "<td>". $dato->Porcentaje ."</td>".
                 "<td>". $dato->Descripcion ."</td>".
-                "<td>". $dato->Sexo ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones
@@ -78,11 +69,13 @@
                     </button>
                     <ul class='dropdown-menu' aria-labelledby='dLabel'>
 
+      
+
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre ."'
-                                url_data=". base_url("index.php/paciente/delete/$dato->IdPaciente") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/paciente/edit/$dato->IdPaciente") .">Editar</a></li>
+                                nombre_data='". $dato->NombreTipoP ."'
+                                url_data=". base_url("index.php/tipoproducto/delete/$dato->IdTipoProducto") .">Eliminar</a></li>
+                        <li><a href=". base_url("index.php/tipoproducto/edit/$dato->IdTipoProducto") .">Editar</a></li>
 
                     </ul>
                     </div></td>".

@@ -12,15 +12,15 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/analisis/search'); ?>"  
+                        action="<?php echo base_url('index.php/analisis/search'); ?>"
                         method="GET">
                     <div class="input-group">
                 
                 <div class="input-group-btn">
                     <button type="button" 
                             id="dato_a_buscar"
-                            class="btn btn-default dropdown-toggle" 
-                            data-toggle="dropdown" 
+                            class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown"
                             aria-haspopup="true" 
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
@@ -33,8 +33,8 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Codigo';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Tipo';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'Codigo';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 

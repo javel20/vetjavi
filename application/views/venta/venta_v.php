@@ -51,6 +51,7 @@
     <table class="table">
         <thead>
             <th>Codigo</th>
+            <th>Cliente</th>
             <th>Fecha</th>
             <th>Tipo</th>
             <th>Descripicion</th>
@@ -66,6 +67,7 @@
           echo "<tr >".
 
                 "<td>". $dato->CodV ."</td>".
+                "<td>". $dato->Nombre ."</td>".
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".
@@ -82,6 +84,7 @@
                                 nombre_data='". $dato->CodV  ."'
                                 url_data=". base_url("index.php/venta/delete/$dato->IdVenta") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/venta/edit/$dato->IdVenta") .">Editar</a></li>
+                        <li><a href=". base_url("index.php/venta/detalle/$dato->IdVenta") .">Detalle</a></li>
 
                     </ul>
                     </div></td>".

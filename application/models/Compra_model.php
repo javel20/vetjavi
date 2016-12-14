@@ -26,6 +26,8 @@ class Compra_model extends CI_Model {
                 $query = $this->db->get();
                 // die(var_dump($query->result()));
                 return $query->result();
+
+
                 
 
         }
@@ -35,6 +37,11 @@ class Compra_model extends CI_Model {
                 $fecha = $_POST['Fecha'];
                 $array = explode('/', $fecha);
                 $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+
+
+
+                
                 // die($fecha_php);
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 
@@ -46,10 +53,29 @@ class Compra_model extends CI_Model {
                 $this->IdProveedor    = $_POST['IdProveedor'];
                 $this->IdTrabajador    = $_POST['IdTrabajador'];
 
-              
-
                 // die(var_dump($this));
                  $this->db->insert('compra', $this);
+
+
+                 $insert_id = $this->db->insert_id();
+
+                // die(json_encode($_POST['nombre_detalle']));
+                $acum="";
+                foreach($_POST['nombre_detalle'] as $key=>$valor){
+                        // $acum+=$valor;
+                        $data_detalle = array(
+
+                                'IdCompra' => $insert_id,
+                                'IdProducto' => $_POST['nombre_detalle'][$key],
+                                'Cantidad' => $_POST['cantidad_detalle'][$key],
+                                'fechaVen' =>$_POST['fecha'][$key],
+                               
+
+
+                        );
+                        $this->db->insert("detallecompraproducto", $data_detalle);
+                }
+                // die(json_encode($acum));
         }
 
         public function get_compra($IdCompra){
@@ -118,6 +144,19 @@ class Compra_model extends CI_Model {
                 $this->db->set('Estado', True);
                 $this->db->where('Idcompra', $id);
                 $this->db->update('compra');
+        }
+
+        public function get_detalle($id){
+
+                $this->db->select('*, producto.Nombre as nomcom');
+                $this->db->from('detallecompraproducto');
+                $this->db->join('producto', 'producto.IdProducto = detallecompraproducto.IdProducto');
+                $this->db->where('IdCompra', $id);
+                
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
+
         }
 
 }

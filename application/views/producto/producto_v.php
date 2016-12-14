@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/producto/search'); ?>"  
+                        action="<?php echo base_url('index.php/producto/search'); ?>" 
                         method="GET">
                     <div class="input-group">
                 
@@ -25,9 +25,8 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="Nombre">Nombre </a></li>
-                    <li><a href="#" dato="TipoProd">Tipo </a></li>
-                    <li><a href="#" dato="Precio">Precio </a></li>
+                        <li><a href="#" dato="Nombre">Nombre </a></li>
+                        <li><a href="#" dato="Precio">Precio </a></li>
             
             
                     </ul>
@@ -52,19 +51,19 @@
             <th>Nombres</th>
             <th>Tipo de Producto</th>
             <th>Precio</th>
-            <th>Descrición</th>
+            <th>Descripción</th>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
         
         <?php
-        
+            // die(json_encode($datos_producto))
             foreach ($datos_producto as &$dato) {
-                echo "<tr class='estado_" . $dato->Estado ."'>".
+                echo "<tr>".
                 "<td>". $dato->Nombre . "</td>".
-                "<td>". $dato->TipoProd ."</td>".
+                "<td>". $dato->NombreTipoP ."</td>".
                 "<td>". $dato->Precio ."</td>".
-                "<td>". $dato->Descripcion ."</td>".
+                "<td>". $dato->descprod ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

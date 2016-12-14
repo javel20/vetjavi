@@ -83,6 +83,7 @@
                                 nombre_data='". $dato->CodC  ."'
                                 url_data=". base_url("index.php/compra/delete/$dato->IdCompra") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/compra/edit/$dato->IdCompra") .">Editar</a></li>
+                        <li><a href=". base_url("index.php/compra/detalle/$dato->IdCompra") .">Detalle</a></li>
 
                     </ul>
                     </div></td>".

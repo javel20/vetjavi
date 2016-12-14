@@ -1,6 +1,23 @@
 <?php
 class Venta extends CI_Controller {
 
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
         public function index()
         {
 
@@ -70,6 +87,15 @@ class Venta extends CI_Controller {
           $this->load->model('Venta_model');
             $this->Venta_model->get_activar_venta($id);
             redirect(base_url().'index.php/venta', 'refresh');
+        }
+
+        public function detalle($id)
+        {
+
+            $this->load->model('Venta_model');
+            $data['datos_detalle'] = $this->Venta_model->get_detalle($id);
+            $this->load->view('venta/detalle_venta_v', $data);
+
         }
 
 }

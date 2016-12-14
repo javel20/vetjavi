@@ -50,7 +50,7 @@
         <thead>
             <th>Producto</th>
             <th>Stock Minimo</th>
-            <th>Stock Maximo</th>
+            <th>Stock Real</th>
             <th>Presentacion</th>
             <th>Option</th>
         </thead>

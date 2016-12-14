@@ -1,6 +1,24 @@
 '<?php
 class Paciente extends CI_Controller {
 
+
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
         public function index()
         {
 
@@ -20,7 +38,7 @@ class Paciente extends CI_Controller {
         public function create(){
           
             $this->load->model('Cliente_model');
-             $data['clientes'] = $this->Cliente_model->get_clientes();
+            $data['clientes'] = $this->Cliente_model->get_clientes();
 
             $this->load->view('paciente/paciente_crear_v', $data);
               

@@ -1,6 +1,23 @@
 <?php
 class Trabajador extends CI_Controller {
 
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
         public function index()
         {
 
@@ -60,15 +77,7 @@ class Trabajador extends CI_Controller {
 
         }
 
-        public function login()
-        {
-          $data=new stdclass();
 
-          $this->load->model('Trabajador_model');
-          $data->active = 'login';
-          // $data['datos_trabajador'] =  $this->Trabajador_model->get_trabajadores();
-          $this->load->view('trabajador/login', $data);
-        }
 
 
 

@@ -110,9 +110,9 @@ function validar(e){
          if(el[d].getAttribute("validate") == "selecbus"){
               if(el[d].value=="--seleccionar--"){
                     // el[d].style.border ="1px solid red";
-                    el[d].nextSibling.style.border = "1px solid red"
+                    el[d].nextSibling.style.border = "1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
-                        el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion</span>`
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Seleccione una opcion </span>`
                         //  alert("selecbus");
                     cont++;
                 }else{

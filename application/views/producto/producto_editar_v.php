@@ -18,18 +18,7 @@
           </div>
 
 
-          <div class="form-group col-md-6">
-            <label>Tipo de Producto</label>
-            <select validate="seleccionar" type="text" class="form-control" name="TipoProd" placeholder="TipoProd">
-
-
-              <option value="Medicamento" <?php echo ($dato_producto[0]->TipoProd=="Medicamento" ? 'selected="selected"' : '');?>>Medicamento</option>    
-              <option value="Comida" <?php echo ($dato_producto[0]->TipoProd=="Comida" ? 'selected="selected"' : '');?>>Comida</option>
-              <option value="Accesorio" <?php echo ($dato_producto[0]->TipoProd=="Accesorio" ? 'selected="selected"' : '');?>>Accesorio</option>
-              <option value="Ropa" <?php echo ($dato_producto[0]->TipoProd=="Ropa" ? 'selected="selected"' : '');?>>Ropa</option>
-
-            </select>
-          </div>
+     
 
           <div class="form-group col-md-6">
             <label>Precio</label>
@@ -40,6 +29,33 @@
             <input type="text" class="form-control" name="Descripcion" placeholder="Dirección" value="<?php echo $dato_producto[0]->Descripcion?>">
             <input type="hidden"  name="Estado" value="<?php echo $dato_producto[0]->Estado?>">
           </div>
+
+          <div class="form-group col-md-6">
+            <label>Tipo de Producto</label>
+              <select validate="selecbus" class="js-example-basic-single form-control" name="TipoProduc">
+                <?php
+                    
+                   foreach($tp as $tipoprod){
+                      
+                      $faiId=($tipoprod->IdTipoProducto==$dato_producto[0]->IdTipoProducto)? "selected":"";
+                      echo "<option value=". $tipoprod->IdTipoProducto ." ". $faiId .">". $tipoprod->NombreTipoP ."</option>";
+                    }?>
+
+                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
+                   
+              </select>
+          </div>
+
+
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
           <div class="col-md-12">
             <button type="submit" class="btn btn-primary ">Actualizar</button>

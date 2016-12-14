@@ -37,7 +37,7 @@ class Trabajador_model extends CI_Model {
                 $this->Direccion    = $_POST['Direccion'];
                 $this->Telefono    = $_POST['Telefono'];
                 $this->Email    = $_POST['Email'];
-                $this->Password    = $_POST['Password'];
+                $this->Password    = md5($_POST['Password']);
                 $this->IdTipoTrab    = $_POST['SelectTipo'];
                 $this->IdLocal    = $_POST['SelectLocal'];
                 
@@ -92,6 +92,26 @@ class Trabajador_model extends CI_Model {
    
                 $query = $this->db->delete("trabajador", array('IdTrabajador'=>$id));
                  return $query; 
+        }
+
+        function login($email, $password)
+        {
+                $this -> db -> select('IdTrabajador,Email,Password');
+                $this -> db -> from('trabajador');
+                $this -> db -> where('Email', $email);
+                $this -> db -> where('Password', MD5($password));
+                $this -> db -> limit(1);
+
+                $query = $this -> db -> get();
+
+                if($query -> num_rows() == 1)
+                {
+                        return $query -> result();
+                } 
+                else
+                {
+                        return false;
+                }
         }
 
 

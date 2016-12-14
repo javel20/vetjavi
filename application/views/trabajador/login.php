@@ -1,7 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 
 
-<form action="<?php echo base_url(); ?>signin" method="POST" class="form-horizontal col-md-12" onsubmit="return validar(this);">
+<form action="<?php echo base_url(); ?>index.php/login/acceso" method="POST" class="form-horizontal col-md-12" onsubmit="return validar(this);">
 <div class="col-md-4 col-md-offset-4 well">
 
   <div class="form-group">
@@ -25,6 +25,11 @@
   </div>
   </div>
 </form>
+
+
+                    <?php
+                        echo var_dump($_SESSION);
+                    ?>
 
 
 <script src="<?php echo base_url('public/main.js'); ?>"></script>

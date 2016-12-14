@@ -2,6 +2,8 @@
 <?php  $this->load->view('layouts/tablero');?>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
@@ -9,17 +11,17 @@
 
         <form class="row mrb-30 well" 
               action="<?php echo base_url('index.php/venta/update/'.$dato_venta[0]->IdVenta); ?>" 
-              method="POST">
+              method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" name="CodV" placeholder="Codigo" value="<?php echo $dato_venta[0]->CodV?>">
+            <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo" value="<?php echo $dato_venta[0]->CodV?>">
           </div>
 
 
            
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_venta[0]->Fecha) ?>"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_venta[0]->Fecha) ?>"/>
 
                   <script>
                     $(document).ready(function(){
@@ -41,7 +43,7 @@
           <div class="form-group col-md-6">
             <label>Tipo Venta</label>
             <!--as<?php //die($dato_compra[0]->TipoC);?>-->
-            <select type="text" class="form-control" name="TipoV" placeholder="TipoV">
+            <select validate="seleccionar" type="text" class="form-control" name="TipoV" placeholder="TipoV">
                 <option>--seleccionar</option>
                 <?php if ($dato_venta[0]->TipoV=="Factura"){
                           
@@ -69,11 +71,29 @@
          <div class="form-group col-md-6">
  
               <label>Cliente</label>
-              <input class="form-control" list="clientes" id="listCliente">
-              <datalist id="clientes"><?php foreach($clientes as $cliente){
-                    echo "<option data=".$cliente->IdCliente ." value=". $cliente->Nombre ."></option>";
-                  }?></datalist>
+               <select validate="selecbus" class="js-example-basic-single2 form-control" name="listClient">
+                <?php
+                    
+                    foreach($clientes as $cliente){
+                      // die($tipo->IdLocal==$dato_local[0]->IdLocal);
+                      $faiId=($cliente->IdCliente==$dato_cliente[0]->IdCliente)? "selected":"";
+                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre ."</option>";
+                    }?>
+
+                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
+                   
+              </select>
+
             </div>
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+            var fn = $(".js-example-basic-single2").select2();
+              // $(".js-example-basic-single").select
+            // fn.defaults.set("qwe","sdsd")
+            });
+
+            </script>
 
 
           <div class="col-md-12">
@@ -111,5 +131,6 @@
   }
 </script>
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

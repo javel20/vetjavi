@@ -1,6 +1,25 @@
 '<?php
 class StockPresen extends CI_Controller {
 
+
+        public function __construct()
+        {
+
+          parent::__construct();
+          // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->authenticate();
+
+        }
+
+        function authenticate()
+        {
+          if(!$this->session->userdata('Email'))
+          {
+            redirect('login');
+          }
+        }
+
+        
         public function index()
         {
 
@@ -20,7 +39,7 @@ class StockPresen extends CI_Controller {
         public function create(){
           
             $this->load->model('producto_model');
-             $data['productos'] = $this->producto_model->get_productos();
+            $data['productos'] = $this->producto_model->get_productos();
 
             $this->load->view('stockpresen/stockpresen_crear_v', $data);
               
@@ -32,9 +51,9 @@ class StockPresen extends CI_Controller {
 /*            $this->load->model('StockPresen_model');
             $data['tipos']= $this->StockPresen_model->get_stockpresens();
             */
-               $this->load->model('producto_model');
-             $data['productos'] = $this->producto_model->get_productos();
-             $this->load->model('StockPresen_model');
+            $this->load->model('producto_model');
+            $data['productos'] = $this->producto_model->get_productos();
+            $this->load->model('StockPresen_model');
             $data['dato_stockpresen'] =  $this->StockPresen_model->get_stockpresen($id);
 
             $this->load->view('stockpresen/stockpresen_editar_v', $data);
@@ -63,6 +82,16 @@ class StockPresen extends CI_Controller {
 
         }
 
+        public function stock_api(){
+
+          $this->load->model('StockPresen_model');
+          $data['datos_stockpresen'] =  $this->StockPresen_model->get_stockpresens();
+            // die(json_encode($data));
+          echo json_encode($data);
+          
+          // return True;
+
+        }
 
 
 }

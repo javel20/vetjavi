@@ -4,7 +4,7 @@ class Paciente_model extends CI_Model {
         // public $IdPaciente;
         public $Nombre;
         public $Raza;
-        public $Edad;
+        public $FechaNac;
         public $Color;
         public $Descripcion;
         public $Sexo;
@@ -29,9 +29,14 @@ class Paciente_model extends CI_Model {
          }
          public function post_pacientes()
         {
+
+                $fecha = $_POST['FechaNac'];
+                $array = explode('/', $fecha);
+                $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
                 $this->Nombre    = $_POST['Nombre'];
                 $this->Raza    = $_POST['Raza'];
-                $this->Edad    = $_POST['Edad'];
+                $this->FechaNac    =  strval(trim($fecha_php));
                 $this->Color    = $_POST['Color'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->Sexo    = $_POST['Sexo'];
@@ -59,9 +64,19 @@ class Paciente_model extends CI_Model {
 
         public function update_paciente($IdPaciente)
         {
+
+                 $fecha = $_POST['FechaNac'];
+                $pos = preg_match('/[\/]+/',$fecha);
+                if($pos == true){
+                        $array = explode('/', $fecha);
+                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
                 $this->Nombre    = $_POST['Nombre'];
                 $this->Raza    = $_POST['Raza'];
-                $this->Edad    = $_POST['Edad'];
+                $this->FechaNac    =  strval(trim($fecha_php));
                 $this->Color    = $_POST['Color'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->Sexo    = $_POST['Sexo'];

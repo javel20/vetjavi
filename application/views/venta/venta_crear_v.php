@@ -15,15 +15,18 @@
             <h3 class="panel-title">Registrar Venta</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST">
+            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
+
+
+            
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input type="text" class="form-control" name="CodV" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo">
             </div>
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" type="text"/>
 
                   <script>
                     $(document).ready(function(){
@@ -43,7 +46,7 @@
 
             <div class="form-group col-md-6">
               <label>Tipo Venta</label>
-            <select class="form-control" name="TipoV">
+            <select validate="seleccionar" class="form-control" name="TipoV">
               
                
                 <option>Factura</option>
@@ -59,8 +62,8 @@
 
 
             <div class="form-group col-md-6">
-            <label>Cliente</label><br>
-              <select class="form-control" id="js-example-basic-single2" name="IdCliente">
+            <label>Cliente</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="IdCliente">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -82,8 +85,8 @@
      
 
             <div class="form-group col-md-6">
-            <label>Producto</label><br>
-              <select class="form-control" id="js-example-basic-single" name="">
+            <label>Producto</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single" name="">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -97,8 +100,8 @@
 
 
             <div class="form-group col-md-6">
-            <label>Presentacion</label><br>
-              <select class="form-control" id="js-example-basic-single3" name="">
+            <label>Presentacion</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single3" name="">
                   <option>--seleccionar--</option>
                 <?php
                     
@@ -114,12 +117,12 @@
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
-                    <input type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad">
+                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad">
                   
                   </div>
                   <div class="form-group col-md-6">
-                    <label>Precio</label>
-                    <input type="text" class="form-control" name="precio_add_detalle" placeholder="Precio">
+                    <label>Precio Total</label>
+                    <input validate="number" type="text" class="form-control" name="precio_add_detalle" placeholder="Precio">
                   
                   </div>
                
@@ -182,16 +185,50 @@
    acumulado = [];
     $form_detalle.childNodes.forEach( e=> {
         e.childNodes.forEach( k=> {
-            if(k.tagName == "SELECT" || k.tagName == "INPUT") 
+            if(k.tagName == "SELECT"){
+               let select_name = k.options[k.options.selectedIndex].text;
+               acumulado.push(select_name);
+               acumulado.push(k.value);
+               }
+              else if (  k.tagName == "INPUT") 
                 acumulado.push(k.value);
         })
     })
+
+    // console.log(acumulado);
+
+    $.ajax({
+      url:"http://localhost/vetjavi/index.php/stockpresen/stock_api",
+      dataType: 'text',
+      cache:false,
+      type:'GET',
+     
+      success:function(response){
+
+        // let js=JSON.stringify(response);
+        // let js2=JSON.parse(response+ '\'');
+        // console.log(js2);
+
+        console.log((response+ '\'').toString());
+
+        // console.log("exito")
+      },
+     
+        error:function(response){
+
+        console.log(JSON.parse(response.responseText));
+        console.log("error")
+      }
+
+  });
+
+
     $tbody_detalle.innerHTML += `<tr>
-      <td> <input name="nombre_detalle[]" value="${acumulado[0]}" /> </td>
-      <td> <input name="presentacion_detalle[]" value="${acumulado[1]}" /> </td>
-      <td> <input name="precio_unitario_detalle[]" value="${acumulado[2]}" /> </td>
-      <td> <input name="cantidad_detalle[]" value="${acumulado[3]}"/> </td>
-      <td></td>
+      <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
+      <td> ${acumulado[2]}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
+      <td> <input name="precio_unitario_detalle[]" value="${acumulado[5]}" /> </td>
+      <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
+      <td>x</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
 
@@ -205,5 +242,6 @@
  
 </script>
 
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       
      

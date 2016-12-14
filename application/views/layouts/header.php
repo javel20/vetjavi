@@ -27,15 +27,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <?php if (isset($_SESSION)): ?>
-              <li><a href="#">Usuario</a></li>
+        <?php if (isset($_SESSION['Email'])): ?>
+              <li class="correo"><?php echo $_SESSION['Email'];?></li>
                 
-              <li><a href="#">Cambiar Usuario</a></li>
+              <li><a href="<?php echo base_url(); ?>index.php/login/logout">LogOut</a></li>
 
           <?php else: ?>
 
-              <li><a href="#">Registrarse</a></li>
-              <li <?php if(isset($active ) && $active == 'login'){ echo 'class="active"'; }?> ><a href=" <?php echo base_url(); ?>index.php/trabajador/login ">Login</a></li>
+             
           <?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
