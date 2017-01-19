@@ -1,11 +1,9 @@
 <?php
 class Producto_model extends CI_Model {
 
-        public $IdProducto;
+        // public $IdProducto;
         public $Nombre;
-        public $Precio;
         public $Descripcion;
-        public $Estado;
         public $IdTipoProducto;
 
 
@@ -16,21 +14,25 @@ class Producto_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_productos()
+        public function get_productos($inicio=FALSE,$limite=FALSE)
         {
-                $this->db->select('*,producto.Descripcion as descprod');
+                $this->db->select('*, producto.Descripcion as descprod');
                 $this->db->from('producto');
                 $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
                 $query = $this->db->get('');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_productos()
         {
                 $this->Nombre    = $_POST['Nombre'];
-                $this->Precio    = $_POST['Precio'];
                 $this->Descripcion    = $_POST['Descripcion'];
       
-                $this->Estado = True;
+       
                 $this->IdTipoProducto    = $_POST['TipoProduc'];
                  
 
@@ -53,9 +55,8 @@ class Producto_model extends CI_Model {
         {
                 $this->IdProducto = $IdProducto;
                 $this->Nombre    = $_POST['Nombre'];
-                $this->Precio    = $_POST['Precio'];
                 $this->Descripcion    = $_POST['Descripcion'];
-                $this->Estado    = $_POST['Estado'];
+            
                 $this->IdTipoProducto    = $_POST['TipoProduc'];
  
 
@@ -65,7 +66,7 @@ class Producto_model extends CI_Model {
         public function get_buscar_producto(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*');
+                $this->db->select('*, producto.Descripcion as descprod');
                 $this->db->from('producto');
                 $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
                 $this->db->like(  $tipo_dato,$dato_buscar);

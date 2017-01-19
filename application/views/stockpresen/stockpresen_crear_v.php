@@ -45,6 +45,10 @@
               <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion">
             </div>
 
+            <div class="form-group col-md-6">
+              <label>Precio</label>
+              <input validate="decimal" type="text" class="form-control" name="Precio" placeholder="Precio">
+            </div>
 
           
                 <br><br>

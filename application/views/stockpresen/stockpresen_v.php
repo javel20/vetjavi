@@ -52,6 +52,7 @@
             <th>Stock Minimo</th>
             <th>Stock Real</th>
             <th>Presentacion</th>
+            <th>Precio</h>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
@@ -64,6 +65,7 @@
                 "<td>". $dato->StockMin ."</td>".
                 "<td>". $dato->StockReal ."</td>".
                 "<td>". $dato->Presentacion ."</td>".
+                 "<td>". $dato->Precio ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

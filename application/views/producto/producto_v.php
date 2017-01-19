@@ -50,7 +50,7 @@
         <thead>
             <th>Nombres</th>
             <th>Tipo de Producto</th>
-            <th>Precio</th>
+
             <th>Descripción</th>
             <th>Option</th>
         </thead>
@@ -62,7 +62,6 @@
                 echo "<tr>".
                 "<td>". $dato->Nombre . "</td>".
                 "<td>". $dato->NombreTipoP ."</td>".
-                "<td>". $dato->Precio ."</td>".
                 "<td>". $dato->descprod ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

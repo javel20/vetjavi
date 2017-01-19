@@ -5,6 +5,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 
+
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
       <div class="page-header">
@@ -81,6 +82,16 @@
 
             </div>
 
+            <div class="form-group col-md-12">
+             <label>Permisos</label>
+                <select name="permisos[]" id="js-example-tags" class="js-example-tags form-control select2-hidden-accessible" multiple tabindex="-1" aria-hidden="true">
+                    <?php foreach($permisos as $permiso)
+                        echo "<option value=" .$permiso->IdPermisos .">". $permiso->NombreP ."</option>";
+                    ?>
+                </select>
+            
+            </div>
+
 
                 <br><br>
             <div class="col-md-12">
@@ -97,8 +108,11 @@
 </div>
 </div>
 
-
-
+<script >
+$("#js-example-tags").select2({
+  tags: true
+})
+</script>
 
             <script type="text/javascript">
               $(document).ready(function() {

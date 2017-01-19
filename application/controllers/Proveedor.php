@@ -1,12 +1,15 @@
-'<?php
+<?php
+include APPPATH ."helpers/Permisos_trait.php";
 class Proveedor extends CI_Controller {
 
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(9);
           $this->authenticate();
 
         }
@@ -20,17 +23,29 @@ class Proveedor extends CI_Controller {
         }
 
         
-        public function index()
+        public function index($pagina=FALSE)
         {
+          $inicio=0;
+          $limite=10;
 
-          $this->load->model('proveedor_model');
-          $data['datos_proveedor'] =  $this->proveedor_model->get_proveedores();
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination'); 
+          $this->load->model('Proveedor_model');
+          $data['datos_proveedor'] =  $this->Proveedor_model->get_proveedores($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/proveedor/pagina/';
+          $config['total_rows'] = count($this->Proveedor_model->get_proveedores());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/proveedor/pagina/1';
+          $this->pagination->initialize($config);
           $this->load->view('proveedor/proveedor_v', $data);
         }
 
         public function store(){
-             $this->load->model('proveedor_model');
-             $result = $this->proveedor_model->post_proveedores();
+             $this->load->model('Proveedor_model');
+             $result = $this->Proveedor_model->post_proveedores();
              redirect(base_url().'index.php/proveedor', 'refresh');
 
         }
@@ -43,8 +58,8 @@ class Proveedor extends CI_Controller {
 
         public function edit($id){
 
-            $this->load->model('proveedor_model');
-            $data['dato_proveedor'] =  $this->proveedor_model->get_proveedor($id);
+            $this->load->model('Proveedor_model');
+            $data['dato_proveedor'] =  $this->Proveedor_model->get_proveedor($id);
 
             $this->load->view('proveedor/proveedor_editar_v', $data);
 
@@ -52,33 +67,33 @@ class Proveedor extends CI_Controller {
 
 
         public function update($id){
-             $this->load->model('proveedor_model');
+             $this->load->model('Proveedor_model');
              $result = $this->proveedor_model->update_proveedor($id);
              redirect(base_url().'index.php/proveedor', 'refresh');
 
         }
 
         public function search(){
-          $this->load->model('proveedor_model');
-          $data['datos_proveedor'] =  $this->proveedor_model->get_buscar_proveedor();
+          $this->load->model('Proveedor_model');
+          $data['datos_proveedor'] =  $this->Proveedor_model->get_buscar_proveedor();
           $this->load->view('proveedor/proveedor_v', $data);
         }
 
         public function delete($id){
-           $this->load->model('proveedor_model');
+           $this->load->model('Proveedor_model');
            $this->proveedor_model->get_eliminar_proveedor($id);
             redirect(base_url().'index.php/proveedor', 'refresh');
 
         }
 
         public function deactivate($id){
-            $this->load->model('proveedor_model');
+            $this->load->model('Proveedor_model');
             $this->proveedor_model->get_desactivar_proveedor($id);
             redirect(base_url().'index.php/proveedor', 'refresh');
         }
 
         public function activate($id){
-          $this->load->model('proveedor_model');
+          $this->load->model('Proveedor_model');
             $this->proveedor_model->get_activar_proveedor($id);
             redirect(base_url().'index.php/proveedor', 'refresh');
         }

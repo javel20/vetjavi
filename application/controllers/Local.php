@@ -1,12 +1,15 @@
-'<?php
+<?php
+include APPPATH ."helpers/Permisos_trait.php";
 class Local extends CI_Controller {
 
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(6);
           $this->authenticate();
 
         }
@@ -19,11 +22,23 @@ class Local extends CI_Controller {
           }
         }
 
-        public function index()
+        public function index($pagina=FALSE)
         {
+          $inicio=0;
+          $limite=10;
 
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination'); 
           $this->load->model('Local_model');
-          $data['datos_local'] =  $this->Local_model->get_locales();
+          $data['datos_local'] =  $this->Local_model->get_locales($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/local/pagina/';
+          $config['total_rows'] = count($this->Local_model->get_locales());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/local/pagina/1';
+          $this->pagination->initialize($config);
           $this->load->view('local/local_v', $data);
         }
 

@@ -17,13 +17,17 @@ class Compra_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_compras()
+        public function get_compras($inicio=FALSE,$limite=FALSE)
         {
 
                 $this->db->select('*, proveedor.Nombre  as NombreProv');
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
                 $query = $this->db->get();
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 // die(var_dump($query->result()));
                 return $query->result();
 
@@ -50,6 +54,7 @@ class Compra_model extends CI_Model {
                 $this->Fecha    =  strval(trim($fecha_php));
                 $this->TipoC    = $_POST['TipoC'];
                 $this->Descripcion    = $_POST['Descripcion'];
+                $this->Estado="Compra Realizada";
                 $this->IdProveedor    = $_POST['IdProveedor'];
                 $this->IdTrabajador    = $_POST['IdTrabajador'];
 
@@ -66,13 +71,18 @@ class Compra_model extends CI_Model {
                         $data_detalle = array(
 
                                 'IdCompra' => $insert_id,
-                                'IdProducto' => $_POST['nombre_detalle'][$key],
+                                // 'IdProducto' => $_POST['nombre_detalle'][$key],
+                                'FechaVen' =>$_POST['fecha'][$key],
                                 'Cantidad' => $_POST['cantidad_detalle'][$key],
-                                'fechaVen' =>$_POST['fecha'][$key],
+                                'PrecioUnitario' => $_POST['precio_detalle'][$key],
+                                'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
                                
 
 
                         );
+
+                        $this->db->query('update stockpresentacion SET Precio='.$_POST['precio_detalle'][$key].' ,StockReal=StockReal + '. $_POST['cantidad_detalle'][$key] .'   where IdStockPresen='.$_POST['presentacion_detalle'][$key]);
+
                         $this->db->insert("detallecompraproducto", $data_detalle);
                 }
                 // die(json_encode($acum));
@@ -84,8 +94,25 @@ class Compra_model extends CI_Model {
                 $this->db->from('compra');
                 $this->db->where('IdCompra',$IdCompra);   
                 $query = $this->db->get();
+
+                
+                $fecha = $query->result()[0]->Fecha;
+                 $pos = preg_match('/[-]+/',$fecha);
+                if($pos == true){
+                        $array = explode('-', $fecha);
+                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+
+                $query->result()[0]->Fecha= $fecha_php;
+                // die(var_dump($query->result()));
+
                 return $query->result();     
 
+                
+                        
         }
 
        
@@ -130,8 +157,21 @@ class Compra_model extends CI_Model {
 
         public function get_eliminar_compra($id){
    
-                $query = $this->db->delete("compra", array('IdCompra'=>$id));
-                 return $query; 
+                $elim = $this->db->query('select IdStockPresen, Cantidad from detallecompraproducto where IdCompra='.$id);
+                // die(var_dump($elim->result()));
+                foreach($elim->result() as $data){
+
+                        $this->db->query('update stockpresentacion SET StockReal=StockReal- '.$data->Cantidad.' where IdStockPresen='.$data->IdStockPresen);
+                        // $data->IdStockPresen
+                        // die($data->Cantidad);
+                        // die($data->IdStockPresen);
+
+                }
+                $this->db->query('update compra SET Estado="Compra Cancelada" where IdCompra= '.$id.'');
+
+
+                // $query = $this->db->delete("compra", array('IdCompra'=>$id));
+                //  return $query; 
         }
 
         public function get_desactivar_compra($id){
@@ -150,8 +190,9 @@ class Compra_model extends CI_Model {
 
                 $this->db->select('*, producto.Nombre as nomcom');
                 $this->db->from('detallecompraproducto');
-                $this->db->join('producto', 'producto.IdProducto = detallecompraproducto.IdProducto');
-                $this->db->where('IdCompra', $id);
+                $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
+                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+                $this->db->where('Idcompra', $id);
                 
                 $query = $this->db->get();
                 // die(json_encode($query->result()));

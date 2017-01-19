@@ -4,7 +4,7 @@
         "**/**/index.html": true,
         "**/index.html": true,
         "**/*.map": true,
-        "system/":true,
+        "system/":false,
         "user_guide/":true,
         "application/cache":true,
         "application/core":true,

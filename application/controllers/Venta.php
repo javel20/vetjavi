@@ -1,11 +1,15 @@
 <?php
+include APPPATH ."helpers/Permisos_trait.php";
 class Venta extends CI_Controller {
+
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(16);
           $this->authenticate();
 
         }
@@ -18,11 +22,23 @@ class Venta extends CI_Controller {
           }
         }
 
-        public function index()
+        public function index($pagina=FALSE)
         {
+          $inicio=0;
+          $limite=10;
 
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination');
           $this->load->model('Venta_model');
-          $data['datos_venta'] =  $this->Venta_model->get_ventas();
+          $data['datos_venta'] =  $this->Venta_model->get_ventas($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/venta/pagina/';
+          $config['total_rows'] = count($this->Venta_model->get_ventas());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/venta/pagina/1';  
+
           $this->load->view('venta/venta_v', $data);
         }
 
@@ -40,6 +56,8 @@ class Venta extends CI_Controller {
             $data['productos'] = $this->Producto_model->get_productos();
             $this->load->model('StockPresen_model');
             $data['presentacion'] = $this->StockPresen_model->get_presen();
+            $this->load->model('TipoProducto_model');
+            $data['tipoproductos'] = $this->TipoProducto_model->get_tipoproductos();
             $this->load->view('venta/venta_crear_v', $data);
 
         }
@@ -66,11 +84,12 @@ class Venta extends CI_Controller {
 
         public function search(){
           $this->load->model('Venta_model');
-          $data['datos_venta'] =  $this->Cliente_model->get_buscar_venta();
+          $data['datos_venta'] =  $this->Venta_model->get_buscar_venta();
           $this->load->view('venta/venta_v', $data);
         }
 
         public function delete($id){
+          
            $this->load->model('Venta_model');
            $this->Venta_model->get_eliminar_venta($id);
             redirect(base_url().'index.php/venta', 'refresh');

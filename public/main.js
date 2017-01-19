@@ -80,7 +80,7 @@ function validar(e){
 
 
         if(el[d].getAttribute("validate") == "texto"){
-             if(!(/^([a-z]|\s)+$/i.test(el[d].value))){
+             if(!(/^([óáéíúña-z]|\s)+$/i.test(el[d].value))){
                 el[d].style.border ="1px solid red";
                 if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo letras</span>`
@@ -95,6 +95,20 @@ function validar(e){
 
          if(el[d].getAttribute("validate") == "number"){
              if(!(/^[0-9]+$/g.test(el[d].value))){
+                el[d].style.border ="1px solid red";
+                if(el[d].previousElementSibling.childElementCount == 0)
+                el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros</span>`
+                //  alert("number");
+                cont++;
+            }else{
+                el[d].style.border = "1px solid #ccc";
+                if(el[d].previousElementSibling.childElementCount == 1)
+                el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+            }
+        }
+
+        if(el[d].getAttribute("validate") == "decimal"){
+             if(!(/^[0-9]|\.+$/g.test(el[d].value))){
                 el[d].style.border ="1px solid red";
                 if(el[d].previousElementSibling.childElementCount == 0)
                 el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros</span>`
@@ -192,3 +206,4 @@ return false;
 
 // return false;
 }
+

@@ -21,9 +21,20 @@ class Cliente_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_clientes()
+        public function get_clientes($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('cliente');
+
+
+                $this->db->select('*');
+                $this->db->from('cliente');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+                // $this->db->limit(10);
+                // $query = $this->db->get();
+                $query = $this->db->get();
+
                 return $query->result();
         }
          public function post_clientes()

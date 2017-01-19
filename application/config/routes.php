@@ -52,3 +52,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['analisis/pagina/(:num)'] = '/analisis/index/$1';  
+$route['cliente/pagina/(:num)'] = '/cliente/index/$1';  
+$route['cita/pagina/(:num)'] = '/cita/index/$1';  
+$route['compra/pagina/(:num)'] = '/compra/index/$1';
+$route['diagnostico/pagina/(:num)'] = '/diagnostico/index/$1';
+$route['local/pagina/(:num)'] = '/local/index/$1';
+$route['paciente/pagina/(:num)'] = '/paciente/index/$1';
+$route['producto/pagina/(:num)'] = '/producto/index/$1';
+$route['proveedor/pagina/(:num)'] = '/proveedor/index/$1';
+$route['reportes/pagina/(:num)'] = '/reportes/index/$1';
+$route['stockpresen/pagina/(:num)'] = '/stockpresen/index/$1';
+$route['tipocita/pagina/(:num)'] = '/tipocita/index/$1';
+$route['tipoproducto/pagina/(:num)'] = '/tipoproducto/index/$1';
+$route['tipotrab/pagina/(:num)'] = '/tipotrab/index/$1';
+$route['trabajador/pagina/(:num)'] = '/trabajador/index/$1';
+$route['venta/pagina/(:num)'] = '/venta/index/$1';
+$route['cirugia/pagina/(:num)'] = '/cirugia/index/$1';
+
+
+// $route['analisis/search/pagina/(:num)'] = '/analisis/search/index/$1';  

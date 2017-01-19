@@ -1,12 +1,15 @@
 <?php
+include APPPATH ."helpers/Permisos_trait.php";
 class Compra extends CI_Controller {
 
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(4);
           $this->authenticate();
 
         }
@@ -19,11 +22,24 @@ class Compra extends CI_Controller {
           }
         }
 
-        public function index()
+        public function index($pagina=FALSE)
         {
 
+          $inicio=0;
+          $limite=10;
+
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination'); 
           $this->load->model('Compra_model');
-          $data['datos_compra'] =  $this->Compra_model->get_compras();
+          $data['datos_compra'] =  $this->Compra_model->get_compras($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/compra/pagina/';
+          $config['total_rows'] = count($this->Compra_model->get_compras());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/compra/pagina/1';
+          $this->pagination->initialize($config);
           $this->load->view('compra/compra_v', $data);
         }
 
@@ -40,6 +56,10 @@ class Compra extends CI_Controller {
             $data['proveedores'] = $this->proveedor_model->get_proveedores();
             $this->load->model('Producto_model');
             $data['productos'] = $this->Producto_model->get_productos();
+            $this->load->model('StockPresen_model');
+            $data['presentacion'] = $this->StockPresen_model->get_presen();
+            $this->load->model('TipoProducto_model');
+            $data['tipoproductos'] = $this->TipoProducto_model->get_tipoproductos();
             $this->load->view('compra/compra_crear_v', $data);
 
         }

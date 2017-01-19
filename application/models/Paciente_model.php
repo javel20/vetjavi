@@ -18,13 +18,18 @@ class Paciente_model extends CI_Model {
                 parent::__construct();
         }
         
-        public function get_pacientes()
+        public function get_pacientes($inicio=FALSE,$limite=FALSE)
          {
 
                 $this->db->select('*,paciente.Nombre, cliente.Nombre as NombreCliente');
                 $this->db->from('paciente');
                 $this->db->join('cliente', 'cliente.IdCliente = paciente.IdCliente');
                 $query = $this->db->get();
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
          }
          public function post_pacientes()
@@ -56,6 +61,19 @@ class Paciente_model extends CI_Model {
                 $this->db->from('paciente');
                 $this->db->where('IdPaciente',$IdPaciente);   
                 $query = $this->db->get();
+
+                $fecha = $query->result()[0]->FechaNac;
+                 $pos = preg_match('/[-]+/',$fecha);
+                if($pos == true){
+                        $array = explode('-', $fecha);
+                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+
+                $query->result()[0]->FechaNac= $fecha_php;
+
                 return $query->result();     
 
         }

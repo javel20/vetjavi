@@ -1,12 +1,15 @@
-'<?php
+<?php
+include APPPATH ."helpers/Permisos_trait.php";
 class StockPresen extends CI_Controller {
 
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(11);
           $this->authenticate();
 
         }
@@ -20,11 +23,23 @@ class StockPresen extends CI_Controller {
         }
 
         
-        public function index()
+        public function index($pagina=FALSE)
         {
+          $inicio=0;
+          $limite=10;
 
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination'); 
           $this->load->model('StockPresen_model');
-          $data['datos_stockpresen'] =  $this->StockPresen_model->get_stockpresens();
+          $data['datos_stockpresen'] =  $this->StockPresen_model->get_stockpresens($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/stockpresen/pagina/';
+          $config['total_rows'] = count($this->StockPresen_model->get_stockpresens());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/stockpresen/pagina/1';
+          $this->pagination->initialize($config);
         //   die(var_dump($data));
           $this->load->view('stockpresen/stockpresen_v', $data);
         }

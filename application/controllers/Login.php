@@ -22,6 +22,7 @@ class Login extends CI_Controller {
             $this->load->model('Trabajador_model');
             $correo = $_POST["correo"];
             $password = $_POST["pass"];
+
             // die($correo . "-" . $password);
 
             $asig = $this->Trabajador_model->login($correo,$password);
@@ -29,10 +30,19 @@ class Login extends CI_Controller {
             if($asig != false) 
             {
                 
-                $log = array('IdTrabajador' => $asig[0]->IdTrabajador, 'Email'=> $asig[0]->Email, 'Password' => $asig[0]->Password);
+                $log = array('IdTrabajador' => $asig[0]->IdTrabajador, 
+                                'Email'=> $asig[0]->Email, 
+                                'Password' => $asig[0]->Password,
+                                'Permisos'=>$asig[0]->permisos);
                 $this->session->set_userdata($log);
                 redirect('login/dashboard');
                
+            }else{
+
+                $this->session->set_flashdata('error','Datos incorrectos');
+                $this->session->set_flashdata('email',$_POST["correo"]);
+                redirect('login','refresh');
+                
             }
 
             

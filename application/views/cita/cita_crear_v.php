@@ -1,3 +1,4 @@
+
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
@@ -18,16 +19,22 @@
           <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             
 
+          
 
             <div class="form-group col-md-6">
             <label>Tipo Cita</label>
-              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="listTipo">
+              <select validate="selecbus" class="form-control" id="select_cita" name="listTipo">
               <option>--seleccionar--</option>
+
+
+                <option value='cirugia'>Cirugia</option>
+
+
                 <?php
                     
                     foreach($citas as $cita){
-
-                      echo "<option value=" .$cita->IdTipoCita .">". $cita->Nombre ."</option>";
+                          $precio = isset( $cita->PrecioTC )? $cita->PrecioTC:'' ;
+                      echo "<option  precio=".$precio." Porcentaje=". $cita->PorcentajeTC ." value=" .$cita->IdTipoCita .">". $cita->NombreTC ."</option>";
                     }?>
               </select>
 
@@ -47,7 +54,10 @@
               </div>
 
            
-
+              <div class="form-group col-md-6">
+              <label>Codigo</label>
+              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo">
+            </div>
             
                 <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
@@ -84,17 +94,31 @@
               <label>Frecuencia Respiratoria</label>
               <input validate="number" type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria">
             </div>
+
             <div class="form-group col-md-6">
               <label>Descripcion</label>
               <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
             </div>
 
+            <div class="form-group col-md-6 cirugia" id="capa_cirugia" >
+            <label>Cirugia</label>
+              <select  validate="" id="select_cirugia" class="form-control" name="listCirugia">
+              <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($cirugias as $cirugia){
+
+                      echo "<option porcentaje =". $cirugia->PorcentajeC ." precio=". $cirugia->PrecioC. " value=" .$cirugia->IdCirugia .">". $cirugia->NombreC ."</option>";
+                    }?>
+              </select>
+
+            </div>
 
 
           
                 <br><br>
             <div class="col-md-12">
-      
+              <input type="hidden" id="PrecioTotal" name="PrecioTotal" value="">
               <button type="submit" class="btn btn-primary ">Guardar</button>
             
             </div>
@@ -109,14 +133,83 @@
 </div>
 
 
-            <script type="text/javascript">
-            $(document).ready(function() {
-             $("#js-example-basic-single").select2();
-             $("#js-example-basic-single2").select2();
+<script type="text/javascript">
+      $(document).ready(function() {
+      $("#js-example-basic-single").select2();
+      $("#select_cita").select2();
+      $("#select_cirugia").select2();
 
-            });
 
-            </script>
+      $("#select_cita").on("change", function(event){
+        
+        if(event.target.value == "cirugia"){
+// console.log(event.target);
+          $('#capa_cirugia').css("display","inline-block")
+            // console.log("estoy en cirugia");
+            $('#select_cirugia')[0].setAttribute("validate","selecbus")//attr para modificar propiedades
+
+        }
+        else{
+
+
+              $('#capa_cirugia').css("display","none")
+              $('#select_cirugia')[0].setAttribute("validate","")
+               console.log("estoy en tipo cita");
+
+                  var precio='';
+                  var porcentaje='';
+                var PrecioTotal='';
+                // console.log(event.target);
+                      event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
+                      if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
+                        precio = Number(e.getAttribute('precio'));//e.get... traigo el atributo precio y lo asigno a precio
+                        porcentaje = Number(e.getAttribute('porcentaje'));
+                        PrecioTotal=Number(precio*porcentaje)/100.0+precio;
+                        console.log(precio);
+                        // console.log(porcentaje);
+                        console.log(PrecioTotal);
+                        $("#PrecioTotal").val(PrecioTotal);
+
+          }
+        });
+
+
+        }
+          // console.log(event.target.value);
+      })
+
+
+      $("#select_cirugia").on("change", function(event){
+      
+        
+                  var precio='';
+                  var porcentaje='';
+                var PrecioTotal='';
+                // console.log(event.target);
+                      event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
+                      if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
+                        precio = Number(e.getAttribute('precio'));//e.get... traigo el atributo precio y lo asigno a precio
+                        porcentaje = Number(e.getAttribute('porcentaje'));
+                        PrecioTotal=Number(precio*porcentaje)/100.0+precio;
+                        console.log(precio);
+                        // console.log(porcentaje);
+                        console.log(PrecioTotal);
+                        $("#PrecioTotal").val(PrecioTotal);
+
+          }
+        });
+  
+      })
+
+
+
+
+   });
+
+
+
+
+</script>
 
 
 

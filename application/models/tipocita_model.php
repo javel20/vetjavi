@@ -2,7 +2,10 @@
 class TipoCita_model extends CI_Model {
 
         // public $IdTipoCita;
-        public $Nombre;
+        public $NombreTC;
+        public $PrecioTC;
+        public $PorcentajeTC;
+        public $DescripcionTC;
 
 
 
@@ -12,15 +15,23 @@ class TipoCita_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_tipocitas()
+        public function get_tipocitas($inicio=FALSE,$limite=FALSE)
         {
                 $query = $this->db->get('tipocita');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_tipocitas()
         {
               
-                $this->Nombre    = $_POST['Nombre'];
+                $this->NombreTC    = $_POST['Nombre'];
+                $this->PrecioTC    = $_POST['Precio'];
+                $this->PorcentajeTC    = $_POST['Porcentaje'];
+                $this->DescripcionTC    = $_POST['Descripcion'];
 
                 $this->db->insert('tipocita', $this);
         }
@@ -38,7 +49,10 @@ class TipoCita_model extends CI_Model {
         public function update_tipocita($IdTipoCita)
         {
 
-                $this->Nombre    = $_POST['Nombre']; 
+                $this->NombreTC    = $_POST['Nombre']; 
+                $this->PrecioTC    = $_POST['Precio'];
+                $this->PorcentajeTC    = $_POST['Porcentaje']; 
+                $this->DescripcionTC    = $_POST['Descripcion']; 
 
 
 

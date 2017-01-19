@@ -9,9 +9,9 @@
 /*--------------------------------------*/
 
 .header_top{
-    margin-top:20px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ddd
+    /*border-top: 20px solid white;*/
+    /*margin-bottom: 30px;*/
+    /*border-bottom: 1px solid #ddd*/
 }
 .header_top h3{
     margin-left: 40px;
@@ -238,4 +238,118 @@ td .glyphicon{
 .correo {
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+.select2-container{
+
+    width: 100% !important;
+}
+
+
+/***************************login*************/
+
+.botoningresar {
+    color: white;
+    background-color: #0078F8;
+    border-color: #ccc;
+    width: 300px;
+    height: 50px;
+}
+
+.btn-default:hover {
+
+  background-color: #2568F6;
+
+}
+
+.well{
+
+  background-color:white !important;
+
+}
+
+.login{
+
+      display: block;
+      padding: 8em,8em!important;
+    /*-webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;*/
+
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+
+}
+
+.loginlabel{
+
+    background: #e5e5e5;
+    border: none;
+    border-radius: 3px;
+    color: #5a5656;
+    font-family: inherit;
+    font-size: 14px;
+    height: 50px;
+    outline: none;
+    padding: 0px 10px;
+    width: 280px;
+    -webkit-appearance: none;
+
+}
+
+header, body{
+  background-color: white;
+}
+.container-fluid{
+
+  background-color: #0078F8 !important;
+
+}
+h2, h4{
+  padding-top:10px;
+  color:white;
+}
+.btn btn-default{
+
+  font-size:40px!important;
+
+}
+
+.titulologin{
+
+  font-size:30px!important;
+  text-align:center;
+
+}
+
+.correo{
+  padding-top:15px;
+  color:white;
+
+}
+
+.logout a{
+    color:white!important;
+}
+.menu{
+
+  background-color: #0078F8 !important;
+
+}
+
+.menucontorno, sidebar-nav {
+
+  box-shadow: 1px 2px 1px #0078F8!important;
+  border-style: outset;
+  border-color:#0078F8;
+  border-width: 1px;
+
+}
+
+.cirugia{
+
+  display:none;
+
 }

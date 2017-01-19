@@ -20,14 +20,11 @@
 
      
 
-          <div class="form-group col-md-6">
-            <label>Precio</label>
-            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_producto[0]->Precio?>">
-          </div>
+
           <div class="form-group col-md-6">
             <label>Descripcion</label>
             <input type="text" class="form-control" name="Descripcion" placeholder="Dirección" value="<?php echo $dato_producto[0]->Descripcion?>">
-            <input type="hidden"  name="Estado" value="<?php echo $dato_producto[0]->Estado?>">
+            
           </div>
 
           <div class="form-group col-md-6">

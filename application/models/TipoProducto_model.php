@@ -13,9 +13,14 @@ class TipoProducto_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_tipoproductos()
+        public function get_tipoproductos($inicio=FALSE,$limite=FALSE)
         {
                 $query = $this->db->get('tipoproducto');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_tipoproductos()
@@ -54,7 +59,7 @@ class TipoProducto_model extends CI_Model {
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('tipoproducto');
-                $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->like("tipoproducto.".$tipo_dato,$dato_buscar);   
                 $query = $this->db->get();
                 return $query->result();     
         }

@@ -50,8 +50,10 @@
     <table class="table">
         <thead>
             <th>Producto</th>
+            <th>Presentacion</th>
             <th>Fecha Vencimiento</th>
             <th>Cantidad</th>
+            <th>Precio</th>
         </thead>
         <tbody id="eventos_table">
         
@@ -60,9 +62,10 @@
             foreach ($datos_detalle as &$dato){
                 echo "<tr>".
                 "<td>". $dato->nomcom  ."</td>".
+                "<td>". $dato->Presentacion ."</td>".
                 "<td>". $dato->FechaVen ."</td>".
                 "<td>". $dato->Cantidad ."</td>".
-
+                "<td>". $dato->PrecioUnitario ."</td>".
 
                 "</tr>";
             }

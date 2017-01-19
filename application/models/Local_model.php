@@ -14,9 +14,14 @@ class Local_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_locales()
+        public function get_locales($inicio=FALSE,$limite=FALSE)
         {
                 $query = $this->db->get('local');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_locales()

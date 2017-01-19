@@ -18,6 +18,23 @@
                 <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombre">
                 </div>
 
+                <div class="form-group col-md-6">
+                <label>Precio</label>
+                <input validate="number" type="text" class="form-control" name="Precio" placeholder="Precio">
+                </div>
+
+                <div class="form-group col-md-6">
+                <label>Porcentaje</label>
+                <input validate="number" type="text" class="form-control" name="Porcentaje" placeholder="Porcentaje">
+                </div>
+
+
+                <div class="form-group col-md-6">
+                <label>Descripcion</label>
+                <input validate="texto" type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+                </div>
+
+
             <div class="col-md-12">
               <button type="submit" class="btn btn-primary ">Agregar</button>
             

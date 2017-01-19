@@ -52,6 +52,11 @@
             </div>
 
             <div class="form-group col-md-6">
+              <label>Precio</label>
+              <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/.">
+            </div>
+
+            <div class="form-group col-md-6">
               <label>Descripcion</label>
               <input type="text" class="form-control" id="Descripcion"name="Descripcion" placeholder="Descripcion">
             </div>

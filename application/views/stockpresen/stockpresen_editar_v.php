@@ -45,7 +45,10 @@
           </div>
 
 
-           
+          <div class="form-group col-md-6">
+            <label>Precio</label>
+            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_stockpresen[0]->Precio?>">
+          </div>
 
             <script type="text/javascript">
             $(document).ready(function() {

@@ -18,9 +18,14 @@ class Proveedor_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_proveedores()
+        public function get_proveedores($inicio=FALSE,$limite=FALSE)
         {
                 $query = $this->db->get('proveedor');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_proveedores()

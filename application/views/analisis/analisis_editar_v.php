@@ -37,14 +37,21 @@
             <label>Tipo</label>
             <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Tipo">
 
-                 <option value="Hemograma Completo" <?php echo ($dato_local[0]->Tipo=="Hemograma Completo" ? 'selected="selected"' : '');?>>Hemograma Completo</option>
-                 <option value="Urianálisis" <?php echo ($dato_local[0]->Tipo=="Urianálisis" ? 'selected="selected"' : '');?>>Urianálisis Completo</option>
-                 <option value="Perfil Hepático" <?php echo ($dato_local[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
-                 <option value="Perfil Renal" <?php echo ($dato_local[0]->Tipo=="Perfil Renal" ? 'selected="selected"' : '');?>>Perfil Renal</option>
-                 <option value="Perfil Hepático" <?php echo ($dato_local[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
+                 <option value="Hemograma Completo" <?php echo ($dato_analisis[0]->Tipo=="Hemograma Completo" ? 'selected="selected"' : '');?>>Hemograma Completo</option>
+                 <option value="Urianálisis" <?php echo ($dato_analisis[0]->Tipo=="Urianálisis" ? 'selected="selected"' : '');?>>Urianálisis Completo</option>
+                 <option value="Perfil Hepático" <?php echo ($dato_analisis[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
+                 <option value="Perfil Renal" <?php echo ($dato_analisis[0]->Tipo=="Perfil Renal" ? 'selected="selected"' : '');?>>Perfil Renal</option>
+                 <option value="Perfil Completo" <?php echo ($dato_analisis[0]->Tipo=="Perfil Completo" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
                 
             </select>
           </div>
+
+          <div class="form-group col-md-6">
+              <label>Precio</label>
+              <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/." value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">
+            </div>
+
+
           <div class="form-group col-md-6">
             <label>Descripcion</label>
             <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_analisis[0]->Descripcion?>">

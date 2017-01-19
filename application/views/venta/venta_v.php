@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/cita/search'); ?>"  
+                        action="<?php echo base_url('index.php/venta/search'); ?>"  
                         method="GET">
                     <div class="input-group">
                 
@@ -22,21 +22,21 @@
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown" 
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="CodV">Codigo </a></li>
                     <li><a href="#" dato="Fecha">Fecha </a></li>
                     <li><a href="#" dato="TipoV">Tipo </a></li>
-                    <li><a href="#" dato="Descripcion">Descripcion</a></li>
+                  
             
             
                     </ul>
                 </div><!-- /btn-group -->
-                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar">
+                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'CodV';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'CodV';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -55,6 +55,7 @@
             <th>Fecha</th>
             <th>Tipo</th>
             <th>Descripicion</th>
+            <th>Precio Total Venta</th>
             <th>Option</th>
          
          
@@ -71,6 +72,7 @@
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".
+                "<td>". $dato->PrecioTotalVenta."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

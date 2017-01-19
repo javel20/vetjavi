@@ -12,9 +12,14 @@ class TipoTrab_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_tipotrabs()
+        public function get_tipotrabs($inicio=FALSE,$limite=FALSE)
         {
                 $query = $this->db->get('tipotrab');
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
         }
          public function post_tipotrabs()

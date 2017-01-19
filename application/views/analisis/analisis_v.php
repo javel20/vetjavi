@@ -31,7 +31,7 @@
             
                     </ul>
                 </div><!-- /btn-group -->
-                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar">
+                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
                     <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'Codigo';?>">
                     <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?>">
@@ -51,6 +51,7 @@
             <th>Codigo</th>
             <th>Paciente</th>
             <th>Tipo</th>
+            <th>Precio</th>
             <th>Descripcion</th>
             <th>Option</th>
         </thead>
@@ -63,6 +64,7 @@
                 "<td>". $dato->Codigo."</td>".
                "<td>". $dato->NombrePaciente ."</td>".
                 "<td>". $dato->Tipo ."</td>".
+                "<td>". $dato->PrecioAnalisis ."</td>".
                 "<td>". $dato->Descpa ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -84,7 +86,8 @@
         ?>  </tbody>
     </table>
 </div>
-   
+
+
 
 </div>
 </div>
@@ -100,6 +103,10 @@
     </div>
 </div>
 
+
     <script src="<?php echo base_url('public/main.js'); ?>"></script>
+   <center>
+        <?php echo $this->pagination->create_links();?>
+    </center>
 <?php  $this->load->view('layouts/footer.php');?>       
      

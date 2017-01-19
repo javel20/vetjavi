@@ -51,6 +51,8 @@
         <thead>
 
             <th>Nombre</th>
+            <th>Porcentaje</th>
+            <th>Descripcion</th>
             <th>Option</th>
             
         </thead>
@@ -62,7 +64,10 @@
                 //  die(var_dump($datos_tipotrab));
                 
                echo "<tr>".
-                "<td>". $dato->Nombre ."</td>".
+                "<td>". $dato->NombreTC ."</td>".
+                "<td>". $dato->PrecioTC ."</td>".
+                "<td>". $dato->PorcentajeTC ."</td>".
+                "<td>". $dato->DescripcionTC ."</td>".
   
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -73,7 +78,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre ."'
+                                nombre_data='". $dato->NombreTC ."'
                                 url_data=". base_url("index.php/tipocita/delete/$dato->IdTipoCita") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/tipocita/edit/$dato->IdTipoCita") .">Editar</a></li>
 

@@ -25,10 +25,19 @@
 
                   <script>
                     $(document).ready(function(){
+                      
+
+                      var fecha= "<?php echo trim($dato_compra[0]->Fecha) ?>"
+
+                      var anio = Number(fecha.split("/")[0]);
+                      var mes = Number(fecha.split("/")[1]);
+                      var dia = Number(fecha.split("/")[2]);
+
                       var date_input=$('input[name="Fecha"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         var options={
                           format: 'mm/dd/yyyy',
+                          defaultViewDate: {year:anio,month:mes,day:dia},
                           container: container,
                           todayHighlight: true,
                           autoclose: true,

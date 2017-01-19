@@ -31,10 +31,10 @@
             
                     </ul>
                 </div><!-- /btn-group -->
-                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar">
+                <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'FechaReserva';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'FechaReserva';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -48,13 +48,15 @@
     
     <table class="table container">
         <thead>
-        <th>Paciente</th>
+            <th>Paciente</th>
             <th>TipoCita</th>
+            <th>Codigo</th>
             <th>Fecha Reserva</th>
             <th>Fecha Registro</th>
             <th>Peso</th>
             <th>Frecuencia Cardiaca</th>
             <th>Frecuencia Respiratoria</th>
+            <th>Precio</th>
             <th>Descripicion</th>
             <th>Option</th>
             
@@ -66,15 +68,18 @@
         <?php
         
             foreach ($datos_cita as &$dato) {
+                $tipodecita = $dato->NombreTipoCita!=NULL ? $dato->NombreTipoCita:"Cirugia";
           echo "<tr >".
                 "<td>". $dato->NombrePaciente ."</td>".
-                "<td>". $dato->NombreTipoCita ."</td>".
+                "<td>". $tipodecita . " </td>".
+                "<td>". $dato->CodigoC ."</td>".
                 "<td>". $dato->FechaReserva ."</td>".
                 "<td>". $dato->FechaRegistro ."</td>".
                 "<td>". $dato->Peso ."</td>".
                 "<td>". $dato->FrecuenciaCardiaca ."</td>".
                 "<td>". $dato->FrecuenciaRespiratoria ."</td>".
-                "<td>". $dato->Descripcion ."</td>".
+                "<td>". $dato->PrecioTotal ."</td>".
+                "<td>". $dato->descita ."</td>".
                 
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

@@ -58,18 +58,33 @@
 
             </script>
 
+            <div class="form-group col-md-6">
+              <label>Codigo</label>
+              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" value= "<?php echo $dato_cita[0]->CodigoC?>">
+            </div>
 
-    <div class="form-group col-md-6">
+
+            <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
                 <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_cita[0]->FechaReserva?>" />
 
 
                   <script>
                     $(document).ready(function(){
+
+
+                      var fecha= "<?php echo trim($dato_cita[0]->FechaReserva) ?>"
+
+                      var anio = Number(fecha.split("/")[0]);
+                      var mes = Number(fecha.split("/")[1]);
+                      var dia = Number(fecha.split("/")[2]);
+
+
                       var date_input=$('input[name="FechaReserva"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         var options={
                           format: 'mm/dd/yyyy',
+                          defaultViewDate: {year:anio,month:mes,day:dia},
                           container: container,
                           todayHighlight: true,
                           autoclose: true,
@@ -93,6 +108,10 @@
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
               <input validate="number" type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" value= "<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Precio</label>
+              <input validate="number" type="text" class="form-control" name="PrecioCita" placeholder="Precio" value= "<?php echo $dato_cita[0]->PrecioCita?>">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>

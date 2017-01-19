@@ -20,7 +20,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
-      <a class="navbar-brand" href="#">Amigo del Criador</a>
+      <h4>Amigo del Criador</h4>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,7 +30,7 @@
         <?php if (isset($_SESSION['Email'])): ?>
               <li class="correo"><?php echo $_SESSION['Email'];?></li>
                 
-              <li><a href="<?php echo base_url(); ?>index.php/login/logout">LogOut</a></li>
+              <li class="logout"><a href="<?php echo base_url(); ?>index.php/login/logout">LogOut</a></li>
 
           <?php else: ?>
 

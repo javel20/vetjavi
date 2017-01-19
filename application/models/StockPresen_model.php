@@ -5,6 +5,7 @@ class StockPresen_model extends CI_Model {
         public $StockMin;
         public $StockReal;
         public $Presentacion;
+        public $Precio;
         public $IdProducto;
 
 
@@ -15,13 +16,18 @@ class StockPresen_model extends CI_Model {
                 parent::__construct();
         }
         
-        public function get_stockpresens()
+        public function get_stockpresens($inicio=FALSE,$limite=FALSE)
          {
                 $this->db->select('*');
                 $this->db->from('stockpresentacion');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
 
                 $query = $this->db->get();
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 return $query->result();
          }
 
@@ -36,6 +42,7 @@ class StockPresen_model extends CI_Model {
                 $this->StockMin    = $_POST['StockMin'];
                 $this->StockReal    = $_POST['StockReal'];
                 $this->Presentacion    = $_POST['Presentacion'];
+                $this->Precio    = $_POST['Precio'];
                 $this->IdProducto    = $_POST['SelectTipo'];
                 
                  
@@ -63,6 +70,7 @@ class StockPresen_model extends CI_Model {
                 $this->StockMin    = $_POST['StockMin'];
                 $this->StockReal    = $_POST['StockReal'];
                 $this->Presentacion    = $_POST['Presentacion'];
+                $this->Precio    = $_POST['Precio'];
                 $this->IdProducto = $_POST['SelectTipo'];
 
                 $this->db->update('stockpresentacion', $this, array('IdStockPresen' => $IdStockPresen));
@@ -84,6 +92,19 @@ class StockPresen_model extends CI_Model {
                 $query = $this->db->delete("stockpresentacion", array('IdStockPresen'=>$id));
                  return $query; 
         }
+
+        
+        public function get_presenajax($id){
+
+                $this->db->select('*');
+                $this->db->from('stockpresentacion');
+                $this->db->where('IdProducto',$id);
+                
+                $query = $this->db->get('');
+                return $query->result();
+
+        }
+
 
 
 }

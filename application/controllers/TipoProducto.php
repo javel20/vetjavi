@@ -1,11 +1,15 @@
-'<?php
+<?php
+include APPPATH ."helpers/Permisos_trait.php";
 class TipoProducto extends CI_Controller {
+
+    use Permisos_trait;
 
         public function __construct()
         {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
+          $this->autorizado(13);
           $this->authenticate();
 
         }
@@ -19,11 +23,24 @@ class TipoProducto extends CI_Controller {
         }
         
 
-        public function index()
+        public function index($pagina=FALSE)
         {
+          $inicio=0;
+          $limite=10;
 
+          if($pagina){
+            $inicio=($pagina-1) * $limite;
+          }
+
+          $this->load->library('pagination');
           $this->load->model('TipoProducto_model');
-          $data['datos_tipoprod'] =  $this->TipoProducto_model->get_tipoproductos();
+          $data['datos_tipoprod'] =  $this->TipoProducto_model->get_tipoproductos($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/tipoproducto/pagina/';
+          $config['total_rows'] = count($this->TipoProducto_model->get_tipoproductos());
+          $config['per_page'] = 10;
+          $config['first_url'] = base_url().'index.php/tipoproducto/pagina/1';
+          $this->pagination->initialize($config);
+
           $this->load->view('tipoproducto/tipoproducto_v', $data);
         }
 
@@ -69,6 +86,13 @@ class TipoProducto extends CI_Controller {
             redirect(base_url().'index.php/tipoproducto', 'refresh');
 
         }
+
+        public function get_tipoprod(){
+
+           $query = $this->db->get('tipoproducto');
+           return $query->result();
+
+         }
 
 
 

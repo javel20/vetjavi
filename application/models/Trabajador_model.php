@@ -19,13 +19,18 @@ class Trabajador_model extends CI_Model {
                 parent::__construct();
         }
 
-        public function get_trabajadores()
+        public function get_trabajadores($inicio=FALSE,$limite=FALSE)
         {
                 $this->db->select('*,trabajador.Nombre as NombreTrab ,tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal, trabajador.Direccion as DirTrab');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
                 $query = $this->db->get();
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 // die(json_encode($query->result()));
                 return $query->result();
         }
@@ -41,10 +46,14 @@ class Trabajador_model extends CI_Model {
                 $this->IdTipoTrab    = $_POST['SelectTipo'];
                 $this->IdLocal    = $_POST['SelectLocal'];
                 
-                 
+                //  die(json_encode($_POST['permisos']));
 
                 $this->db->insert('trabajador', $this);
-        }
+                $insert_id = $this->db->insert_id();
+                forEach($_POST['permisos'] as $permiso){
+                        $this->db->query("INSERT INTO detallepermisos (IdTrabajador,IdPermisos) VALUES(".$insert_id.",".$permiso.")");
+                }
+        }       
 
         public function get_trabajador($IdTrabajador){
                 // $query = $this->db->get('tipotrab');
@@ -79,7 +88,7 @@ class Trabajador_model extends CI_Model {
         public function get_buscar_trabajador(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*,trabajador.Nombre as NombreTrab, tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal, trabajador.Direccion as Dirtra');
+                $this->db->select('*,trabajador.Nombre as NombreTrab, tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal, trabajador.Direccion as DirTrab');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
@@ -103,10 +112,29 @@ class Trabajador_model extends CI_Model {
                 $this -> db -> limit(1);
 
                 $query = $this -> db -> get();
+                
+                // die(json_encode($query->result()));
+                if (count($query->result())==0){
+
+                        // $mensaje ="Datos incorrectos" ;
+                        return false;
+
+                }
+                $perm = $this->db->query("select * from detallepermisos where IdTrabajador= ".$query->result()[0]->IdTrabajador);
+                // die(json_encode($perm->result()));
+
+                $query->result()[0]->permisos=$perm->result();
+                // die(json_encode($query->result()));
+               
+
 
                 if($query -> num_rows() == 1)
                 {
                         return $query -> result();
+
+                        
+
+
                 } 
                 else
                 {
