@@ -17,7 +17,9 @@ class Cirugia_model extends CI_Model {
 
         public function get_cirugias($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('cirugia');
+
+                $this->db->select('*');
+                $this->db->from('cirugia');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
@@ -25,6 +27,7 @@ class Cirugia_model extends CI_Model {
                 // $this->db->limit(10);
                 // $query = $this->db->get();
 
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_cirugias()
@@ -61,14 +64,18 @@ class Cirugia_model extends CI_Model {
                 $this->db->update('cirugia', $this, array('IdCirugia' => $IdCirugia));
         }
 
-        public function get_buscar_cirugia(){
+        public function get_buscar_cirugia($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*');
                 $this->db->from('cirugia');
                 $this->db->like(  $tipo_dato,$dato_buscar);
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
-                return $query->result();     
+                return $query->result();   
         }
 
         public function get_eliminar_cirugia($id){

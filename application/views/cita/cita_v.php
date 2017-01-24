@@ -66,19 +66,30 @@
         <tbody id="eventos_table">
         
         <?php
-        
-            foreach ($datos_cita as &$dato) {
-                $tipodecita = $dato->NombreTipoCita!=NULL ? $dato->NombreTipoCita:"Cirugia";
+           
+            foreach ($datos_cita as &$dato){
+
+                // $tipodecita = $dato->NombreTipoCita!=NULL ? $dato->NombreTipoCita:"Cirugia";
+                $nombre="";
+
+                if($dato->analisis!=null){
+                    $nombre="Analisis";
+                    
+                }else if($dato->IdCirugia!=NULL){
+                    $nombre="Cirugia";
+                }
+
+
           echo "<tr >".
                 "<td>". $dato->NombrePaciente ."</td>".
-                "<td>". $tipodecita . " </td>".
+                // "<td>". $tipodecita . " </td>".
                 "<td>". $dato->CodigoC ."</td>".
                 "<td>". $dato->FechaReserva ."</td>".
                 "<td>". $dato->FechaRegistro ."</td>".
                 "<td>". $dato->Peso ."</td>".
                 "<td>". $dato->FrecuenciaCardiaca ."</td>".
                 "<td>". $dato->FrecuenciaRespiratoria ."</td>".
-                "<td>". $dato->PrecioTotal ."</td>".
+                "<td>". number_format($dato->PrecioTotal,2,'.','') ."</td>".
                 "<td>". $dato->descita ."</td>".
                 
                 "<td> <div class='dropdown'>
@@ -93,7 +104,7 @@
                                 aviso='Desea eliminar a:'
                                 nombre_data='". $dato->IdCita ."'
                                 url_data=". base_url("index.php/cita/delete/$dato->IdCita") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/cita/edit/$dato->IdCita") .">Editar</a></li>
+                        <li><a href=". base_url("index.php/cita/edit/" .$dato->IdCita. "?tipo=$nombre" ) .">Editar</a></li>
 
                     </ul>
                     </div></td>".
@@ -119,5 +130,8 @@
 </div>
 
     <script src="<?php echo base_url('public/main.js'); ?>"></script>
+       <center>
+        <?php echo $this->pagination->create_links();?>
+    </center>
 <?php  $this->load->view('layouts/footer.php');?>       
      

@@ -19,12 +19,12 @@ class Producto_model extends CI_Model {
                 $this->db->select('*, producto.Descripcion as descprod');
                 $this->db->from('producto');
                 $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
-                $query = $this->db->get('');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get('');
                 return $query->result();
         }
          public function post_productos()

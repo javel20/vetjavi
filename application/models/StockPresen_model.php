@@ -22,12 +22,12 @@ class StockPresen_model extends CI_Model {
                 $this->db->from('stockpresentacion');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
 
-                $query = $this->db->get();
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
          }
 

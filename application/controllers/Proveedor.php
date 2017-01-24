@@ -68,7 +68,7 @@ class Proveedor extends CI_Controller {
 
         public function update($id){
              $this->load->model('Proveedor_model');
-             $result = $this->proveedor_model->update_proveedor($id);
+             $result = $this->Proveedor_model->update_proveedor($id);
              redirect(base_url().'index.php/proveedor', 'refresh');
 
         }

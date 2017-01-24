@@ -59,7 +59,7 @@
             <th>Codigo</th>
             <th>Fecha Realizada</th>
             <th>Precio</th>
-            <th>Estado</th>
+            
 
             
         </thead>
@@ -72,7 +72,6 @@
                 "<td>". $dato->codigo."</td>".
                 "<td>". $dato->fecharealizada ."</td>".
                 "<td>". $dato->precio ."</td>".
-                "<td>". $dato->estado ."</td>".
                 "</tr>";
             }
         ?> 
@@ -126,5 +125,6 @@
 </div>
 
     <script src="<?php echo base_url('public/main.js'); ?>"></script>
+    
 <?php  $this->load->view('layouts/footer.php');?>       
      

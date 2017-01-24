@@ -37,7 +37,8 @@ class Venta extends CI_Controller {
           $config['base_url'] = base_url().'index.php/venta/pagina/';
           $config['total_rows'] = count($this->Venta_model->get_ventas());
           $config['per_page'] = 10;
-          $config['first_url'] = base_url().'index.php/venta/pagina/1';  
+          $config['first_url'] = base_url().'index.php/venta/pagina/1'; 
+          $this->pagination->initialize($config); 
 
           $this->load->view('venta/venta_v', $data);
         }

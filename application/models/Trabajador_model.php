@@ -25,13 +25,13 @@ class Trabajador_model extends CI_Model {
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
-                $query = $this->db->get();
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
                 // die(json_encode($query->result()));
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_trabajadores()

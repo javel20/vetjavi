@@ -24,12 +24,12 @@ class Paciente_model extends CI_Model {
                 $this->db->select('*,paciente.Nombre, cliente.Nombre as NombreCliente');
                 $this->db->from('paciente');
                 $this->db->join('cliente', 'cliente.IdCliente = paciente.IdCliente');
-                $query = $this->db->get();
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
          }
          public function post_pacientes()

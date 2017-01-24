@@ -49,9 +49,10 @@
     <table class="table">
         <thead>
             <th>Codigo</th>
-            <th>Paciente</th>
-            <th>Tipo</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
             <th>Precio</th>
+            <th>Porcentaje</th>
             <th>Descripcion</th>
             <th>Option</th>
         </thead>
@@ -62,10 +63,11 @@
             foreach ($datos_analisis as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->Codigo."</td>".
-               "<td>". $dato->NombrePaciente ."</td>".
-                "<td>". $dato->Tipo ."</td>".
+                "<td>". $dato->NombreA ."</td>".
+                "<td>". $dato->FechaA ."</td>".
                 "<td>". $dato->PrecioAnalisis ."</td>".
-                "<td>". $dato->Descpa ."</td>".
+                "<td>". $dato->PorcentajeA ."</td>".
+                "<td>". $dato->Descripcion ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

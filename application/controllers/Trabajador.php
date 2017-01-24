@@ -38,6 +38,7 @@ class Trabajador extends CI_Controller {
           $config['total_rows'] = count($this->Trabajador_model->get_trabajadores());
           $config['per_page'] = 10;
           $config['first_url'] = base_url().'index.php/trabajador/pagina/1';  
+          $this->pagination->initialize($config);
 
           $this->load->view('trabajador/trabajador_v', $data);
         }

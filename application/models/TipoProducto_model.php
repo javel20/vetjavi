@@ -15,12 +15,14 @@ class TipoProducto_model extends CI_Model {
 
         public function get_tipoproductos($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('tipoproducto');
+                $this->db->select('*');
+                $this->db->from('tipoproducto');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_tipoproductos()

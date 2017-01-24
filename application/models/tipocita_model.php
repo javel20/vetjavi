@@ -17,12 +17,15 @@ class TipoCita_model extends CI_Model {
 
         public function get_tipocitas($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('tipocita');
+
+                $this->db->select('*');
+                $this->db->from('tipocita');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_tipocitas()

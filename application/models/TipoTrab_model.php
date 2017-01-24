@@ -14,12 +14,14 @@ class TipoTrab_model extends CI_Model {
 
         public function get_tipotrabs($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('tipotrab');
+                $this->db->select('*');
+                $this->db->from('tipotrab');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_tipotrabs()

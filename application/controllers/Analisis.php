@@ -63,10 +63,8 @@ class Analisis extends CI_Controller {
 
         public function create(){
           
-            $this->load->model('paciente_model');
-             $data['pacientes'] = $this->paciente_model->get_pacientes();
 
-            $this->load->view('analisis/analisis_crear_v', $data);
+            $this->load->view('analisis/analisis_crear_v');
               
 
 

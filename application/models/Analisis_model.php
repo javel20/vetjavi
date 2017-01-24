@@ -3,10 +3,12 @@ class Analisis_model extends CI_Model {
 
         // public $IdPaciente;
         public $Codigo;
-        public $Tipo;
+        public $NombreA;
+        public $FechaA;
         public $Descripcion;
         public $PrecioAnalisis;
-        public $IdPaciente;
+        public $PorcentajeA;
+
 
 
 
@@ -20,9 +22,8 @@ class Analisis_model extends CI_Model {
          {
 
 
-                $this->db->select('*,paciente.Nombre, paciente.Nombre as NombrePaciente, analisis.descripcion as Descpa');
-                $this->db->from('analisis');
-                $this->db->join('paciente', 'paciente.IdPaciente = analisis.IdPaciente');
+                $this->db->select('*');
+                $this->db->from('Analisis');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
@@ -35,10 +36,18 @@ class Analisis_model extends CI_Model {
          public function post_analisiss()
         {
                 $this->Codigo    = $_POST['Codigo'];
-                $this->Tipo    = $_POST['Tipo'];
+                $this->NombreA    = $_POST['NombreA'];
+
+                $fechar = $_POST['FechaA'];
+                $array = explode('/', $fechar);
+                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+
+
+                $this->FechaA = strval(trim($fecha_php));
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->PrecioAnalisis    = $_POST['PrecioAnalisis'];
-                $this->IdPaciente    = $_POST['SelectPaciente'];
+                $this->PorcentajeA    = $_POST['PorcentajeA'];
+
                 
                  
 
@@ -46,14 +55,27 @@ class Analisis_model extends CI_Model {
         }
 
         public function get_analisis($IdAnalisis){
-                // $query = $this->db->get('tipotrab');
-                // $querytipos = $this->db->query('select * from tipotrab');
+                // $query = $this->db->get('NombreAtrab');
+                // $queryNombreAs = $this->db->query('select * from NombreAtrab');
                         // 
-                // die(var_dump($querytipos->result()));
+                // die(var_dump($queryNombreAs->result()));
                 $this->db->select('*');
                 $this->db->from('analisis');
                 $this->db->where('IdAnalisis',$IdAnalisis);   
                 $query = $this->db->get();
+
+                $fecha = $query->result()[0]->FechaA;
+                 $pos = preg_match('/[-]+/',$fecha);
+                if($pos == true){
+                        $array = explode('-', $fecha);
+                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+
+                $query->result()[0]->FechaA= $fecha_php;
+
                 return $query->result();     
 
         }
@@ -63,20 +85,32 @@ class Analisis_model extends CI_Model {
         public function update_analisis($IdAnalisis)
         {
                 $this->Codigo    = $_POST['Codigo'];
-                $this->Tipo    = $_POST['Tipo'];
+                $this->NombreA    = $_POST['NombreA'];
+
+                 $fechar = $_POST['FechaA'];
+                $pos = preg_match('/[\/]+/',$fechar);
+                if($pos == true){
+                        $array = explode('/', $fechar);
+                        $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+
+                } else{
+                       $fecha_php = $fechar; 
+                }
+
+                $this->FechaA = strval(trim($fecha_php));
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->PrecioAnalisis    = $_POST['PrecioAnalisis'];
-                $this->IdPaciente = $_POST['SelecPaciente'];
+                $this->PorcentajeA    = $_POST['PorcentajeA'];
+
 
                 $this->db->update('analisis', $this, array('IdAnalisis' => $IdAnalisis));
         }
 
         public function get_buscar_analisis($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
-                $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*, paciente.Nombre as NombrePaciente, paciente.descripcion as Descpa');
+                $Tipo = $_GET['tipo_dato'];
+                $this->db->select('*');
                 $this->db->from('analisis');
-                $this->db->join('paciente', 'analisis.IdPaciente = paciente.IdPaciente');
                 $this->db->like(  $tipo_dato,$dato_buscar);   
 
                 if($inicio!==FALSE && $limite!==FALSE){

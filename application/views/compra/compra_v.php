@@ -109,5 +109,8 @@
 </div>
 
     <script src="<?php echo base_url('public/main.js'); ?>"></script>
+       <center>
+        <?php echo $this->pagination->create_links();?>
+    </center>
 <?php  $this->load->view('layouts/footer.php');?>       
      

@@ -1,6 +1,8 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
@@ -19,41 +21,46 @@
 
 
             <div class="form-group col-md-6">
-            <label>Paciente</label>
-              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectPaciente">
-                  <option>--seleccionar--</option>
-                <?php
-                     
-                    foreach($pacientes as $paciente){
-                     
-                             echo "<option value=" .$paciente->IdPaciente .">". $paciente->Nombre ."</option>";
-                     
-                    }?>
-              </select>
-
-            </div>
-
-
-            <div class="form-group col-md-6">
               <label>Codigo</label>
               <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo">
             </div>
-            <div class="form-group col-md-6">
 
-              <label>Tipo</label>
-              <select validate="seleccionar" class="form-control" id="Tipo"name="Tipo">
-                <option>--seleccionar-- </option>
-                <option>Hemograma Completo</option>
-                <option>Urianálisis</option>
-                <option>Perfil Hepático</option>
-                <option>Perfil Renal</option>
-                <option>Perfil Completo</option>
-             </select>
+            
+            <div class="form-group col-md-6">
+              <label>Nombre</label>
+               <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre">
+            </div>
+
+
+            <div class="form-group col-md-6">
+                 <label class="control-label" for="date">Fecha</label>
+                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text"/>
+
+
+                  <script>
+                    $(document).ready(function(){
+                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
+                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                        var options={
+                          format: 'mm/dd/yyyy',
+                          container: container,
+                          todayHighlight: true,
+                          autoclose: true,
+                        };
+                        date_input.datepicker(options);
+                      })
+                  </script>
+
             </div>
 
             <div class="form-group col-md-6">
               <label>Precio</label>
               <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/.">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Porcentaje</label>
+              <input validate="number" type="text"class="form-control" name="PorcentajeA" placeholder="%">
             </div>
 
             <div class="form-group col-md-6">

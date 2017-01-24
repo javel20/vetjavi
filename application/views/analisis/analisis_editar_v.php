@@ -13,26 +13,18 @@
               action="<?php echo base_url('index.php/analisis/update/'.$dato_analisis[0]->IdAnalisis); ?>" 
               method="POST" onsubmit="return validar(this);">
 
-           <div class="form-group col-md-6">
-            <label>Paciente</label><br>
-              <select validate="selecbus" class="js-example-basic-single form-control" name="SelecPaciente">
-                <?php
-                    
-                    foreach($pacientes as $paciente){
-                      $faiId=($paciente->IdPaciente==$dato_paciente[0]->IdPaciente)? "selected":"";
-                      echo "<option value=". $paciente->IdPaciente ." ". $faiId .">". $paciente->Nombre ."</option>";
-                    }?>
-
-                      <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
-                   
-              </select>
-
-            </div>
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
             <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>" required>
           </div>
+
+          <div class="form-group col-md-6 ">
+            <label>Nombre</label>
+            <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" value="<?php echo $dato_analisis[0]->NombreA?>" required>
+          </div>
+
+
           <div class="form-group col-md-6">
             <label>Tipo</label>
             <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Tipo">
@@ -46,9 +38,46 @@
             </select>
           </div>
 
+
+          <div class="form-group col-md-6">
+                 <label class="control-label" for="date">Fecha Reserva</label>
+                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_analisis[0]->FechaA?>" />
+
+
+                  <script>
+                    $(document).ready(function(){
+
+
+                      var fecha= "<?php echo trim($dato_cita[0]->FechaA) ?>"
+
+                      var anio = Number(fecha.split("/")[0]);
+                      var mes = Number(fecha.split("/")[1]);
+                      var dia = Number(fecha.split("/")[2]);
+
+
+                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
+                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                        var options={
+                          format: 'mm/dd/yyyy',
+                          defaultViewDate: {year:anio,month:mes,day:dia},
+                          container: container,
+                          todayHighlight: true,
+                          autoclose: true,
+                        };
+                        date_input.datepicker(options);
+                      })
+                  </script>
+
+            </div>
+
           <div class="form-group col-md-6">
               <label>Precio</label>
-              <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/." value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">
+              <input validate="number" type="text"class="form-control" name="PrecioAnalisis"  value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Porcentaje</label>
+              <input validate="number" type="text"class="form-control" name="PorcentajeA"  value="<?php echo $dato_analisis[0]->PorcentajeA?>">
             </div>
 
 

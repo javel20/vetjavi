@@ -16,12 +16,15 @@ class Local_model extends CI_Model {
 
         public function get_locales($inicio=FALSE,$limite=FALSE)
         {
-                $query = $this->db->get('local');
+
+                $this->db->select('*');
+                $this->db->from('local');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
         }
          public function post_locales()

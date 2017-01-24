@@ -23,12 +23,12 @@ class Compra_model extends CI_Model {
                 $this->db->select('*, proveedor.Nombre  as NombreProv');
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
-                $query = $this->db->get();
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
                 // die(var_dump($query->result()));
+                $query = $this->db->get();
                 return $query->result();
 
 

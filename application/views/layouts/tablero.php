@@ -29,6 +29,7 @@
           </a>
           <div class="collapse" id="toggleDemo" style="height: 0px;">
             <ul class="nav nav-list">
+            
               <li><a href="/vetjavi/index.php/cliente/create">Crear</a></li>
               <li><a href="/vetjavi/index.php/cliente">Listado</a></li>
               

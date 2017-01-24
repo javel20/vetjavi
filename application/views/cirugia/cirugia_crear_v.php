@@ -31,7 +31,7 @@
 
                 <div class="form-group col-md-6">
                 <label>Descripcion</label>
-                <input validate="texto" type="text" class="form-control" name="DescripcionC" placeholder="Descripcion">
+                <input validate="text" type="text" class="form-control" name="DescripcionC" placeholder="Descripcion">
                 </div>
 
 

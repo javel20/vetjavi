@@ -20,13 +20,13 @@ class Diagnostico_model extends CI_Model {
                 $this->db->select('*,  cita.Descripcion as Descci, diagnostico.Descripcion as descdi');
                 $this->db->from('diagnostico');
                 $this->db->join('cita', 'cita.IdCita = diagnostico.IdCita');
-                $query = $this->db->get();
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
                 // die(json_encode($query->result()));
+                $query = $this->db->get();
                 return $query->result();
          }
          public function post_diagnosticos()

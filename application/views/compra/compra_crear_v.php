@@ -153,7 +153,7 @@
             <div class="form-group col-md-6">
                     <label>Precio unitario</label>
             
-                    <input validate="number" type="text" id="preciounitario" class="form-control" name="precio_add_detalle" placeholder="Precio" disabled/>
+                    <input validate="decimal" type="text" id="preciounitario" class="form-control" name="precio_add_detalle" placeholder="Precio" disabled/>
                   
                   </div>
 

@@ -23,20 +23,18 @@ class Venta_model extends CI_Model {
         public function get_ventas($inicio=FALSE,$limite=FALSE)
         {
 
+                $this->db->select('*');
+                $this->db->from('venta');
+                $this->db->join('cliente', 'venta.IdCliente = cliente.IdCliente');
+                $this->db->where('venta.Estado = "Venta Realizada"');
 
-
-                $query = $this->db->query('select *
-                                                from venta 
-                                                
-                                                inner join cliente on venta.IdCliente = cliente.IdCliente
-                                                where venta.Estado = "Venta Realizada"
-                                               ');
                 //  die(json_encode($query->result()));
                 // die(var_dump($query->result()));
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
+                $query = $this->db->get();
                 return $query->result();
 
         }
@@ -44,7 +42,7 @@ class Venta_model extends CI_Model {
         {
                 $fecha = $_POST['Fecha'];
                 $array = explode('/', $fecha);
-                $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
               
                 $this->CodV    = $_POST['CodV'];
                 $this->Fecha    =  $fecha_php;
