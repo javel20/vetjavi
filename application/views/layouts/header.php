@@ -29,6 +29,8 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['Email'])): ?>
               <li class="correo"><?php echo $_SESSION['Email'];?></li>
+
+              
                 
               <li class="logout"><a href="<?php echo base_url(); ?>index.php/login/logout">LogOut</a></li>
 
