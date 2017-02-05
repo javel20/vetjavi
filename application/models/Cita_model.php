@@ -10,11 +10,12 @@ class Cita_model extends CI_Model {
         public $Peso;
         public $FrecuenciaCardiaca;
         public $FrecuenciaRespiratoria;
+        public $Ganancia;
         public $PrecioTotal;
         public $Descripcion;
         public $IdPaciente;
         public $IdTipoCita;
-        public $Estado;
+        public $EstadoC;
         public $IdCirugia;
         public $IdAnalisis;
 
@@ -33,7 +34,7 @@ class Cita_model extends CI_Model {
                 $this->db->select('*, Cita.IdAnalisis as analisis, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
                 $this->db->from('Cita');
                 $this->db->join('paciente', 'paciente.IdPaciente = cita.IdPaciente');
-
+                $this->db->join('cliente','cliente.IdCliente = paciente.IdCliente');
                 $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita','left');
                 $this->db->join('cirugia', 'cirugia.IdCirugia = cita.IdCirugia','left');
                 $this->db->join('analisis', 'analisis.IdAnalisis = cita.IdCirugia','left');
@@ -65,10 +66,11 @@ class Cita_model extends CI_Model {
                 $this->Peso    = $_POST['Peso'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
                 $this->FrecuenciaRespiratoria    = $_POST['FrecuenciaRespiratoria'];
+                $this->Ganancia    = $_POST['Ganancia'];
                 $this->PrecioTotal    = $_POST['PrecioTotal'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->IdPaciente    = $_POST['listPaciente'];
-                $this->Estado    = true;
+                $this->EstadoC    = "En espera";
                 
 
                 if($_POST['listTipo']=="cirugia"){
@@ -154,11 +156,12 @@ class Cita_model extends CI_Model {
                 $this->Peso    = $_POST['Peso'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
                 $this->FrecuenciaRespiratoria    = $_POST['FrecuenciaRespiratoria'];
+                $this->Ganancia    = $_POST['Ganancia'];
                 $this->PrecioTotal    = $_POST['PrecioTotal'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->IdPaciente    = $_POST['listPaciente'];
                 $this->IdTipoCita    = $_POST['listTipo'];
-                $this->Estado    = true;
+                $this->EstadoC    = $_POST['EstadoC'];
 
                 if($_POST['listTipo']=="cirugia"){
 
@@ -185,6 +188,7 @@ class Cita_model extends CI_Model {
                         
                 }
                                 
+
                 if($_POST['listCirugia']=="--seleccionar--"){
                         $this->IdCirugia =  NULL;
                         
@@ -195,14 +199,18 @@ class Cita_model extends CI_Model {
                 $this->db->update('cita', $this, array('IdCita' => $IdCita));
         }
 
-        public function get_buscar_cita(){
+        public function get_buscar_cita($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
                 $this->db->from('cita');
                 $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita');
                 $this->db->join('paciente', 'paciente.IdPaciente = cita.IdPaciente');
-                $this->db->like("cita.".$tipo_dato,$dato_buscar);   
+                $this->db->like("cita.".$tipo_dato,$dato_buscar);
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }
@@ -212,6 +220,8 @@ class Cita_model extends CI_Model {
                 $query = $this->db->delete("cita", array('IdCita'=>$id));
                  return $query; 
         }
+
+
 
 
 

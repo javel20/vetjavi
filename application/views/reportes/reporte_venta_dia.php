@@ -58,6 +58,7 @@
 
             <th>Codigo</th>
             <th>Fecha Realizada</th>
+            <th>Ganancia</th>
             <th>Precio</th>
             
 
@@ -67,10 +68,11 @@
        
           <?php
           // die(var_dump($datos_stockpresen));
-            foreach ($datos_reportes as &$dato) {
+            foreach ($data_ganancia as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->codigo."</td>".
                 "<td>". $dato->fecharealizada ."</td>".
+                "<td>". $dato->ganancia ."</td>".
                 "<td>". $dato->precio ."</td>".
                 "</tr>";
             }
@@ -82,11 +84,67 @@
 </div>
    
 
+
+
+
+
+            <div class="page-header">
+            <nav class="navbar navbar-default navbar-text navbar-right" >
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
+                
+           
+
+            </nav>
+         <div class="panel-body">
+            <form class="row" action="reportetotal" method="GET" onsubmit="return validar(this)">
+            <div class="form-group col-md-6">
+            </div>
+
+        </div>
+
+
+     <table class="table">
+        <thead>
+
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Fecha Realizada</th>
+            <th>Perdida</th>
+
+            
+
+            
+        </thead>
+        <tbody id="eventos_table">
+       
+          <?php
+          // die(var_dump($datos_stockpresen));
+            foreach ($data_perdida as &$dato) {
+                echo "<tr>".
+                "<td>". $dato->codigo."</td>".
+                "<td>". $dato->nombre."</td>".
+                "<td>". $dato->fecha ."</td>".
+                "<td>". $dato->perdida ."</td>".
+                "</tr>";
+            }
+        ?> 
+
+
+ </tbody>
+    </table>
+
+
 <div>
     
     <table class="table">
         <thead>
 
+
+            <th>Ganancia Total</th>
             <th>Precio Total</th>
 
 
@@ -97,8 +155,11 @@
           <?php
           // die(var_dump($datos_stockpresen));
             // foreach ($datos_reportes as &$dato) {
+
+
                 echo "<tr>".
-                "<td>". $acum."</td>".
+                "<td>". $acum2."</td>".
+                "<td>". $resta."</td>".
 
                 "</tr>";
             

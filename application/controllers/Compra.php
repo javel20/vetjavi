@@ -86,8 +86,25 @@ class Compra extends CI_Controller {
         }
 
         public function search(){
+          $inicio=0;
+          $limite=10;
+
+          if(isset($_GET['per_page'])){
+            // die($pagina);
+            $inicio=(($_GET['per_page'])-1) * $limite;
+          }
+
+          $this->load->library('pagination');
           $this->load->model('Compra_model');
-          $data['datos_compra'] =  $this->Compra_model->get_buscar_compra();
+          $data['datos_compra'] =  $this->Compra_model->get_buscar_compra($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/compra/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato'];
+          $config['total_rows'] = count($this->Compra_model->get_buscar_compra());
+          $config['per_page'] = 10;
+
+          $config['first_url'] = base_url().'index.php/compra/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato']."&per_page=1";
+          $config['page_query_string'] = TRUE;
+          $this->pagination->initialize($config);
+
           $this->load->view('compra/compra_v', $data);
         }
 

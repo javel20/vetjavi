@@ -14,14 +14,14 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" value="<?php echo $dato_compra[0]->CodC?>">
+            <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8" value="<?php echo $dato_compra[0]->CodC?>">
           </div>
 
 
            
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text" value="<?php echo trim($dato_compra[0]->Fecha) ?>"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" type="text" maxlength="10"value="<?php echo trim($dato_compra[0]->Fecha) ?>"/>
 
                   <script>
                     $(document).ready(function(){
@@ -73,7 +73,7 @@
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>
-            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_compra[0]->Descripcion?>">
+            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50" value="<?php echo $dato_compra[0]->Descripcion?>">
           </div>
 
 

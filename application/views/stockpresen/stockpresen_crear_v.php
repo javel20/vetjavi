@@ -34,20 +34,20 @@
 
             <div class="form-group col-md-6">
               <label>StockMin</label>
-              <input validate="number" type="text" class="form-control" name="StockMin" placeholder="Stock Minimo">
+              <input validate="number" type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" maxlength="5">
             </div>
             <div class="form-group col-md-6">
               <label>Stock Real</label>
-              <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real">
+              <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" maxlength="5">
             </div>
             <div class="form-group col-md-6">
               <label>Presentación</label>
-              <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion">
+              <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" maxlength="15">
             </div>
 
             <div class="form-group col-md-6">
               <label>Precio</label>
-              <input validate="decimal" type="text" class="form-control" name="Precio" placeholder="Precio">
+              <input validate="decimal" type="text" class="form-control" name="Precio" placeholder="Precio" maxlength="7">
             </div>
 
           

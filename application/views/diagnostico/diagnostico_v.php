@@ -25,16 +25,16 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="Codigo">Codigo</a></li>
-                    <li><a href="#" dato="Tipo">Tipo</a></li>
+                    <li><a href="#" dato="CodigoD">Codigo</a></li>
+
             
             
                     </ul>
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'Codigo';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'CodigoD';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'CodigoD';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -49,7 +49,7 @@
     <table class="table">
         <thead>
             <th>Codigo</th>
-
+            <th>Cita</th>
             <th>Descripcion</th>
             <th>Option</th>
         </thead>
@@ -60,7 +60,7 @@
             foreach ($datos_diagnostico as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->CodigoD."</td>".
-
+                "<td>". $dato->IdCita ."</td>".
                 "<td>". $dato->descdi ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

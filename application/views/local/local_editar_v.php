@@ -11,25 +11,25 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_local[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30 "value="<?php echo $dato_local[0]->NombreL?>">
           </div>
  
           <div class="form-group col-md-6">
             <label>Dirección</label>
-            <input type="text" class="form-control" name="Direccion" placeholder="Dirección" value="<?php echo $dato_local[0]->Direccion?>">
+            <input type="text" class="form-control" name="Direccion" placeholder="Dirección" maxlength="30" value="<?php echo $dato_local[0]->DireccionL?>">
           </div>
           <div class="form-group col-md-6">
             <label>Telefono</label>
-            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_local[0]->Telefono?>">
+            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" maxlength="9" value="<?php echo $dato_local[0]->TelefonoL?>">
           </div>
 
           <div class="form-group col-md-6">
             <label>Estado</label>
              <select validate="seleccionar" type="text" class="form-control" name="Estado" placeholder="Estado">
 
-                  <option value="Habilitado" <?php echo ($dato_local[0]->Estado=="Habilitado" ? 'selected="selected"' : '');?>>Habilitado</option>    
-                  <option value="Cerrado" <?php echo ($dato_local[0]->Estado=="Cerrado" ? 'selected="selected"' : '');?>>Cerrado</option>
-                  <option value="Clausurado" <?php echo ($dato_local[0]->Estado=="Clausurado" ? 'selected="selected"' : '');?>>Clausurado</option>
+                  <option value="Habilitado" <?php echo ($dato_local[0]->EstadoL=="Habilitado" ? 'selected="selected"' : '');?>>Habilitado</option>    
+                  <option value="Cerrado" <?php echo ($dato_local[0]->EstadoL=="Cerrado" ? 'selected="selected"' : '');?>>Cerrado</option>
+                  <option value="Clausurado" <?php echo ($dato_local[0]->EstadoL=="Clausurado" ? 'selected="selected"' : '');?>>Clausurado</option>
 
             </select>
           </div>

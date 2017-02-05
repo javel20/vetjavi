@@ -11,22 +11,26 @@
       <div class="page-header">
         <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Registrar Diagnostico</h3>
+            <h3 class="panel-title">Editar Diagnostico</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
+            <form class="row mrb-30 well"
+              action="<?php echo base_url('index.php/diagnostico/update/'.$dato_diagnosticos[0]->IdDiagnostico); ?>" 
+              method="POST" onsubmit="return validar(this);">
 
 
 
             <div class="form-group col-md-6">
             <label>Cita</label>
-              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectCita">
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectCita" >
                   <option>--seleccionar--</option>
                 <?php
                      
-                    foreach($citas as $cita){
-                     
-                             echo "<option value=" .$cita->IdCita .">". $cita->CodigoC ."</option>";
+
+
+                             foreach($citas as $cita){
+                      $faiId=($cita->IdCita==$dato_diagnosticos[0]->IdCita)? "selected":"";
+                      echo "<option value=". $cita->IdCita ." ". $faiId .">". $cita->IdCita ."</option>";
                      
                     }?>
               </select>
@@ -36,14 +40,14 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo" value="<?php echo $dato_diagnosticos[0]->CodigoD?>">
             </div>
      
 
         
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" id="Descripcion"name="Descripcion" maxlength="50" placeholder="Descripcion">
+              <input type="text" class="form-control" id="Descripcion"name="Descripcion" maxlength="50" placeholder="Descripcion" value="<?php echo $dato_diagnosticos[0]->Descripcion?>">
             </div>
 
 

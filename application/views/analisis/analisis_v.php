@@ -26,7 +26,8 @@
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Codigo">Codigo</a></li>
-                    <li><a href="#" dato="Tipo">Tipo</a></li>
+                    <li><a href="#" dato="NombreA">Nombre</a></li>
+                    <li><a href="#" dato="FechaA">Fecha</a></li>
             
             
                     </ul>

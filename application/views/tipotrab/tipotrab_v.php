@@ -22,11 +22,11 @@
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown" 
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'NombreTP';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
 
-                    <li><a href="#" dato="Nombre">Nombre </a></li>
+                    <li><a href="#" dato="NombreTP">Nombre </a></li>
 
             
             
@@ -51,6 +51,7 @@
         <thead>
 
             <th>Nombre</th>
+            <th>Descripcion</th>
             <th>Option</th>
             
         </thead>
@@ -62,7 +63,8 @@
                 //  die(var_dump($datos_tipotrab));
                 
                echo "<tr>".
-                "<td>". $dato->Nombre ."</td>".
+                "<td>". $dato->NombreTP ."</td>".
+                "<td>". $dato->DescripcionTP ."</td>".
   
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -73,7 +75,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre ."'
+                                nombre_data='". $dato->NombreTP ."'
                                 url_data=". base_url("index.php/tipotrab/delete/$dato->IdTipoTrab") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/tipotrab/edit/$dato->IdTipoTrab") .">Editar</a></li>
 

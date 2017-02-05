@@ -15,23 +15,23 @@
 
                 <div class="form-group col-md-6">
                 <label>Nombre</label>
-                <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombre">
+                <input validate="texto" type="text" class="form-control" name="Nombre" maxlength="20" placeholder="Nombre">
                 </div>
 
                 <div class="form-group col-md-6">
                 <label>Precio</label>
-                <input validate="number" type="text" class="form-control" name="Precio" placeholder="Precio">
+                <input validate="number" type="text" class="form-control" name="Precio" maxlength="5" placeholder="Precio">
                 </div>
 
                 <div class="form-group col-md-6">
                 <label>Porcentaje</label>
-                <input validate="number" type="text" class="form-control" name="Porcentaje" placeholder="Porcentaje">
+                <input validate="number" type="text" class="form-control" name="Porcentaje" maxlength="5" placeholder="%">
                 </div>
 
 
                 <div class="form-group col-md-6">
                 <label>Descripcion</label>
-                <input validate="text" type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+                <input validate="text" type="text" class="form-control" name="Descripcion" maxlength="50" placeholder="Descripcion">
                 </div>
 
 

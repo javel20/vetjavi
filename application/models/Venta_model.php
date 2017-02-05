@@ -7,6 +7,7 @@ class Venta_model extends CI_Model {
         public $Fecha;
         public $TipoV;
         public $Descripcion;
+        public $Ganancia;
         public $PrecioTotalVenta;
         public $IdCliente;
         public $IdTrabajador;
@@ -50,6 +51,7 @@ class Venta_model extends CI_Model {
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->IdCliente    = $_POST['IdCliente'];
                 $this->IdTrabajador    = $_POST['IdTrabajador'];
+                $this->Ganancia = $_POST['ganancia'];
                 $this->PrecioTotalVenta = $_POST['sumatotal'];
                 $this->Estado="Venta Realizada";
 
@@ -123,7 +125,8 @@ class Venta_model extends CI_Model {
                 $this->Fecha    =  $fecha_php;
                 $this->TipoV    = $_POST['TipoV'];
                 $this->Descripcion    = $_POST['Descripcion'];
-                 $this->PrecioTotalVenta = $_POST['sumatotal'];
+                $this->Ganancia = $_POST['ganancia'];
+                $this->PrecioTotalVenta = $_POST['sumatotal'];
                 $this->IdCliente    = $_POST['IdCliente'];
 
                 $this->IdTrabajador    = $_POST['IdTrabajador'];

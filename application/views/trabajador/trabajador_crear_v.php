@@ -25,7 +25,7 @@
                     
                     foreach($tipos as $tipo){
                       
-                      echo "<option value=" .$tipo->IdTipoTrab .">". $tipo->Nombre ."</option>";
+                      echo "<option value=" .$tipo->IdTipoTrab .">". $tipo->NombreTP ."</option>";
                     }?>
               </select>
 
@@ -34,34 +34,49 @@
 
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Paterno</label>
-              <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno">
+              <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno"maxlength="20">
             </div>
             <div class="form-group col-md-6">
               <label>Apellido Materno</label>
-              <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno">
+              <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno"maxlength="20">
             </div>
             <div class="form-group col-md-6">
               <label>Dirección</label>
-              <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección">
+              <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección" maxlength="30">
             </div>
-            <div class="form-group col-md-6">
-              <label>Telefono</label>
-              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono">
+            <div class="form-group col-md-3">
+              <label>Celular</label>
+              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Celular" maxlength="9">
+            </div>
+
+
+            <div class="form-group col-md-3">
+              <label>Operador</label>
+              <select validate="seleccionar" class="form-control" id="Operador" name="Operador">
+                <option>--seleccionar--</option>
+                <option >Rpm</option>
+                <option>Movistar</option>
+                <option>Rpc</option>
+                <option>Claro</option>
+                <option>Bitel</option>
+                <option>Entel</option>
+                <option>Virgin</option>
+             </select>
             </div>
 
 
 
             <div class="form-group col-md-6">
               <label>Email</label>
-              <input validate="email" type="text" id="email" class="form-control" name="Email" placeholder="Email">
+              <input validate="email" type="text" id="email" class="form-control" name="Email" placeholder="Email" maxlength="30">
             </div>
             <div class="form-group col-md-6">
               <label>Password</label>
-              <input validate="pass" type="PASSWORD" class="form-control" name="Password" placeholder="****">
+              <input validate="pass" type="PASSWORD" class="form-control" name="Password" placeholder="****" maxlength="15">
             </div>
 
 
@@ -76,7 +91,7 @@
                     
                     foreach($local as $tipo){
                       
-                      echo "<option value=" .$tipo->IdLocal .">". $tipo->Nombre ."</option>";
+                      echo "<option value=" .$tipo->IdLocal .">". $tipo->NombreL ."</option>";
                     }?>
               </select>
 

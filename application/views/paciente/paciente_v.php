@@ -27,6 +27,7 @@
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Nombre">Nombre</a></li>
                     <li><a href="#" dato="Raza">Raza</a></li>
+                    <li><a href="#" dato="FechaNac">Fecha nacimiento</a></li>
                     <li><a href="#" dato="Sexo">Sexo</a></li>
             
             
@@ -64,7 +65,7 @@
           //  die(var_dump($datos_trabajador));
             foreach ($datos_paciente as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->NombreCliente."</td>".
+                "<td>". $dato->NombreCliente. " " .$dato->ApePat. " " .$dato->ApeMat."</td>".
                 "<td>". $dato->Nombre."</td>".
                 "<td>". $dato->Raza ."</td>".
                 "<td>". $dato->FechaNac ."</td>".

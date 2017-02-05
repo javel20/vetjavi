@@ -20,12 +20,12 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8">
             </div>
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" maxlength="10" type="text"/>
 
                   <script>
                     $(document).ready(function(){
@@ -54,7 +54,7 @@
 
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
             </div>
 
 
@@ -112,13 +112,13 @@
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
-                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad">
+                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="6">
                   
                   </div>
 
                   <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha de Vencimiento</label>
-                <input validate="date" class="form-control" id="dateV" name="FechaV" placeholder="MM/DD/YYYY" type="text"/>
+                <input validate="date" class="form-control" id="dateV" name="FechaV" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
 
                   <script>
                     $(document).ready(function(){

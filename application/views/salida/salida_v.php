@@ -12,20 +12,22 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
                 <form class="navbar-form navbar-left"
-                        action="<?php echo base_url('index.php/producto/search'); ?>" 
+                        action="<?php echo base_url('index.php/salida/search'); ?>"
                         method="GET">
                     <div class="input-group">
                 
                 <div class="input-group-btn">
                     <button type="button" 
                             id="dato_a_buscar"
-                            class="btn btn-default dropdown-toggle" 
-                            data-toggle="dropdown" 
+                            class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown"
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                        <li><a href="#" dato="Nombre">Nombre </a></li>
+                    <li><a href="#" dato="CodigoS">Codigo</a></li>
+                    <li><a href="#" dato="NombreS">Nombre</a></li>
+                     <li><a href="#" dato="FechaS">Fecha</a></li>
 
             
             
@@ -33,8 +35,8 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'CodigoS';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'CodigoS';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -48,21 +50,24 @@
     
     <table class="table">
         <thead>
-            <th>Nombres</th>
-            <th>Tipo de Producto</th>
-
-            <th>Descripción</th>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
         
         <?php
-            // die(json_encode($datos_producto))
-            foreach ($datos_producto as &$dato) {
+          // die(var_dump($datos_stockpresen));
+            foreach ($datos_salida as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->Nombre . "</td>".
-                "<td>". $dato->NombreTipoP ."</td>".
-                "<td>". $dato->descprod ."</td>".
+                "<td>". $dato->CodigoS."</td>".
+                "<td>". $dato->NombreS ."</td>".
+                "<td>". $dato->FechaS ."</td>".
+                "<td>". $dato->PrecioS ."</td>".
+                "<td>". $dato->DescripcionS ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones
@@ -71,23 +76,10 @@
                     <ul class='dropdown-menu' aria-labelledby='dLabel'>
 
                         <li><a  dato_modal='dato_eliminar'
-                                id='desactivar_enlace'
-                                aviso='Desea desactivar a:'
-                                nombre_data='". $dato->Nombre ."'
-                                url_data=". base_url("index.php/producto/deactivate/$dato->IdProducto") .">Desactivar</a></li>
-                        
-                         <li><a dato_modal='dato_eliminar'
-                                id='activar_enlace'
-                                aviso='Desea activar a:'
-                                nombre_data='". $dato->Nombre  ."'
-                                url_data=". base_url("index.php/producto/activate/$dato->IdProducto") .">Activar</a></li>
-
-
-                        <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre  ."'
-                                url_data=". base_url("index.php/producto/delete/$dato->IdProducto") .">Eliminar</a></li>
-                        <li><a href=". base_url("index.php/Producto/edit/$dato->IdProducto") .">Editar</a></li>
+                                nombre_data='". $dato->CodigoS ."'
+                                url_data=". base_url("index.php/Salida/delete/$dato->IdSalida") .">Eliminar</a></li>
+                        <li><a href=". base_url("index.php/Salida/edit/$dato->IdSalida") .">Editar</a></li>
 
                     </ul>
                     </div></td>".
@@ -100,9 +92,9 @@
 
 </div>
 </div>
+</div>
 
 </div>
-</div>  
 <div class="modal_fondo" id="modal_completo">
     <div class="modal_aviso">
         <h3 id="put_aviso"></h3>

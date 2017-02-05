@@ -1,6 +1,7 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -13,7 +14,7 @@
       <div class="page-header">
         <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Registrar Analisis</h3>
+            <h3 class="panel-title">Registrar Salida</h3>
           </div>
           <div class="panel-body">
             <form class="row" action="store" method="POST" onsubmit="return validar(this);">
@@ -21,25 +22,39 @@
 
 
             <div class="form-group col-md-6">
-              <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
+            <label>Cita</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectCita">
+                  <option>--seleccionar--</option>
+                <?php
+                     
+                    foreach($citas as $cita){
+                     
+                             echo "<option value=" .$cita->IdCita .">". $cita->CodigoC ."</option>";
+                     
+                    }?>
+              </select>
+
             </div>
 
-            
+
+            <div class="form-group col-md-6">
+              <label>Codigo</label>
+              <input validate="number" type="text" class="form-control" id="CodigoS" name="CodigoS" maxlength="8" placeholder="Codigo">
+            </div>
+
             <div class="form-group col-md-6">
               <label>Nombre</label>
-               <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
+              <input validate="texto" type="text" class="form-control" id="NombreS" name="NombreS" maxlength="8" placeholder="Nombre">
             </div>
-
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text" maxlength="10"  />
+                <input validate="date" class="form-control" id="date" name="FechaS" placeholder="MM/DD/YYYY" type="text" maxlength="10"  />
 
 
                   <script>
                     $(document).ready(function(){
-                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
+                      var date_input=$('input[name="FechaS"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         var options={
                           format: 'mm/dd/yyyy',
@@ -55,17 +70,12 @@
 
             <div class="form-group col-md-6">
               <label>Precio</label>
-              <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/."maxlength="7">
+              <input validate="number" type="text" class="form-control" id="PrecioS" name="PrecioS" maxlength="8" placeholder="S/.">
             </div>
-
-            <div class="form-group col-md-6">
-              <label>Porcentaje</label>
-              <input validate="number" type="text"class="form-control" name="PorcentajeA" placeholder="%"maxlength="7">
-            </div>
-
+         
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" id="Descripcion"name="Descripcion" placeholder="Descripcion" maxlength="50">
+              <input type="text" class="form-control" id="Descripcion"name="DescripcionS" maxlength="50" placeholder="Descripcion">
             </div>
 
 

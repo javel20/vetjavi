@@ -13,36 +13,66 @@
       <div class="page-header">
         <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Registrar Analisis</h3>
+            <h3 class="panel-title">Editar Salida</h3>
           </div>
           <div class="panel-body">
-            <form class="row" action="store" method="POST" onsubmit="return validar(this);">
+            <form class="row mrb-30 well"
+              action="<?php echo base_url('index.php/salida/update/'.$dato_salidas[0]->IdSalida); ?>" 
+              method="POST" onsubmit="return validar(this);">
 
+
+
+            <div class="form-group col-md-6">
+            <label>Cita</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectCita" >
+                  <option>--seleccionar--</option>
+                <?php
+                     
+
+
+                             foreach($citas as $cita){
+                      $faiId=($cita->IdCita==$dato_salidas[0]->IdCita)? "selected":"";
+                      echo "<option value=". $cita->IdCita ." ". $faiId .">". $cita->IdCita ."</option>";
+                     
+                    }?>
+              </select>
+
+            </div>
 
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
+              <input validate="number" type="text" class="form-control" id="CodigoS" name="CodigoS" maxlength="8" placeholder="Codigo" value="<?php echo $dato_salidas[0]->CodigoS?>">
             </div>
-
-            
             <div class="form-group col-md-6">
               <label>Nombre</label>
-               <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
+              <input validate="texto" type="text" class="form-control" id="NombreS" name="NombreS" maxlength="20" placeholder="Nombre" value="<?php echo $dato_salidas[0]->NombreS?>">
             </div>
 
+     
 
+        
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text" maxlength="10"  />
+                <input validate="date" class="form-control" id="date" name="FechaS" placeholder="MM/DD/YYYY" type="text" value="<?php echo $dato_salidas[0]->FechaS?>" />
 
 
                   <script>
                     $(document).ready(function(){
-                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
+
+
+                      var fecha= "<?php echo trim($dato_salidas[0]->FechaS) ?>"
+
+                      var anio = Number(fecha.split("/")[0]);
+                      var mes = Number(fecha.split("/")[1]);
+                      var dia = Number(fecha.split("/")[2]);
+
+
+                      var date_input=$('input[name="FechaS"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         var options={
                           format: 'mm/dd/yyyy',
+                          defaultViewDate: {year:anio,month:mes,day:dia},
                           container: container,
                           todayHighlight: true,
                           autoclose: true,
@@ -55,17 +85,12 @@
 
             <div class="form-group col-md-6">
               <label>Precio</label>
-              <input validate="number" type="text"class="form-control" name="PrecioAnalisis" placeholder="S/."maxlength="7">
-            </div>
-
-            <div class="form-group col-md-6">
-              <label>Porcentaje</label>
-              <input validate="number" type="text"class="form-control" name="PorcentajeA" placeholder="%"maxlength="7">
+              <input type="text" class="form-control" id="PrecioS"name="PrecioS" maxlength="8" placeholder="S/." value="<?php echo $dato_salidas[0]->PrecioS?>">
             </div>
 
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" id="Descripcion"name="Descripcion" placeholder="Descripcion" maxlength="50">
+              <input type="text" class="form-control" id="DescripcionS"name="DescripcionS" maxlength="50" placeholder="Descripcion" value="<?php echo $dato_salidas[0]->DescripcionS?>">
             </div>
 
 

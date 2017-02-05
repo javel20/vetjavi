@@ -22,7 +22,7 @@
                     
                     foreach($tipos as $tipo){
                       $faiId=($tipo->IdTipoTrab==$dato_trabajador[0]->IdTipoTrab)? "selected":"";
-                      echo "<option value=". $tipo->IdTipoTrab ." ". $faiId .">". $tipo->Nombre ."</option>";
+                      echo "<option value=". $tipo->IdTipoTrab ." ". $faiId .">". $tipo->NombreTP ."</option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
@@ -32,27 +32,40 @@
           </div>
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_trabajador[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30"value="<?php echo $dato_trabajador[0]->NombreT?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Paterno</label>
-            <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" value="<?php echo $dato_trabajador[0]->ApePat?>">
+            <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" maxlength="20"value="<?php echo $dato_trabajador[0]->ApePat?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Materno</label>
-            <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" value="<?php echo $dato_trabajador[0]->ApeMat?>">
+            <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" maxlength="20" value="<?php echo $dato_trabajador[0]->ApeMat?>">
           </div>
           <div class="form-group col-md-6">
             <label>Dirección</label>
-            <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección" value="<?php echo $dato_trabajador[0]->Direccion?>">
+            <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección" maxlength="30" value="<?php echo $dato_trabajador[0]->DireccionT?>">
           </div>
-          <div class="form-group col-md-6">
-            <label>Telefono</label>
-            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_trabajador[0]->Telefono?>">
+          <div class="form-group col-md-3">
+            <label>Celular</label>
+            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Celular" maxlength="9" value="<?php echo $dato_trabajador[0]->CelularT?>">
           </div>
 
 
+          <div class="form-group col-md-3">
+            <label>Operador</label>
+             <select validate="seleccionar" type="text" class="form-control" name="Operador" placeholder="Operador">
 
+                  <option value="Rpm" <?php echo ($dato_trabajador[0]->OperadorT=="Rpm" ? 'selected="selected"' : '');?>>Rpm</option>    
+                  <option value="Movistar" <?php echo ($dato_trabajador[0]->OperadorT=="Movistar" ? 'selected="selected"' : '');?>>Movistar</option>
+                  <option value="Rpc" <?php echo ($dato_trabajador[0]->OperadorT=="Rpc" ? 'selected="selected"' : '');?>>Rpc</option>
+                  <option value="Claro" <?php echo ($dato_trabajador[0]->OperadorT=="Claro" ? 'selected="selected"' : '');?>>Claro</option>
+                  <option value="Bitel" <?php echo ($dato_trabajador[0]->OperadorT=="Bitel" ? 'selected="selected"' : '');?>>Bitel</option>
+                  <option value="Entel" <?php echo ($dato_trabajador[0]->OperadorT=="Entel" ? 'selected="selected"' : '');?>>Entel</option>
+                  <option value="Virgin" <?php echo ($dato_trabajador[0]->OperadorT=="Virgin" ? 'selected="selected"' : '');?>>Virgin</option>
+
+            </select>
+          </div>
             
 
             <div class="form-group col-md-6">
@@ -63,7 +76,7 @@
                     foreach($local as $tipo){
                       // die($tipo->IdLocal==$dato_local[0]->IdLocal);
                       $faiId=($tipo->IdLocal==$dato_trabajador[0]->IdLocal)? "selected":"";
-                      echo "<option value=". $tipo->IdLocal ." ". $faiId .">". $tipo->Nombre ."</option>";
+                      echo "<option value=". $tipo->IdLocal ." ". $faiId .">". $tipo->NombreL ."</option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->

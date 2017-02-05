@@ -81,8 +81,25 @@ class Paciente extends CI_Controller {
         }
 
         public function search(){
+          $inicio=0;
+          $limite=10;
+
+          if(isset($_GET['per_page'])){
+            // die($pagina);
+            $inicio=(($_GET['per_page'])-1) * $limite;
+          }
+
+          $this->load->library('pagination');
           $this->load->model('Paciente_model');
-          $data['datos_paciente'] =  $this->Paciente_model->get_buscar_paciente();
+          $data['datos_paciente'] =  $this->Paciente_model->get_buscar_paciente($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/paciente/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato'];
+          $config['total_rows'] = count($this->Paciente_model->get_buscar_paciente());
+          $config['per_page'] = 10;
+
+          $config['first_url'] = base_url().'index.php/paciente/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato']."&per_page=1";
+          $config['page_query_string'] = TRUE;
+          $this->pagination->initialize($config);
+
           $this->load->view('paciente/paciente_v', $data);
         }
 

@@ -12,21 +12,21 @@
       <div class="page-header">
         <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Registrar Paciente</h3>
+            <h3 class="panel-title">Registrar Permiso</h3>
           </div>
           <div class="panel-body">
             <form class="row" action="store" method="POST" onsubmit="return validar(this);">
 
 
             <div class="form-group col-md-6">
-            <label>Cliente</label>
-              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectTipo" >
+            <label>Trabajador</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single2" name="SelectTrab" >
                   <option>--seleccionar--</option>
                 <?php
                     
-                    foreach($clientes as $cliente){
+                    foreach($trabajadores as $trabajador){
                       
-                      echo "<option value=" .$cliente->IdCliente .">". $cliente->Nombre ." " .$cliente->ApePat." ".$cliente->ApeMat. "</option>";
+                      echo "<option value=" .$trabajador->IdTrabajador .">". $trabajador->NombreT ." ".$trabajador->ApePat." ".$trabajador->ApeMat. "</option>";
                     }?>
               </select>
 
@@ -34,21 +34,20 @@
 
 
             <div class="form-group col-md-6">
-              <label>Nombre</label>
-              <input validate="texto" type="text"class="form-control" name="Nombre" placeholder="Nombre" maxlength="20">
+              <label>Codigo</label>
+              <input validate="number" type="text" class="form-control" name="CodigoP" placeholder="Codigo" maxlength="8">
             </div>
+
+
+
             <div class="form-group col-md-6">
-              <label>Raza</label>
-              <input validate="texto" type="text" class="form-control" name="Raza" placeholder="Raza" maxlength="20">
-            </div>
-            <div class="form-group col-md-6">
-              <label>Fecha Nacimiento</label>
-              <input validate="date" class="form-control" id="date" name="FechaNac" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
+              <label>Fecha Inicio</label>
+              <input validate="date" class="form-control" id="date" name="FechaInicioP" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
 
 
                   <script>
                     $(document).ready(function(){
-                      var date_input=$('input[name="FechaNac"]'); //our date input has the name "date"
+                      var date_input=$('input[name="FechaInicioP"]'); //our date input has the name "date"
                         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                         var options={
                           format: 'mm/dd/yyyy',
@@ -61,23 +60,35 @@
                   </script>
 
             </div>
-            <div class="form-group col-md-6">
-              <label>Color</label>
-              <input validate="texto" type="text" class="form-control" name="Color" placeholder="Color" maxlength="20">
-            </div>
-            <div class="form-group col-md-6">
-              <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
-            </div>
 
             <div class="form-group col-md-6">
-              <label>Sexo</label>
-              <select validate="seleccionar" class="form-control" id="Sexo" name="Sexo">
-                <option>--seleccionar--</option>
-                <option >Macho</option>
-                <option>Hembra</option>
-             </select>
+              <label>Fecha Termino</label>
+              <input validate="date" class="form-control" id="date" name="FechaTerminoP" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
+
+
+                  <script>
+                    $(document).ready(function(){
+                      var date_input=$('input[name="FechaTerminoP"]'); //our date input has the name "date"
+                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                        var options={
+                          format: 'mm/dd/yyyy',
+                          container: container,
+                          todayHighlight: true,
+                          autoclose: true,
+                        };
+                        date_input.datepicker(options);
+                      })
+                  </script>
+
             </div>
+
+
+
+            <div class="form-group col-md-6">
+              <label>Descripcion</label>
+              <input type="text" class="form-control" name="DescripcionP" placeholder="Descripcion" maxlength="50">
+            </div>
+
 
 
           

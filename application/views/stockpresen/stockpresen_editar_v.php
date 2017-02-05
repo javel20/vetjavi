@@ -33,21 +33,21 @@
 
              <div class="form-group col-md-6 ">
             <label>Stock Minimo</label>
-            <input validate="number"  type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" value="<?php echo $dato_stockpresen[0]->StockMin?>">
+            <input validate="number"  type="text" class="form-control" name="StockMin" placeholder="Stock Minimo" maxlength="5"value="<?php echo $dato_stockpresen[0]->StockMin?>">
           </div>
           <div class="form-group col-md-6">
             <label>Stock Real</label>
-            <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" value="<?php echo $dato_stockpresen[0]->StockReal?>">
+            <input validate="number" type="text" class="form-control" name="StockReal" placeholder="Stock Real" maxlength="5"value="<?php echo $dato_stockpresen[0]->StockReal?>">
           </div>
           <div class="form-group col-md-6">
             <label>Presentacion</label>
-            <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" value="<?php echo $dato_stockpresen[0]->Presentacion?>">
+            <input validate="direccion" type="text" class="form-control" name="Presentacion" placeholder="Presentacion" maxlength="15"value="<?php echo $dato_stockpresen[0]->Presentacion?>">
           </div>
 
 
           <div class="form-group col-md-6">
             <label>Precio</label>
-            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" value="<?php echo $dato_stockpresen[0]->Precio?>">
+            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" maxlength="7"value="<?php echo $dato_stockpresen[0]->Precio?>">
           </div>
 
             <script type="text/javascript">

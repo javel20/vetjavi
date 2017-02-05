@@ -26,7 +26,6 @@
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Nombre">Nombre</a></li>
-                    <li><a href="#" dato="ApePat">Apellido</a></li>
                     <li><a href="#" dato="Email">Email</a></li>
                     <li><a href="#" dato="Empresa">Empresa</a></li>
             
@@ -52,7 +51,8 @@
         <thead>
             <th>Nombres</th>
             <th>Dirección</th>
-            <th>Numero</th>
+            <th>Celular</th>
+            <th>Operador</th>
             <th>Email</th>
             <th>Empresa</th>
             <th>Option</th>
@@ -65,7 +65,8 @@
                 echo "<tr class='estado_" . $dato->Estado ."'>".
                 "<td>". $dato->Nombre ." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
                 "<td>". $dato->Direccion ."</td>".
-                "<td>". $dato->Numero ."</td>".
+                "<td>". $dato->Celular ."</td>".
+                "<td>". $dato->Operador ."</td>".
                 "<td>". $dato->Email ."</td>".
                 "<td>". $dato->Empresa ."</td>".
                 "<td> <div class='dropdown'>

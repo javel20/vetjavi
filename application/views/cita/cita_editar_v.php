@@ -23,7 +23,7 @@
                 <?php
                     foreach($pacientes as $Paciente){
                       $faiId=($Paciente->IdPaciente==$dato_cita[0]->IdPaciente)? "selected":"";
-                      echo "<option value=". $Paciente->IdPaciente ." ". $faiId .">". $Paciente->Nombre ."</option>";
+                      echo "<option value=". $Paciente->IdPaciente ." ". $faiId .">". $Paciente->Nombre ." - " .$Paciente->NombreCliente. " " .$Paciente->ApePat."</option>";
                     }?>
               </select>
 
@@ -73,13 +73,13 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" value="<?php echo $dato_cita[0]->CodigoC?>">
+              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" maxlength="8" value="<?php echo $dato_cita[0]->CodigoC?>">
             </div>
 
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
-                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text" value="<?php echo $dato_cita[0]->FechaReserva?>" />
+                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYYY" type="text" maxlength="10"value="<?php echo $dato_cita[0]->FechaReserva?>" />
 
 
                   <script>
@@ -112,7 +112,7 @@
             <div class="form-group col-md-6">
                 <label class="control-label" for="date">Hora Reserva</label><br>
                 <div class="input-group bootstrap-timepicker timepicker">
-                    <input id="timepicker1" type="text" class="form-control input-small" name="HoraC" value="<?php echo $dato_cita[0]->HoraC?>">
+                    <input id="timepicker1" type="text" class="form-control input-small" maxlength="8" name="HoraC" value="<?php echo $dato_cita[0]->HoraC?>">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
 
@@ -122,20 +122,30 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input validate="number" type="text" class="form-control" name="Peso" placeholder="Peso" value="<?php echo $dato_cita[0]->Peso?>">
+              <input validate="number" type="text" class="form-control" name="Peso" placeholder="Peso" maxlength="6" value="<?php echo $dato_cita[0]->Peso?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input validate="number" type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" value="<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
+              <input validate="number" type="text" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" maxlength="6" value="<?php echo $dato_cita[0]->FrecuenciaCardiaca?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input validate="number" type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" value="<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
+              <input validate="number" type="text" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" maxlength="6"value="<?php echo $dato_cita[0]->FrecuenciaRespiratoria?>">
             </div>
+
+            <div class="form-group col-md-6">
+            <label>Estado</label>
+             <select validate="seleccionar" type="text" class="form-control" name="EstadoC" placeholder="Estado">
+
+                  <option value="En espera" <?php echo ($dato_cita[0]->EstadoC=="En espera" ? 'selected="selected"' : '');?>>En espera</option>    
+                  <option value="Atendido" <?php echo ($dato_cita[0]->EstadoC=="Atendido" ? 'selected="selected"' : '');?>>Atendido</option>
+
+            </select>
+          </div>
   
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_cita[0]->Descripcion?>">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50" value="<?php echo $dato_cita[0]->Descripcion?>">
             </div>
 
 
@@ -176,6 +186,7 @@
             <div class="col-md-12">
       
               <input validate="decimal" type="hidden" class="form-control" name="PrecioTotal" placeholder="Precio" value="<?php echo $dato_cita[0]->PrecioTotal?>">
+              <input validate="decimal" type="hidden" class="form-control" name="Ganancia" placeholder="Ganancia" value="<?php echo $dato_cita[0]->Ganancia?>">
               <button type="submit" class="btn btn-primary ">Actualizar</button>
             
             </div>

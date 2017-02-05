@@ -16,17 +16,17 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombre</label>
-            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_paciente[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="20" value="<?php echo $dato_paciente[0]->Nombre?>">
           </div>
           <div class="form-group col-md-6">
             <label>Raza</label>
-            <input validate="texto" type="text" class="form-control" name="Raza" placeholder="Raza" value="<?php echo $dato_paciente[0]->Raza?>">
+            <input validate="texto" type="text" class="form-control" name="Raza" placeholder="Raza" maxlength="20" value="<?php echo $dato_paciente[0]->Raza?>">
           </div>
 
           <div class="form-group col-md-6">
                 
                 <label class="control-label" for="date">Fecha Nacimiento</label>
-                <input validate="date" class="form-control" id="date" name="FechaNac" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_paciente[0]->FechaNac?>" />
+                <input validate="date" class="form-control" id="date" name="FechaNac" placeholder="MM/DD/YYYY" maxlength="10" type="text" value= "<?php echo $dato_paciente[0]->FechaNac?>" />
 
 
                   <script>
@@ -55,11 +55,11 @@
           </div>
           <div class="form-group col-md-6">
             <label>Color</label>
-            <input validate="texto" type="text" class="form-control" name="Color" placeholder="Color" value="<?php echo $dato_paciente[0]->Color?>">
+            <input validate="texto" type="text" class="form-control" name="Color" placeholder="Color" maxlength="20" value="<?php echo $dato_paciente[0]->Color?>">
           </div>
           <div class="form-group col-md-6">
             <label>Descripcion</label>
-            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_paciente[0]->Descripcion?>">
+            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50" value="<?php echo $dato_paciente[0]->Descripcion?>">
           </div>
 
           <div class="form-group col-md-6">
@@ -94,7 +94,7 @@
                     
                     foreach($clientes as $cliente){
                       $faiId=($cliente->IdCliente==$dato_paciente[0]->IdCliente)? "selected":"";
-                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre ."</option>";
+                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre. " " .$cliente->ApePat." ".$cliente->ApeMat." </option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->

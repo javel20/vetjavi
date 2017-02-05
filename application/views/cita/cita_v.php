@@ -11,7 +11,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='right'>
                 
-                <form class="navbar-form navbar-left"
+                <form class="navbar-form navbar-left" 
                         action="<?php echo base_url('index.php/cita/search'); ?>"  
                         method="GET">
                     <div class="input-group">
@@ -20,21 +20,22 @@
                     <button type="button" 
                             id="dato_a_buscar"
                             class="btn btn-default dropdown-toggle" 
-                            data-toggle="dropdown" 
+                                data-toggle="dropdown" 
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Fecha Reserva';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="FechaReserva">Fecha Reserva</a></li>
-                    <li><a href="#" dato="Peso">Peso</a></li>
+
+                    <li><a href="#" dato="CodigoC">Codigo </a></li>
+
             
             
                     </ul>
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('tipo_dato') ? $this->input->get('tipo_dato') : 'FechaReserva';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'FechaReserva';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'CodigoC';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'CodigoC';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -49,14 +50,16 @@
     <table class="table container">
         <thead>
             <th>Paciente</th>
-            <th>TipoCita</th>
+            <!--<th>TipoCita</th>-->
             <th>Codigo</th>
             <th>Fecha Reserva</th>
             <th>Fecha Registro</th>
             <th>Peso</th>
             <th>Frecuencia Cardiaca</th>
             <th>Frecuencia Respiratoria</th>
+            <th>Ganancia</th>
             <th>Precio</th>
+            <th>Estado</th>
             <th>Descripicion</th>
             <th>Option</th>
             
@@ -72,7 +75,7 @@
                 // $tipodecita = $dato->NombreTipoCita!=NULL ? $dato->NombreTipoCita:"Cirugia";
                 $nombre="";
 
-                if($dato->analisis!=null){
+                if($dato->IdAnalisis!=null){
                     $nombre="Analisis";
                     
                 }else if($dato->IdCirugia!=NULL){
@@ -81,7 +84,7 @@
 
 
           echo "<tr >".
-                "<td>". $dato->NombrePaciente ."</td>".
+                "<td>". $dato->NombrePaciente . " - ".$dato->Nombre. " ".$dato->ApePat."</td>".
                 // "<td>". $tipodecita . " </td>".
                 "<td>". $dato->CodigoC ."</td>".
                 "<td>". $dato->FechaReserva ."</td>".
@@ -89,7 +92,9 @@
                 "<td>". $dato->Peso ."</td>".
                 "<td>". $dato->FrecuenciaCardiaca ."</td>".
                 "<td>". $dato->FrecuenciaRespiratoria ."</td>".
+                "<td>". $dato->Ganancia ."</td>".
                 "<td>". number_format($dato->PrecioTotal,2,'.','') ."</td>".
+                "<td>". $dato->EstadoC ."</td>".
                 "<td>". $dato->descita ."</td>".
                 
                 "<td> <div class='dropdown'>
@@ -102,7 +107,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->IdCita ."'
+                                nombre_data='". $dato->CodigoC ."'
                                 url_data=". base_url("index.php/cita/delete/$dato->IdCita") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/cita/edit/" .$dato->IdCita. "?tipo=$nombre" ) .">Editar</a></li>
 

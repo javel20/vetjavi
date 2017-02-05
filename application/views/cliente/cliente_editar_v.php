@@ -11,15 +11,15 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" value="<?php echo $dato_cliente[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30" value="<?php echo $dato_cliente[0]->Nombre?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Paterno</label>
-            <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" value="<?php echo $dato_cliente[0]->ApePat?>">
+            <input validate="texto" type="text" class="form-control" name="ApePat" placeholder="Apellido Paterno" maxlength="15"value="<?php echo $dato_cliente[0]->ApePat?>">
           </div>
           <div class="form-group col-md-6">
             <label>Apellido Materno</label>
-            <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" value="<?php echo $dato_cliente[0]->ApeMat?>">
+            <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" maxlength="15"value="<?php echo $dato_cliente[0]->ApeMat?>">
           </div>
 
 
@@ -31,7 +31,7 @@
                   ?>
                    <div class="form-group">
                       <label>DNI</label>
-                      <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI" value="<?php echo $dato_cliente[0]->DNI?>">
+                      <input validate="number" type="text" class="form-control" name="DNI" placeholder="DNI"  maxlength="8" value="<?php echo $dato_cliente[0]->DNI?>">
 
                     </div>
 
@@ -42,7 +42,7 @@
                       ?>
                         <div class="form-group">
                         <label>RUC</label>
-                        <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC" value="<?php echo $dato_cliente[0]->RUC?>">
+                        <input validate="number" type="text" class="form-control" name="RUC" placeholder="RUC" maxlength="11"value="<?php echo $dato_cliente[0]->RUC?>">
                     </div>
 
                       <?php
@@ -60,20 +60,39 @@
 
          <div class="form-group col-md-6">
             <label>Ciudad</label>
-            <input validate="texto"  type="text" class="form-control" name="Ciudad" placeholder="Ciudad" value="<?php echo $dato_cliente[0]->Ciudad?>">
+            <input validate="texto"  type="text" class="form-control" name="Ciudad" placeholder="Ciudad" maxlength="15"value="<?php echo $dato_cliente[0]->Ciudad?>">
           </div>
           <div class="form-group col-md-6">
             <label>Direccion</label>
-            <input type="text" class="form-control" name="Direccion" placeholder="Direccion" value="<?php echo $dato_cliente[0]->Direccion?>">
+            <input type="text" class="form-control" name="Direccion" placeholder="Direccion" maxlength="25"value="<?php echo $dato_cliente[0]->Direccion?>">
           </div>
          <div class="form-group col-md-6">
             <label>Telefono</label>
-            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" value="<?php echo $dato_cliente[0]->Telefono?>">
+            <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" maxlength="9"value="<?php echo $dato_cliente[0]->Telefono?>">
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label>Celular</label>
-            <input validate="number" type="text" class="form-control" name="Celular" placeholder="Celular" value="<?php echo $dato_cliente[0]->Celular?>">
+            <input validate="number" type="text" class="form-control" name="Celular" placeholder="Celular"maxlength="9" value="<?php echo $dato_cliente[0]->Celular?>">
           </div>
+
+
+          <div class="form-group col-md-3">
+            <label>Operador</label>
+             <select validate="seleccionar" type="text" class="form-control" name="Operador" placeholder="Operador">
+
+                  <option value="Rpm" <?php echo ($dato_cliente[0]->Operador=="Rpm" ? 'selected="selected"' : '');?>>Rpm</option>    
+                  <option value="Movistar" <?php echo ($dato_cliente[0]->Operador=="Movistar" ? 'selected="selected"' : '');?>>Movistar</option>
+                  <option value="Rpc" <?php echo ($dato_cliente[0]->Operador=="Rpc" ? 'selected="selected"' : '');?>>Rpc</option>
+                  <option value="Claro" <?php echo ($dato_cliente[0]->Operador=="Claro" ? 'selected="selected"' : '');?>>Claro</option>
+                  <option value="Bitel" <?php echo ($dato_cliente[0]->Operador=="Bitel" ? 'selected="selected"' : '');?>>Bitel</option>
+                  <option value="Entel" <?php echo ($dato_cliente[0]->Operador=="Entel" ? 'selected="selected"' : '');?>>Entel</option>
+                  <option value="Virgin" <?php echo ($dato_cliente[0]->Operador=="Virgin" ? 'selected="selected"' : '');?>>Virgin</option>
+
+            </select>
+          </div>
+
+
+
           <div class="col-md-12">
             <button type="submit" class="btn btn-primary">Actualizar</button>
           

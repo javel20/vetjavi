@@ -11,6 +11,7 @@ class Cliente_model extends CI_Model {
         public $Direccion;
         public $Telefono;
         public $Celular;
+        public $Operador;
         public $Estado;
 
 
@@ -59,6 +60,7 @@ class Cliente_model extends CI_Model {
                 $this->Direccion    = $_POST['Direccion'];
                 $this->Telefono    = $_POST['Telefono'];
                 $this->Celular    = $_POST['Celular'];
+                $this->Operador    = $_POST['Operador'];
                 $this->Estado = True;
                  
 
@@ -99,6 +101,7 @@ class Cliente_model extends CI_Model {
                 $this->Direccion    = $_POST['Direccion'];
                 $this->Telefono    = $_POST['Telefono'];
                 $this->Celular    = $_POST['Celular'];
+                $this->Operador    = $_POST['Operador'];
                 // $this->Estado    = $_POST['Estado'];
                 $this->Estado = True;
                 $this->db->update('cliente', $this, array('IdCliente' => $IdCliente));

@@ -2,11 +2,12 @@
 class Trabajador_model extends CI_Model {
 
         // public $IdTrabajador;
-        public $Nombre;
+        public $NombreT;
         public $ApePat;
         public $ApeMat;
-        public $Direccion;
-        public $Telefono;
+        public $DireccionT;
+        public $CelularT;
+        public $OperadorT;
         public $Email;
         public $Password;
         public $IdTipoTrab;
@@ -21,7 +22,7 @@ class Trabajador_model extends CI_Model {
 
         public function get_trabajadores($inicio=FALSE,$limite=FALSE)
         {
-                $this->db->select('*,trabajador.Nombre as NombreTrab ,tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal, trabajador.Direccion as DirTrab');
+                $this->db->select('*');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
@@ -36,11 +37,12 @@ class Trabajador_model extends CI_Model {
         }
          public function post_trabajadores()
         {
-                $this->Nombre    = $_POST['Nombre'];
+                $this->NombreT    = $_POST['Nombre'];
                 $this->ApePat    = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];
-                $this->Direccion    = $_POST['Direccion'];
-                $this->Telefono    = $_POST['Telefono'];
+                $this->DireccionT    = $_POST['Direccion'];
+                $this->CelularT    = $_POST['Telefono'];
+                $this->OperadorT    = $_POST['Operador'];
                 $this->Email    = $_POST['Email'];
                 $this->Password    = md5($_POST['Password']);
                 $this->IdTipoTrab    = $_POST['SelectTipo'];
@@ -72,9 +74,10 @@ class Trabajador_model extends CI_Model {
 
         public function update_trabajador($IdTrabajador)
         {
-                $this->Nombre    = $_POST['Nombre'];
-                $this->Direccion    = $_POST['Direccion'];
-                $this->Telefono    = $_POST['Telefono'];
+                $this->NombreT    = $_POST['Nombre'];
+                $this->DireccionT    = $_POST['Direccion'];
+                $this->CelularT    = $_POST['Telefono'];
+                $this->OperadorT    = $_POST['Operador'];
                 $this->ApePat  = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];
                 $this->Email    = $_POST['Email'];
@@ -88,7 +91,7 @@ class Trabajador_model extends CI_Model {
         public function get_buscar_trabajador(){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*,trabajador.Nombre as NombreTrab, tipotrab.Nombre as NombreTipo, local.Nombre as NombreLocal, trabajador.Direccion as DirTrab');
+                $this->db->select('*');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');

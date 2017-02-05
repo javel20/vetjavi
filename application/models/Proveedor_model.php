@@ -4,7 +4,8 @@ class Proveedor_model extends CI_Model {
         // public $IdProveedor;
         public $Nombre;
         public $Direccion;
-        public $Numero;
+        public $Celular;
+        public $Operador;
         public $Email;
         public $ApePat;
         public $ApeMat;
@@ -35,7 +36,8 @@ class Proveedor_model extends CI_Model {
         {
                 $this->Nombre    = $_POST['Nombre'];
                 $this->Direccion    = $_POST['Direccion'];
-                $this->Numero    = $_POST['Numero'];
+                $this->Celular    = $_POST['Celular'];
+                $this->Operador    = $_POST['Operador'];
                 $this->Email    = $_POST['Email'];
                 $this->ApePat    = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];
@@ -62,7 +64,8 @@ class Proveedor_model extends CI_Model {
         {
                 $this->Nombre    = $_POST['Nombre'];
                 $this->Direccion    = $_POST['Direccion'];
-                $this->Numero    = $_POST['Numero'];
+                $this->Celular    = $_POST['Celular'];
+                $this->Operador    = $_POST['Operador'];
                 $this->Email    = $_POST['Email'];
                 $this->ApePat  = $_POST['ApePat'];
                 $this->ApeMat    = $_POST['ApeMat'];

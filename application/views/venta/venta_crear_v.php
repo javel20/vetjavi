@@ -21,12 +21,12 @@
             
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo">
+              <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8">
             </div>
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
 
                   <script>
                     $(document).ready(function(){
@@ -57,7 +57,7 @@
 
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
             </div>
 
 
@@ -69,7 +69,7 @@
                     
                     foreach($clientes as $cliente){
                       
-                      echo "<option value=" .$cliente->IdCliente .">". $cliente->Nombre ."</option>";
+                      echo "<option value=" .$cliente->IdCliente .">". $cliente->Nombre ." ".$cliente->ApePat." ".$cliente->ApeMat. "</option>";
                     }?>
               </select>
 
@@ -112,7 +112,7 @@
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
-                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad">
+                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="7">
                   
                   </div>
 
@@ -146,6 +146,7 @@
                   <!--con el name seteo y con el input lo envio al servidor-->
                 <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?> />
                 <input type="hidden" value="" name="sumatotal" id="sumatotal" />  
+                <input type="hidden" value="" name="ganancia" id="ganancia" />  
                 <button type="submit" class="btn btn-primary ">Agregar</button>
             
             </div>
@@ -256,10 +257,13 @@ var precio='';
   var nodo_push = "";
   var acumulado = [];
   var st=0;
+  var sg=0;
   $agregar_detalle.onclick = (event)=>{
    event.preventDefault();
    var precioV=0;
    var precioT=0;
+   var precioG=0;
+  var precioVe=0;
    console.log(precio);
    console.log(porcentaje);
    precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
@@ -282,8 +286,14 @@ var precio='';
 
       precioT=precioV*acumulado[4];
       st+=precioT;
-      $("#sumatotal").val(st);
 
+      precioVe+=precioV;
+      precioG=(precioV-precio)*acumulado[4];
+      sg+=precioG;
+
+      $('#ganancia').val(sg);
+      $("#sumatotal").val(st);
+    console.log(sg);
     console.log(st);
 
 
@@ -305,6 +315,8 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
     if(e.target.id == "delete_row"){
         // ($(e.target).closest("tr").find(".preciot").val());
         st -= $(e.target).closest("tr").find(".preciot").val(); //closest trae a los tr y find busca el valor de preciot
+        precioG -= $(e.target).closet("tr").find(".preciot").val();
+        $("#ganancia").val(precioG);
         $("#sumatotal").val(st);
         e.target.closest("tr").remove();
     }

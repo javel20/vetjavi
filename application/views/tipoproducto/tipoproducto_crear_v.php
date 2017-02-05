@@ -13,16 +13,16 @@
             <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             <div class="form-group col-md-6">
               <label>Nombre</label>
-              <input validate="texto" type="text" class="form-control" name="NombreTipoP" placeholder="Nombre">
+              <input validate="texto" type="text" class="form-control" name="NombreTipoP" placeholder="Nombre" maxlength="30">
             </div>
 
             <div class="form-group col-md-6">
               <label>Porcentaje</label>
-              <input validate="number" type="text" class="form-control" name="Porcentaje" placeholder="Dirección">
+              <input validate="number" type="text" class="form-control" name="Porcentaje" placeholder="%" maxlength="5">
             </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
             </div>
             <!--<div class="form-group col-md-6">
               <label>Estado</label>

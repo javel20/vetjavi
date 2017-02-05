@@ -16,7 +16,7 @@
             
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30">
             </div>
 
            
@@ -24,7 +24,7 @@
 
             <div class="form-group col-md-6">
               <label>Descripción</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
             </div>
 
              <div class="form-group col-md-6">

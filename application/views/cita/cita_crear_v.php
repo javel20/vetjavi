@@ -48,7 +48,7 @@
                 <option>--seleccionar--</option>
                   <?php
                       foreach($pacientes as $paciente){
-                        echo "<option value=" .$paciente->IdPaciente .">". $paciente->Nombre ."</option>";
+                        echo "<option value=" .$paciente->IdPaciente .">". $paciente->Nombre . " - ".$paciente->NombreCliente. " ".$paciente->ApePat. "</option>";
 
                       }?>
                 </select>
@@ -58,12 +58,12 @@
            
               <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo">
+              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" maxlength="8">
             </div>
             
                 <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha Reserva</label>
-                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYY" type="text"/>
+                <input validate="date" class="form-control" id="date" name="FechaReserva" placeholder="MM/DD/YYYY" type="text" maxlength="10"/>
 
 
                   <script>
@@ -85,7 +85,7 @@
             <div class="form-group col-md-6">
                 <label class="control-label" for="date">Hora Reserva</label><br>
                 <div class="input-group bootstrap-timepicker timepicker">
-                    <input id="timepicker1" type="text" class="form-control input-small" name="HoraC">
+                    <input id="timepicker1" type="text" class="form-control input-small" maxlength="8" name="HoraC">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                 </div>
 
@@ -95,20 +95,20 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input validate="number" type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso">
+              <input validate="number" type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso" maxlength="6">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
-              <input validate="number" type="text"id="FrecCard" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca">
+              <input validate="number" type="text"id="FrecCard" class="form-control" name="FrecuenciaCardiaca" placeholder="Frecuencia Cardiaca" maxlength="6">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Respiratoria</label>
-              <input validate="number" type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria">
+              <input validate="number" type="text" id="FrecRes" class="form-control" name="FrecuenciaRespiratoria" placeholder="Frecuencia Respiratoria" maxlength="6">
             </div>
 
             <div class="form-group col-md-6">
               <label>Descripcion</label>
-              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion">
+              <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
             </div>
 
             <div class="form-group col-md-6 cirugia" id="capa_cirugia" >
@@ -143,6 +143,7 @@
           
                 <br><br>
             <div class="col-md-12">
+              <input type="hidden" id="Ganancia" name="Ganancia" value="">
               <input type="hidden" id="PrecioTotal" name="PrecioTotal" value="">
               <button type="submit" class="btn btn-primary ">Guardar</button>
             
@@ -197,15 +198,19 @@
                   var precio='';
                   var porcentaje='';
                 var PrecioTotal='';
+                var Ganancia="";
                 // console.log(event.target);
                       event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
                       if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
                         precio = Number(e.getAttribute('precio'));//e.get... traigo el atributo precio y lo asigno a precio
                         porcentaje = Number(e.getAttribute('porcentaje'));
                         PrecioTotal=Number(precio*porcentaje)/100.0+precio;
+                        Ganancia=Number((precio*porcentaje)/100.0);
                         console.log(precio);
                         // console.log(porcentaje);
                         console.log(PrecioTotal);
+                        console.log(Ganancia);
+                        $("#Ganancia").val(Ganancia);
                         $("#PrecioTotal").val(PrecioTotal);
 
           }
@@ -223,15 +228,18 @@
                   var precio='';
                   var porcentaje='';
                 var PrecioTotal='';
+                var Ganancia="";
                 // console.log(event.target);
                       event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
                       if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
                         precio = Number(e.getAttribute('precio'));//e.get... traigo el atributo precio y lo asigno a precio
                         porcentaje = Number(e.getAttribute('porcentaje'));
                         PrecioTotal=Number(precio*porcentaje)/100.0+precio;
+                        Ganancia=Number((precio*porcentaje)/100.0);
                         console.log(precio);
                         // console.log(porcentaje);
                         console.log(PrecioTotal);
+                        $("#Ganancia").val(Ganancia);
                         $("#PrecioTotal").val(PrecioTotal);
 
           }
@@ -246,15 +254,18 @@
                   var precio='';
                   var porcentaje='';
                 var PrecioTotal='';
+                var Ganancia="";
                 // console.log(event.target);
                       event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
                       if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
                         precio = Number(e.getAttribute('precio'));//e.get... traigo el atributo precio y lo asigno a precio
                         porcentaje = Number(e.getAttribute('porcentaje'));
                         PrecioTotal=Number(precio*porcentaje)/100.0+precio;
+                        Ganancia=Number((precio*porcentaje)/100.0);
                         console.log(precio);
                         // console.log(porcentaje);
                         console.log(PrecioTotal);
+                        $("#Ganancia").val(Ganancia);
                         $("#PrecioTotal").val(PrecioTotal);
 
           }

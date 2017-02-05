@@ -279,6 +279,36 @@
         </li>
         <?php } ?>
 
+        <?php if($perm->IdPermisos == 18){?>
+        <li>
+          <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo18" data-parent="#sidenav01" class="collapsed">
+          <span class="glyphicon glyphicon-calendar"></span> Salida <span class="caret pull-right"></span>
+          </a>
+          <div class="collapse" id="toggleDemo18" style="height: 0px;">
+            <ul class="nav nav-list">
+              <li><a href="/vetjavi/index.php/salida/create">Crear</a></li>
+              <li><a href="/vetjavi/index.php/salida/">Listado</a></li>
+              
+            </ul>
+          </div>
+        </li>
+        <?php } ?>
+
+        <?php if($perm->IdPermisos == 19){?>
+        <li>
+          <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo19" data-parent="#sidenav01" class="collapsed">
+          <span class="glyphicon glyphicon-calendar"></span> Permiso trabajador <span class="caret pull-right"></span>
+          </a>
+          <div class="collapse" id="toggleDemo19" style="height: 0px;">
+            <ul class="nav nav-list">
+              <li><a href="/vetjavi/index.php/permisotrab/create">Crear</a></li>
+              <li><a href="/vetjavi/index.php/permisotrab/">Listado</a></li>
+              
+            </ul>
+          </div>
+        </li>
+        <?php } ?>
+
 
         <?php } ?>
         

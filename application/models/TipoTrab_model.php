@@ -1,8 +1,9 @@
 <?php
 class TipoTrab_model extends CI_Model {
 
-        public $IdTipoTrab;
-        public $Nombre;
+        // public $IdTipoTrab;
+        public $NombreTP;
+        public $DescripcionTP;
 
 
 
@@ -27,7 +28,8 @@ class TipoTrab_model extends CI_Model {
          public function post_tipotrabs()
         {
               
-                $this->Nombre   = $_POST['Nombre'];
+                $this->NombreTP   = $_POST['Nombre'];
+                $this->DescripcionTP   = $_POST['Descripcion'];
 
                 $this->db->insert('tipotrab', $this);
         }
@@ -45,8 +47,8 @@ class TipoTrab_model extends CI_Model {
         public function update_tipotrab($IdTipoTrab)
         {
 
-                $this->Nombre    = $_POST['Nombre']; 
-
+                $this->NombreTP    = $_POST['Nombre']; 
+                $this->DescripcionTP   = $_POST['Descripcion'];
 
 
                 $this->db->update('tipotrab', $this, array('IdTipoTrab' => $IdTipoTrab));

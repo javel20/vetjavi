@@ -1,6 +1,8 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
@@ -25,30 +27,17 @@
           </div>
 
 
-          <div class="form-group col-md-6">
-            <label>Tipo</label>
-            <select validate="seleccionar" type="text" class="form-control" name="Tipo" placeholder="Tipo">
 
-                 <option value="Hemograma Completo" <?php echo ($dato_analisis[0]->Tipo=="Hemograma Completo" ? 'selected="selected"' : '');?>>Hemograma Completo</option>
-                 <option value="Urianálisis" <?php echo ($dato_analisis[0]->Tipo=="Urianálisis" ? 'selected="selected"' : '');?>>Urianálisis Completo</option>
-                 <option value="Perfil Hepático" <?php echo ($dato_analisis[0]->Tipo=="Perfil Hepático" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
-                 <option value="Perfil Renal" <?php echo ($dato_analisis[0]->Tipo=="Perfil Renal" ? 'selected="selected"' : '');?>>Perfil Renal</option>
-                 <option value="Perfil Completo" <?php echo ($dato_analisis[0]->Tipo=="Perfil Completo" ? 'selected="selected"' : '');?>>Perfil Hepático</option>
-                
-            </select>
-          </div>
-
-
-          <div class="form-group col-md-6">
-                 <label class="control-label" for="date">Fecha Reserva</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text" value= "<?php echo $dato_analisis[0]->FechaA?>" />
+            <div class="form-group col-md-6">
+                 <label class="control-label" for="date">Fecha</label>
+                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" value="<?php echo $dato_analisis[0]->FechaA?>" />
 
 
                   <script>
                     $(document).ready(function(){
 
 
-                      var fecha= "<?php echo trim($dato_cita[0]->FechaA) ?>"
+                      var fecha= "<?php echo trim($dato_analisis[0]->FechaA) ?>"
 
                       var anio = Number(fecha.split("/")[0]);
                       var mes = Number(fecha.split("/")[1]);
@@ -108,6 +97,8 @@
 		</div>
 	</div>
 </div>
+
+
    
 <script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       

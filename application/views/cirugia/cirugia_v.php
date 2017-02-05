@@ -20,13 +20,14 @@
                     <button type="button" 
                             id="dato_a_buscar"
                             class="btn btn-default dropdown-toggle" 
-                            data-toggle="dropdown" 
+                                data-toggle="dropdown" 
                             aria-haspopup="true" 
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
 
                     <li><a href="#" dato="NombreC">Nombre </a></li>
+                    <li><a href="#" dato="FechaC">Fecha </a></li>
 
             
             
@@ -34,8 +35,8 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'NombreC';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'NombreC';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -51,6 +52,7 @@
         <thead>
 
             <th>Nombre</th>
+            <th>Fecha</th>
             <th>Precio</th>
             <th>Porcentaje</th>
             <th>Descripcion</th>
@@ -66,6 +68,7 @@
                 
                echo "<tr>".
                 "<td>". $dato->NombreC ."</td>".
+                "<td>". $dato->FechaC ."</td>".
                 "<td>". $dato->PrecioC ."</td>".
                 "<td>". $dato->PorcentajeC ."</td>".
                 "<td>". $dato->DescripcionC ."</td>".

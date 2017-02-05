@@ -27,6 +27,7 @@
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="NombreTrab">Nombre </a></li>
                     <li><a href="#" dato="ApePat">Apellido </a></li>
+                    <li><a href="#" dato="Email">Email </a></li>
 
             
             
@@ -51,7 +52,8 @@
         <thead>
             <th>Nombres</th>
             <th>Dirección</th>
-            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Operador</th>
             <th>Email</th>
             <th>Tipo Trabajador</th>
             <th>Local</th>
@@ -63,12 +65,13 @@
           //  die(var_dump($datos_trabajador));
             foreach ($datos_trabajador as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->NombreTrab." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
-                "<td>". $dato->DirTrab ."</td>".
-                "<td>". $dato->Telefono ."</td>".
+                "<td>". $dato->NombreT." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
+                "<td>". $dato->DireccionT ."</td>".
+                "<td>". $dato->CelularT ."</td>".
+                "<td>". $dato->OperadorT ."</td>".
                 "<td>". $dato->Email ."</td>".
-                "<td>". $dato->NombreTipo ."</td>".
-                "<td>". $dato->NombreLocal ."</td>".
+                "<td>". $dato->NombreTP."</td>".
+                "<td>". $dato->NombreL ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones
@@ -78,7 +81,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->NombreTrab .' '. $dato->ApePat .' '. $dato->ApeMat  ."'
+                                nombre_data='". $dato->NombreT .' '. $dato->ApePat .' '. $dato->ApeMat  ."'
                                 url_data=". base_url("index.php/trabajador/delete/$dato->IdTrabajador") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/trabajador/edit/$dato->IdTrabajador") .">Editar</a></li>
 

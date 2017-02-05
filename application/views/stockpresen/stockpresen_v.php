@@ -25,8 +25,10 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
+                    <li><a href="#" dato="Nombre">Nombre</a></li>
                     <li><a href="#" dato="StockMin">Stock Minimo </a></li>
                     <li><a href="#" dato="StockReal">Stock Real </a></li>
+                    <li><a href="#" dato="Presentacion">Presentacion </a></li>
             
             
                     </ul>

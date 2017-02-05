@@ -2,10 +2,10 @@
 class Local_model extends CI_Model {
 
         // public $IdLocal;
-        public $Nombre;
-        public $Direccion;
-        public $Telefono;
-        public $Estado;
+        public $NombreL;
+        public $DireccionL;
+        public $TelefonoL;
+        public $EstadoL;
 
 
         public function __construct()
@@ -29,10 +29,10 @@ class Local_model extends CI_Model {
         }
          public function post_locales()
         {
-                $this->Nombre    = $_POST['Nombre'];
-                $this->Direccion    = $_POST['Direccion'];
-                $this->Telefono    = $_POST['Telefono'];
-                $this->Estado = "Habilitado";
+                $this->NombreL    = $_POST['Nombre'];
+                $this->DireccionL    = $_POST['Direccion'];
+                $this->TelefonoL    = $_POST['Telefono'];
+                $this->EstadoL = "Habilitado";
                  
 
                 $this->db->insert('local', $this);
@@ -52,10 +52,10 @@ class Local_model extends CI_Model {
 
         public function update_local($IdLocal)
         {
-                $this->Nombre    = $_POST['Nombre'];
-                $this->Direccion    = $_POST['Direccion'];
-                $this->Telefono    = $_POST['Telefono'];
-                $this->Estado    =  $_POST['Estado'];
+                $this->NombreL    = $_POST['Nombre'];
+                $this->DireccionL    = $_POST['Direccion'];
+                $this->TelefonoL    = $_POST['Telefono'];
+                $this->EstadoL   =  $_POST['Estado'];
 
                 $this->db->update('local', $this, array('IdLocal' => $IdLocal));
         }

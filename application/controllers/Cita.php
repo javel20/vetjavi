@@ -57,6 +57,7 @@ class Cita extends CI_Controller {
           
             $this->load->model('Paciente_model');
             $data['pacientes'] = $this->Paciente_model->get_pacientes();
+
             $this->load->model('TipoCita_model');
             $data['citas'] = $this->TipoCita_model->get_tipocitas();
             $this->load->model('Cirugia_model');
@@ -109,8 +110,26 @@ class Cita extends CI_Controller {
 
         public function search(){
 
+          $inicio=0;
+          $limite=10;
+
+          if(isset($_GET['per_page'])){
+            // die($pagina);
+            $inicio=(($_GET['per_page'])-1) * $limite;
+          }
+          
+          $this->load->library('pagination');
           $this->load->model('Cita_model');
-          $data['datos_cita'] =  $this->Cita_model->get_buscar_cita();
+
+          $data['datos_cita'] =  $this->Cita_model->get_buscar_cita($inicio,$limite);
+          $config['base_url'] = base_url().'index.php/cita/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato'];
+          $config['total_rows'] = count($this->Cita_model->get_buscar_cita());
+          $config['per_page'] = 10;
+
+          $config['first_url'] = base_url().'index.php/cita/search?nombre_buscar='.$_GET['nombre_buscar'].'&tipo_dato='.$_GET['tipo_dato'].'&nombre_dato='.$_GET['nombre_dato']."&per_page=1";
+          $config['page_query_string'] = TRUE;
+          $this->pagination->initialize($config);
+
           $this->load->view('cita/cita_v', $data);
         }
 

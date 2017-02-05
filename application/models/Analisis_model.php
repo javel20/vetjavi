@@ -87,7 +87,7 @@ class Analisis_model extends CI_Model {
                 $this->Codigo    = $_POST['Codigo'];
                 $this->NombreA    = $_POST['NombreA'];
 
-                 $fechar = $_POST['FechaA'];
+                $fechar = $_POST['FechaA'];
                 $pos = preg_match('/[\/]+/',$fechar);
                 if($pos == true){
                         $array = explode('/', $fechar);
@@ -108,6 +108,7 @@ class Analisis_model extends CI_Model {
 
         public function get_buscar_analisis($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
+                $tipo_dato = $_GET['tipo_dato'];
                 $Tipo = $_GET['tipo_dato'];
                 $this->db->select('*');
                 $this->db->from('analisis');

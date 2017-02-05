@@ -35,21 +35,33 @@ class Reportes extends CI_Controller {
 
             }
 
-            $data['datos_reportes'] =  $this->Reporte_model->get_reporte($fecha);
-            
+            $data['data_ganancia'] =  $this->Reporte_model->get_reporte_ingreso($fecha);
+            $data['data_perdida'] = $this->Reporte_model->get_reporte_perdida($fecha);
 
             
             // die($_GET['Fechareporte']);
 
             $acum=0;
-            foreach($data['datos_reportes'] as $dato){
+           $acum2=0; 
+           $acum3=0;
+
+          foreach($data['data_perdida'] as $dato){
+            $acum3+=$dato->perdida;
+          }
+
+            foreach($data['data_ganancia'] as $dato){
                 
                 $acum+=$dato->precio;
-              
+                $acum2+=$dato->ganancia;
                   
             }
+            $data["acum3"]=$acum3;
+            $data["acum2"]=$acum2;
 
             $data["acum"]=$acum;
+
+            $data["resta"]=$acum-$acum3;
+            // die($data["resta"]);
 
             $this->load->view('reportes/reporte_venta_dia', $data);
             

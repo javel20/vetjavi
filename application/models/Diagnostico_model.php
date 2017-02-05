@@ -57,7 +57,7 @@ class Diagnostico_model extends CI_Model {
 
        
 
-        public function update_diagnostico($IdAnalisis)
+        public function update_diagnostico($IdDiagnostico)
         {
 
                 $this->CodigoD =$_POST['CodigoD'];

@@ -13,16 +13,16 @@
             <form class="row" action="store" method="POST" onsubmit="return validar(this);">
             <div class="form-group col-md-6">
               <label>Nombre</label>
-              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres">
+              <input validate="texto" type="text" class="form-control" name="Nombre" maxlength="30" placeholder="Nombres">
             </div>
 
             <div class="form-group col-md-6">
               <label>Dirección</label>
-              <input validate="direccion" type="text" class="form-control" name="Direccion" placeholder="Dirección">
+              <input validate="direccion" type="text" class="form-control" name="Direccion" maxlength="30" placeholder="Dirección">
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
-              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono">
+              <input validate="number" type="text" class="form-control" name="Telefono" maxlength="9" placeholder="Telefono">
             </div>
             <!--<div class="form-group col-md-6">
               <label>Estado</label>
