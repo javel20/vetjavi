@@ -196,6 +196,41 @@ function validar(e){
         
         }
 
+        if(el[d].getAttribute("validate") == "unico"){
+            
+            
+            var a = window.location.href.split('/');
+            a.pop();
+            var b = a.pop();
+            $.ajax({
+                type: "GET",
+
+                url:"http://localhost/vetjavi/index.php/analisis/getAnalisis/" + el[d].value,
+                async: false,
+                dataType: "json",
+                success: function(result){
+                  if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
+                    //cont suma
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error">Codigo ya repetido</span>`
+                        cont++;
+                        console.log("asd");
+
+                        }else{
+                        el[d].style.border = "1px solid #ccc";
+                        if(el[d].previousElementSibling.childElementCount == 1)
+                        el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                        }
+                },
+                error:function(){
+                  console.log("error");
+                }
+
+
+              })
+        }
+
     }
 
 

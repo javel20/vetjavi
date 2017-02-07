@@ -7,7 +7,8 @@
 		<div class="container">
             <div class="page-header">
 
-                <h1>BIENVENIDO</h1>
+                <h1>BIENVENIDO</h1> 
+                
               
             </div>
         </div>

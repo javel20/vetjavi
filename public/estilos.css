@@ -250,7 +250,7 @@ td .glyphicon{
 
 .botoningresar {
     color: white;
-    background-color: #0078F8;
+    background-color: #0078D7;
     border-color: #ccc;
     width: 300px;
     height: 50px;
@@ -304,7 +304,7 @@ header, body{
 }
 .container-fluid{
 
-  background-color: #0078F8 !important;
+  background-color: #0078D7 !important;
 
 }
 h2, h4{
@@ -330,20 +330,52 @@ h2, h4{
 
 }
 
+.campana{
+  /*padding:20px;*/
+  /*margin: 8px;*/
+  color:white;
+  font-size:15px;
+
+}
+.campana a{
+  padding:20px;
+  /*margin: 8px;*/
+  color:white!important;
+  font-size:15px;
+
+}
+
+
 .logout a{
     color:white!important;
+    padding-top:15px;
+}
+
+.lista{
+position: absolute;
+z-index: 3;
+background: #0078D7;
+    padding: 30px;
+    right: 0px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #0361E3;
+    width: 300px;
+    display:none;
+
+
 }
 .menu{
 
-  background-color: #0078F8 !important;
+  background-color: #0078D7 !important;
 
 }
 
 .menucontorno, sidebar-nav {
 
-  box-shadow: 1px 2px 1px #0078F8!important;
+  box-shadow: 1px 2px 1px #0078D7!important;
   border-style: outset;
-  border-color:#0078F8;
+  border-color:#0078D7;
   border-width: 1px;
 
 }

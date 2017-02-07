@@ -105,6 +105,17 @@ class StockPresen_model extends CI_Model {
 
         }
 
+        public function get_notificacion(){
+
+                $this->db->select('Producto.Nombre, StockMin, StockReal') ;
+                $this->db->from('stockpresentacion');
+                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+                $this->db->where('StockReal <= StockMin');
+
+                $query = $this->db->get('');
+                return $query->result();
+        }
+
 
 
 }

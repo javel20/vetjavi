@@ -53,7 +53,7 @@
             <label>Tipo Compra</label>
            <!--as<?php //die($dato_compra[0]->TipoC);?>-->
             <select validate="seleccionar" type="text" class="form-control" name="TipoC" placeholder="TipoC">
-                <option>--seleccionar</option>
+                <option>--seleccionar--</option>
                 <?php if ($dato_compra[0]->TipoC=="Factura"){ 
                 ?>
 
@@ -84,7 +84,7 @@
                     
                     foreach($proveedores as $proveedor){
                       $faiId=($proveedor->IdProveedor==$dato_compra[0]->IdProveedor)? "selected":"";
-                      echo "<option value=". $proveedor->IdProveedor ." ". $faiId .">". $proveedor->Nombre ."</option>";
+                      echo "<option value=". $proveedor->IdProveedor ." ". $faiId .">" .$proveedor->Empresa. " - " .$proveedor->Nombre. " " .$proveedor->ApePat. " ".$proveedor->ApeMat. "</option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->

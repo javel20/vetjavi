@@ -53,6 +53,7 @@
             <th>Fecha</th>
             <th>Tipo de compra</th>
             <th>Descripicion</th>
+            <th>Empresa</th>
             <th>Proveedor</th>
             <th>Option</th>
          
@@ -69,7 +70,8 @@
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoC ."</td>".
                 "<td>". $dato->Descripcion."</td>".
-                "<td>". $dato->NombreProv."</td>".
+                "<td>". $dato->Empresa."</td>".
+                "<td>". $dato->NombreProv." ".$dato->ApePat." ".$dato->ApeMat."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

@@ -138,20 +138,12 @@ class Venta_model extends CI_Model {
         public function get_buscar_venta(){
                 $dato_buscar = trim($_GET['nombre_buscar']);
                 $tipo_dato = trim($_GET['tipo_dato']);
-                // $this->db->select('*, cliente.Nombre  as NombreCliente');
-                // $this->db->from('venta');
-                // $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
-                // $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->select('*, cliente.Nombre  as NombreCliente');
+                $this->db->from('venta');
+                $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
+                $this->db->like(  $tipo_dato,$dato_buscar);  
 
-                $query = $this->db->query('select *
-                                                from venta 
-                                                
-                                                inner join cliente on venta.IdCliente = cliente.IdCliente
-                                                where venta.Estado = "Venta Realizada" AND 
-                                                '. $tipo_dato.'="'.$dato_buscar.'"
-                                                ');
-
-                // $query = $this->db->get();
+                $query = $this->db->get();
                 return $query->result();     
         }
 
@@ -194,6 +186,26 @@ class Venta_model extends CI_Model {
                 $this->db->where('IdVenta', $id);
                 
                 $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
+
+        }
+
+        public function get_detalle_comprobante($id){
+
+                $sql1=('select *
+                        from venta
+                        inner join cliente on cliente.IdCliente=venta.IdCliente
+                        where venta.IdVenta=17');
+
+                $sql2=('select *
+                        from venta
+                        inner join detalleventaproducto on detalleventaproducto.IdVenta=venta.IdVenta
+                        inner join stockpresentacion on stockpresentacion.IdStockPresen=detalleventaproducto.IdStockPresen
+                        inner join producto on producto.IdProducto = StockPresentacion.IdProducto
+                        where venta.IdVenta=17');
+                
+                $query = $this->db->query($sql1.' UNION '. $sql2);
                 // die(json_encode($query->result()));
                 return $query->result();
 

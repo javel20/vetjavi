@@ -20,21 +20,26 @@ class Login extends CI_Controller {
         {
 
             $this->load->model('Trabajador_model');
+            $this->load->model('StockPresen_model');
             $correo = $_POST["correo"];
             $password = $_POST["pass"];
 
             // die($correo . "-" . $password);
 
             $asig = $this->Trabajador_model->login($correo,$password);
-            // die(json_encode($asig));
+            $notif = $this->StockPresen_model->get_notificacion();
+            // die(json_encode($notif));
             if($asig != false) 
             {
                 
                 $log = array('IdTrabajador' => $asig[0]->IdTrabajador, 
                                 'Email'=> $asig[0]->Email, 
                                 'Password' => $asig[0]->Password,
-                                'Permisos'=>$asig[0]->permisos);
+                                'Permisos'=>$asig[0]->permisos,
+                                'StockMin'=>$notif);
+
                 $this->session->set_userdata($log);
+                // $this->session->set_userdata($notif);
                 redirect('login/dashboard');
                
             }else{

@@ -69,7 +69,7 @@ class Venta extends CI_Controller {
             $this->load->model('Venta_model');
             $data['dato_venta'] =  $this->Venta_model->get_venta($id);
             $this->load->model('cliente_model');
-            $data['clientes'] =  $this->cliente_model->get_clientes();         
+            $data['clientes'] =  $this->cliente_model->get_clientes();
 
             $this->load->view('venta/venta_editar_v', $data);
 
@@ -132,6 +132,20 @@ class Venta extends CI_Controller {
             $this->load->model('Venta_model');
             $data['datos_detalle'] = $this->Venta_model->get_detalle($id);
             $this->load->view('venta/detalle_venta_v', $data);
+
+        }
+        public function comprobante($id)
+        {
+            // $this->load->model('Venta_model');
+            // $data['datos_venta'] = $this->Venta_model->get_venta($id);
+
+//cliente
+//productos
+            
+
+            $this->load->model('Venta_model');
+            $data['datos_detalle'] = $this->Venta_model->get_detalle_comprobante($id);
+            $this->load->view('venta/venta_comprobante_v', $data);
 
         }
 

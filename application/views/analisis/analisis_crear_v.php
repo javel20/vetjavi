@@ -22,19 +22,19 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
+              <input validate="unico" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
             </div>
 
             
             <div class="form-group col-md-6">
               <label>Nombre</label>
-               <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
+               <input validate="<texto></texto>" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
             </div>
 
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYY" type="text" maxlength="10"  />
+                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" maxlength="10"  />
 
 
                   <script>
@@ -86,11 +86,14 @@
 </div>
 
 
+
             <script type="text/javascript">
             $(document).ready(function() {
              $("#js-example-basic-single2").select2();
 
+              
             });
+
 
             </script>
 

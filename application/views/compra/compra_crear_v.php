@@ -67,7 +67,7 @@
                     
                     foreach($proveedores as $proveedor){
                       
-                      echo "<option value=" .$proveedor->IdProveedor .">". $proveedor->Nombre ."</option>";
+                      echo "<option value=" .$proveedor->IdProveedor .">" .$proveedor->Empresa. " - " .$proveedor->Nombre. " " .$proveedor->ApePat. " ".$proveedor->ApeMat. "</option>";
                     }?>
               </select>
 

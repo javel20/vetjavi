@@ -125,6 +125,18 @@ class Analisis extends CI_Controller {
 
         }
 
+        public function getAnalisis($codigo){
+            $this->load->model('Analisis_model');
+            $data['json'] = $this->Analisis_model->getAnalisis($codigo);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+            
+        }
+
+
 
 
 }

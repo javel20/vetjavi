@@ -18,19 +18,19 @@
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" value="<?php echo $dato_analisis[0]->Codigo?>" required>
+            <input validate="number" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8" value="<?php echo $dato_analisis[0]->Codigo?>" required>
           </div>
 
           <div class="form-group col-md-6 ">
             <label>Nombre</label>
-            <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" value="<?php echo $dato_analisis[0]->NombreA?>" required>
+            <input validate="text" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30" value="<?php echo $dato_analisis[0]->NombreA?>" required>
           </div>
 
 
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" value="<?php echo $dato_analisis[0]->FechaA?>" />
+                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" maxlength="10"value="<?php echo $dato_analisis[0]->FechaA?>" />
 
 
                   <script>
@@ -61,18 +61,18 @@
 
           <div class="form-group col-md-6">
               <label>Precio</label>
-              <input validate="number" type="text"class="form-control" name="PrecioAnalisis"  value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">
+              <input validate="number" type="text"class="form-control" name="PrecioAnalisis"  maxlength="7" value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">
             </div>
 
             <div class="form-group col-md-6">
               <label>Porcentaje</label>
-              <input validate="number" type="text"class="form-control" name="PorcentajeA"  value="<?php echo $dato_analisis[0]->PorcentajeA?>">
+              <input validate="number" type="text"class="form-control" name="PorcentajeA"  maxlength="7" value="<?php echo $dato_analisis[0]->PorcentajeA?>">
             </div>
 
 
           <div class="form-group col-md-6">
             <label>Descripcion</label>
-            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" value="<?php echo $dato_analisis[0]->Descripcion?>">
+            <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50" value="<?php echo $dato_analisis[0]->Descripcion?>">
           </div>
 
 

@@ -130,7 +130,8 @@
                         <th>Presentacion</th>
                         <th>Precio Unitario</th>
                         <th>Cantidad</th>
-                        <th>Cantidad Total</th>
+                        <th>Ganancia</th>
+                        <th>Precio Unidad</th>
                         <th>Acciones</th>
                       </tr>
                     </thead>
@@ -293,7 +294,7 @@ var precio='';
 
       $('#ganancia').val(sg);
       $("#sumatotal").val(st);
-    console.log(sg);
+     console.log(sg);
     console.log(st);
 
 
@@ -305,6 +306,7 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
       <td> <input name="precio_unitario_detalle[]" value="${precioV}" /> </td>
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
+      <td >  <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
       <td >  <input type="hidden" class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
@@ -315,9 +317,11 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
     if(e.target.id == "delete_row"){
         // ($(e.target).closest("tr").find(".preciot").val());
         st -= $(e.target).closest("tr").find(".preciot").val(); //closest trae a los tr y find busca el valor de preciot
-        precioG -= $(e.target).closet("tr").find(".preciot").val();
-        $("#ganancia").val(precioG);
+        sg -= $(e.target).closest("tr").find(".preciog").val();
+        $("#ganancia").val(sg);
         $("#sumatotal").val(st);
+        console.log(sg);
+        console.log(st);
         e.target.closest("tr").remove();
     }
   }

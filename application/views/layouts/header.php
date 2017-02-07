@@ -28,11 +28,52 @@
 
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['Email'])): ?>
+
+              <li class="campana"><a id="campana" href=""><span class="glyphicon glyphicon-bell"></span></a>
+                <ul class="lista" id="lista">
+
+
+                    <?php foreach($_SESSION['StockMin'] as $sm){
+                  
+                      
+                      echo "<li><option value=" .$sm->StockMin .">". $sm->Nombre ." le queda ".$sm->StockReal." unidades</option></li>";
+
+                    
+                    } ?>
+
+                  </ul>
+              </li>
+
               <li class="correo"><?php echo $_SESSION['Email'];?></li>
 
-              
                 
               <li class="logout"><a href="<?php echo base_url(); ?>index.php/login/logout">LogOut</a></li>
+
+
+<script>
+
+  $campana = document.getElementById("campana");
+  $lista = document.getElementById("lista");
+
+  $campana.onclick = function(e){ //e objeto
+    e.preventDefault(); //para que no cargue la pagina 
+
+
+      if($lista.style.display == "block"){
+
+        $lista.style.display = "none";
+      }
+      else
+      {
+
+        $lista.style.display = "block"
+      }
+
+
+  }
+
+</script>
+
 
           <?php else: ?>
 

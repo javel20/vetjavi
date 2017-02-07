@@ -31,8 +31,8 @@ class Cita_model extends CI_Model {
         public function get_citas($inicio=FALSE,$limite=FALSE)
         {
 
-                $this->db->select('*, Cita.IdAnalisis as analisis, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
-                $this->db->from('Cita');
+                $this->db->select('*, cita.IdAnalisis as analisis, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
+                $this->db->from('cita');
                 $this->db->join('paciente', 'paciente.IdPaciente = cita.IdPaciente');
                 $this->db->join('cliente','cliente.IdCliente = paciente.IdCliente');
                 $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita','left');
@@ -202,16 +202,21 @@ class Cita_model extends CI_Model {
         public function get_buscar_cita($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
+                 //die($dato_buscar . " . " . $tipo_dato);
+                 $this->db->select('*, cita.IdAnalisis as analisis, tipocita.NombreTC  as NombreTipoCita, paciente.Nombre as NombrePaciente, cita.descripcion as descita');
                 $this->db->from('cita');
-                $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita');
                 $this->db->join('paciente', 'paciente.IdPaciente = cita.IdPaciente');
-                $this->db->like("cita.".$tipo_dato,$dato_buscar);
+                $this->db->join('cliente','cliente.IdCliente = paciente.IdCliente');
+                $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita','left');
+                $this->db->join('cirugia', 'cirugia.IdCirugia = cita.IdCirugia','left');
+                $this->db->join('analisis', 'analisis.IdAnalisis = cita.IdCirugia','left');
+                $this->db->like("cita.".$tipo_dato,  $dato_buscar);
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
 
                 $query = $this->db->get();
+               // die(json_encode($query->result()));
                 return $query->result();     
         }
 

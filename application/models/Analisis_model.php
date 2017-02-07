@@ -128,5 +128,14 @@ class Analisis_model extends CI_Model {
                  return $query; 
         }
 
+        public function getAnalisis($codigo){
+                $this->db->select('*');
+                $this->db->from('analisis');
+                $this->db->where('Codigo',$codigo);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
+        }
+
 
 }

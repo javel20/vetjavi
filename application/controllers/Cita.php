@@ -109,7 +109,7 @@ class Cita extends CI_Controller {
         }
 
         public function search(){
-
+          // die($_GET['nombre_buscar']);
           $inicio=0;
           $limite=10;
 

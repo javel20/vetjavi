@@ -68,7 +68,7 @@
           echo "<tr >".
 
                 "<td>". $dato->CodV ."</td>".
-                "<td>". $dato->Nombre ."</td>".
+                "<td>". $dato->Nombre ." ".$dato->ApePat." ".$dato->ApeMat. "</td>".
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".
@@ -87,6 +87,7 @@
                                 url_data=". base_url("index.php/venta/delete/$dato->IdVenta") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/venta/edit/$dato->IdVenta") .">Editar</a></li>
                         <li><a href=". base_url("index.php/venta/detalle/$dato->IdVenta") .">Detalle</a></li>
+                        <li><a href=". base_url("index.php/venta/comprobante/$dato->IdVenta") .">Comprobante</a></li>
 
                     </ul>
                     </div></td>".
