@@ -14,7 +14,7 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8" value="<?php echo $dato_compra[0]->CodC?>">
+            <input validate="unicocompra" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8" value="<?php echo $dato_compra[0]->CodC?>">
           </div>
 
 

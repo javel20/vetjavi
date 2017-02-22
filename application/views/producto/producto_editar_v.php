@@ -14,7 +14,7 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Nombres</label>
-            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30" value="<?php echo $dato_producto[0]->Nombre?>">
+            <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30" value="<?php echo $dato_producto[0]->NombreP?>">
           </div>
 
 

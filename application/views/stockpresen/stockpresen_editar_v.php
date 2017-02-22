@@ -22,7 +22,7 @@
                     
                     foreach($productos as $producto){
                       $faiId=($producto->IdProducto==$dato_stockpresen[0]->IdProducto)? "selected":"";
-                      echo "<option value=". $producto->IdProducto ." ". $faiId .">". $producto->Nombre ."</option>";
+                      echo "<option value=". $producto->IdProducto ." ". $faiId .">". $producto->NombreP ."</option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->

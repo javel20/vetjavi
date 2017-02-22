@@ -61,7 +61,7 @@ class Cliente_model extends CI_Model {
                 $this->Telefono    = $_POST['Telefono'];
                 $this->Celular    = $_POST['Celular'];
                 $this->Operador    = $_POST['Operador'];
-                $this->Estado = True;
+                $this->Estado = $_POST['Estado'];
                  
 
                 $this->db->insert('cliente', $this);
@@ -103,16 +103,21 @@ class Cliente_model extends CI_Model {
                 $this->Celular    = $_POST['Celular'];
                 $this->Operador    = $_POST['Operador'];
                 // $this->Estado    = $_POST['Estado'];
-                $this->Estado = True;
+                $this->Estado = $_POST['Estado'];
                 $this->db->update('cliente', $this, array('IdCliente' => $IdCliente));
         }
 
-        public function get_buscar_cliente(){
+        public function get_buscar_cliente($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*');
                 $this->db->from('cliente');
                 $this->db->like($tipo_dato,$dato_buscar);   
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }

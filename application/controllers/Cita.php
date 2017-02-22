@@ -148,6 +148,17 @@ class Cita extends CI_Controller {
 
         }
 
+        public function getCita($codigo){
+            $this->load->model('Cita_model');
+            $data['json'] = $this->Cita_model->getCita($codigo);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+            
+        }
+
 
 
 }

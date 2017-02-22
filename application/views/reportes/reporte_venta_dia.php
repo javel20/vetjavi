@@ -110,7 +110,7 @@
      <table class="table">
         <thead>
 
-            <th>Codigo</th>
+
             <th>Nombre</th>
             <th>Fecha Realizada</th>
             <th>Perdida</th>
@@ -125,7 +125,7 @@
           // die(var_dump($datos_stockpresen));
             foreach ($data_perdida as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->codigo."</td>".
+
                 "<td>". $dato->nombre."</td>".
                 "<td>". $dato->fecha ."</td>".
                 "<td>". $dato->perdida ."</td>".

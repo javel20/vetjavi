@@ -67,7 +67,7 @@ class Reporte_model extends CI_Model {
 
                 
                 
-                $sql1= ('select salida.CodigoS as codigo, salida.NombreS as nombre, salida.FechaS as fecha, salida.PrecioS as perdida from salida
+                $sql1= ('select  salida.NombreS as nombre, salida.FechaS as fecha, salida.PrecioS as perdida from salida
                         where salida.FechaS="'.strval(trim($fecha_php)).'"');
 
                 $query = $this->db->query($sql1);
@@ -83,7 +83,7 @@ class Reporte_model extends CI_Model {
                 $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
               //  die($fecha_php);
               
-               $sql1= ('select salida.CodigoS as codigo, salida.NombreS as nombre, salida.FechaS as fecha, salida.PrecioS as perdida from salida
+               $sql1= ('select  salida.NombreS as nombre, salida.FechaS as fecha, salida.PrecioS as perdida from salida
                         where salida.FechaS="'.strval(trim($fecha_php)).'"');
                         
 

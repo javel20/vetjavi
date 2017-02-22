@@ -132,13 +132,18 @@ class Permisotrab_model extends CI_Model {
                 $this->db->update('permisotrab', $this, array('IdPermiso' => $IdPermiso));
         }
 
-        public function get_buscar_permiso(){
+        public function get_buscar_permiso($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('permisotrab');
                 $this->db->join('trabajador', 'trabajador.IdTrabajador = permisotrab.IdTrabajador');
                 $this->db->like(   $tipo_dato,$dato_buscar);   
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result(); 
  

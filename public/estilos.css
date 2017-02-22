@@ -390,3 +390,73 @@ background: #0078D7;
   display:none;
 
 }
+
+.com{
+
+  width:870px;
+
+}
+.comp{
+
+      margin-bottom: 1px!important;
+}
+
+.medio{
+    table-layout:fixed!important;
+    overflow:hidden;         /* Oculta el contenido que sobresale del contenedor */
+    text-overflow:ellipsis;
+}
+
+
+
+
+
+.MiTabla {
+  padding-bottom: 1px;
+    border:1px solid #CCC;
+    background:#FFF;
+    white-space:nowrap;      /* Impide los saltos de línea automáticos */
+    width: 560px;
+    font-size:13px;
+}
+/* Algoritmo de distribucion fijo */
+.MiTablaFija { table-layout:fixed; }
+/* Las dos primeras columnas de la tabla fija son de 120 pixeles de ancho */
+.MiTablaFija td:nth-child(-n+2) {    width:105px; }
+
+.MiTablaFija2 { table-layout:fixed;  height:145px;}
+/* Las dos primeras columnas de la tabla fija son de 120 pixeles de ancho */
+.MiTablaFija2 td:nth-child(-n+2) {    width:105;position:relative;}
+/* Celdas de la tabla */
+
+
+/* Celdas de la tabla */
+.MiTabla td  {
+    
+    /*width:120px;*/
+    overflow:hidden;         /* Oculta el contenido que sobresale del contenedor */
+    text-overflow:ellipsis;  /* Si el texto excede el tamaño del contenedor mostrará "..." al final */
+}
+
+.td0{
+
+  width:4px!important;
+
+}
+
+.td1{
+
+  width:15px!important;
+  text-align:center;
+
+}
+
+.td2{
+
+  width:45px!important;
+  text-align:center;
+
+}
+.fecha{
+  text-align:center;
+}

@@ -76,13 +76,18 @@ class StockPresen_model extends CI_Model {
                 $this->db->update('stockpresentacion', $this, array('IdStockPresen' => $IdStockPresen));
         }
 
-        public function get_buscar_stockpresen(){
+        public function get_buscar_stockpresen($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('stockpresentacion');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
                 $this->db->like(  $tipo_dato,$dato_buscar);   
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }
@@ -107,12 +112,23 @@ class StockPresen_model extends CI_Model {
 
         public function get_notificacion(){
 
-                $this->db->select('Producto.Nombre, StockMin, StockReal') ;
+                $this->db->select('Producto.NombreP, StockMin, StockReal') ;
                 $this->db->from('stockpresentacion');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
                 $this->db->where('StockReal <= StockMin');
 
                 $query = $this->db->get('');
+                return $query->result();
+        }
+
+        public function get_notificacion_fechaven(){
+                $this->db->select('*,STR_TO_DATE(FechaVen, "%m/%d/%Y") as fechaVen, CURDATE() as fechactual, producto.NombreP as nombrepro');
+                $this->db->from('detallecompraproducto');
+                $this->db->join('stockpresentacion','stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
+                $this->db->join('producto','producto.IdProducto = stockpresentacion.IdProducto');
+                $this->db->where('STR_TO_DATE(FechaVen, "%m/%d/%Y") > CURDATE() and STR_TO_DATE(FechaVen, "%m/%d/%Y") > DATE_ADD(CURDATE(), INTERVAL 3 month)');
+                $query = $this->db->get('');
+                // die(var_dump($query->result()));
                 return $query->result();
         }
 

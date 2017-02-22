@@ -37,7 +37,7 @@ class Cita_model extends CI_Model {
                 $this->db->join('cliente','cliente.IdCliente = paciente.IdCliente');
                 $this->db->join('tipocita', 'tipocita.IdTipoCita = cita.IdTipoCita','left');
                 $this->db->join('cirugia', 'cirugia.IdCirugia = cita.IdCirugia','left');
-                $this->db->join('analisis', 'analisis.IdAnalisis = cita.IdCirugia','left');
+                $this->db->join('analisis', 'analisis.IdAnalisis = cita.IdAnalisis','left');
 
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
@@ -60,8 +60,11 @@ class Cita_model extends CI_Model {
                 $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
                 // die($fecha_php);
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
-
+                
                 $this->FechaReserva    =  strval(trim($fecha_php));
+
+                $fecha=strftime( "%Y-%m-%d %H:%M:%S", time() );
+                $this->FechaRegistro    =  $fecha;
                 $this->HoraC = $_POST['HoraC'];
                 $this->Peso    = $_POST['Peso'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
@@ -224,6 +227,15 @@ class Cita_model extends CI_Model {
    
                 $query = $this->db->delete("cita", array('IdCita'=>$id));
                  return $query; 
+        }
+
+        public function getCita($codigo){
+                $this->db->select('*');
+                $this->db->from('cita');
+                $this->db->where('CodigoC',$codigo);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
         }
 
 

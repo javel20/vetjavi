@@ -36,7 +36,7 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo">
+              <input validate="unicodiagnostico" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo">
             </div>
      
 

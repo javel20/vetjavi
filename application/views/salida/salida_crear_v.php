@@ -38,11 +38,6 @@
 
 
             <div class="form-group col-md-6">
-              <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="CodigoS" name="CodigoS" maxlength="8" placeholder="Codigo">
-            </div>
-
-            <div class="form-group col-md-6">
               <label>Nombre</label>
               <input validate="texto" type="text" class="form-control" id="NombreS" name="NombreS" maxlength="8" placeholder="Nombre">
             </div>

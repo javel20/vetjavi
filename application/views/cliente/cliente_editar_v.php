@@ -55,7 +55,15 @@
             </div>
 
 
+            <div class="form-group col-md-6">
+            <label>Tipo Cliente</label>
+             <select validate="seleccionar" type="text" class="form-control" name="Estado" >
 
+                  <option value="Fiable" <?php echo ($dato_cliente[0]->Estado=="Fiable" ? 'selected="selected"' : '');?>>Fiable</option>    
+                  <option value="No fiable" <?php echo ($dato_cliente[0]->Estado=="No fiable" ? 'selected="selected"' : '');?>>No fiable</option>
+
+            </select>
+          </div>
 
 
          <div class="form-group col-md-6">

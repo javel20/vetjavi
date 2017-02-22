@@ -46,6 +46,9 @@ class Venta extends CI_Controller {
         public function store(){
              $this->load->model('Venta_model');
              $result = $this->Venta_model->post_ventas();
+             $this->load->model('StockPresen_model');
+              $notif = $this->StockPresen_model->get_notificacion();
+              $this->session->set_userdata( 'StockMin',$notif);
              redirect(base_url().'index.php/venta', 'refresh');
 
         }
@@ -91,7 +94,7 @@ class Venta extends CI_Controller {
             // die($pagina);
             $inicio=(($_GET['per_page'])-1) * $limite;
           }
-
+          
           $this->load->library('pagination');
           $this->load->model('Venta_model');
           $data['datos_venta'] =  $this->Venta_model->get_buscar_venta($inicio,$limite);
@@ -128,7 +131,6 @@ class Venta extends CI_Controller {
 
         public function detalle($id)
         {
-
             $this->load->model('Venta_model');
             $data['datos_detalle'] = $this->Venta_model->get_detalle($id);
             $this->load->view('venta/detalle_venta_v', $data);
@@ -136,17 +138,24 @@ class Venta extends CI_Controller {
         }
         public function comprobante($id)
         {
-            // $this->load->model('Venta_model');
-            // $data['datos_venta'] = $this->Venta_model->get_venta($id);
-
-//cliente
-//productos
-            
 
             $this->load->model('Venta_model');
-            $data['datos_detalle'] = $this->Venta_model->get_detalle_comprobante($id);
+            $data ['dato_comprador'] = $this->Venta_model->get_venta_com($id);
+            $data['datos_productos'] = $this->Venta_model->get_detalle($id);
             $this->load->view('venta/venta_comprobante_v', $data);
 
         }
+
+        public function getVenta($codigo){
+            $this->load->model('Venta_model');
+            $data['json'] = $this->Venta_model->getVenta($codigo);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+           
+        }
+
 
 }

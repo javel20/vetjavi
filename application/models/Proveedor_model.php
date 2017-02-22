@@ -75,12 +75,17 @@ class Proveedor_model extends CI_Model {
                 $this->db->update('proveedor', $this, array('IdProveedor' => $IdProveedor));
         }
 
-        public function get_buscar_proveedor(){
+        public function get_buscar_proveedor($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('proveedor');
-                $this->db->like(  $tipo_dato,$dato_buscar);   
+                $this->db->like(  $tipo_dato,$dato_buscar); 
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }

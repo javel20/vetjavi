@@ -46,6 +46,9 @@ class Compra extends CI_Controller {
         public function store(){
              $this->load->model('Compra_model');
              $result = $this->Compra_model->post_compras();
+              $this->load->model('StockPresen_model');
+              $notif = $this->StockPresen_model->get_notificacion();
+              $this->session->set_userdata( 'StockMin',$notif);
              redirect(base_url().'index.php/compra', 'refresh');
 
         }
@@ -134,6 +137,17 @@ class Compra extends CI_Controller {
             $data['datos_detalle'] = $this->Compra_model->get_detalle($id);
             $this->load->view('compra/detalle_compra_v', $data);
 
+        }
+
+        public function getCompra($codigo){
+            $this->load->model('Compra_model');
+            $data['json'] = $this->Compra_model->getCompra($codigo);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+           
         }
 
 

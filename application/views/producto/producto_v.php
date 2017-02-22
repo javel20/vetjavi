@@ -60,7 +60,7 @@
             // die(json_encode($datos_producto))
             foreach ($datos_producto as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->Nombre . "</td>".
+                "<td>". $dato->NombreP . "</td>".
                 "<td>". $dato->NombreTipoP ."</td>".
                 "<td>". $dato->descprod ."</td>".
                 "<td> <div class='dropdown'>
@@ -73,19 +73,19 @@
                         <li><a  dato_modal='dato_eliminar'
                                 id='desactivar_enlace'
                                 aviso='Desea desactivar a:'
-                                nombre_data='". $dato->Nombre ."'
+                                nombre_data='". $dato->NombreP ."'
                                 url_data=". base_url("index.php/producto/deactivate/$dato->IdProducto") .">Desactivar</a></li>
                         
                          <li><a dato_modal='dato_eliminar'
                                 id='activar_enlace'
                                 aviso='Desea activar a:'
-                                nombre_data='". $dato->Nombre  ."'
+                                nombre_data='". $dato->NombreP  ."'
                                 url_data=". base_url("index.php/producto/activate/$dato->IdProducto") .">Activar</a></li>
 
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre  ."'
+                                nombre_data='". $dato->NombreP  ."'
                                 url_data=". base_url("index.php/producto/delete/$dato->IdProducto") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/Producto/edit/$dato->IdProducto") .">Editar</a></li>
 

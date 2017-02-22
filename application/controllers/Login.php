@@ -20,23 +20,22 @@ class Login extends CI_Controller {
         {
 
             $this->load->model('Trabajador_model');
-            $this->load->model('StockPresen_model');
+            // $this->load->model('StockPresen_model');
             $correo = $_POST["correo"];
             $password = $_POST["pass"];
 
             // die($correo . "-" . $password);
 
-            $asig = $this->Trabajador_model->login($correo,$password);
-            $notif = $this->StockPresen_model->get_notificacion();
+           $asig = $this->Trabajador_model->login($correo,$password);
             // die(json_encode($notif));
             if($asig != false) 
             {
                 
+            // $notif = $this->StockPresen_model->get_notificacion();
                 $log = array('IdTrabajador' => $asig[0]->IdTrabajador, 
                                 'Email'=> $asig[0]->Email, 
                                 'Password' => $asig[0]->Password,
-                                'Permisos'=>$asig[0]->permisos,
-                                'StockMin'=>$notif);
+                                'Permisos'=>$asig[0]->permisos);
 
                 $this->session->set_userdata($log);
                 // $this->session->set_userdata($notif);
@@ -60,7 +59,15 @@ class Login extends CI_Controller {
         {
 
             if(isset($_SESSION['Email'])) //si existe la variable
+            $this->load->model('StockPresen_model');
+            $notif = $this->StockPresen_model->get_notificacion();
+            $this->session->set_userdata( 'StockMin',$notif);
+            $notif2 = $this->StockPresen_model->get_notificacion_fechaven();
+            $this->session->set_userdata( 'FechaVen',$notif2);
+            // die(json_encode($_SESSION['FechaVen']));
+            // die($notif2);
             $this->load->view('dashboard');
+
 
             
         }

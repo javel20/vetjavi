@@ -29,17 +29,32 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['Email'])): ?>
 
-              <li class="campana"><a id="campana" href=""><span class="glyphicon glyphicon-bell"></span></a>
+              <li class="campana"><a id="campana" href="">
+              
+              <?php if(count($_SESSION['StockMin'])>0){ ?>
+                    <span style=" color:red " class="glyphicon glyphicon-bell"></span></a>
+              <?php }else{ ?>
+                    <span style=" color:white " class="glyphicon glyphicon-bell"></span></a> 
+              <?php   } ?>
                 <ul class="lista" id="lista">
 
 
                     <?php foreach($_SESSION['StockMin'] as $sm){
                   
                       
-                      echo "<li><option value=" .$sm->StockMin .">". $sm->Nombre ." le queda ".$sm->StockReal." unidades</option></li>";
+                      echo "<li><option value=" .$sm->StockMin .">". $sm->NombreP ." le queda ".$sm->StockReal." unidades</option></li>";
 
                     
                     } ?>
+                    
+                    <?php foreach($_SESSION['FechaVen'] as $fv){
+                  
+                      
+                      echo "<li><option value=" .$fv->FechaVen .">". $fv->nombrepro ." vence el dia  ".$fv->FechaVen." unidades</option></li>";
+
+                    
+                    } ?>
+                   
 
                   </ul>
               </li>

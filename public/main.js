@@ -196,9 +196,9 @@ function validar(e){
         
         }
 
-        if(el[d].getAttribute("validate") == "unico"){
+        if(el[d].getAttribute("validate") == "unicoanalisis"){
             
-            
+            // console.log("2423r43f");
             var a = window.location.href.split('/');
             a.pop();
             var b = a.pop();
@@ -209,11 +209,157 @@ function validar(e){
                 async: false,
                 dataType: "json",
                 success: function(result){
+                    // console.log(result);
                   if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
                     //cont suma
                     el[d].style.border ="1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
-                        el[d].previousElementSibling.innerHTML += `<span class="error">Codigo ya repetido</span>`
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros o el codigo es repetido</span>`
+                        cont++;
+                        console.log("asd");
+
+                        }else{
+                        el[d].style.border = "1px solid #ccc";
+                        if(el[d].previousElementSibling.childElementCount == 1)
+                        el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                        }
+                },
+                error:function(){
+                  console.log("error");
+                }
+
+
+              })
+        }
+
+
+        if(el[d].getAttribute("validate") == "unicocita"){
+            
+            // console.log("2423r43f");
+            var a = window.location.href.split('/');
+            a.pop();
+            var b = a.pop();
+            $.ajax({
+                type: "GET",
+
+                url:"http://localhost/vetjavi/index.php/cita/getCita/" + el[d].value,
+                async: false,
+                dataType: "json",
+                success: function(result){
+                    // console.log(result);
+                  if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
+                    //cont suma
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros o el codigo es repetido</span>`
+                        cont++;
+                        console.log("asd");
+
+                        }else{
+                        el[d].style.border = "1px solid #ccc";
+                        if(el[d].previousElementSibling.childElementCount == 1)
+                        el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                        }
+                },
+                error:function(){
+                  console.log("error");
+                }
+
+
+              })
+        }
+
+        if(el[d].getAttribute("validate") == "unicocompra"){
+            
+            // console.log("2423r43f");
+            var a = window.location.href.split('/');
+            a.pop();
+            var b = a.pop();
+            $.ajax({
+                type: "GET",
+
+                url:"http://localhost/vetjavi/index.php/compra/getCompra/" + el[d].value,
+                async: false,
+                dataType: "json",
+                success: function(result){
+                    // console.log(result);
+                  if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
+                    //cont suma
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros o el codigo es repetido</span>`
+                        cont++;
+                        console.log("asd");
+
+                        }else{
+                        el[d].style.border = "1px solid #ccc";
+                        if(el[d].previousElementSibling.childElementCount == 1)
+                        el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                        }
+                },
+                error:function(){
+                  console.log("error");
+                }
+
+
+              })
+        }
+
+        if(el[d].getAttribute("validate") == "unicodiagnostico"){
+            
+            // console.log("2423r43f");
+            var a = window.location.href.split('/');
+            a.pop();
+            var b = a.pop();
+            $.ajax({
+                type: "GET",
+
+                url:"http://localhost/vetjavi/index.php/diagnostico/getDiagnostico/" + el[d].value,
+                async: false,
+                dataType: "json",
+                success: function(result){
+                    // console.log(result);
+                  if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
+                    //cont suma
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros o el codigo es repetido</span>`
+                        cont++;
+                        console.log("asd");
+
+                        }else{
+                        el[d].style.border = "1px solid #ccc";
+                        if(el[d].previousElementSibling.childElementCount == 1)
+                        el[d].previousElementSibling.getElementsByTagName("span")[0].remove();
+                        }
+                },
+                error:function(){
+                  console.log("error");
+                }
+
+
+              })
+        }
+
+        if(el[d].getAttribute("validate") == "unicoventa"){
+            
+            // console.log("2423r43f");
+            var a = window.location.href.split('/');
+            a.pop();
+            var b = a.pop();
+            $.ajax({
+                type: "GET",
+
+                url:"http://localhost/vetjavi/index.php/venta/getVenta/" + el[d].value,
+                async: false,
+                dataType: "json",
+                success: function(result){
+                    // console.log(result);
+                  if((result[0]!==undefined) || (!(/^[0-9]+$/g.test(el[d].value)))){
+                    //cont suma
+                    el[d].style.border ="1px solid red";
+                    if(el[d].previousElementSibling.childElementCount == 0)
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo numeros o el codigo es repetido</span>`
                         cont++;
                         console.log("asd");
 

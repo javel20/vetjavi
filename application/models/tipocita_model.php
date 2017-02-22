@@ -62,12 +62,17 @@ class TipoCita_model extends CI_Model {
                 $this->db->update('tipocita', $this, array('IdTipoCita' => $IdTipoCita));
         }
 
-        public function get_buscar_tipocita(){
+        public function get_buscar_tipocita($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*');
                 $this->db->from('tipocita');
                 $this->db->like(  $tipo_dato,$dato_buscar);
+                
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }

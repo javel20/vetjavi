@@ -20,9 +20,10 @@ class Compra_model extends CI_Model {
         public function get_compras($inicio=FALSE,$limite=FALSE)
         {
 
-                $this->db->select('*, proveedor.Nombre  as NombreProv');
+                $this->db->select('*, proveedor.Nombre  as NombreProv,proveedor.ApePat as apepatpro, proveedor.ApeMat as apematpro, trabajador.ApePat as apepattra, trabajador.ApeMat as apemattra');
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
+                $this->db->join('trabajador', 'trabajador.IdTrabajador = compra.IdTrabajador');
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
@@ -144,13 +145,18 @@ class Compra_model extends CI_Model {
                 $this->db->update('compra', $this, array('IdCompra' => $IdCompra));
         }
 
-        public function get_buscar_compra(){
+        public function get_buscar_compra($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*, proveedor.Nombre  as NombreProv');
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
                 $this->db->like($tipo_dato,$dato_buscar);   
+
+                 if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+                
                 $query = $this->db->get();
                 return $query->result();     
         }
@@ -182,13 +188,14 @@ class Compra_model extends CI_Model {
 
         public function get_activar_compra($id){
                 $this->db->set('Estado', True);
+
                 $this->db->where('Idcompra', $id);
                 $this->db->update('compra');
         }
 
         public function get_detalle($id){
 
-                $this->db->select('*, producto.Nombre as nomcom');
+                $this->db->select('*, producto.NombreP as nomcom');
                 $this->db->from('detallecompraproducto');
                 $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
@@ -198,6 +205,15 @@ class Compra_model extends CI_Model {
                 // die(json_encode($query->result()));
                 return $query->result();
 
+        }
+
+        public function getCompra($codigo){
+                $this->db->select('*');
+                $this->db->from('compra');
+                $this->db->where('CodC',$codigo);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
         }
 
 }

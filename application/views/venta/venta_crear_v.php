@@ -21,7 +21,7 @@
             
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8">
+              <input validate="unicoventa" type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8">
             </div>
 
             <div class="form-group col-md-6">
@@ -77,7 +77,7 @@
             
             <div class="col-md-12"></div>
           
-              <h4 class="col-md-12 mi_header">Detalle de venta</h4>
+              <h5 class="col-md-12 mi_header">Detalle de venta</h5>
               <hr />
               <div>
                 <div id="form_detalle" >
@@ -92,7 +92,7 @@
                     
                     foreach($productos as $producto){
                       
-                      echo "<option tipo =". $producto->IdTipoProducto." value=" .$producto->IdProducto .">". $producto->Nombre ."</option>";
+                      echo "<option tipo =". $producto->IdTipoProducto." value=" .$producto->IdProducto .">". $producto->NombreP ."</option>";
                     }?>
               </select>
 
@@ -112,13 +112,14 @@
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
-                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="7">
+                    <input validate="number" id ="cantidad" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="7">
                   
                   </div>
 
 
                
                   <div class="form-group col-md-12">
+                    <input type="hidden" value="" name="preciou" id="preciou" />
                     <a href="" id="agregar_detalle" class="btn btn-primary">Agregar Detalle </a>
                   </div>
                  </div>
@@ -131,8 +132,8 @@
                         <th>Precio Unitario</th>
                         <th>Cantidad</th>
                         <th>Ganancia</th>
-                        <th>Precio Unidad</th>
-                        <th>Acciones</th>
+                        <th>Precio Total</th>
+                        <th>Opc</th>
                       </tr>
                     </thead>
                     <tbody id="tbody_detalle">
@@ -168,7 +169,7 @@
   $("#js-example-basic-single").select2();
 
   $("#selecpresent").on("change", function(event){//changue evento para seleccionar una opcion
-
+console.log("estoy en selecpresent")
   // var option = $(e).find('option:selected');
   //   console.log(e.target.value);
   //   console.log(option);
@@ -254,13 +255,34 @@ var precio='';
   $form_detalle = document.getElementById("form_detalle");
   $tbody_detalle = document.getElementById("tbody_detalle");
 
+    $cantidad = document.getElementById("cantidad");
+    console.log($cantidad);
 
   var nodo_push = "";
   var acumulado = [];
   var st=0;
   var sg=0;
+  var preciou=0;
+  var stock='';
+
   $agregar_detalle.onclick = (event)=>{
    event.preventDefault();
+
+// $("#selecpresent").val()
+console.log($("#selecpresent").val());
+
+    // $("#selecpresent")[0].childNodes.forEach(function(e){
+    //     if(e.value==$("#selecpresent").val()){
+    //    //   texto=$('#selecpresent').text();
+    //         stock = e.text.split("-")[1].trim()
+    //         console.log(stock);
+    //     }
+    // })
+ 
+ 
+
+
+  //  console.log(texto);
    var precioV=0;
    var precioT=0;
    var precioG=0;
@@ -268,6 +290,7 @@ var precio='';
    console.log(precio);
    console.log(porcentaje);
    precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
+   preciou=precioV;
    console.log(precioV);
    acumulado = [];
     $form_detalle.childNodes.forEach( e=> {
@@ -294,8 +317,10 @@ var precio='';
 
       $('#ganancia').val(sg);
       $("#sumatotal").val(st);
+      $("#preciou").val(preciou);
      console.log(sg);
     console.log(st);
+    console.log(preciou);
 
 
 
@@ -306,8 +331,8 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
       <td> <input name="precio_unitario_detalle[]" value="${precioV}" /> </td>
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
-      <td >  <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
-      <td >  <input type="hidden" class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
+      <td > <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
+      <td > <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
 

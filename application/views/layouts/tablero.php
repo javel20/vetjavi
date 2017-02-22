@@ -22,7 +22,7 @@
 
         <?php foreach($_SESSION['Permisos'] as $perm){ ?>
         
-       <?php if($perm->IdPermisos == 3){?>
+       <?php if($perm->IdPermisos == 4){?>
        <li> 
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Cliente <span class="caret pull-right"></span>
@@ -38,7 +38,7 @@
         </li>
        <?php } ?>
 
-        <?php if($perm->IdPermisos == 7){?>
+        <?php if($perm->IdPermisos == 8){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Paciente <span class="caret pull-right"></span>
@@ -53,7 +53,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 12){?>
+        <?php if($perm->IdPermisos == 15){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo3" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Tipo Cita <span class="caret pull-right"></span>
@@ -83,7 +83,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 5){?>
+        <?php if($perm->IdPermisos == 6){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo5" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Diagnostico <span class="caret pull-right"></span>
@@ -113,7 +113,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 8){?>
+        <?php if($perm->IdPermisos == 10){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo7" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-tags"></span> Producto <span class="caret pull-right"></span>
@@ -128,7 +128,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 13){?>
+        <?php if($perm->IdPermisos == 16){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo8" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Tipo Producto <span class="caret pull-right"></span>
@@ -143,7 +143,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 11){?>
+        <?php if($perm->IdPermisos == 14){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo9" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-sort"></span> Stock-Presentacion <span class="caret pull-right"></span>
@@ -158,7 +158,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 4){?>
+        <?php if($perm->IdPermisos == 5){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo10" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-lock"></span> Compra <span class="caret pull-right"></span>
@@ -173,7 +173,7 @@
         </li>
         <?php } ?>
 
-      <?php if($perm->IdPermisos == 16){?>
+      <?php if($perm->IdPermisos == 19){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo11" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-lock"></span> Venta <span class="caret pull-right"></span>
@@ -188,7 +188,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 15){?>
+        <?php if($perm->IdPermisos == 18){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo12" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-user"></span> Trabajador <span class="caret pull-right"></span>
@@ -203,7 +203,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 14){?>
+        <?php if($perm->IdPermisos == 17){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo13" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-chevron-right"></span> Tipo Trabajador <span class="caret pull-right"></span>
@@ -219,7 +219,7 @@
         <?php } ?>
 
 
-        <?php if($perm->IdPermisos == 6){?>
+        <?php if($perm->IdPermisos == 7){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo14" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-home"></span> Local <span class="caret pull-right"></span>
@@ -234,7 +234,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 9){?>
+        <?php if($perm->IdPermisos == 11){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo15" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-calendar"></span> Proveedor <span class="caret pull-right"></span>
@@ -249,7 +249,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 10){?>
+        <?php if($perm->IdPermisos == 12){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo16" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-calendar"></span> Reportes <span class="caret pull-right"></span>
@@ -264,7 +264,7 @@
         </li>
         <?php } ?>
 
-         <?php if($perm->IdPermisos == 17){?>
+         <?php if($perm->IdPermisos == 2){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo17" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-calendar"></span> Cirugia <span class="caret pull-right"></span>
@@ -279,7 +279,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 18){?>
+        <?php if($perm->IdPermisos == 13){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo18" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-calendar"></span> Salida <span class="caret pull-right"></span>
@@ -294,7 +294,7 @@
         </li>
         <?php } ?>
 
-        <?php if($perm->IdPermisos == 19){?>
+        <?php if($perm->IdPermisos == 9){?>
         <li>
           <a href="" onclick="return false;" data-toggle="collapse" data-target="#toggleDemo19" data-parent="#sidenav01" class="collapsed">
           <span class="glyphicon glyphicon-calendar"></span> Permiso trabajador <span class="caret pull-right"></span>

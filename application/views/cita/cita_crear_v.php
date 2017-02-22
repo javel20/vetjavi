@@ -58,7 +58,7 @@
            
               <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="text" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" maxlength="8">
+              <input validate="unicocita" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" maxlength="8">
             </div>
             
                 <div class="form-group col-md-6">
@@ -168,6 +168,7 @@
       $("#js-example-basic-single").select2();
       $("#select_cita").select2();
       $("#select_cirugia").select2();
+      $("#select_analisis").select2();
 
 
       $("#select_cita").on("change", function(event){

@@ -51,6 +51,7 @@
         <thead>
             <th>Nombres</th>
             <th>DNI/RUC</th>
+            <th>Tipo Cliente</th>
             <th>Ciudad</th>
             <th>Direccion</th>
             <th>Telefono</th>
@@ -66,6 +67,7 @@
                 echo "<tr class='estado_" . $dato->Estado ."'>".
                 "<td>". $dato->Nombre ." " .$dato->ApePat. " " . $dato->ApeMat  ."</td>".
                 "<td>". $dato->DNI ." ". $dato->RUC ."</td>".
+                "<td>". $dato->Estado ."</td>".
                 "<td>". $dato->Ciudad ."</td>".
                 "<td>". $dato->Direccion ."</td>".
                 "<td>". $dato->Telefono ."</td>".

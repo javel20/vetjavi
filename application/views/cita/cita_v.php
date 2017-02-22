@@ -50,7 +50,7 @@
     <table class="table container">
         <thead>
             <th>Paciente</th>
-            <!--<th>TipoCita</th>-->
+            <th>TipoCita</th>
             <th>Codigo</th>
             <th>Fecha Reserva</th>
             <th>Fecha Registro</th>
@@ -85,7 +85,7 @@
 
           echo "<tr >".
                 "<td>". $dato->NombrePaciente . " - ".$dato->Nombre. " ".$dato->ApePat."</td>".
-                // "<td>". $tipodecita . " </td>".
+                "<td>". $dato->NombreTC ."". $dato->NombreA ."". $dato->NombreC ."</td>".
                 "<td>". $dato->CodigoC ."</td>".
                 "<td>". $dato->FechaReserva ."</td>".
                 "<td>". $dato->FechaRegistro ."</td>".

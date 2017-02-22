@@ -56,12 +56,17 @@ class TipoProducto_model extends CI_Model {
                 $this->db->update('tipoproducto', $this, array('IdTipoProducto' => $IdTipoProducto));
         }
 
-        public function get_buscar_tipoproducto(){
+        public function get_buscar_tipoproducto($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                  $tipo_dato = $_GET['tipo_dato'];
                  $this->db->select('*');
                 $this->db->from('tipoproducto');
                 $this->db->like("tipoproducto.".$tipo_dato,$dato_buscar);   
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }

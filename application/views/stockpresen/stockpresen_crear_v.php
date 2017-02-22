@@ -25,7 +25,7 @@
                     
                     foreach($productos as $producto){
                       
-                      echo "<option value=" .$producto->IdProducto .">". $producto->Nombre ."</option>";
+                      echo "<option value=" .$producto->IdProducto .">". $producto->NombreP ."</option>";
                     }?>
               </select>
 

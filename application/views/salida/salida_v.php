@@ -25,7 +25,6 @@
                             aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Codigo';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
-                    <li><a href="#" dato="CodigoS">Codigo</a></li>
                     <li><a href="#" dato="NombreS">Nombre</a></li>
                      <li><a href="#" dato="FechaS">Fecha</a></li>
 
@@ -50,7 +49,6 @@
     
     <table class="table">
         <thead>
-            <th>Codigo</th>
             <th>Nombre</th>
             <th>Fecha</th>
             <th>Precio</th>
@@ -63,7 +61,6 @@
           // die(var_dump($datos_stockpresen));
             foreach ($datos_salida as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->CodigoS."</td>".
                 "<td>". $dato->NombreS ."</td>".
                 "<td>". $dato->FechaS ."</td>".
                 "<td>". $dato->PrecioS ."</td>".
@@ -77,7 +74,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->CodigoS ."'
+                                nombre_data='". $dato->NombreS ."'
                                 url_data=". base_url("index.php/Salida/delete/$dato->IdSalida") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/Salida/edit/$dato->IdSalida") .">Editar</a></li>
 

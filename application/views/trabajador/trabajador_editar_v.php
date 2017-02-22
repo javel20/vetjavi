@@ -85,6 +85,17 @@
 
             </div>
 
+            <div class="form-group col-md-6">
+            <label>Estado</label>
+             <select validate="seleccionar" type="text" class="form-control" name="EstadoT">
+
+                  <option value="Habilitado" <?php echo ($dato_trabajador[0]->EstadoT=="Habilitado" ? 'selected="selected"' : '');?>>Habilitado</option>    
+                  <option value="Expulsado" <?php echo ($dato_trabajador[0]->EstadoT=="Expulsado" ? 'selected="selected"' : '');?>>Expulsado</option>
+                  <option value="Retirado" <?php echo ($dato_trabajador[0]->EstadoT=="Retirado" ? 'selected="selected"' : '');?>>Retirado</option>
+
+            </select>
+          </div>
+
             <script type="text/javascript">
             $(document).ready(function() {
             var fn = $(".js-example-basic-single").select2();

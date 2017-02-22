@@ -22,7 +22,7 @@
                             class="btn btn-default dropdown-toggle" 
                             data-toggle="dropdown" 
                             aria-haspopup="true" 
-                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'NombreTP';?> <span class="caret"></span>
+                            aria-expanded="false"><?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?> <span class="caret"></span>
                     </button> 
                     <ul class="dropdown-menu" id="menu_a_buscar">
 
@@ -34,8 +34,8 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'NombreTP';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'NombreTP';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 

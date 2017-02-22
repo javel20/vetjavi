@@ -40,7 +40,7 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo" value="<?php echo $dato_diagnosticos[0]->CodigoD?>">
+              <input validate="unicodiagnostico" type="text" class="form-control" id="CodigoD" name="CodigoD" maxlength="8" placeholder="Codigo" value="<?php echo $dato_diagnosticos[0]->CodigoD?>">
             </div>
      
 

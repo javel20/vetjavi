@@ -20,7 +20,7 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="number" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8">
+              <input validate="unicocompra" type="text" class="form-control" name="CodC" placeholder="Codigo" maxlength="8">
             </div>
 
             <div class="form-group col-md-6">
@@ -76,7 +76,7 @@
 
              <div class="col-md-12"></div>
           
-              <h4 class="col-md-12 mi_header">Detalle de Compra</h4>
+              <h5 class="col-md-12 mi_header">Detalle de Compra</h5>
               <hr />
               <div>
                 <div id="form_detalle" >
@@ -91,7 +91,7 @@
                     
                     foreach($productos as $producto){
                       
-                      echo "<option value=" .$producto->IdProducto .">". $producto->Nombre ."</option>";
+                      echo "<option value=" .$producto->IdProducto .">". $producto->NombreP ."</option>";
                     }?>
               </select>
 

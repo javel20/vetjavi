@@ -35,8 +35,8 @@
                 </div><!-- /btn-group -->
                 <input type="text" class="form-control" placeholder="Search" name="nombre_buscar" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_buscar') : '';?>">
                 </div><!-- /input-group -->
-                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'Nombre';?>">
-                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'Nombre';?>">
+                    <input type="hidden" id="tipo_dato" name="tipo_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('tipo_dato') : 'NombreP';?>">
+                    <input type="hidden" id="nombre_dato" name="nombre_dato" value="<?php echo $this->input->get('nombre_dato') ? $this->input->get('nombre_dato') : 'NombreP';?>">
                     <button type="submit" class="btn btn-default">Buscar</button>
                 </form>
                 
@@ -63,7 +63,7 @@
           // die(var_dump($datos_stockpresen));
             foreach ($datos_stockpresen as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->Nombre."</td>".
+                "<td>". $dato->NombreP."</td>".
                 "<td>". $dato->StockMin ."</td>".
                 "<td>". $dato->StockReal ."</td>".
                 "<td>". $dato->Presentacion ."</td>".
@@ -77,7 +77,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->Nombre ."'
+                                nombre_data='". $dato->NombreP ."'
                                 url_data=". base_url("index.php/StockPresen/delete/$dato->IdStockPresen") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/StockPresen/edit/$dato->IdStockPresen") .">Editar</a></li>
 

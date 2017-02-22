@@ -55,6 +55,7 @@
             <th>Descripicion</th>
             <th>Empresa</th>
             <th>Proveedor</th>
+            <th>Registrador</th>
             <th>Option</th>
          
          
@@ -71,7 +72,8 @@
                 "<td>". $dato->TipoC ."</td>".
                 "<td>". $dato->Descripcion."</td>".
                 "<td>". $dato->Empresa."</td>".
-                "<td>". $dato->NombreProv." ".$dato->ApePat." ".$dato->ApeMat."</td>".
+                "<td>". $dato->NombreProv." ".$dato->apepatpro." ".$dato->apematpro."</td>".
+                "<td>". $dato->NombreT." ". $dato->apepattra ." ".$dato->apemattra."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

@@ -1,31 +1,51 @@
 <?php  $this->load->view('layouts/header');?>
 <?php  $this->load->view('layouts/tablero');?>
 
-	<div class="col-sm-9 col-md-10 affix-content">
-		<div class="container">
-            <div class="page-header">
-            
+<table class='MiTabla MiTablaFija'>
+    <br><br><br><br><br><br><br>
+    <tr>
+
+        <?php
+          //  die(var_dump($datos_trabajador));
+            foreach ($dato_comprador as &$dato){
+                echo "<tr>".
+                "<td class='td0'> </td>".
+                "<td>". $dato->Nombre  . " ".$dato->ApePat. " ".$dato->ApeMat. "</td>".
+                "<td class='td0'> </td>". 
+                "<td class='fecha'>" .date("d"). " - " .date("m"). " - ".date("y"). "</td>".
+
+                "</tr>";
+            }
+
+            foreach ($dato_comprador as &$dato){
+                echo "<tr>".
+                "<td class='td0'> </td>".
+                "<td>". $dato->Direccion ."</td>".
+                "<td class='td0'> </td>".
+                "<td class='fecha'>" .$dato->DNI. "</td>".
+
+                "</tr>";
+            }
 
 
-<div>
-    
-    <table class="table">
-        <thead>
-            <th>Nombre cliente</th>
-            <th>Presentacion</th>
-            <th>Cantidad</th>
-            <th>Precio Total</th>
-        </thead>
-        <tbody id="eventos_table">
+        ?>  
+
+        </tr>
+
+</table>
+<table class='MiTabla MiTablaFija2'>
+    <br>
+
         
         <?php
           //  die(var_dump($datos_trabajador));
-            foreach ($datos_detalle as &$dato){
+            foreach ($datos_productos as &$dato){
                 echo "<tr>".
-                "<td>". $dato->nombrecli  . " ".$dato->ApePat. " ".$dato->ApeMat. "</td>".
-                "<td>". $dato->Presentacion ."</td>".
-                "<td>". $dato->Cantidad ."</td>".
-                "<td>". $dato->PrecioTotal ."</td>".
+                "<td class='td0'> </td>".
+                "<td class='td1'>". $dato->Cantidad ."</td>".
+                "<td class='td2'>". $dato->NombreP ." ". $dato->Presentacion ."</td>".
+                "<td class='td1'>". $dato->PrecioTotal ."</td>".
+                "<td class='td1'>". $dato->Preciot ."</td>".
 
                 "</tr>";
             }
@@ -37,63 +57,35 @@
 </div>
 </div>
 </div>
-
-</div>
-<div class="modal_fondo" id="modal_completo">
-    <div class="modal_aviso">
-        <h3 id="put_aviso"></h3>
-        <p id="put_nombre"> </p>
-        <a tipo="eliminar" id="put_href" href="#" class="btn btn-danger">SI</a>
-        <a tipo="salir" class="btn btn-default">No</a>
-    </div>
-</div>
-
-	<div class="col-sm-9 col-md-10 affix-content">
-		<div class="container">
-            <div class="page-header">
-            
-
-
-<div>
-    
-    <table class="table">
-        <thead>
-            <th>Producto</th>
-            <th>Presentacion</th>
-            <th>Cantidad</th>
-            <th>Precio Total</th>
-        </thead>
-        <tbody id="eventos_table">
-        
-        <?php
-          //  die(var_dump($datos_trabajador));
-            foreach ($datos_detalle as &$dato){
-                echo "<tr>".
-                "<td>". $dato->nombrepro  ."</td>".
-                "<td>". $dato->Presentacion ."</td>".
-                "<td>". $dato->Cantidad ."</td>".
-                "<td>". $dato->PrecioTotal ."</td>".
-
-                "</tr>";
-            }
-        ?>  </tbody>
-    </table>
-</div>
    
 
-</div>
-</div>
-</div>
+<table class='MiTabla MiTablaFija'>
 
-</div>
-<div class="modal_fondo" id="modal_completo">
-    <div class="modal_aviso">
-        <h3 id="put_aviso"></h3>
-        <p id="put_nombre"> </p>
-        <a tipo="eliminar" id="put_href" href="#" class="btn btn-danger">SI</a>
-        <a tipo="salir" class="btn btn-default">No</a>
-    </div>
-</div>
+    <tr>
+
+        <?php
+          //  die(var_dump($datos_trabajador));
+            foreach ($dato_comprador as &$dato){
+                echo "<tr>".
+                "<td> </td>".
+                "<td> </td>".
+                "<td> </td>".
+                "<td> </td>".
+                "<td> </td>".
+                "<td> </td>".
+                "<td> </td>".
+
+                
+                "<td>". number_format($dato->PrecioTotalVenta,2,'.','')  ."</td>".
+    
+                "</tr>";
+            }
+        ?>  
+        </tr>
+
+</table>
+
+
 
     <script src="<?php echo base_url('public/main.js'); ?>"></script>
 

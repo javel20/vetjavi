@@ -24,7 +24,7 @@
               <input validate="texto" type="text" class="form-control" name="ApeMat" placeholder="Apellido Materno" maxlength="15">
             </div>
 
-
+            
             <div class="form-group col-md-6">
               <div class="row">
 
@@ -48,6 +48,17 @@
                     <!--</div>-->
             </div>
             </div>
+
+            <div class="form-group col-md-6">
+              <label>Tipo Cliente</label>
+              <select validate="seleccionar" class="form-control" id="Estado" name="Estado">
+                <option>--seleccionar--</option>
+                <option>Fiable</option>
+                <option>No fiable</option>
+
+             </select>
+            </div>
+            
 
             <div class="form-group col-md-6">
               <label>Ciudad</label>

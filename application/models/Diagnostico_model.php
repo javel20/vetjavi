@@ -68,13 +68,18 @@ class Diagnostico_model extends CI_Model {
                 $this->db->update('diagnostico', $this, array('IdDiagnostico' => $IdDiagnostico));
         }
 
-        public function get_buscar_diagnostico(){
+        public function get_buscar_diagnostico($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*, cita.Descripcion as Descci, diagnostico.Descripcion as descdi');
                 $this->db->from('diagnostico');
                 $this->db->join('cita',  'cita.IdCita = diagnostico.IdCita');
                 $this->db->like(  $tipo_dato,$dato_buscar);   
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+
                 $query = $this->db->get();
                 return $query->result();     
         }
@@ -83,6 +88,15 @@ class Diagnostico_model extends CI_Model {
    
                 $query = $this->db->delete("diagnostico", array('IdDiagnostico'=>$id));
                  return $query; 
+        }
+
+        public function getDiagnostico($codigo){
+                $this->db->select('*');
+                $this->db->from('diagnostico');
+                $this->db->where('CodigoD',$codigo);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
         }
 
 

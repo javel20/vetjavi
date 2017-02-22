@@ -24,9 +24,10 @@ class Venta_model extends CI_Model {
         public function get_ventas($inicio=FALSE,$limite=FALSE)
         {
 
-                $this->db->select('*');
+                $this->db->select('*,  trabajador.ApePat as apepattra, trabajador.ApeMat as apemattra');
                 $this->db->from('venta');
                 $this->db->join('cliente', 'venta.IdCliente = cliente.IdCliente');
+                $this->db->join('trabajador','trabajador.IdTrabajador = venta.IdTrabajador');
                 $this->db->where('venta.Estado = "Venta Realizada"');
 
                 //  die(json_encode($query->result()));
@@ -68,6 +69,7 @@ class Venta_model extends CI_Model {
                                 'IdVenta' => $insert_id,
                                 'Cantidad' => $_POST['cantidad_detalle'][$key],
                                 'PrecioTotal' => $_POST['precio_unitario_detalle'][$key],
+                                'Preciot' => $_POST['preciot_detalle'][$key],
                                 'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
                                 
 
@@ -89,6 +91,7 @@ class Venta_model extends CI_Model {
                 $this->db->select('*');
                 $this->db->from('venta');
                 $this->db->where('IdVenta',$IdVenta);   
+                
                 $query = $this->db->get();
 
                 $fecha = $query->result()[0]->Fecha;
@@ -135,13 +138,17 @@ class Venta_model extends CI_Model {
                 $this->db->update('venta', $this, array('IdVenta' => $IdVenta));
         }
 
-        public function get_buscar_venta(){
+        public function get_buscar_venta($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = trim($_GET['nombre_buscar']);
                 $tipo_dato = trim($_GET['tipo_dato']);
                 $this->db->select('*, cliente.Nombre  as NombreCliente');
                 $this->db->from('venta');
                 $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
                 $this->db->like(  $tipo_dato,$dato_buscar);  
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
 
                 $query = $this->db->get();
                 return $query->result();     
@@ -179,7 +186,7 @@ class Venta_model extends CI_Model {
 
         public function get_detalle($id){
 
-                $this->db->select('*, producto.Nombre as nompro');
+                $this->db->select('*, producto.NombreP as nompro');
                 $this->db->from('detalleventaproducto');
                 $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detalleventaproducto.IdStockPresen');
                 $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
@@ -191,25 +198,56 @@ class Venta_model extends CI_Model {
 
         }
 
-        public function get_detalle_comprobante($id){
+        // public function get_detalle_comprobante($id){
 
-                $sql1=('select *
-                        from venta
-                        inner join cliente on cliente.IdCliente=venta.IdCliente
-                        where venta.IdVenta=17');
-
-                $sql2=('select *
-                        from venta
-                        inner join detalleventaproducto on detalleventaproducto.IdVenta=venta.IdVenta
-                        inner join stockpresentacion on stockpresentacion.IdStockPresen=detalleventaproducto.IdStockPresen
-                        inner join producto on producto.IdProducto = StockPresentacion.IdProducto
-                        where venta.IdVenta=17');
+        //         $this->db->select('*,cliente.Nombre as nombrecli, producto.NombreP as nombrepro');
+        //         $this->db->from('venta');
+        //         $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
+        //         $this->db->join('detalleventaproducto', 'detalleventaproducto.IdVenta=venta.IdVenta');
+        //         $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detalleventaproducto.IdStockPresen');
+        //         $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+        //         $this->db->where('venta.IdVenta', $id);
                 
-                $query = $this->db->query($sql1.' UNION '. $sql2);
-                // die(json_encode($query->result()));
-                return $query->result();
+        //         $query = $this->db->get();
+        //         // die(json_encode($query->result()));
+        //         return $query->result();
+
+        // }
+
+        public function get_venta_com($id){
+
+                $this->db->select('*');
+                $this->db->from('venta');
+                $this->db->join('cliente','cliente.IdCliente=venta.IdCliente');
+                $this->db->where('IdVenta',$id);   
+                
+                $query = $this->db->get();
+
+                $fecha = $query->result()[0]->Fecha;
+                $pos = preg_match('/[-]+/',$fecha);
+                if($pos == true){
+                        $array = explode('-', $fecha);
+                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+
+                $query->result()[0]->Fecha= $fecha_php;
+
+                return $query->result();     
 
         }
+
+        public function getVenta($codigo){
+                $this->db->select('*');
+                $this->db->from('venta');
+                $this->db->where('CodV',$codigo);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
+        }
+
 
 
 }

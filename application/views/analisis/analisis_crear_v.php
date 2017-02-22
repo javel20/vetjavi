@@ -22,13 +22,13 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input validate="unico" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
+              <input validate="unicoanalisis" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8">
             </div>
 
             
             <div class="form-group col-md-6">
               <label>Nombre</label>
-               <input validate="<texto></texto>" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
+               <input validate="texto" type="text" class="form-control" id="NombreA" name="NombreA" placeholder="Nombre" maxlength="30">
             </div>
 
 

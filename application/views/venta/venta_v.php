@@ -56,6 +56,7 @@
             <th>Tipo</th>
             <th>Descripicion</th>
             <th>Precio Total Venta</th>
+            <th>Registrador</th>
             <th>Option</th>
          
          
@@ -73,6 +74,7 @@
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".
                 "<td>". $dato->PrecioTotalVenta."</td>".
+                "<td>". $dato->NombreT ." ". $dato->apepattra ." ". $dato->apemattra . "</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

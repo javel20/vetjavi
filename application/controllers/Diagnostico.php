@@ -114,6 +114,16 @@ class Diagnostico extends CI_Controller {
 
         }
 
+        public function getDiagnostico($codigo){
+            $this->load->model('Diagnostico_model');
+            $data['json'] = $this->Diagnostico_model->getDiagnostico($codigo);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+           
+        }
 
 
 }

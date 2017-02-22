@@ -12,6 +12,7 @@ class Trabajador_model extends CI_Model {
         public $Password;
         public $IdTipoTrab;
         public $IdLocal;
+        public $EstadoT;
 
 
         public function __construct()
@@ -47,6 +48,7 @@ class Trabajador_model extends CI_Model {
                 $this->Password    = md5($_POST['Password']);
                 $this->IdTipoTrab    = $_POST['SelectTipo'];
                 $this->IdLocal    = $_POST['SelectLocal'];
+                $this->EstadoT    = "Habilitado";
                 
                 //  die(json_encode($_POST['permisos']));
 
@@ -84,18 +86,24 @@ class Trabajador_model extends CI_Model {
                 $this->Password    = $_POST['Password'];
                 $this->IdTipoTrab = $_POST['SelectTipo'];
                 $this->IdLocal = $_POST['SelectLocal'];
+                $this->EstadoT    = $_POST['EstadoT'];
 
                 $this->db->update('trabajador', $this, array('IdTrabajador' => $IdTrabajador));
         }
 
-        public function get_buscar_trabajador(){
+        public function get_buscar_trabajador($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*');
                 $this->db->from('trabajador');
                 $this->db->join('tipotrab', 'tipotrab.IdTipoTrab = trabajador.IdTipoTrab');
                 $this->db->join('local', 'local.IdLocal = trabajador.IdLocal');
-                $this->db->like('trabajador.'.  $tipo_dato,$dato_buscar);   
+                $this->db->like('trabajador.'.  $tipo_dato,$dato_buscar); 
+                
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+                
                 $query = $this->db->get();
                 return $query->result();     
         }

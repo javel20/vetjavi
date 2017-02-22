@@ -55,6 +55,7 @@
             <th>Celular</th>
             <th>Operador</th>
             <th>Email</th>
+            <th>Estado</th>
             <th>Tipo Trabajador</th>
             <th>Local</th>
             <th>Option</th>
@@ -70,6 +71,7 @@
                 "<td>". $dato->CelularT ."</td>".
                 "<td>". $dato->OperadorT ."</td>".
                 "<td>". $dato->Email ."</td>".
+                "<td>". $dato->EstadoT ."</td>".
                 "<td>". $dato->NombreTP."</td>".
                 "<td>". $dato->NombreL ."</td>".
                 "<td> <div class='dropdown'>

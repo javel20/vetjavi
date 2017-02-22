@@ -2,7 +2,7 @@
 class Producto_model extends CI_Model {
 
         // public $IdProducto;
-        public $Nombre;
+        public $NombreP;
         public $Descripcion;
         public $IdTipoProducto;
 
@@ -29,7 +29,7 @@ class Producto_model extends CI_Model {
         }
          public function post_productos()
         {
-                $this->Nombre    = $_POST['Nombre'];
+                $this->NombreP    = $_POST['Nombre'];
                 $this->Descripcion    = $_POST['Descripcion'];
       
        
@@ -54,7 +54,7 @@ class Producto_model extends CI_Model {
         public function update_producto($IdProducto)
         {
                 $this->IdProducto = $IdProducto;
-                $this->Nombre    = $_POST['Nombre'];
+                $this->NombreP    = $_POST['Nombre'];
                 $this->Descripcion    = $_POST['Descripcion'];
             
                 $this->IdTipoProducto    = $_POST['TipoProduc'];
@@ -63,13 +63,18 @@ class Producto_model extends CI_Model {
                 $this->db->update('producto', $this, array('IdProducto' => $IdProducto));
         }
 
-        public function get_buscar_producto(){
+        public function get_buscar_producto($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
                 $this->db->select('*, producto.Descripcion as descprod');
                 $this->db->from('producto');
                 $this->db->join('tipoproducto', 'tipoproducto.IdTipoProducto = producto.IdTipoProducto');
                 $this->db->like(  $tipo_dato,$dato_buscar);
+
+                if($inicio!==FALSE && $limite!==FALSE){
+                        $this->db->limit($limite,$inicio);
+                }
+                
                 $query = $this->db->get();
                 return $query->result();     
         }
