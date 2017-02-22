@@ -55,6 +55,7 @@
             <th>Fecha Reserva</th>
             <th>Fecha Registro</th>
             <th>Peso</th>
+            <th>Temperatura</th>
             <th>Frecuencia Cardiaca</th>
             <th>Frecuencia Respiratoria</th>
             <th>Ganancia</th>
@@ -90,6 +91,7 @@
                 "<td>". $dato->FechaReserva ."</td>".
                 "<td>". $dato->FechaRegistro ."</td>".
                 "<td>". $dato->Peso ."</td>".
+                "<td>". $dato->TemperaturaC ."</td>".
                 "<td>". $dato->FrecuenciaCardiaca ."</td>".
                 "<td>". $dato->FrecuenciaRespiratoria ."</td>".
                 "<td>". $dato->Ganancia ."</td>".

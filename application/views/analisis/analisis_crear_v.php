@@ -32,26 +32,6 @@
             </div>
 
 
-            <div class="form-group col-md-6">
-                 <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" maxlength="10"  />
-
-
-                  <script>
-                    $(document).ready(function(){
-                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
-                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-                        var options={
-                          format: 'mm/dd/yyyy',
-                          container: container,
-                          todayHighlight: true,
-                          autoclose: true,
-                        };
-                        date_input.datepicker(options);
-                      })
-                  </script>
-
-            </div>
 
             <div class="form-group col-md-6">
               <label>Precio</label>

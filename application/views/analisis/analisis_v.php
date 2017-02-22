@@ -27,7 +27,6 @@
                     <ul class="dropdown-menu" id="menu_a_buscar">
                     <li><a href="#" dato="Codigo">Codigo</a></li>
                     <li><a href="#" dato="NombreA">Nombre</a></li>
-                    <li><a href="#" dato="FechaA">Fecha</a></li>
             
             
                     </ul>
@@ -51,7 +50,6 @@
         <thead>
             <th>Codigo</th>
             <th>Nombre</th>
-            <th>Fecha</th>
             <th>Precio</th>
             <th>Porcentaje</th>
             <th>Descripcion</th>
@@ -65,7 +63,6 @@
                 echo "<tr>".
                 "<td>". $dato->Codigo."</td>".
                 "<td>". $dato->NombreA ."</td>".
-                "<td>". $dato->FechaA ."</td>".
                 "<td>". $dato->PrecioAnalisis ."</td>".
                 "<td>". $dato->PorcentajeA ."</td>".
                 "<td>". $dato->Descripcion ."</td>".

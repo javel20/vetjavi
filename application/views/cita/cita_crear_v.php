@@ -95,7 +95,11 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input validate="number" type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso" maxlength="6">
+              <input validate="decimal" type="text" id="Peso" class="form-control" name="Peso" placeholder="Peso" maxlength="6">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Temperatura</label>
+              <input validate="number" type="text" id="Temperatura" class="form-control" name="TemperaturaC" placeholder="Temperatura" maxlength="6">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>

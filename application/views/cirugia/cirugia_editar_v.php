@@ -18,7 +18,7 @@
             <input validate="texto" type="text" class="form-control" name="NombreC" placeholder="Nombres" maxlength="30"value="<?php echo $dato_cirugia[0]->NombreC?>">
           </div>
 
-          <div class="form-group col-md-6">
+          <!--<div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
                 <input validate="date" class="form-control" id="date" name="FechaC" placeholder="MM/DD/YYYY" type="text" value="<?php echo $dato_cirugia[0]->FechaC?>" />
 
@@ -27,7 +27,7 @@
                     $(document).ready(function(){
 
 
-                      var fecha= "<?php echo trim($dato_cirugia[0]->FechaC) ?>"
+                      var fecha= "<php echo trim($dato_cirugia[0]->FechaC) ?>"
 
                       var anio = Number(fecha.split("/")[0]);
                       var mes = Number(fecha.split("/")[1]);
@@ -47,7 +47,7 @@
                       })
                   </script>
 
-            </div>
+            </div>-->
 
           <div class="form-group col-md-6 ">
             <label>Precio</label>

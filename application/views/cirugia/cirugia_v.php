@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu" id="menu_a_buscar">
 
                     <li><a href="#" dato="NombreC">Nombre </a></li>
-                    <li><a href="#" dato="FechaC">Fecha </a></li>
+                    <!--<li><a href="#" dato="FechaC">Fecha </a></li>-->
 
             
             
@@ -52,7 +52,7 @@
         <thead>
 
             <th>Nombre</th>
-            <th>Fecha</th>
+            <!--<th>Fecha</th>-->
             <th>Precio</th>
             <th>Porcentaje</th>
             <th>Descripcion</th>
@@ -68,7 +68,7 @@
                 
                echo "<tr>".
                 "<td>". $dato->NombreC ."</td>".
-                "<td>". $dato->FechaC ."</td>".
+                // "<td>". $dato->FechaC ."</td>".
                 "<td>". $dato->PrecioC ."</td>".
                 "<td>". $dato->PorcentajeC ."</td>".
                 "<td>". $dato->DescripcionC ."</td>".

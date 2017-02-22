@@ -49,8 +49,8 @@
             <select validate="seleccionar" class="form-control" name="TipoV">
               
                
-                <option>Factura</option>
                 <option>Boleta</option>
+                <option>Factura</option>
                 </select>
             </div>
 
@@ -290,6 +290,7 @@ console.log($("#selecpresent").val());
    console.log(precio);
    console.log(porcentaje);
    precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
+   
    preciou=precioV;
    console.log(precioV);
    acumulado = [];
@@ -309,7 +310,7 @@ console.log($("#selecpresent").val());
 
 
       precioT=precioV*acumulado[4];
-      st+=precioT;
+     st+=precioT;
 
       precioVe+=precioV;
       precioG=(precioV-precio)*acumulado[4];
@@ -329,7 +330,7 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
     $tbody_detalle.innerHTML += `<tr>
       <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
-      <td> <input name="precio_unitario_detalle[]" value="${precioV}" /> </td>
+      <td> <input name="precio_unitario_detalle[]" value="${precioV.toFixed(2)}" /> </td>
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
       <td > <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
       <td > <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>

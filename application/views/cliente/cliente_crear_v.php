@@ -70,18 +70,18 @@
             </div>
             <div class="form-group col-md-6">
               <label>Telefono</label>
-              <input validate="number" type="text" class="form-control" name="Telefono" placeholder="Telefono" maxlength="9">
+              <input validate="" type="text" class="form-control" name="Telefono" placeholder="Telefono" maxlength="9">
             </div>
 
             
             <div class="form-group col-md-3">
               <label>Celular</label>
-              <input validate="number" type="text" class="form-control" name="Celular" placeholder="Celular" maxlength="9">
+              <input validate="" type="text" class="form-control" name="Celular" placeholder="Celular" maxlength="9">
             </div>
 
             <div class="form-group col-md-3">
               <label>Operador</label>
-              <select validate="seleccionar" class="form-control" id="Operador" name="Operador">
+              <select validate="" class="form-control" id="Operador" name="Operador">
                 <option>--seleccionar--</option>
                 <option >Rpm</option>
                 <option>Movistar</option>

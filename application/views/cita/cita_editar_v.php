@@ -122,7 +122,11 @@
 
             <div class="form-group col-md-6">
               <label>Peso</label>
-              <input validate="number" type="text" class="form-control" name="Peso" placeholder="Peso" maxlength="6" value="<?php echo $dato_cita[0]->Peso?>">
+              <input validate="decimal" type="text" class="form-control" name="Peso" placeholder="Peso" maxlength="6" value="<?php echo $dato_cita[0]->Peso?>">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Temperatura</label>
+              <input validate="number" type="text" class="form-control" name="TemperaturaC" placeholder="Temperatura" maxlength="6" value="<?php echo $dato_cita[0]->TemperaturaC?>">
             </div>
             <div class="form-group col-md-6">
               <label>Frecuencia Cardiaca</label>
@@ -299,7 +303,7 @@
   
       })
 
-
+       });
 
 
 

@@ -73,7 +73,7 @@
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".
-                "<td>". $dato->PrecioTotalVenta."</td>".
+                "<td>". number_format($dato->PrecioTotalVenta,2,'.','')."</td>".
                 "<td>". $dato->NombreT ." ". $dato->apepattra ." ". $dato->apemattra . "</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

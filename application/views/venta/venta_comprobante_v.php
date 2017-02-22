@@ -44,8 +44,8 @@
                 "<td class='td0'> </td>".
                 "<td class='td1'>". $dato->Cantidad ."</td>".
                 "<td class='td2'>". $dato->NombreP ." ". $dato->Presentacion ."</td>".
-                "<td class='td1'>". $dato->PrecioTotal ."</td>".
-                "<td class='td1'>". $dato->Preciot ."</td>".
+                "<td class='td1'>". number_format($dato->PrecioTotal,2,'.','') ."</td>".
+                "<td class='td1'>". number_format($dato->Preciot,2,'.','') ."</td>".
 
                 "</tr>";
             }

@@ -3,7 +3,7 @@ class Cirugia_model extends CI_Model {
 
         // public $IdTipoCita;
         public $NombreC;
-        public $FechaC;
+        // public $FechaC;
         public $PrecioC;
         public $PorcentajeC;
         public $DescripcionC;
@@ -36,12 +36,12 @@ class Cirugia_model extends CI_Model {
               
                 $this->NombreC    = $_POST['NombreC'];
 
-                $fechar = $_POST['FechaC'];
-                $array = explode('/', $fechar);
-                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+                // $fechar = $_POST['FechaC'];
+                // $array = explode('/', $fechar);
+                // $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
 
 
-                $this->FechaC = strval(trim($fecha_php));
+                // $this->FechaC = strval(trim($fecha_php));
                 $this->PrecioC    = $_POST['PrecioC'];
                 $this->PorcentajeC    = $_POST['PorcentajeC'];
                 $this->DescripcionC    = $_POST['DescripcionC'];
@@ -56,17 +56,17 @@ class Cirugia_model extends CI_Model {
                 $this->db->where('IdCirugia',$IdCirugia);
                 $query = $this->db->get();
 
-                $fecha = $query->result()[0]->FechaC;
-                 $pos = preg_match('/[-]+/',$fecha);
-                if($pos == true){
-                        $array = explode('-', $fecha);
-                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
+                // $fecha = $query->result()[0]->FechaC;
+                //  $pos = preg_match('/[-]+/',$fecha);
+                // if($pos == true){
+                //         $array = explode('-', $fecha);
+                //         $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
 
-                } else{
-                       $fecha_php = $fecha; 
-                }
+                // } else{
+                //        $fecha_php = $fecha; 
+                // }
 
-                $query->result()[0]->FechaC= $fecha_php;
+                // $query->result()[0]->FechaC= $fecha_php;
                 return $query->result();     
 
         }
@@ -75,17 +75,17 @@ class Cirugia_model extends CI_Model {
         {
 
                 $this->NombreC    = $_POST['NombreC']; 
-                $fechar = $_POST['FechaC'];
-                $pos = preg_match('/[\/]+/',$fechar);
-                if($pos == true){
-                        $array = explode('/', $fechar);
-                        $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+                // $fechar = $_POST['FechaC'];
+                // $pos = preg_match('/[\/]+/',$fechar);
+                // if($pos == true){
+                //         $array = explode('/', $fechar);
+                //         $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
 
-                } else{
-                       $fecha_php = $fechar; 
-                }
+                // } else{
+                //        $fecha_php = $fechar; 
+                // }
 
-                $this->FechaC = strval(trim($fecha_php));
+                // $this->FechaC = strval(trim($fecha_php));
                 $this->PrecioC    = $_POST['PrecioC']; 
                 $this->PorcentajeC    = $_POST['PorcentajeC']; 
                 $this->DescripcionC   = $_POST['DescripcionC']; 

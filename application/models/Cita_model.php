@@ -8,6 +8,7 @@ class Cita_model extends CI_Model {
         // public $FechaRegistro;
         public $CodigoC;
         public $Peso;
+        public $TemperaturaC;
         public $FrecuenciaCardiaca;
         public $FrecuenciaRespiratoria;
         public $Ganancia;
@@ -57,7 +58,7 @@ class Cita_model extends CI_Model {
                 
                 $fechar = $_POST['FechaReserva'];
                 $array = explode('/', $fechar);
-                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+                $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
                 // die($fecha_php);
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
                 
@@ -67,6 +68,7 @@ class Cita_model extends CI_Model {
                 $this->FechaRegistro    =  $fecha;
                 $this->HoraC = $_POST['HoraC'];
                 $this->Peso    = $_POST['Peso'];
+                $this->TemperaturaC    = $_POST['TemperaturaC'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
                 $this->FrecuenciaRespiratoria    = $_POST['FrecuenciaRespiratoria'];
                 $this->Ganancia    = $_POST['Ganancia'];
@@ -145,7 +147,7 @@ class Cita_model extends CI_Model {
                 $pos = preg_match('/[\/]+/',$fechar);
                 if($pos == true){
                         $array = explode('/', $fechar);
-                        $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
 
                 } else{
                        $fecha_php = $fechar; 
@@ -157,6 +159,7 @@ class Cita_model extends CI_Model {
                 $this->HoraC = $_POST['HoraC'];
                 $this->FechaReserva    =  strval(trim($fecha_php));
                 $this->Peso    = $_POST['Peso'];
+                $this->TemperaturaC    = $_POST['TemperaturaC'];
                 $this->FrecuenciaCardiaca    = $_POST['FrecuenciaCardiaca'];
                 $this->FrecuenciaRespiratoria    = $_POST['FrecuenciaRespiratoria'];
                 $this->Ganancia    = $_POST['Ganancia'];

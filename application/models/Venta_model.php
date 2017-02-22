@@ -44,7 +44,7 @@ class Venta_model extends CI_Model {
         {
                 $fecha = $_POST['Fecha'];
                 $array = explode('/', $fecha);
-                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
+                $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
               
                 $this->CodV    = $_POST['CodV'];
                 $this->Fecha    =  $fecha_php;

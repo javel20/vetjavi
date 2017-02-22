@@ -28,37 +28,7 @@
 
 
 
-            <div class="form-group col-md-6">
-                 <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="FechaA" placeholder="MM/DD/YYYY" type="text" maxlength="10"value="<?php echo $dato_analisis[0]->FechaA?>" />
-
-
-                  <script>
-                    $(document).ready(function(){
-
-
-                      var fecha= "<?php echo trim($dato_analisis[0]->FechaA) ?>"
-
-                      var anio = Number(fecha.split("/")[0]);
-                      var mes = Number(fecha.split("/")[1]);
-                      var dia = Number(fecha.split("/")[2]);
-
-
-                      var date_input=$('input[name="FechaA"]'); //our date input has the name "date"
-                        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-                        var options={
-                          format: 'mm/dd/yyyy',
-                          defaultViewDate: {year:anio,month:mes,day:dia},
-                          container: container,
-                          todayHighlight: true,
-                          autoclose: true,
-                        };
-                        date_input.datepicker(options);
-                      })
-                  </script>
-
-            </div>
-
+           
           <div class="form-group col-md-6">
               <label>Precio</label>
               <input validate="number" type="text"class="form-control" name="PrecioAnalisis"  maxlength="7" value="<?php echo $dato_analisis[0]->PrecioAnalisis?>">

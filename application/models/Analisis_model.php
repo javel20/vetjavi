@@ -4,7 +4,6 @@ class Analisis_model extends CI_Model {
         // public $IdPaciente;
         public $Codigo;
         public $NombreA;
-        public $FechaA;
         public $Descripcion;
         public $PrecioAnalisis;
         public $PorcentajeA;
@@ -38,12 +37,6 @@ class Analisis_model extends CI_Model {
                 $this->Codigo    = $_POST['Codigo'];
                 $this->NombreA    = $_POST['NombreA'];
 
-                $fechar = $_POST['FechaA'];
-                $array = explode('/', $fechar);
-                $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
-
-
-                $this->FechaA = strval(trim($fecha_php));
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->PrecioAnalisis    = $_POST['PrecioAnalisis'];
                 $this->PorcentajeA    = $_POST['PorcentajeA'];
@@ -64,18 +57,6 @@ class Analisis_model extends CI_Model {
                 $this->db->where('IdAnalisis',$IdAnalisis);   
                 $query = $this->db->get();
 
-                $fecha = $query->result()[0]->FechaA;
-                 $pos = preg_match('/[-]+/',$fecha);
-                if($pos == true){
-                        $array = explode('-', $fecha);
-                        $fecha_php =  $array[2] ."/". $array[1] ."/". $array[0];
-
-                } else{
-                       $fecha_php = $fecha; 
-                }
-
-                $query->result()[0]->FechaA= $fecha_php;
-
                 return $query->result();     
 
         }
@@ -86,18 +67,6 @@ class Analisis_model extends CI_Model {
         {
                 $this->Codigo    = $_POST['Codigo'];
                 $this->NombreA    = $_POST['NombreA'];
-
-                $fechar = $_POST['FechaA'];
-                $pos = preg_match('/[\/]+/',$fechar);
-                if($pos == true){
-                        $array = explode('/', $fechar);
-                        $fecha_php =  $array[2] ."-". $array[0] ."-". $array[1];
-
-                } else{
-                       $fecha_php = $fechar; 
-                }
-
-                $this->FechaA = strval(trim($fecha_php));
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->PrecioAnalisis    = $_POST['PrecioAnalisis'];
                 $this->PorcentajeA    = $_POST['PorcentajeA'];

@@ -14,7 +14,7 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input validate="unicoventa" type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8"value="<?php echo $dato_venta[0]->CodV?>">
+            <input validate="number" type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8"value="<?php echo $dato_venta[0]->CodV?>">
           </div>
 
 
@@ -86,7 +86,7 @@
                     foreach($clientes as $cliente){
                       // die($tipo->IdLocal==$dato_local[0]->IdLocal);
                       $faiId=($cliente->IdCliente==$dato_cliente[0]->IdCliente)? "selected":"";
-                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre ."</option>";
+                      echo "<option value=". $cliente->IdCliente ." ". $faiId .">". $cliente->Nombre ." ".$cliente->ApePat." ".$cliente->ApeMat. "</option>";
                     }?>
 
                       <!--echo "<option value=" .$proveedor->IdProveedor ." value=". $proveedor->Nombre ."</option>";-->
@@ -108,7 +108,8 @@
           <div class="col-md-12">
                 <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?> />
                 
-                <input type="hidden" name="sumatotal" id="sumatotal" value="<?php echo $dato_venta[0]->PrecioTotalVenta?>"/>  
+                <input type="hidden" name="sumatotal" id="sumatotal" value="<?php echo $dato_venta[0]->PrecioTotalVenta?>"/> 
+                <input type="hidden" value="" name="ganancia" id="ganancia" value="<?php echo $dato_venta[0]->Ganancia?>"/>   
                 <input type="hidden" name="IdCliente" id="IdCliente" value="<?php echo $dato_venta[0]->IdCliente?>">
             <button type="submit" class="btn btn-primary ">Actualizar</button>
           

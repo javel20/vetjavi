@@ -21,7 +21,7 @@
                 <input validate="texto" type="text" class="form-control" name="NombreC" placeholder=" Nombre"maxlength="30" >
                 </div>
 
-                <div class="form-group col-md-6">
+                <!--<div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
                 <input validate="date" class="form-control" id="date" name="FechaC" placeholder="MM/DD/YYYY" type="text" maxlength="10"  />
 
@@ -40,7 +40,7 @@
                       })
                   </script>
 
-            </div>
+            </div>-->
 
                 <div class="form-group col-md-6">
                 <label>Precio</label>
