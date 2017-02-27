@@ -14,7 +14,7 @@
             <th>Producto</th>
             <th>Presentacion</th>
             <th>Cantidad</th>
-            <th>Precio Total</th>
+            <th>Precio Unitario</th>
         </thead>
         <tbody id="eventos_table">
         

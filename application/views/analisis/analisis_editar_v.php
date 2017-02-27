@@ -18,7 +18,7 @@
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input validate="unicoanalisis" type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" maxlength="8" value="<?php echo $dato_analisis[0]->Codigo?>" required>
+            <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" readonly="readonly" maxlength="8" value="<?php echo $dato_analisis[0]->Codigo?>" required>
           </div>
 
           <div class="form-group col-md-6 ">

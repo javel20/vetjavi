@@ -3,7 +3,7 @@ class TipoProducto_model extends CI_Model {
 
         // public $IdLocal;
         public $NombreTipoP;
-        public $Porcentaje;
+        // public $Porcentaje;
         public $Descripcion;
 
 
@@ -28,7 +28,7 @@ class TipoProducto_model extends CI_Model {
          public function post_tipoproductos()
         {
                 $this->NombreTipoP    = $_POST['NombreTipoP'];
-                $this->Porcentaje    = $_POST['Porcentaje'];
+                // $this->Porcentaje    = $_POST['Porcentaje'];
                 $this->Descripcion    = $_POST['Descripcion'];
                  
 
@@ -50,7 +50,7 @@ class TipoProducto_model extends CI_Model {
         public function update_tipoproducto($IdTipoProducto)
         {
                 $this->NombreTipoP    = $_POST['NombreTipoP'];
-                $this->Porcentaje    = $_POST['Porcentaje'];
+                // $this->Porcentaje    = $_POST['Porcentaje'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 
                 $this->db->update('tipoproducto', $this, array('IdTipoProducto' => $IdTipoProducto));

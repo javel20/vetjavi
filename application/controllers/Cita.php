@@ -79,16 +79,16 @@ class Cita extends CI_Controller {
             $data['dato_cita'] =  $this->Cita_model->get_cita($id);
             $data["tipo_de_cita"] = trim($_GET["tipo"]);
             
-            if($_GET["tipo"]=="Cirugia"){
+            // if($_GET["tipo"]=="Cirugia"){
 
               $this->load->model('Cirugia_model');
               $data['cirugias']= $this->Cirugia_model->get_cirugias();
 
-            }elseif($_GET["tipo"]=="Analisis"){
+            // }elseif($_GET["tipo"]=="Analisis"){
                 $this->load->model('Analisis_model');
                 $data['analisis'] = $this->Analisis_model->get_analisiss();
 
-            }
+            // }
             
                 $this->load->model('tipocita_model');
                 $data['tipocitas']= $this->tipocita_model->get_tipocitas();//para el foreach del edit
