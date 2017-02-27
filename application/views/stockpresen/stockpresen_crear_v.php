@@ -50,6 +50,11 @@
               <input validate="decimal" type="text" class="form-control" name="Precio" placeholder="Precio" maxlength="7">
             </div>
 
+            <div class="form-group col-md-6">
+              <label>Precio Venta</label>
+              <input validate="decimal" type="text" class="form-control" name="PrecioVenta" placeholder="Precio" maxlength="7">
+            </div>
+
           
                 <br><br>
             <div class="col-md-12">

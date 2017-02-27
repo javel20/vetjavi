@@ -47,7 +47,12 @@
 
           <div class="form-group col-md-6">
             <label>Precio</label>
-            <input validate="number" type="text" class="form-control" name="Precio" placeholder="Apellido Materno" maxlength="7"value="<?php echo $dato_stockpresen[0]->Precio?>">
+            <input validate="number" type="text" class="form-control" name="Precio"  maxlength="7"value="<?php echo $dato_stockpresen[0]->Precio?>">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Precio Venta</label>
+            <input validate="number" type="text" class="form-control" name="PrecioVenta"  maxlength="7"value="<?php echo $dato_stockpresen[0]->PrecioVenta?>">
           </div>
 
             <script type="text/javascript">
