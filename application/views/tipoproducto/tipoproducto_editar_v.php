@@ -16,6 +16,10 @@
           </div>
  
           <div class="form-group col-md-6">
+            <label>Porcentaje</label>
+            <input type="text" class="form-control" name="Porcentaje" placeholder="%" maxlength="5" value="<?php echo $dato_tipoprod[0]->Porcentaje?>">
+          </div>
+          <div class="form-group col-md-6">
             <label>Descripcion</label>
             <input validate="number" type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50" value="<?php echo $dato_tipoprod[0]->Descripcion?>">
           </div>

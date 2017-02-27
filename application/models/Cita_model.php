@@ -172,12 +172,10 @@ class Cita_model extends CI_Model {
                 if($_POST['listTipo']=="cirugia"){
 
                         $this->IdCirugia    = $_POST['listCirugia'];  
-                        $this->IdTipoCita    = NULL;
 
                 }else if($_POST['listTipo']=="analisis"){
 
                         $this->IdAnalisis    = $_POST['listAnalisis'];
-                        $this->IdTipoCita    = NULL;
 
                 }else{
                         $this->IdTipoCita    = $_POST['listTipo'];

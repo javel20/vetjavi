@@ -6,7 +6,6 @@ class StockPresen_model extends CI_Model {
         public $StockReal;
         public $Presentacion;
         public $Precio;
-        public $PrecioVenta;
         public $IdProducto;
 
 
@@ -44,7 +43,6 @@ class StockPresen_model extends CI_Model {
                 $this->StockReal    = $_POST['StockReal'];
                 $this->Presentacion    = $_POST['Presentacion'];
                 $this->Precio    = $_POST['Precio'];
-                $this->PrecioVenta    = $_POST['PrecioVenta'];
                 $this->IdProducto    = $_POST['SelectTipo'];
                 
                  
@@ -73,7 +71,6 @@ class StockPresen_model extends CI_Model {
                 $this->StockReal    = $_POST['StockReal'];
                 $this->Presentacion    = $_POST['Presentacion'];
                 $this->Precio    = $_POST['Precio'];
-                $this->PrecioVenta    = $_POST['PrecioVenta'];
                 $this->IdProducto = $_POST['SelectTipo'];
 
                 $this->db->update('stockpresentacion', $this, array('IdStockPresen' => $IdStockPresen));

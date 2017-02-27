@@ -49,6 +49,7 @@
     <table class="table">
         <thead>
             <th>Nombre</th>
+            <th>Porcentaje</th>
             <th>Descripcion</th>
             <th>Option</th>
         </thead>
@@ -59,6 +60,7 @@
             foreach ($datos_tipoprod as &$dato) {
                 echo "<tr>".
                 "<td>". $dato->NombreTipoP ."</td>".
+                "<td>". $dato->Porcentaje ."</td>".
                 "<td>". $dato->Descripcion ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

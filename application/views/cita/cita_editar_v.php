@@ -41,7 +41,7 @@
 
             <div class="form-group col-md-6">
             <label>Tipo Cita</label><br>
-              <select validate="selecbus" class="js-example-basic-single2 form-control" id="select_cita" name="listTipo">
+              <select validate="selecbus" class="js-example-basic-single2 form-control" name="listTipo">
               <?php 
                 $faiId_a = "";
                 $faiId_c = "";
@@ -73,7 +73,7 @@
 
             <div class="form-group col-md-6">
               <label>Codigo</label>
-              <input type="text" id="Codigo" class="form-control" name="CodigoC" readonly="readonly" placeholder="Codigo" maxlength="8" value="<?php echo $dato_cita[0]->CodigoC?>">
+              <input validate="unicocita" type="text" id="Codigo" class="form-control" name="CodigoC" placeholder="Codigo" maxlength="8" value="<?php echo $dato_cita[0]->CodigoC?>">
             </div>
 
 
@@ -162,7 +162,7 @@
                     foreach($cirugias as $cirugia){
 
                       $faiId=($cirugia->IdCirugia==$dato_cita[0]->IdCirugia)? "selected":"";  
-                      echo "<option value=". $cirugia->IdCirugia ." porcentaje=". $cirugia->PorcentajeC ." precio=". $cirugia->PrecioC." ". $faiId .">". $cirugia->NombreC ."</option>";
+                      echo "<option value=". $cirugia->PorcentajeC ." precio=". $cirugia->PrecioC." ". $faiId .">". $cirugia->NombreC ."</option>";
                       
                       
                     }?>
@@ -179,7 +179,7 @@
                     foreach($analisis as $analisi){
 
                       $faiId=($analisi->IdAnalisis==$dato_cita[0]->IdAnalisis)? "selected":"";  
-                      echo "<option value=". $analisi->IdAnalisis ." porcentaje =". $analisi->PorcentajeA ." precio=". $analisi->PrecioAnalisis."  ".$faiId .">". $analisi->NombreA ."</option>";
+                      echo "<option porcentaje =". $analisi->PorcentajeA ." precio=". $analisi->PrecioAnalisis."  ".$faiId .">". $analisi->NombreA ."</option>";
                     }?>
               </select>
 

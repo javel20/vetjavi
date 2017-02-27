@@ -24,7 +24,7 @@ class Venta_model extends CI_Model {
         public function get_ventas($inicio=FALSE,$limite=FALSE)
         {
 
-                $this->db->select('*, cliente.ApePat as apepatcli, cliente.ApeMat as apematcli, trabajador.ApePat as apepattra, trabajador.ApeMat as apemattra');
+                $this->db->select('*,  trabajador.ApePat as apepattra, trabajador.ApeMat as apemattra');
                 $this->db->from('venta');
                 $this->db->join('cliente', 'venta.IdCliente = cliente.IdCliente');
                 $this->db->join('trabajador','trabajador.IdTrabajador = venta.IdTrabajador');

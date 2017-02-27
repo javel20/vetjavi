@@ -69,7 +69,7 @@
           echo "<tr >".
 
                 "<td>". $dato->CodV ."</td>".
-                "<td>". $dato->Nombre ." ".$dato->apepatcli." ".$dato->apematcli. "</td>".
+                "<td>". $dato->Nombre ." ".$dato->ApePat." ".$dato->ApeMat. "</td>".
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
                 "<td>". $dato->Descripcion."</td>".

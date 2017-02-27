@@ -55,7 +55,6 @@
             <th>Stock Real</th>
             <th>Presentacion</th>
             <th>Precio</h>
-            <th>Precio Venta</h>
             <th>Option</th>
         </thead>
         <tbody id="eventos_table">
@@ -69,7 +68,6 @@
                 "<td>". $dato->StockReal ."</td>".
                 "<td>". $dato->Presentacion ."</td>".
                  "<td>". $dato->Precio ."</td>".
-                 "<td>". $dato->PrecioVenta ."</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         Acciones

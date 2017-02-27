@@ -98,7 +98,7 @@ class Proveedor extends CI_Controller {
 
         public function delete($id){
            $this->load->model('Proveedor_model');
-           $this->Proveedor_model->get_eliminar_proveedor($id);
+           $this->proveedor_model->get_eliminar_proveedor($id);
             redirect(base_url().'index.php/proveedor', 'refresh');
 
         }

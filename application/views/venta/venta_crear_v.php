@@ -182,17 +182,9 @@ console.log("estoy en selecpresent")
           }
         });
 
-        event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
-          if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
-            preciov = e.getAttribute('preciov');//e.get... traigo el atributo precio y lo asigno a precio
-            console.log(preciov);
-          }
-        });
-
   })
 var porcentaje='';
 var precio='';
-var preciov='';
    $("#js-example-basic-single").on("change", function (event){
     
       $.ajax({
@@ -234,7 +226,7 @@ var preciov='';
 
         JSON.parse(response).dato_presen.map( //map iterar un array
           function(e){ //e representa un objeto
-          acumulador += "<option precio=" +e.Precio +" preciov=" +e.PrecioVenta +" value="+ e.IdStockPresen +">" + e.Presentacion +" - " + e.StockReal + "</option>" 
+          acumulador += "<option precio=" +e.Precio +" value="+ e.IdStockPresen +">" + e.Presentacion +" - " + e.StockReal + "</option>" 
             
 
           }
@@ -296,13 +288,11 @@ console.log($("#selecpresent").val());
    var precioG=0;
   var precioVe=0;
    console.log(precio);
-  //  console.log(porcentaje);
-  //  precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
-  
+   console.log(porcentaje);
+   precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
    
-  //  preciou=precioV;
-  preciou=preciov;
-    console.log(preciou);
+   preciou=precioV;
+   console.log(precioV);
    acumulado = [];
     $form_detalle.childNodes.forEach( e=> {
         e.childNodes.forEach( k=> {
@@ -319,12 +309,11 @@ console.log($("#selecpresent").val());
 
 
 
-      // precioT=precioV*acumulado[4];
-      precioT=preciov*acumulado[4];
+      precioT=precioV*acumulado[4];
      st+=precioT;
 
-      precioVe+=preciov;
-      precioG=(preciov-precio)*acumulado[4];
+      precioVe+=precioV;
+      precioG=(precioV-precio)*acumulado[4];
       sg+=precioG;
 
       $('#ganancia').val(sg);
@@ -341,7 +330,7 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
     $tbody_detalle.innerHTML += `<tr>
       <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
-      <td> <input name="precio_unitario_detalle[]" value="${preciou}" /> </td>
+      <td> <input name="precio_unitario_detalle[]" value="${precioV.toFixed(2)}" /> </td>
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
       <td > <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
       <td > <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>

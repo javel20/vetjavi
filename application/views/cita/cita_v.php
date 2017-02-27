@@ -27,7 +27,7 @@
                     <ul class="dropdown-menu" id="menu_a_buscar">
 
                     <li><a href="#" dato="CodigoC">Codigo </a></li>
-                    <li><a href="#" dato="FechaReserva">Fecha reserva </a></li>
+
             
             
                     </ul>
@@ -109,7 +109,7 @@
 
                         <li><a  dato_modal='dato_eliminar'
                                 aviso='Desea eliminar a:'
-                                nombre_data='". $dato->CodigoC ."' id='eliminar'
+                                nombre_data='". $dato->CodigoC ."'
                                 url_data=". base_url("index.php/cita/delete/$dato->IdCita") .">Eliminar</a></li>
                         <li><a href=". base_url("index.php/cita/edit/" .$dato->IdCita. "?tipo=$nombre" ) .">Editar</a></li>
 
@@ -127,49 +127,6 @@
 </div>
 
 </div>
-
-<script> 
-
-//   $put_href = document.getElementById("put_href");
-
-//  $put_href.onclick = (event)=>{
-//    event.preventDefault();
-
-//  };
-
-//  $("#put_href").on("click", function (event){
-//     
-//       $.ajax({
-//       url:"http://localhost/vetjavi/index.php/cita/delete/" +event.target.value,
-//       dataType: 'text',
-//       cache:false,
-//       type:'POST',
-
-     
-//       success:function(response){
-
-            
-//             response.preventDefault();
-
-//             console.log("eliminar");
-
-//         console.log("exito")
-//       },
-
-     
-//         error:function(response){
-
-//         console.log("error")
-//       }
-
-//     });
-
-
-//    })
-
-
-</script>
-
 <div class="modal_fondo" id="modal_completo">
     <div class="modal_aviso">
         <h3 id="put_aviso"></h3>

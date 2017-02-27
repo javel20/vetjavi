@@ -36,7 +36,7 @@
 
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" name="CodigoP" readonly="readonly" placeholder="Codigo" maxlength="8" value="<?php echo $dato_permiso[0]->CodigoP?>">
+            <input validate="number" type="text" class="form-control" name="CodigoP" placeholder="Codigo" maxlength="8" value="<?php echo $dato_permiso[0]->CodigoP?>">
           </div>
 
 

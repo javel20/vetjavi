@@ -16,7 +16,10 @@
               <input validate="texto" type="text" class="form-control" name="NombreTipoP" placeholder="Nombre" maxlength="30">
             </div>
 
-
+            <div class="form-group col-md-6">
+              <label>Porcentaje</label>
+              <input validate="number" type="text" class="form-control" name="Porcentaje" placeholder="%" maxlength="5">
+            </div>
             <div class="form-group col-md-6">
               <label>Descripcion</label>
               <input type="text" class="form-control" name="Descripcion" placeholder="Descripcion" maxlength="50">
