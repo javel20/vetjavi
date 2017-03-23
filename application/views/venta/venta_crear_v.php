@@ -343,8 +343,8 @@ var acumulado2 = acumulado[2].split("-")[0].trim()
       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
       <td> <input name="precio_unitario_detalle[]" value="${preciou}" /> </td>
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
-      <td > <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
-      <td > <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
+      <td> <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
+      <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
 

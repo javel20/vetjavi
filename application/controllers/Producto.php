@@ -126,4 +126,16 @@ class Producto extends CI_Controller {
 
         }
 
+        public function getProducto($NombreP){
+            $this->load->model('Producto_model');
+            $data['json'] = $this->Producto_model->getProducto($NombreP);
+            // die(json_encode($data['datos']));
+            
+            $this->load->view('json_view', $data);
+            
+            // return $data;
+           
+        }
+        
+
 }

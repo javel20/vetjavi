@@ -418,6 +418,9 @@ background: #0078D7;
     white-space:nowrap;      /* Impide los saltos de línea automáticos */
     width: 560px;
     font-size:13px;
+    position: relative;
+    top: 0px;
+    left: 400px;
 }
 /* Algoritmo de distribucion fijo */
 .MiTablaFija { table-layout:fixed; }
@@ -459,4 +462,10 @@ background: #0078D7;
 }
 .fecha{
   text-align:center;
+}
+
+
+button a {
+  color: white !important;
+  text-decoration:none;
 }

@@ -16,7 +16,7 @@
             
             <div class="form-group col-md-6">
               <label>Nombres</label>
-              <input validate="texto" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30">
+              <input validate="unicoprod" type="text" class="form-control" name="Nombre" placeholder="Nombres" maxlength="30">
             </div>
 
            

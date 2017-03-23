@@ -162,6 +162,9 @@
                     <a href="" id="agregar_detalle" class="btn btn-primary">Agregar Detalle </a>
                   </div>
                  </div>
+
+
+                 
                 <div class="table" id="table_detalle">
                   <table class="table table_arreglar">
                     <thead>
@@ -170,8 +173,9 @@
                         <th>Presentacion</th>
                         <th>Cantidad</th>
                         <th>Fecha de Vencimiento</th>
-                        <th>Precio de Compra</th>
-                        <th>Acciones</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                        <th>Opc</th>
                       </tr>
                     </thead>
                     <tbody id="tbody_detalle">
@@ -183,7 +187,7 @@
 
             <div class="col-md-12">
                 <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?>>
-
+                <input type="hidden" value="" name="sumatotal" id="sumatotal" />  
               <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
           </form>
@@ -304,12 +308,13 @@ console.log(porc);
 
    })
 
-
+   var precioT=0;
 
   $agregar_detalle = document.getElementById("agregar_detalle");
   $form_detalle = document.getElementById("form_detalle");
   $tbody_detalle = document.getElementById("tbody_detalle");
 
+  var st=0;
 
   var nodo_push = "";
   var acumulado = [];
@@ -329,7 +334,14 @@ console.log(porc);
     })
 
 
-  //  precioT=precioV*acumulado[4];
+
+      precioT=precio*acumulado[4];
+      st+=precioT;
+
+      $("#sumatotal").val(st);
+
+    console.log(st);
+
 
      console.log(acumulado);
 
@@ -345,6 +357,7 @@ console.log(porc);
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
       <td> <input name="fecha[]" value="${acumulado[5]}"/> </td>
       <td> <input name="precio_detalle[]" value="${acumulado[6]}"/> </td>
+      <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
 
@@ -352,7 +365,8 @@ console.log(porc);
 
   $tbody_detalle.onclick = (e)=>{
     if(e.target.id == "delete_row"){
-        e.target.closest("tr").remove();
+        st -= $(e.target).closest("tr").find(".preciot").val(); //closest trae a los tr y find busca el valor de preciot
+        $("#sumatotal").val(st);
     }
   }
 

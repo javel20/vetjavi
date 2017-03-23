@@ -256,8 +256,8 @@
           </a>
           <div class="collapse" id="toggleDemo16" style="height: 0px;">
             <ul class="nav nav-list">
-              <li><a href="/vetjavi/index.php/reportes/reportetotal">Diario</a></li>
-              <li><a href="#"></a></li>
+              <li><a href="/vetjavi/index.php/reportes/reportetotalcompra">Diario-compra</a></li>
+              <li><a href="/vetjavi/index.php/reportes/reportetotalventa">Diario-venta</a></li>
               
             </ul>
           </div>

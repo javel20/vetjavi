@@ -4,6 +4,18 @@
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
             <div class="page-header">
+
+                <form class="navbar-form navbar-left">
+                <br>  
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='left'>
+                        
+                        <a class="otromas" href="/vetjavi/index.php/tipoproducto/create">
+                            <button type="button" class="btn btn-primary">Agregar tipo producto</button>
+                        </a>
+                    </div>
+                </form>
+
+
             <nav class="navbar navbar-default navbar-text navbar-right" >
 
                 <!-- Brand and toggle get grouped for better mobile display -->

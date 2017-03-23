@@ -97,4 +97,14 @@ class Producto_model extends CI_Model {
                 $this->db->update('producto');
         }
 
+        public function getProducto($NombreP){
+                $this->db->select('*');
+                $this->db->from('producto');
+                $this->db->where('NombreP',$NombreP);
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
+        }
+
+
 }

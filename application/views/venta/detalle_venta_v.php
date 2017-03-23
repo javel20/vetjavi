@@ -15,6 +15,7 @@
             <th>Presentacion</th>
             <th>Cantidad</th>
             <th>Precio Unitario</th>
+            <th>Precio Total</th>
         </thead>
         <tbody id="eventos_table">
         
@@ -26,7 +27,7 @@
                 "<td>". $dato->Presentacion ."</td>".
                 "<td>". $dato->Cantidad ."</td>".
                 "<td>". $dato->PrecioTotal ."</td>".
-
+                "<td>". $dato->Cantidad * $dato->PrecioTotal ."</td>".
                 "</tr>";
             }
         ?>  </tbody>

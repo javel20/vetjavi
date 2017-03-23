@@ -18,12 +18,12 @@
 
             </nav>
          <div class="panel-body">
-            <form class="row" action="reportetotalventa" method="GET" onsubmit="return validar(this)">
+            <form class="row" action="reportetotalcompra" method="GET" onsubmit="return validar(this)">
             <div class="form-group col-md-6">
             </div>
 
             <div class="form-group col-md-4">
-              <label>Fecha Reporte de venta</label>
+              <label>Fecha Reporte de compra</label>
               <input validate="date" class="form-control" id="date" name="Fechareporte" placeholder="MM/DD/YYY" type="text"/>
 
 
@@ -58,7 +58,7 @@
 
             <th>Codigo</th>
             <th>Fecha Realizada</th>
-            <th>Ganancia</th>
+            <th>Tipo Comprobante</th>
             <th>Precio</th>
             
 
@@ -68,14 +68,13 @@
        
           <?php
           // die(var_dump($datos_stockpresen));
-            foreach ($data_venta as &$dato) {
+            foreach ($data_compra as &$dato) {
                 echo "<tr>".
-                "<td>". $dato->codigo."</td>".
-                "<td>". $dato->fecharealizada ."</td>".
-                "<td>". number_format($dato->ganancia,2,'.','') ."</td>".
-                "<td>". number_format($dato->precio,2,'.','') ."</td>".
+                "<td>". $dato->CodC."</td>".
+                "<td>". $dato->Fecha ."</td>".
+                "<td>". $dato->TipoC ."</td>".
+                "<td>". $dato->PrecioTotalCompra ."</td>".
                 "</tr>";
-                
             }
         ?> 
 
@@ -101,51 +100,21 @@
 
             </nav>
          <div class="panel-body">
-            <form class="row" action="reportetotal" method="GET" onsubmit="return validar(this)">
+            <form class="row" action="reportetotalcompra" method="GET" onsubmit="return validar(this)">
             <div class="form-group col-md-6">
             </div>
 
         </div>
 
 
-     <table class="table">
-        <thead>
-
-
-            <th>Nombre</th>
-            <th>Fecha Realizada</th>
-            <th>Perdida</th>
-
-            
-
-            
-        </thead>
-        <tbody id="eventos_table">
-       
-          <?php
-          // die(var_dump($datos_stockpresen));
-            foreach ($data_perdida as &$dato) {
-                echo "<tr>".
-
-                "<td>". $dato->nombre."</td>".
-                "<td>". $dato->fecha ."</td>".
-                "<td>". $dato->perdida ."</td>".
-                "</tr>";
-            }
-        ?> 
-
-
- </tbody>
-    </table>
-
-
+    
 <div>
     
     <table class="table">
         <thead>
 
 
-            <th>Ganancia Total</th>
+            
             <th>Precio Total</th>
 
 
@@ -159,7 +128,7 @@
 
 
                 echo "<tr>".
-                "<td>". $acum2."</td>".
+                
                 "<td>". $resta."</td>".
 
                 "</tr>";

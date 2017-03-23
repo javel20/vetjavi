@@ -25,7 +25,7 @@ class Reportes extends CI_Controller {
         
 
 
-          public function reportetotal(){
+          public function reportetotalventa(){
             $this->load->model('Reporte_model');
             if(isset($_GET['Fechareporte'])){
               $fecha=$_GET['Fechareporte'];
@@ -35,7 +35,7 @@ class Reportes extends CI_Controller {
 
             }
 
-            $data['data_ganancia'] =  $this->Reporte_model->get_reporte_ingreso($fecha);
+            $data['data_venta'] =  $this->Reporte_model->get_reporte_ingreso($fecha);
             $data['data_perdida'] = $this->Reporte_model->get_reporte_perdida($fecha);
 
             
@@ -49,7 +49,7 @@ class Reportes extends CI_Controller {
             $acum3+=$dato->perdida;
           }
 
-            foreach($data['data_ganancia'] as $dato){
+            foreach($data['data_venta'] as $dato){
                 
                 $acum+=$dato->precio;
                 $acum2+=$dato->ganancia;
@@ -69,6 +69,47 @@ class Reportes extends CI_Controller {
           
         }
 
+
+        public function reportetotalcompra(){
+            $this->load->model('Reporte_model');
+            if(isset($_GET['Fechareporte'])){
+              $fecha=$_GET['Fechareporte'];
+            }else{
+
+              $fecha="";
+
+            }
+
+            $data['data_compra'] =  $this->Reporte_model->get_reporte_ingreso_compra($fecha);
+            // $data['data_perdida'] = $this->Reporte_model->get_reporte_perdida($fecha);
+
+            
+            // die($_GET['Fechareporte']);
+
+            $acum=0;
+           $acum2=0; 
+           $acum3=0;
+
+          
+            foreach($data['data_compra'] as $dato){
+                
+                $acum+=$dato->PrecioTotalCompra;
+                
+                  
+            }
+            $data["acum3"]=$acum3;
+            $data["acum2"]=$acum2;
+
+            $data["acum"]=$acum;
+
+            $data["resta"]=$acum-$acum3;
+            // die($data["resta"]);
+
+            $this->load->view('reportes/reporte_compra_dia', $data);
+            
+            // die((string)$acum);
+          
+        }
 
 
 

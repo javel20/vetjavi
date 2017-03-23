@@ -24,6 +24,7 @@ class Compra_model extends CI_Model {
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
                 $this->db->join('trabajador', 'trabajador.IdTrabajador = compra.IdTrabajador');
+                $this->db->where('compra.Estado = "Compra Realizada"');
                 if($inicio!==FALSE && $limite!==FALSE){
                         $this->db->limit($limite,$inicio);
                 }
@@ -54,6 +55,7 @@ class Compra_model extends CI_Model {
                 $this->CodC    = $_POST['CodC'];
                 $this->Fecha    =  strval(trim($fecha_php));
                 $this->TipoC    = $_POST['TipoC'];
+                $this->PrecioTotalCompra = $_POST['sumatotal'];
                 $this->Descripcion    = $_POST['Descripcion'];
                 $this->Estado="Compra Realizada";
                 $this->IdProveedor    = $_POST['IdProveedor'];
@@ -66,7 +68,7 @@ class Compra_model extends CI_Model {
                  $insert_id = $this->db->insert_id();
 
                 // die(json_encode($_POST['nombre_detalle']));
-                $acum="";
+                // $acum="";
                 foreach($_POST['nombre_detalle'] as $key=>$valor){
                         // $acum+=$valor;
                         $data_detalle = array(
@@ -148,9 +150,11 @@ class Compra_model extends CI_Model {
         public function get_buscar_compra($inicio=FALSE,$limite=FALSE){
                 $dato_buscar = $_GET['nombre_buscar'];
                 $tipo_dato = $_GET['tipo_dato'];
-                $this->db->select('*, proveedor.Nombre  as NombreProv');
+                $this->db->select('*, proveedor.Nombre  as NombreProv,proveedor.ApePat as apepatpro, proveedor.ApeMat as apematpro, trabajador.ApePat as apepattra, trabajador.ApeMat as apemattra');
                 $this->db->from('compra');
                 $this->db->join('proveedor', 'proveedor.IdProveedor = compra.IdProveedor');
+                $this->db->join('trabajador', 'trabajador.IdTrabajador = compra.IdTrabajador');
+                $this->db->where('compra.Estado = "Compra Realizada"');
                 $this->db->like($tipo_dato,$dato_buscar);   
 
                  if($inicio!==FALSE && $limite!==FALSE){
@@ -214,6 +218,34 @@ class Compra_model extends CI_Model {
                 $query = $this->db->get();
                 // die(json_encode($query->result()));
                 return $query->result();
+        }
+
+
+        public function update_compradetalle($IdCompra)
+        {
+                $fecha = $_POST['Fecha'];
+                $pos = preg_match('/[\/]+/',$fecha);
+                if($pos == true){
+                        $array = explode('/', $fecha);
+                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+                } else{
+                       $fecha_php = $fecha; 
+                }
+
+                // die($fecha_php);
+                // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
+
+                
+                $this->CodC    = $_POST['CodC'];
+                $this->Fecha    =  strval(trim($fecha_php));
+                $this->TipoC    = $_POST['TipoC'];
+                $this->Descripcion    = $_POST['Descripcion'];
+                $this->IdProveedor    = $_POST['IdProveedor'];
+                $this->IdTrabajador    = $_POST['IdTrabajador'];
+
+
+                $this->db->update('compra', $this, array('IdCompra' => $IdCompra));
         }
 
 }

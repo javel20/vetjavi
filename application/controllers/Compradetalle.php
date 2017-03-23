@@ -9,7 +9,7 @@ class Compra extends CI_Controller {
 
           parent::__construct();
           // if(!isset($_SESSION['Email'])){ die('login'); }
-          $this->autorizado(4);
+          $this->autorizado();
           $this->authenticate();
 
         }
@@ -139,33 +139,7 @@ class Compra extends CI_Controller {
 
         }
 
-        public function getCompra($codigo){
-            $this->load->model('Compra_model');
-            $data['json'] = $this->Compra_model->getCompra($codigo);
-            // die(json_encode($data['datos']));
-            
-            $this->load->view('json_view', $data);
-            
-            // return $data;
-           
-        }
 
-        public function deletedetalle($id){
-           $this->load->model('Compra_model');
-           $this->Compra_model->get_eliminar_detallecompra($id);
-            redirect(base_url().'index.php/compra', 'refresh');
-
-        }
-
-
-        public function updatedetalle($id){
-             $this->load->model('Compra_model');
-             $result = $this->Compra_model->update_compradetalle($id);
-            //  die(var_dump($result));
-             redirect(base_url().'index.php/compra', 'refresh');
-             
-
-        }
 
 
 }

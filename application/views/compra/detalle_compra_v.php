@@ -53,7 +53,8 @@
             <th>Presentacion</th>
             <th>Fecha Vencimiento</th>
             <th>Cantidad</th>
-            <th>Precio</th>
+            <th>Precio Unitario</th>
+            <th>Precio Total</th>
         </thead>
         <tbody id="eventos_table">
         
@@ -66,7 +67,7 @@
                 "<td>". $dato->FechaVen ."</td>".
                 "<td>". $dato->Cantidad ."</td>".
                 "<td>". $dato->PrecioUnitario ."</td>".
-
+                "<td>". $dato->Cantidad * $dato->PrecioUnitario ."</td>".
                 "</tr>";
             }
         ?>  </tbody>

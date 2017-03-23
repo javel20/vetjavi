@@ -104,8 +104,8 @@
 
 
           <div class="col-md-12">
-                <input type="hidden" name="IdTrabajador" value="2">
-                <!--<input type="hidden" name="IdProveedor" id="IdProveedor" value="<?php echo $dato_compra[0]->IdProveedor?>">-->
+                <input type="hidden" name="IdTrabajador" value="<?php echo $dato_compra[0]->IdTrabajador?>">
+                
             <button type="submit" class="btn btn-primary ">Actualizar</button>
           
           </div>

@@ -4,6 +4,18 @@
 	<div class="col-sm-9 col-md-10 affix-content">
 		<div class="container">
             <div class="page-header">
+
+                <form class="navbar-form navbar-left">
+                <br>  
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" position='left'>
+                        
+                        <a class="otromas" href="/vetjavi/index.php/compra/create">
+                            <button type="button" class="btn btn-primary">Agregar compra</button>
+                        </a>
+                    </div>
+                </form>
+
+
             <nav class="navbar navbar-default navbar-text navbar-right" >
 
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,6 +64,7 @@
             <th>Codigo</th>
             <th>Fecha</th>
             <th>Tipo de compra</th>
+            <th>Precio Total</th>
             <th>Descripicion</th>
             <th>Empresa</th>
             <th>Proveedor</th>
@@ -70,6 +83,7 @@
                 "<td>". $dato->CodC ."</td>".
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoC ."</td>".
+                "<td>". $dato->PrecioTotalCompra ."</td>".
                 "<td>". $dato->Descripcion."</td>".
                 "<td>". $dato->Empresa."</td>".
                 "<td>". $dato->NombreProv." ".$dato->apepatpro." ".$dato->apematpro."</td>".
