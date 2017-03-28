@@ -129,7 +129,7 @@ class StockPresen_model extends CI_Model {
                 $this->db->from('detallecompraproducto');
                 $this->db->join('stockpresentacion','stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
                 $this->db->join('producto','producto.IdProducto = stockpresentacion.IdProducto');
-                $this->db->where('STR_TO_DATE(FechaVen, "%m/%d/%Y") > CURDATE() and STR_TO_DATE(FechaVen, "%m/%d/%Y") > DATE_ADD(CURDATE(), INTERVAL 3 month)');
+                $this->db->where('STR_TO_DATE(FechaVen, "%m/%d/%Y") >= CURDATE() and STR_TO_DATE(FechaVen, "%m/%d/%Y") <= DATE_ADD(CURDATE(), INTERVAL 3 month)');
                 $query = $this->db->get('');
                 // die(var_dump($query->result()));
                 return $query->result();

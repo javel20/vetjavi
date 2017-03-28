@@ -31,7 +31,7 @@
 
               <li class="campana"><a id="campana" href="">
               
-              <?php if(count($_SESSION['StockMin'])>0){ ?>
+              <?php if(count($_SESSION['StockMin'])>0 || count($_SESSION['FechaVen'])>0){ ?>
                     <span style=" color:red " class="glyphicon glyphicon-bell"></span></a>
               <?php }else{ ?>
                     <span style=" color:white " class="glyphicon glyphicon-bell"></span></a> 
@@ -50,7 +50,7 @@
                     <?php foreach($_SESSION['FechaVen'] as $fv){
                   
                       
-                      echo "<li><option value=" .$fv->FechaVen .">". $fv->nombrepro ." vence el dia  ".$fv->FechaVen." unidades</option></li>";
+                      echo "<li><option value=" .$fv->FechaVen .">". $fv->Cantidad ." ". $fv->nombrepro ." de ". $fv->Presentacion ." vence el dia  ".$fv->FechaVen." </option></li>";
 
                     
                     } ?>

@@ -78,6 +78,7 @@ class Compra_model extends CI_Model {
                                 'FechaVen' =>$_POST['fecha'][$key],
                                 'Cantidad' => $_POST['cantidad_detalle'][$key],
                                 'PrecioUnitario' => $_POST['precio_detalle'][$key],
+                                'PrecioTotal' => $_POST['preciototal_detalle'][$key],
                                 'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
                                
 
@@ -122,16 +123,26 @@ class Compra_model extends CI_Model {
 
         public function update_compra($IdCompra)
         {
-                $fecha = $_POST['Fecha'];
-                $pos = preg_match('/[\/]+/',$fecha);
-                if($pos == true){
-                        $array = explode('/', $fecha);
-                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+                
+                $this->db->query('update compra SET Estado="Compra Cancelada" where IdCompra= '.$IdCompra.'');
+                $elim = $this->db->query('select IdStockPresen, Cantidad from detallecompraproducto where IdCompra='.$IdCompra);
+                // die(var_dump($elim->result()));
+                foreach($elim->result() as $data){
 
-                } else{
-                       $fecha_php = $fecha; 
+                        $this->db->query('update stockpresentacion SET StockReal=StockReal- '.$data->Cantidad.' where IdStockPresen='.$data->IdStockPresen);
+                        // $data->IdStockPresen
+                        // die($data->Cantidad);
+                        // die($data->IdStockPresen);
+
                 }
+               // $this->db->query('update compra SET Estado="Compra Cancelada" where IdCompra= '.$id.'');
 
+
+                $fecha = $_POST['Fecha'];
+                $array = explode('/', $fecha);
+                $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
+
+                
                 // die($fecha_php);
                 // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 
@@ -139,12 +150,43 @@ class Compra_model extends CI_Model {
                 $this->CodC    = $_POST['CodC'];
                 $this->Fecha    =  strval(trim($fecha_php));
                 $this->TipoC    = $_POST['TipoC'];
+                $this->PrecioTotalCompra = $_POST['sumatotal'];
                 $this->Descripcion    = $_POST['Descripcion'];
+                $this->Estado="Compra Realizada";
                 $this->IdProveedor    = $_POST['IdProveedor'];
                 $this->IdTrabajador    = $_POST['IdTrabajador'];
 
+                // die(var_dump($this));
+                 $this->db->insert('compra', $this);
 
-                $this->db->update('compra', $this, array('IdCompra' => $IdCompra));
+
+                 $insert_id = $this->db->insert_id();
+
+                // die(json_encode($_POST['nombre_detalle']));
+                // $acum="";
+                foreach($_POST['nombre_detalle'] as $key=>$valor){
+                        // $acum+=$valor;
+                        $data_detalle = array(
+
+                                'IdCompra' => $insert_id,
+                                // 'IdProducto' => $_POST['nombre_detalle'][$key],
+                                'FechaVen' =>$_POST['fecha'][$key],
+                                'Cantidad' => $_POST['cantidad_detalle'][$key],
+                                'PrecioUnitario' => $_POST['precio_detalle'][$key],
+                                'PrecioTotal' => $_POST['preciototal_detalle'][$key],
+                                'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
+                               
+
+
+                        );
+                        $this->db->query('update stockpresentacion SET Precio='.$_POST['precio_detalle'][$key].' ,StockReal=StockReal + '. $_POST['cantidad_detalle'][$key] .'   where IdStockPresen='.$_POST['presentacion_detalle'][$key]);
+
+                        $this->db->insert("detallecompraproducto", $data_detalle);
+                      
+                      
+                }
+                // die(json_encode($acum));
+                //   $this->db->query('update stockpresentacion SET Precio='.$_POST['preciototal_detalle'][$key].' ,StockReal=StockReal + '. $_POST['cantidad_detalle'][$key] .'   where IdStockPresen='.$_POST['presentacion_detalle'][$key]);
         }
 
         public function get_buscar_compra($inicio=FALSE,$limite=FALSE){
@@ -197,19 +239,6 @@ class Compra_model extends CI_Model {
                 $this->db->update('compra');
         }
 
-        public function get_detalle($id){
-
-                $this->db->select('*, producto.NombreP as nomcom');
-                $this->db->from('detallecompraproducto');
-                $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
-                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
-                $this->db->where('Idcompra', $id);
-                
-                $query = $this->db->get();
-                // die(json_encode($query->result()));
-                return $query->result();
-
-        }
 
         public function getCompra($codigo){
                 $this->db->select('*');
@@ -221,31 +250,22 @@ class Compra_model extends CI_Model {
         }
 
 
-        public function update_compradetalle($IdCompra)
+         public function get_compradetalle($IdCompra)
         {
-                $fecha = $_POST['Fecha'];
-                $pos = preg_match('/[\/]+/',$fecha);
-                if($pos == true){
-                        $array = explode('/', $fecha);
-                        $fecha_php =  $array[2] ."-". $array[1] ."-". $array[0];
 
-                } else{
-                       $fecha_php = $fecha; 
-                }
+                $this->db->select('*, producto.NombreP as nomcom');
+                $this->db->from('detallecompraproducto');
+                $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detallecompraproducto.IdStockPresen');
+                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+                $this->db->where('IdCompra',$IdCompra);   
+    
+                // die(var_dump($query->result()));
+                $query = $this->db->get();
+                return $query->result();
 
-                // die($fecha_php);
-                // $date=date('Y-m-d H:i:s', strtotime($fecha_php));
 
                 
-                $this->CodC    = $_POST['CodC'];
-                $this->Fecha    =  strval(trim($fecha_php));
-                $this->TipoC    = $_POST['TipoC'];
-                $this->Descripcion    = $_POST['Descripcion'];
-                $this->IdProveedor    = $_POST['IdProveedor'];
-                $this->IdTrabajador    = $_POST['IdTrabajador'];
 
-
-                $this->db->update('compra', $this, array('IdCompra' => $IdCompra));
         }
 
 }

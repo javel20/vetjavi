@@ -71,8 +71,14 @@ class Compra extends CI_Controller {
 
             $this->load->model('Compra_model');
             $data['dato_compra'] =  $this->Compra_model->get_compra($id);
+            $this->load->model('Compra_model');
+            $data['dato_compradetalle'] =  $this->Compra_model->get_compradetalle($id);
             $this->load->model('proveedor_model');
-            $data['proveedores'] =  $this->proveedor_model->get_proveedores();         
+            $data['proveedores'] =  $this->proveedor_model->get_proveedores();  
+            $this->load->model('Producto_model');
+            $data['productos'] = $this->Producto_model->get_productos();
+            $this->load->model('TipoProducto_model');
+            $data['tipoproductos'] = $this->TipoProducto_model->get_tipoproductos();
 
             $this->load->view('compra/compra_editar_v', $data);
 
@@ -134,7 +140,7 @@ class Compra extends CI_Controller {
         {
 
             $this->load->model('Compra_model');
-            $data['datos_detalle'] = $this->Compra_model->get_detalle($id);
+            $data['datos_detalle'] = $this->Compra_model->get_compradetalle($id);
             $this->load->view('compra/detalle_compra_v', $data);
 
         }

@@ -69,14 +69,11 @@ class Venta_model extends CI_Model {
                                 'IdVenta' => $insert_id,
                                 'Cantidad' => $_POST['cantidad_detalle'][$key],
                                 'PrecioTotal' => $_POST['precio_unitario_detalle'][$key],
+                                'gananciau' => $_POST['ganancia_detalle'][$key],
                                 'Preciot' => $_POST['preciot_detalle'][$key],
                                 'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
                                 
-
-
                         );
-
-
 
                         $this->db->query('update stockpresentacion SET StockReal=StockReal - '. $_POST['cantidad_detalle'][$key] .' where IdStockPresen='.$_POST['presentacion_detalle'][$key]);
 
@@ -114,6 +111,20 @@ class Venta_model extends CI_Model {
 
         public function update_venta($IdVenta)
         {
+
+                $this->db->query('update venta SET Estado="Venta Cancelada" where IdVenta= '.$IdVenta.'');
+                $elim = $this->db->query('select IdStockPresen, Cantidad from detalleventaproducto where IdVenta='.$IdVenta);
+                // die(var_dump($elim->result()));
+                foreach($elim->result() as $data){
+
+                        $this->db->query('update stockpresentacion SET StockReal=StockReal+ '.$data->Cantidad.' where IdStockPresen='.$data->IdStockPresen);
+                        // $data->IdStockPresen
+                        // die($data->Cantidad);
+                        // die($data->IdStockPresen);
+
+                }
+
+
                  $fecha = $_POST['Fecha'];
                 $pos = preg_match('/[\/]+/',$fecha);
                 if($pos == true){
@@ -131,11 +142,36 @@ class Venta_model extends CI_Model {
                 $this->Ganancia = $_POST['ganancia'];
                 $this->PrecioTotalVenta = $_POST['sumatotal'];
                 $this->IdCliente    = $_POST['IdCliente'];
-
                 $this->IdTrabajador    = $_POST['IdTrabajador'];
+                $this->Estado="Venta Realizada";
 
 
-                $this->db->update('venta', $this, array('IdVenta' => $IdVenta));
+                $this->db->insert('venta', $this);
+
+
+                 $insert_id = $this->db->insert_id();
+
+                // die(json_encode($_POST['nombre_detalle']));
+                // $acum="";
+                foreach($_POST['nombre_detalle'] as $key=>$valor){
+                        // $acum+=$valor;
+                        $data_detalle = array(
+
+                                'IdVenta' => $insert_id,
+                                // 'IdProducto' => $_POST['nombre_detalle'][$key],
+                                'Cantidad' => $_POST['cantidad_detalle'][$key],
+                                'gananciau' => $_POST['ganancia_detalle'][$key],
+                                'PrecioTotal' => $_POST['precio_unitario_detalle'][$key],
+                                'Preciot' => $_POST['preciot_detalle'][$key],
+                                'IdStockPresen' =>$_POST['presentacion_detalle'][$key]
+                               
+                        );
+                        $this->db->query('update stockpresentacion SET StockReal=StockReal - '. $_POST['cantidad_detalle'][$key] .'   where IdStockPresen='.$_POST['presentacion_detalle'][$key]);
+
+                        $this->db->insert("detalleventaproducto", $data_detalle);
+                      
+                      
+                }
         }
 
         public function get_buscar_venta($inicio=FALSE,$limite=FALSE){
@@ -198,21 +234,19 @@ class Venta_model extends CI_Model {
 
         }
 
-        // public function get_detalle_comprobante($id){
+        public function get_ventadetalle($IdVenta){
 
-        //         $this->db->select('*,cliente.Nombre as nombrecli, producto.NombreP as nombrepro');
-        //         $this->db->from('venta');
-        //         $this->db->join('cliente', 'cliente.IdCliente = venta.IdCliente');
-        //         $this->db->join('detalleventaproducto', 'detalleventaproducto.IdVenta=venta.IdVenta');
-        //         $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detalleventaproducto.IdStockPresen');
-        //         $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
-        //         $this->db->where('venta.IdVenta', $id);
+                $this->db->select('*');
+                $this->db->from('detalleventaproducto');
+                $this->db->join('stockpresentacion', 'stockpresentacion.IdStockPresen = detalleventaproducto.IdStockPresen');
+                $this->db->join('producto', 'producto.IdProducto = stockpresentacion.IdProducto');
+                $this->db->where('IdVenta',$IdVenta);  
                 
-        //         $query = $this->db->get();
-        //         // die(json_encode($query->result()));
-        //         return $query->result();
+                $query = $this->db->get();
+                // die(json_encode($query->result()));
+                return $query->result();
 
-        // }
+        }
 
         public function get_venta_com($id){
 

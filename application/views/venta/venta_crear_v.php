@@ -120,6 +120,7 @@
                
                   <div class="form-group col-md-12">
                     <input type="hidden" value="" name="preciou" id="preciou" />
+                    <input type="hidden" value="" name="gananciau" id="gananciau" />  
                     <a href="" id="agregar_detalle" class="btn btn-primary">Agregar Detalle </a>
                   </div>
                  </div>
@@ -149,6 +150,7 @@
                 <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?> />
                 <input type="hidden" value="" name="sumatotal" id="sumatotal" />  
                 <input type="hidden" value="" name="ganancia" id="ganancia" />  
+                
                 <button type="submit" class="btn btn-primary ">Agregar</button>
             
             </div>
@@ -271,84 +273,87 @@ var preciov='';
   var st=0;
   var sg=0;
   var preciou=0;
-  var stock='';
+ 
 
   $agregar_detalle.onclick = (event)=>{
-   event.preventDefault();
+    event.preventDefault();
 
-// $("#selecpresent").val()
-console.log($("#selecpresent").val());
+    // $("#selecpresent").val()
+   
+    let stock = 0;
+     $("#selecpresent")[0].childNodes.forEach(function(e){
+         if(e.value==$("#selecpresent").val()){
+          // texto=$('#selecpresent').text();
+             stock = e.text.split("-")[1].trim()
+            
+         }
+     })
 
-    // $("#selecpresent")[0].childNodes.forEach(function(e){
-    //     if(e.value==$("#selecpresent").val()){
-    //    //   texto=$('#selecpresent').text();
-    //         stock = e.text.split("-")[1].trim()
-    //         console.log(stock);
-    //     }
-    // })
- 
- 
-
-
-  //  console.log(texto);
-   var precioV=0;
-   var precioT=0;
-   var precioG=0;
-  var precioVe=0;
+    var precioV=0;
+    var precioT=0;
+    var precioG=0;
+    var precioVe=0;
    console.log(precio);
   //  console.log(porcentaje);
   //  precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
   
    
   //  preciou=precioV;
-  preciou=preciov;
+    preciou=preciov;
     console.log(preciou);
-   acumulado = [];
-    $form_detalle.childNodes.forEach( e=> {
-        e.childNodes.forEach( k=> {
-            if(k.tagName == "SELECT"){
-               let select_name = k.options[k.options.selectedIndex].text;
-               acumulado.push(select_name);
-               acumulado.push(k.value);
-               }
-              else if (  k.tagName == "INPUT") 
+    acumulado = [];
+      $form_detalle.childNodes.forEach( e=> {
+          e.childNodes.forEach( k=> {
+              if(k.tagName == "SELECT"){
+                let select_name = k.options[k.options.selectedIndex].text;
+                acumulado.push(select_name);
                 acumulado.push(k.value);
-        })
-    })
+                }
+                else if (  k.tagName == "INPUT") 
+                  acumulado.push(k.value);
+          })
+      })
+      console.log("---------");
+       console.log(stock);
+       console.log($("#cantidad").val());
 
-
-
-
+      if(parseInt(stock) < $("#cantidad").val() || $("#cantidad").val() <= 0){
+        alert("no hay suficiente productos para vender");
+        return false; 
+      }
       // precioT=precioV*acumulado[4];
       precioT=preciov*acumulado[4];
-     st+=precioT;
+      st+=precioT;
 
       precioVe+=preciov;
       precioG=(preciov-precio)*acumulado[4];
+      console.log("--" +precio);
+      console.log("--" +preciov);
+      console.log("--" +precioG);
       sg+=precioG;
 
+      $('#gananciau').val(precioG);
       $('#ganancia').val(sg);
       $("#sumatotal").val(st);
       $("#preciou").val(preciou);
-     console.log(sg);
-    console.log(st);
-    console.log(preciou);
+      console.log(sg);
+      console.log(st);
+      console.log(preciou);
 
+      var acumulado2 = acumulado[2].split("-")[0].trim()
 
+        $tbody_detalle.innerHTML += `<tr>
+          <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
+          <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
+          <td> <input name="precio_unitario_detalle[]" value="${preciou}" /> </td>
+          <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
+          <td> <input type="hidden" name="ganancia_detalle[]"class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
+          <td> <input type="hidden" name="preciot_detalle[]" class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
+          <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
+        </tr>`;
 
-var acumulado2 = acumulado[2].split("-")[0].trim()
+};
 
-    $tbody_detalle.innerHTML += `<tr>
-      <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
-      <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
-      <td> <input name="precio_unitario_detalle[]" value="${preciou}" /> </td>
-      <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
-      <td> <input type="hidden" class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
-      <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
-      <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
-    </tr>`;
-
-  };
 
   $tbody_detalle.onclick = function(e){
     if(e.target.id == "delete_row"){

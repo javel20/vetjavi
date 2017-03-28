@@ -14,6 +14,7 @@
             <th>Producto</th>
             <th>Presentacion</th>
             <th>Cantidad</th>
+            <th>Ganancia</th>
             <th>Precio Unitario</th>
             <th>Precio Total</th>
         </thead>
@@ -26,6 +27,7 @@
                 "<td>". $dato->nompro  ."</td>".
                 "<td>". $dato->Presentacion ."</td>".
                 "<td>". $dato->Cantidad ."</td>".
+                "<td>". $dato->gananciau ."</td>".
                 "<td>". $dato->PrecioTotal ."</td>".
                 "<td>". $dato->Cantidad * $dato->PrecioTotal ."</td>".
                 "</tr>";

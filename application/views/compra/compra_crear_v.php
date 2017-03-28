@@ -112,7 +112,7 @@
                   <div class="form-group col-md-6">
                     <label>Cantidad</label>
             
-                    <input validate="number" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="6">
+                    <input validate="number" id="cantidad" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="6">
                   
                   </div>
 
@@ -314,12 +314,34 @@ console.log(porc);
   $form_detalle = document.getElementById("form_detalle");
   $tbody_detalle = document.getElementById("tbody_detalle");
 
-  var st=0;
+  $cantidad = document.getElementById("cantidad");
+    console.log($cantidad);
+
 
   var nodo_push = "";
   var acumulado = [];
+  var st=0;
+
+  
   $agregar_detalle.onclick = (event)=>{
    event.preventDefault();
+
+
+  
+
+
+   
+    let stock = 0;
+     $("#selecpresent")[0].childNodes.forEach(function(e){
+         if(e.value==$("#selecpresent").val()){
+          // texto=$('#selecpresent').text();
+             stock = e.text.split("-")[1].trim()
+            
+         }
+     })
+
+     
+
    acumulado = [];
     $form_detalle.childNodes.forEach( e=> {
         e.childNodes.forEach( k=> {
@@ -332,6 +354,15 @@ console.log(porc);
                 acumulado.push(k.value);
         })
     })
+
+    console.log("---------");
+       console.log(stock);
+       console.log($("#cantidad").val());
+
+      if( $("#cantidad").val() <= 0 ){
+        alert("se deben comprar productos mayores o iguales a 1");
+        return false; 
+      }
 
 
 
@@ -350,14 +381,16 @@ console.log(porc);
 
     console.log(acumulado);
 
+    var acumulado2 = acumulado[2].split("-")[0].trim()
+
     $tbody_detalle.innerHTML += `<tr>
       <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
-       <td> ${acumulado[2]}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>  
+       <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>  
 
       <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
       <td> <input name="fecha[]" value="${acumulado[5]}"/> </td>
       <td> <input name="precio_detalle[]" value="${acumulado[6]}"/> </td>
-      <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
+      <td> <input type="hidden" name="preciototal_detalle[]" class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
       <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
     </tr>`;
 
@@ -365,8 +398,10 @@ console.log(porc);
 
   $tbody_detalle.onclick = (e)=>{
     if(e.target.id == "delete_row"){
+      console.log("asdasdasd");
         st -= $(e.target).closest("tr").find(".preciot").val(); //closest trae a los tr y find busca el valor de preciot
         $("#sumatotal").val(st);
+        e.target.closest("tr").remove();
     }
   }
 

@@ -14,7 +14,7 @@
               method="POST" onsubmit="return validar(this);">
           <div class="form-group col-md-6 ">
             <label>Codigo</label>
-            <input type="text" class="form-control" name="CodV" placeholder="Codigo" readonly="readonly" maxlength="8"value="<?php echo $dato_venta[0]->CodV?>">
+            <input type="text" class="form-control" name="CodV" placeholder="Codigo" maxlength="8">
           </div>
 
 
@@ -80,7 +80,7 @@
          <div class="form-group col-md-6">
  
               <label>Cliente</label>
-               <select validate="selecbus" class="js-example-basic-single2 form-control" name="listClient">
+               <select validate="selecbus" class="js-example-basic-single2 form-control" name="IdCliente">
                 <?php
                     
                     foreach($clientes as $cliente){
@@ -95,53 +95,334 @@
 
             </div>
 
-            <script type="text/javascript">
-            $(document).ready(function() {
-            var fn = $(".js-example-basic-single2").select2();
-              // $(".js-example-basic-single").select
-            // fn.defaults.set("qwe","sdsd")
-            });
 
-            </script>
-
-
-          <div class="col-md-12">
-                <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?> />
-                
-                <input type="hidden" name="sumatotal" id="sumatotal" value="<?php echo $dato_venta[0]->PrecioTotalVenta?>"/> 
-                <input type="hidden" value="" name="ganancia" id="ganancia" value="<?php echo $dato_venta[0]->Ganancia?>"/>   
-                <input type="hidden" name="IdCliente" id="IdCliente" value="<?php echo $dato_venta[0]->IdCliente?>">
-            <button type="submit" class="btn btn-primary ">Actualizar</button>
+            <div class="col-md-12"></div>
           
+              <h5 class="col-md-12 mi_header">Detalle de venta</h5>
+              <hr />
+              <div>
+                <div id="form_detalle" >
+                
+     
+
+            <div class="form-group col-md-6">
+            <label>Producto</label>
+              <select validate="selecbus" class="form-control" id="js-example-basic-single" name="">
+                  <option>--seleccionar--</option>
+                <?php
+                    
+                    foreach($productos as $producto){
+                      
+                      echo "<option tipo =". $producto->IdTipoProducto." value=" .$producto->IdProducto .">". $producto->NombreP ."</option>";
+                    }?>
+              </select>
+
+            </div>
+
+
+            <div class="form-group col-md-6">
+            <label>Presentacion - Stock</label>
+              <select validate="selec" class="form-control" id="selecpresent" name="">
+                  <option>--seleccionar--</option>
+              
+              </select>
+
+            </div>
+                 
+                 
+                  <div class="form-group col-md-6">
+                    <label>Cantidad</label>
+            
+                    <input validate="number" id ="cantidad" type="text" class="form-control" name="cantidad_add_detalle" placeholder="Cantidad" maxlength="7">
+                  
+                  </div>
+
+
+               
+                  <div class="form-group col-md-12">
+                    <input type="hidden" value="" name="preciou" id="preciou" />
+                    <input type="hidden" value="" name="gananciau" id="gananciau" />
+                    <a href="" id="agregar_detalle" class="btn btn-primary">Agregar Detalle </a>
+                  </div>
+                 </div>
+                <div class="table" id="table_detalle">
+                  <table class="table table_arreglar">
+                    <thead>
+                      <tr class="arreglar">
+                        <th>Nombre Producto</th>
+                        <th>Presentacion</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Ganancia</th>
+                        <th>Precio Total</th>
+                        <th>Opc</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody_detalle">
+                    
+                    </tbody>
+                  </table>
+                </div>
+              
+            
+            </div>
+            <div class="col-md-12">     
+                  <!--con el name seteo y con el input lo envio al servidor-->
+                  <input type="hidden" name="lista_detalle" id="lista_detalle" value=<?php echo json_encode($dato_ventadetalle) ?>>
+                <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?> />
+                <input type="hidden" value="" name="sumatotal" id="sumatotal" />  
+                <input type="hidden" value="" name="ganancia" id="ganancia" />  
+                <button type="submit" class="btn btn-primary ">Actualizar</button>
+            
+            </div>
+          </form>
+
           </div>
-        </form>
+        </div>
 
-		</div>
-	</div>
 </div>
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+  $("#js-example-basic-single2").select2();//recupero el nodo
+  $("#js-example-basic-single").select2();
+
+  $("#selecpresent").on("change", function(event){//changue evento para seleccionar una opcion
+console.log("estoy en selecpresent")
+  // var option = $(e).find('option:selected');
+  //   console.log(e.target.value);
+  //   console.log(option);
+
+     
+//traigo el precio
+        event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
+          if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
+            precio = e.getAttribute('precio');//e.get... traigo el atributo precio y lo asigno a precio
+          }
+        });
+
+        event.target.childNodes.forEach(function(e){ //event.target haciendo click en uno trae los select y con el chilNodes trae los option, foreach recorro a todos los elementos del array, function(e) recore cada elemento en este caso los option
+          if(e.value==event.target.value){ //e.value traigo el atributo value y o igualo al value del evento que estoy seleccionando
+            preciov = e.getAttribute('preciov');//e.get... traigo el atributo precio y lo asigno a precio
+            console.log(preciov);
+          }
+        });
+
+  })
+var porcentaje='';
+var precio='';
+var preciov='';
+   $("#js-example-basic-single").on("change", function (event){
+    
+      $.ajax({
+      url:"http://localhost/vetjavi/index.php/producto/presen/" +event.target.value,
+      dataType: 'text',
+      cache:false,
+      type:'GET',
+     
+      success:function(response){
+
+        // let js=JSON.stringify(response);
+        // let js2=JSON.parse(response+ '\'');
+        // console.log(js2);
+      
+        // console.log(JSON.parse(response).dato_presen);
+
+        var tipo='';
+
+        event.target.childNodes.forEach(function(e){
+          if(e.value==event.target.value){//event.target.value uno especifico
+            tipo = e.getAttribute('tipo')
+          }
+        });
+
+// console.log(porc);
+        // porc son todos los objetos de tipoproducto en JS
+        porc.forEach(function(e){
+         
+            if(e.IdTipoProducto == tipo){ 
+              // console.log(e.Porcentaje);
+              porcentaje = e.Porcentaje;
+            }
+          
+
+        })
+
+        let acumulador="<option>--seleccionar--</option>";
+          console.log(JSON.parse(response));
+
+        JSON.parse(response).dato_presen.map( //map iterar un array
+          function(e){ //e representa un objeto
+          acumulador += "<option precio=" +e.Precio +" preciov=" +e.PrecioVenta +" value="+ e.IdStockPresen +">" + e.Presentacion +" - " + e.StockReal + "</option>" 
+            
+
+          }
+
+        );
+
+
+        $("#selecpresent").html(acumulador);
+
+
+
+        console.log("exito")
+      },
+     
+        error:function(response){
+
+        console.log("error")
+      }
+
+    });
+
+
+   })
+
+  $agregar_detalle = document.getElementById("agregar_detalle");
+  $form_detalle = document.getElementById("form_detalle");
+  $tbody_detalle = document.getElementById("tbody_detalle");
+
+    $cantidad = document.getElementById("cantidad");
+    console.log($cantidad);
+
+  var nodo_push = "";
+  var acumulado = [];
+  var st=0;
+  var sg=0;
+  var preciou=0;
+ 
+
+  $agregar_detalle.onclick = (event)=>{
+    event.preventDefault();
+
+    // $("#selecpresent").val()
    
- <script>
-    var listCliente = document.getElementById("listCliente");
-    var optionsCliente = document.getElementById("clientes");
-    var insertIdCliente = document.getElementById("IdCliente");
+    let stock = 0;
+     $("#selecpresent")[0].childNodes.forEach(function(e){
+         if(e.value==$("#selecpresent").val()){
+          // texto=$('#selecpresent').text();
+             stock = e.text.split("-")[1].trim()
+            
+         }
+     })
 
-    var identificadorPro = "<?php echo $dato_venta[0]->IdCliente?>";
-    optionsCliente.childNodes.forEach(function(e){
-        if(e.getAttribute("data") == identificadorPro){
-          listCliente.value = e.value; 
-        }
-      });
+    var precioV=0;
+    var precioT=0;
+    var precioG=0;
+    var precioVe=0;
+   console.log(precio);
+  //  console.log(porcentaje);
+  //  precioV=Number(precio)+ Number(porcentaje*precio)/100.0;
+  
+   
+  //  preciou=precioV;
+    preciou=preciov;
+    console.log(preciou);
+    acumulado = [];
+      $form_detalle.childNodes.forEach( e=> {
+          e.childNodes.forEach( k=> {
+              if(k.tagName == "SELECT"){
+                let select_name = k.options[k.options.selectedIndex].text;
+                acumulado.push(select_name);
+                acumulado.push(k.value);
+                }
+                else if (  k.tagName == "INPUT") 
+                  acumulado.push(k.value);
+          })
+      })
+      console.log("---------");
+       console.log(stock);
+       console.log($("#cantidad").val());
+
+     if(parseInt(stock) < $("#cantidad").val() || $("#cantidad").val() <= 0){
+        alert("no hay suficiente productos para vender");
+        return false; 
+      }
+      
+      // precioT=precioV*acumulado[4];
+      precioT=preciov*acumulado[4];
+      st+=precioT;
+
+      precioVe+=preciov;
+      precioG=(preciov-precio)*acumulado[4];
+      sg+=parseFloat(precioG);
+
+      $('#ganancia').val(sg);
+      $("#sumatotal").val(st);
+      $("#preciou").val(preciou);
+      console.log(sg);
+      console.log(st);
+      console.log(preciou);
+
+      var acumulado2 = acumulado[2].split("-")[0].trim()
+
+        $tbody_detalle.innerHTML += `<tr>
+          <td> ${acumulado[0]}<input type="hidden" name="nombre_detalle[]" value="${acumulado[1]}" /> </td>
+          <td> ${acumulado2}<input type="hidden" name="presentacion_detalle[]" value="${acumulado[3]}" /> </td>
+
+          <td> <input name="precio_unitario_detalle[]" value="${preciou}" /> </td>
+          <td> <input name="cantidad_detalle[]" value="${acumulado[4]}"/> </td>
+          <td> <input type="hidden" name="ganancia_detalle[] class="preciog" value=${precioG} />${precioG.toFixed(2)}</td>
+          <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${precioT} />${precioT.toFixed(2)}</td>
+          <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
+        </tr>`;
+
+};
 
 
-
-  listCliente.onchange = function(e){
-    optionsCliente.childNodes.forEach(function(e){
-        if(e.value == listCliente.value){
-          insertIdCliente.value = e.getAttribute("data"); 
-        }
-      });
+  $tbody_detalle.onclick = function(e){
+    if(e.target.id == "delete_row"){
+        // ($(e.target).closest("tr").find(".preciot").val());
+        st -= $(e.target).closest("tr").find(".preciot").val(); //closest trae a los tr y find busca el valor de preciot
+        sg -= $(e.target).closest("tr").find(".preciog").val();
+        $("#ganancia").val(sg);
+        $("#sumatotal").val(st);
+        console.log(sg);
+        console.log(st);
+        e.target.closest("tr").remove();
+    }
   }
+ 
+  var porc = JSON.parse('<?php echo json_encode($tipoproductos);?>'.toString());// convertir un objeto normal a JS
+
+
+
+//obtener detalle producto
+  var $lista_detalle = document.getElementById("lista_detalle");
+  var lista_detalle = JSON.parse($lista_detalle.value)
+console.log(lista_detalle);
+      
+      let acumulator=""
+      lista_detalle.map(function(e){
+      console.log(e);
+          st += e.PrecioTotal*e.Cantidad;
+          sg += parseFloat(e.gananciau);
+           acumulator+=`<tr>
+                        <td> ${e.NombreP}<input type="hidden" name="nombre_detalle[]" value="${e.IdProducto}" /> </td>
+                        <td> ${e.Presentacion}<input type="hidden" name="presentacion_detalle[]" value="${e.IdStockPresen}" /> </td>  
+
+                        <td> <input name="precio_unitario_detalle[]" value="${e.PrecioTotal}" /> </td>
+                        <td> <input name="cantidad_detalle[]" value="${e.Cantidad}"/> </td>
+                        <td> <input type="hidden" name="ganancia_detalle[] class="preciog" value=${e.gananciau} />${e.gananciau}</td>
+                        <td> <input type="hidden" name="preciot_detalle[]"class="preciot" value=${e.Preciot} />${e.Preciot}</td>
+                        <td> <span id="delete_row" class="glyphicon glyphicon-trash"> </span> </td>
+                      </tr>`;
+
+      });
+        $("#sumatotal").val(st);
+        $("#ganancia").val(sg);
+        console.log("st"+st);
+        console.log("sg"+sg);
+      $tbody_detalle.innerHTML = acumulator
+
+
 </script>
+
+<script src="<?php echo base_url('public/main.js'); ?>"></script>
 
 <script src="<?php echo base_url('public/main.js'); ?>"></script>
 <?php  $this->load->view('layouts/footer.php');?>       

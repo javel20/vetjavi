@@ -71,8 +71,18 @@ class Venta extends CI_Controller {
 
             $this->load->model('Venta_model');
             $data['dato_venta'] =  $this->Venta_model->get_venta($id);
-            $this->load->model('cliente_model');
-            $data['clientes'] =  $this->cliente_model->get_clientes();
+            $this->load->model('Venta_model');
+            $data['dato_ventadetalle'] =  $this->Venta_model->get_ventadetalle($id);
+            $this->load->model('proveedor_model');
+            $data['proveedores'] =  $this->proveedor_model->get_proveedores();  
+            $this->load->model('Producto_model');
+            $data['productos'] = $this->Producto_model->get_productos();
+            $this->load->model('TipoProducto_model');
+            $data['tipoproductos'] = $this->TipoProducto_model->get_tipoproductos();
+            $this->load->model('Cliente_model');
+            $data['clientes'] = $this->Cliente_model->get_clientes();
+            $this->load->model('StockPresen_model');
+            $data['presentacion'] = $this->StockPresen_model->get_presen();
 
             $this->load->view('venta/venta_editar_v', $data);
 

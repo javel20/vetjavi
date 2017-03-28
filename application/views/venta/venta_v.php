@@ -66,8 +66,9 @@
             <th>Cliente</th>
             <th>Fecha</th>
             <th>Tipo</th>
-            <th>Descripicion</th>
+            <th>Ganancia</th>
             <th>Precio Total Venta</th>
+            <th>Descripcion</th>
             <th>Registrador</th>
             <th>Option</th>
          
@@ -84,8 +85,9 @@
                 "<td>". $dato->Nombre ." ".$dato->apepatcli." ".$dato->apematcli. "</td>".
                 "<td>". $dato->Fecha ."</td>".
                 "<td>". $dato->TipoV ."</td>".
-                "<td>". $dato->Descripcion."</td>".
+                "<td>". number_format($dato->Ganancia,2,'.','')."</td>".
                 "<td>". number_format($dato->PrecioTotalVenta,2,'.','')."</td>".
+                "<td>". $dato->Descripcion."</td>".
                 "<td>". $dato->NombreT ." ". $dato->apepattra ." ". $dato->apemattra . "</td>".
                 "<td> <div class='dropdown'>
                     <button id='dLabel' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
