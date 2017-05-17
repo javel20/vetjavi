@@ -395,7 +395,7 @@ function validar(e){
                     //cont suma
                     el[d].style.border ="1px solid red";
                     if(el[d].previousElementSibling.childElementCount == 0)
-                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo letras o el codigo es repetido</span>`
+                        el[d].previousElementSibling.innerHTML += `<span class="error"> Ingrese solo letras o el nombre es repetido</span>`
                         cont++;
                         console.log("asd");
 

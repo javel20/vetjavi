@@ -66,6 +66,9 @@ class Cita_model extends CI_Model {
 
                 $fecha=strftime( "%Y-%m-%d %H:%M:%S", time() );
                 $this->FechaRegistro    =  $fecha;
+
+                // die($fecha);
+
                 $this->HoraC = $_POST['HoraC'];
                 $this->Peso    = $_POST['Peso'];
                 $this->TemperaturaC    = $_POST['TemperaturaC'];

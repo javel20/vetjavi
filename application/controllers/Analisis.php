@@ -74,9 +74,9 @@ class Analisis extends CI_Controller {
 /*            $this->load->model('StockPresen_model');
             $data['tipos']= $this->StockPresen_model->get_stockpresens();
             */
-               $this->load->model('paciente_model');
-             $data['pacientes'] = $this->paciente_model->get_pacientes();
-             $this->load->model('Analisis_model');
+            $this->load->model('paciente_model');
+            $data['pacientes'] = $this->paciente_model->get_pacientes();
+            $this->load->model('Analisis_model');
             $data['dato_analisis'] =  $this->Analisis_model->get_analisis($id);
 
             $this->load->view('analisis/analisis_editar_v', $data);

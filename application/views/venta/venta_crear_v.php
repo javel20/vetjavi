@@ -195,10 +195,14 @@ console.log("estoy en selecpresent")
 var porcentaje='';
 var precio='';
 var preciov='';
+
+const base = '<?=base_url()?>';
+console.log(base);
+
    $("#js-example-basic-single").on("change", function (event){
     
       $.ajax({
-      url:"http://localhost/vetjavi/index.php/producto/presen/" +event.target.value,
+      url:base+"index.php/producto/presen/" +event.target.value,
       dataType: 'text',
       cache:false,
       type:'GET',

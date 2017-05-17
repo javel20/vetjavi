@@ -123,7 +123,7 @@ class Producto extends CI_Controller {
             $this->load->model('StockPresen_model');
             $presen['dato_presen'] =$this->StockPresen_model->get_presenajax($id);
             echo json_encode($presen);
-
+            
         }
 
         public function getProducto($NombreP){

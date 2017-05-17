@@ -25,7 +25,7 @@
 
             <div class="form-group col-md-6">
                  <label class="control-label" for="date">Fecha</label>
-                <input validate="date" class="form-control" id="date" name="Fecha" placeholder="MM/DD/YYYY" maxlength="10" type="text"/>
+                <input validate="date" class="form-control" id="date" name="  " placeholder="MM/DD/YYYY" maxlength="10" type="text"/>
 
                   <script>
                     $(document).ready(function(){
@@ -187,7 +187,8 @@
 
             <div class="col-md-12">
                 <input type="hidden" name="IdTrabajador" value=<?php echo $_SESSION["IdTrabajador"] ?>>
-                <input type="hidden" value="" name="sumatotal" id="sumatotal" />  
+                <input type="hidden" value="" name="sumatotal" id="sumatotal" />
+                <input type="hidden" id="sp" name="sp"  value="{{Request::root()}}">
               <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
           </form>
@@ -240,12 +241,21 @@
 
   })
 
+
   var porcentaje='';
 var precio='';
+
+// const host=document.getElementById("sp").value;
+// console.log(host);
+const base = '<?=base_url()?>';
+console.log(base);
+
+
+
    $("#js-example-basic-single").on("change", function (event){
     
       $.ajax({
-      url:"http://localhost/vetjavi/index.php/producto/presen/" +event.target.value,
+      url:base+"index.php/producto/presen/" +event.target.value,
       dataType: 'text',
       cache:false,
       type:'GET',
@@ -266,7 +276,7 @@ var precio='';
           }
         });
 
-console.log(porc);
+console.log("tipo"+tipo);
         
         porc.forEach(function(e){
          
@@ -275,7 +285,7 @@ console.log(porc);
               porcentaje = e.Porcentaje;
             }
           
-
+console.log("porcentaje"+porcentaje);
         })
 
         let acumulador="<option>--seleccionar--</option>";
